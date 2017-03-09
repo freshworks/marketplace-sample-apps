@@ -1,0 +1,15 @@
+<div id="domSMSHack" class="widget">
+  <h3>Twilio SMS</h3>
+  <div class="content">
+    <span class="message_status">
+      <p class="important_note">Enter phone number with country code (Eg.+13345395652)</p>
+    </span>
+    <form class="customSMS ui-form" id='customSMS'>
+      <label for="to"><h5>To</h5></label>
+      <input class="required" type="text" id="to" maxlength="15">
+      <label for="message"><h5>Message</h5></label> 
+      <textarea class="required" maxlength="160" id="custom_msg" col=50 row=50>{{iparam.msg_content | escape}}</textarea>
+      <input class="btn btn-primary pull-right" type="submit" id="submitCustomSMS" value="Send">
+    </form>
+  </div>
+</div>
