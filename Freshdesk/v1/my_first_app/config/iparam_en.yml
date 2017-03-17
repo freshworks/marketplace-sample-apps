@@ -1,0 +1,31 @@
+# For Localization, copy this file and change the file name(Change 'en' with the respective language code).
+# Usage:
+# iparam - Installation Params that will be entered by the user when they install
+# iparam will have keys(development key) and each key will have set of fields.
+# Fields for the keys are:
+# 1. display_name - Users will see this name in installation form
+# 2. description - A short description of the param
+# 3. type - Can be "text" or "dropdown"
+# 4. required (optional) - Input mandatory from the app installer? Default is false.
+
+# Fields that are need only for dropdown
+# 5. options - List of dropdown options
+# 6. default_value - Make one as default from the options
+
+# Sample:
+
+# username:
+#   display_name: "Username"
+#   description: "Please enter your username"
+#   type: "text"
+#   required: true
+# country:
+#   display_name: "Country"
+#   description: "Please enter your country"
+#   type: "dropdown"
+#   options:
+#     - India
+#     - Iceland
+#     - US
+#     - UK
+#   default_value: US

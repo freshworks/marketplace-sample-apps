@@ -1,6 +1,14 @@
 ## Freshdesk sample apps (v1)
 This repository contains sample apps demonstrating the various features available in the v1 App Framework. It contains the follwing apps:
 
+### My First App
+
+This app shows the Freshdesk logo and the name of the ticket requester or contact.
+
+This app demonstrates the following features
+1. Using domHelper to get requester and contact details
+2. Loading an image from the assets folder
+
 ### Simple Backend App
 
 Every time a new reply or note is added to a ticket, this app makes a request to http://text-processing.com which does a sentiment analysis and then the app sends the result of the analysis as an SMS to the agent.
