@@ -1,6 +1,21 @@
 ## Freshdesk sample apps (v1)
 This repository contains sample apps demonstrating the various features available in the v1 App Framework. It contains the follwing apps:
 
+### Google Hangouts
+
+  Allows you to chat with your customers on Google Hangouts without leaving your helpdesk.
+
+  This app demonstrates the following features
+  1. Using domHelper to get requester info
+
+### In app events app
+
+  This app demonstrates the in app events feature.
+
+  This app demonstrates the following features
+  1. In app change event
+  2. In app click event
+
 ### My First App
 
 This app shows the Freshdesk logo and the name of the ticket requester or contact.
