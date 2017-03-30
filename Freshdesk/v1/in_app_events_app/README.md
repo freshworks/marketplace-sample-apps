@@ -1,4 +1,4 @@
-## In app events app
+## In App Events App
 
   This app demonstrates the in app events feature.
 
