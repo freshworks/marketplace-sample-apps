@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
   return {
     initialize: function() {
       var email = domHelper.ticket.getContactInfo().user.email;
@@ -6,5 +7,5 @@
       appPlaceholder.ticket.requestorInfo(jQuery(this.$container));
       jQuery(this.$container).find('.google-hangout').html(html);
     }
-  }
+  };
 })();
