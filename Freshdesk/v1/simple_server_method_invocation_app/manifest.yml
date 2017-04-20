@@ -1,7 +1,6 @@
 platform-version: '1.0'
 dependencies:
-  request: 2.72.0
-  base-64: 0.1.0
+  twilio: 2.11.1
 pages:
   - ticket
   - contact

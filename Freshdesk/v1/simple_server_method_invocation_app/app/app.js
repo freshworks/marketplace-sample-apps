@@ -34,7 +34,7 @@
           // on success callback.
           .done( function(data) {
             console.log(data);
-            var html = "<p class='success'>Message queued/sent successfully.</p>";
+            var html = "<p class='success'>Message sent successfully.</p>";
             self.handleResponse(html);            
           })
           // on failure callback.

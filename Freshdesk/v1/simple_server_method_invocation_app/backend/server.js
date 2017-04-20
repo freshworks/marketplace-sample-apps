@@ -1,25 +1,26 @@
 
-var request = loadDependency('request');
-var requestData = loadLib('req-data');
+var twilio = loadDependency('twilio');
 
 exports = {
 
   sendSMS: function(args) {
-    var reqData = requestData(args);
-    // making the api call using the request npm.
-    request( reqData, function(err, resp, body) {
-      // using renderData to send back the response.
-      if (err) { return renderData(err); }
-      if (resp.statusCode == 201) {
-        return renderData(null, body);
-      } else {
-        var err = {
-          status: resp.statusCode, 
-          message: body
-        };
-        return renderData(err);
+    var iparams = args.iparams;
+    var accountSid = iparams.account_sid;
+    var authToken = iparams.auth_token;
+    var client = new twilio.RestClient(accountSid, authToken);
+    client.messages.create({
+      body: args.message,
+      to: args.phone,  // Text this number
+      from: iparams.from_number // From a valid Twilio number
+    }, function(err, message) {
+      if (err) {
+        console.error(err.message);
+      }
+      if (message) {
+        console.log(message);
       }
     });
+    // Nothing to return, so the renderData method returns empty JSON
+    renderData(null, { });
   }
-
 };
