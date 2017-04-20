@@ -15,12 +15,13 @@ exports = {
     }, function(err, message) {
       if (err) {
         console.error(err.message);
+        // Nothing to return, so the renderData method returns empty JSON
+        renderData(null, { });
       }
       if (message) {
         console.log(message);
+        renderData(null, { });
       }
     });
-    // Nothing to return, so the renderData method returns empty JSON
-    renderData(null, { });
   }
 };
