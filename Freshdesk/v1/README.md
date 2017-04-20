@@ -62,4 +62,4 @@ This repository contains sample apps demonstrating the various features availabl
   This app demonstrates the following features
   1. Server method invocation i.e the front end component (app.js) of the app calling a backend method (server.js)
   2. Making an API request in server.js
-  3. Using an npm library (request)
+  3. Using an npm library (twilio)
