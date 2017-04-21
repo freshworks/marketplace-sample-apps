@@ -3,6 +3,5 @@ dependencies:
   request: 2.72.0
 pages:
   - ticket
-  - contact
 features:
   - backend
