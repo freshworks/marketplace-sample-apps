@@ -1,6 +1,16 @@
 ## Freshdesk sample apps (v1)
 This repository contains sample apps demonstrating the various features available in the v1 App Framework. It contains the follwing apps:
 
+### [Backend Request App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v1/backend_request_app)
+
+Every time a new ticket is created, this app makes an API request to HTTPbin.org and prints the response to the terminal window.
+
+This app demonstrates the following features
+
+1. Backend event - onTicketCreate
+2. Making an API GET request using the npm request module
+3. Handing the response of a API request using a internal library
+
 ### [Google Hangouts](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v1/google_hangouts)
 
   Allows you to chat with your customers on Google Hangouts without leaving your helpdesk.
@@ -63,3 +73,12 @@ This repository contains sample apps demonstrating the various features availabl
   1. Server method invocation i.e the front end component (app.js) of the app calling a backend method (server.js)
   2. Making an API request in server.js
   3. Using an npm library (twilio)
+
+### [Your First Backend App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v1/your_first_backend_app)
+
+Every time a new ticket is created, this app prints a "Hello {requester name}" message to the terminal window.
+
+This app demonstrates the following features
+
+1. Backend event - onTicketCreate
+2. Accessing data from the backend event payload
