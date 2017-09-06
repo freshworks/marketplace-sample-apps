@@ -1,0 +1,41 @@
+# For Localization, copy this file and change the file name(Change 'en' with the respective language code).
+# Usage:
+# iparam - Installation Params that will be entered by the user when they install
+# iparam will have keys(development key) and each key will have set of fields.
+# Fields for the keys are:
+# 1. display_name - Users will see this name in installation form
+# 2. description - A short description of the param
+# 3. type - Can be "text" or "dropdown"
+# 4. required (optional) - Input mandatory from the app installer? Default is false.
+
+# Fields that are need only for dropdown
+# 5. options - List of dropdown options
+# 6. default_value - Make one as default from the options
+
+# Sample:
+
+username:
+  display_name: "Github username"
+  description: "Please enter your github username"
+  type: "text"
+  required: true
+token:
+  display_name: "Github token"
+  description: "Please enter your github token"
+  type: "text"
+  required: true
+repo:
+  display_name: "Github repo-name"
+  description: "Please enter your github repo-name"
+  type: "text"
+  required: true
+freshdeskdomain:
+  display_name: "Freshdesk domain"
+  description: "Please enter your freshdesk domain"
+  type: "text"
+  required: true
+freshdeskapikey:
+  display_name: "Freshdesk API Key"
+  description: "Please enter your freshdesk API key"
+  type: "text"
+  required: true
