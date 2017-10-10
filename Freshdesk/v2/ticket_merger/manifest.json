@@ -1,0 +1,6 @@
+{
+  "platform-version": "1.0",
+  "dependencies": {
+    "needle": "1.6.0"
+  }
+}
