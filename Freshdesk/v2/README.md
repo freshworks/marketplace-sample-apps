@@ -29,3 +29,21 @@ This app demonstrates the following features,
 1. Freshdesk Product event - onTicketCreate
 2. Making an API calls to Freshdesk using proper Authentication and Authorization.
 3. Data Persistence to keep track of ticket create events.
+
+### [Your First App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/your_first_app)
+
+This app shows the Freshdesk logo and the name of the ticket requester.
+
+This app demonstrates the following features
+
+1. Using data API to get the ticket requester's details
+2. Loading an image from the app folder
+
+### [Your First Serverless App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/your_first_serverless_app)
+
+Every time a new ticket is created, this app prints a "Hello {requester name}" message to the terminal window.
+
+This app demonstrates the following features
+
+1. Product event - onTicketCreate
+2. Accessing data from the event payload
