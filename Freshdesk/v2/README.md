@@ -47,3 +47,12 @@ This app demonstrates the following features,
 1. Freshdesk Product event - onTicketCreate
 2. Making an API calls to Freshdesk using proper Authentication and Authorization.
 3. Data Persistence to keep track of ticket create events.
+
+### [OneDrive OAuth App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/onedrive_oauth_app)
+
+  This apps lists the files and folders available in your OneDrive account.
+
+  This app demonstrates the following features
+
+  1. OAuth 2.0 - account level OAuth
+  2. Request API - making an OAuth request with access_token
