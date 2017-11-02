@@ -30,10 +30,11 @@ This app demonstrates the following features
 3. Handing the response of a API request using a internal library
 
 ### [External Events App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/external_events_app)
-  
+
   This app creates an outbound email ticket in Freshdesk every time an issue of type “bug” is created in JIRA. The requester of the ticket will be the person who created the bug in JIRA
 
   This app demonstrates the following features
+
   1. Using App Setup events to create and delete the JIRA webhoook
   2. Responding to the JIRA webhook using external events
   3. Making an API request in server.js
@@ -56,3 +57,13 @@ This app demonstrates the following features,
 
   1. OAuth 2.0 - account level OAuth
   2. Request API - making an OAuth request with access_token
+
+### [Twilio SMS](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/twilio_sms)
+
+  This app enables an agent to send a message (entered by the agent) as an SMS.
+
+  This app demonstrates the following features
+
+  1. Server method invocation i.e the front end component (app.js) of the app calling a serverless method (server.js)
+  2. Making an API request in server.js
+  3. Using an NPM library (twilio)
