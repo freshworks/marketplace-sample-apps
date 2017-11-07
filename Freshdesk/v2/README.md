@@ -19,6 +19,22 @@ This app demonstrates the following features
 1. Product event - onTicketCreate
 2. Accessing data from the event payload
 
+### [Simple Data Storage App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/simple_datastorage_app)
+
+This app allows you to save a memo linked to the ticket.
+
+This app demonstrates the following features
+
+1. Data Storage - set, get & delete
+
+### [Simple Request App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/simple_request_app)
+
+This apps makes REST API calls to httpbin.org.
+
+This app demonstrates the following features
+
+1. Request API - GET, POST, PUT & DELETE
+
 ### [Serverless Request App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/serverless_request_app)
 
 Every time a new ticket is created, this app makes an API request to HTTPbin.org and prints the response to the terminal window.
