@@ -38,7 +38,7 @@ function diffTime(a, b) {
 }
 
 function withInWindow(primary, secondary, windowDuration) {
-  return diffTime(secondary.created_at, primary.created_at) < (windowDuration * 60 * 1000);
+  return diffTime(secondary.created_at, primary.created_at) < windowDuration * 60 * 1000;
 }
 
 function generateSecondaryNote(primaryTicket) {
