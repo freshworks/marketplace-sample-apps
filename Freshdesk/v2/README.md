@@ -45,6 +45,15 @@ This app demonstrates the following features
 2. Making an API GET request using the npm request module
 3. Handing the response of a API request using a internal library
 
+### [Sample CRM App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/sample_crm_app)
+
+Every time the ticket details page is loaded, this app makes an API call to the Freshsales CRM to retrieve additional information about the ticket requester.
+
+This app demonstrates the following features
+
+1. Using data API to get the ticket requester's details
+2. Request API - GET request to retrieve the ticket requester’s details
+
 ### [External Events App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/external_events_app)
 
   This app creates an outbound email ticket in Freshdesk every time an issue of type “bug” is created in JIRA. The requester of the ticket will be the person who created the bug in JIRA

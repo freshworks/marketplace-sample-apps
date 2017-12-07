@@ -1,0 +1,20 @@
+{
+  "subdomain": {
+    "display_name": "Subdomain",
+    "description": "Please enter your freshsales subdomain",
+    "type": "text",
+    "required": true
+  },
+  "username": {
+    "display_name": "Username",
+    "description": "Please enter your freshsales username (email)",
+    "type": "text",
+    "required": true
+  },
+  "password": {
+    "display_name": "Password",
+    "description": "Please enter your freshsales password",
+    "type": "text",
+    "required": true
+  }
+}
