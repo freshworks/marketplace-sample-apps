@@ -1,0 +1,4 @@
+{
+  "freshdesk_domain": "Enter your freshdesk subdomain",
+  "freshdesk_key": "Enter your freshdesk API key"
+}

@@ -92,3 +92,29 @@ This app demonstrates the following features,
   1. Server method invocation i.e the front end component (app.js) of the app calling a serverless method (server.js)
   2. Making an API request in server.js
   3. Using an NPM library (twilio)
+
+### [Ticket Top Navigation App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/ticket_top_navigation_app)
+
+This app adds a shortcut to start the timer in the top navigation of the ticket details page. On clicking the app icon, the Start Timer form will be shown.
+
+This app demonstrates the following features
+
+1. App location - ticket_top_navigation.
+2. Using Interface APIs for opening a modal.
+3. Using Request APIs for fetching agent list.
+4. Using Instance APIs to send the message (Start timer inputs) from the modal to the app.
+5. Using Interface APIs for starting the timer.
+
+Note:
+Interface APIs are not accessible in the Modal. So, the data has to be passed from the modal to the parent location which then starts the timer.
+
+### [Intercepting Events App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/intercepting_events_app)
+
+This app intercepts the ticket close event and checks if there is any timer running. If so, it rejects the close action and displays an error message.
+
+This app demonstrates the following features
+
+1. App location - ticket_background.
+2. Using Data APIs for fetching ticket ID.
+3. Using Request APIs for fetching time entries for the ticket.
+4. Using Intercept events APIs to intercept the ticket close and properties update event.
