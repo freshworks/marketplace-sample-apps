@@ -127,3 +127,31 @@ This app demonstrates the following features
 2. Using Data APIs for fetching ticket ID.
 3. Using Request APIs for fetching time entries for the ticket.
 4. Using Intercept events APIs to intercept the ticket close and properties update event.
+
+### [Instance API App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/instance_api_app)
+
+This app demonstrates the usage of modals and Instance APIs.
+
+This app demonstrates the following features:
+
+1. Using data API to get the ticket requester's details.
+2. Using interface API to open up a modal and pass data to the modal.
+3. Using instance API to retrieve the data received from the parent location.
+
+## [Intercepting Events App 2](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/intercepting_events_app_2)
+
+Whenever a ticket is closed, this app checks if there are any tags attached to the ticket and if no tags are attached, stops the close event and displays an error notification.
+
+This app demonstrates the following features:
+
+1. Using data API to fetch the ticket's data.
+2. Using intercept APIs to check and stop the close action if there are no tags attached to the ticket.
+
+## [Simple Events Api App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/simple_events_api_app)
+
+Whenever an agent clicks on the send reply button in the ticket details page, this app displays a success notification.
+
+This app demonstrates the following:
+
+1. App location - ticket_background.
+2. Using events API to display success notification when the agent clicks on send reply button.
