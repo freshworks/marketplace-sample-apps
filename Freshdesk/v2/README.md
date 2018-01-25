@@ -93,6 +93,15 @@ This app demonstrates the following features,
   2. Making an API request in server.js
   3. Using an NPM library (twilio)
 
+### [Ticket Background App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/ticket_background_app)
+
+Every time the ticket details page is loaded, this app disables the ticket priority field.
+
+This app demonstrates the following features
+
+1. App location - ticket_background
+2. Using Interface APIs to disable ticket properties.
+
 ### [Ticket Top Navigation App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/ticket_top_navigation_app)
 
 This app adds a shortcut to start the timer in the top navigation of the ticket details page. On clicking the app icon, the Start Timer form will be shown.
