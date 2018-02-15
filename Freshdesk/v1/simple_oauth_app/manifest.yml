@@ -1,4 +1,4 @@
-platform-version: 1.0
+platform-version: '1.0'
 source-charset: utf8
 features:
   - oauth
