@@ -155,3 +155,24 @@ This app demonstrates the following:
 
 1. App location - ticket_background.
 2. Using events API to display success notification when the agent clicks on send reply button.
+
+### [Asana Serverless OAuth App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/asana_serverless_oauth_app)
+
+This app creates a task in Asana for every ticket created in Freshdesk.
+
+This app demonstrates the following features
+
+1. OAuth 2.0 - account level OAuth
+2. Making an API request through Request API using oauth tokens to authenticate
+3. Freshdesk Product event - onTicketCreate
+4. Using a custom installation page to dynamically populate dependent fields (workspace, project)
+
+### [Custom Installation Page App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/custom_installation_page_app)
+
+This app uses a custom installation page to get input from the user through a color picker form element. It also dynamically populates a drop down field by making an API call. These values are then used in the ticket details page to render the drop down field value in the selected background color.
+
+This app demonstrates the following features
+
+1. Using the custom installation page to display additional form element types
+2. Using the custom installation page to dynamically populate a form field through an API call
+  3. Performing validation when using a custom installation page
