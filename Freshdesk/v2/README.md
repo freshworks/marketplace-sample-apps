@@ -177,13 +177,13 @@ This app demonstrates the following features
 2. Using the custom installation page to dynamically populate a form field through an API call
 3. Performing validation when using a custom installation page
 
-### [Quick Access Tickets App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/quick_access_tickets_app)
+### [Quick Links App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/quick_links_app)
 
-This app enables an agent to bookmark frequently visited tickets.
+This app enables an agent to save links to frequently visited tickets.
 
 This app demonstrates the following features:
 
 1. Using data API to get the ticket and agent details.
 2. Using interface API to open up a modal and pass data to the modal.
 3. Using instance API to send data to the parent location.
-4. Using Data storage API to set and retrieve bookmarks.
+4. Using Data storage API to set and retrieve links.
