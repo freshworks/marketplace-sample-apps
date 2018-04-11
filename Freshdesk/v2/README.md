@@ -187,3 +187,21 @@ This app demonstrates the following features:
 2. Using interface API to open up a modal and pass data to the modal.
 3. Using instance API to send data to the parent location.
 4. Using Data storage API to set and retrieve links.
+
+### [Sentimental Jeff App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/sentimental_jeff_app)
+
+This app analyses the ticket sentiment of the requestor and rates it. It can tell you if the tone of the message is angry, sad, indifferent or happy. 
+
+This app demonstrates the following features
+
+1. Using data API to get the ticket ID
+2. Request API - GET request to get the conversation details
+
+### [Translate Buddy App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/translate_buddy_app)
+
+This app lets you either type or dictate a reply to the ticket and translates it into the selected language.
+
+This app demonstrates the following features
+
+1. App Location - Ticket Editor
+2. Using Interface API to add the translated text into the reply editor.
