@@ -1,0 +1,72 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="app.js"></script>
+  <script src="recognisation.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <script src="google_translate.js"></script>
+  <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body class="notranslate">
+
+    <div class="grid-cointainer">
+
+        <div class="three-grid-column heading flex-center ">
+            <span><i class="fa fa-globe icon-header" aria-hidden="true"></i></span>
+            <span> Translate Buddy</span>
+        
+        </div>
+        <div>
+          <span class="block p-2">
+            Language to speak
+          </span>
+          <select id="select_language" onchange="updateCountry(this.value)"></select>
+        </div>
+        <div class="select_dialect_group">
+            <span class="select_dialect_label block p-2">
+                Speaking Dailect
+              </span>
+          <select id="select_dialect" onchange="updateDialect(this.value)"></select>
+        </div>
+        <div class="start-from-three-grid">
+          <span>
+            Language to translate
+          </span>
+          <div id="google_translate_element" onchange="checkIfLanguageIsSUpportedBySpeak()"></div>
+        </div>
+        <div id="results" class="three-grid-column m-h-100">
+          <span id="final_span"  contenteditable="true" class="final translate text-area" onfocus="disableTranslate()" onblur="enableTranslate()"></span>
+          <span id="interim_span" class="interim"></span>
+        </div>
+        <div class="flex-left m-10">
+            <a href="#" id="clear"  onclick="clearTranslatedText(event)"><i class="fa fa-times font-30"></i></a>
+          <!-- <button id="clear"  onclick="clearTranslatedText(event)" type="button" class="btn btn-warning">Clear</button> -->
+        </div>
+        <div class="flex-space-between">
+          <div class="flex-center">
+            <span><i id = "record-icon" class="fa fa-circle text-danger"></i></span>
+          <a href="#" id="start_button" onclick="startDictation(event)"><i class="fa fa-microphone font-30"></i></a>
+          </div>
+
+          <div class="m-10"> 
+              <div id = "speak-icon" class="speak-icon font-30" onclick="startSpeaking(event)"></div>
+            </div>
+        </div>
+        <div class="flex-right m-10"><i class="fa fa-language font-30 translate-icon" onclick="enableTranslate()"></i></div>
+        <div></div>
+        <div class="flex-center">
+            <button id="addTextToEditor" type="button" class="btn btn-success" >Add Text</button>
+          </div>
+        <div></div>
+      </div>
+      <div></div>
+
+     
+</body>
+
+</html>
