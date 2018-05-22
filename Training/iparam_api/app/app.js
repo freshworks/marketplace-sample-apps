@@ -1,8 +1,7 @@
 $(document).ready( function() {
   // Initialize client
-  app.initialized().then(function(_client) {
+  app.initialized().then(function(client) {
     client.events.on('app.activated', function() {
-      var client = _client;
 
       // Iparam get specific iparam
       client.iparams.get('contact').then(function(iparam) {
