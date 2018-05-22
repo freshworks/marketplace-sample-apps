@@ -1,0 +1,54 @@
+  <html>
+  <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>
+   <script>
+    window.frsh_init().then(function(client){
+
+      // resize the instance
+      client.instance.resize({ height: "500px" });
+
+
+      // To retrieve information about the current context.
+      client.instance.context().then(function(context){
+        console.log('Modal instance API context', context);
+        //data passed from App to modal
+        jQuery('#name').val(context.data.defaultName);
+        jQuery('#email').val(context.data.defaultEmail);
+      });
+
+      // To retrieve information about all instances.
+      client.instance.get().then(function(data) {
+        console.log('Modal instance API Get', data);
+      });
+    });
+    function submitValues() {
+      window.frsh_init().then(function(client){
+        let result = {
+          name: jQuery('#name').val(),
+          email: jQuery('#email').val(),
+          message: jQuery('#message').val(),
+        }
+
+        // Send message to parent
+        client.instance.send({ message: result });
+
+        // Close the instance
+        client.instance.close();
+      });
+
+      // To prevent from reloading after form submit
+      event.preventDefault();
+    };
+  </script>
+  <link rel='stylesheet' type='text/css' href='modal1.css' />
+  <body>
+    <div class='form'>
+      <form onsubmit="submitValues()">
+        <input type='text' name='field1' id='name' placeholder='Your Name' />
+        <input type='email' name='field2' id='email' placeholder='Email Address' />
+        <textarea name='field3' id='message' placeholder='Type your Message'></textarea>
+        <input type='submit' value='Send' />
+      </form>
+    </div>
+  </body>
+</html>
