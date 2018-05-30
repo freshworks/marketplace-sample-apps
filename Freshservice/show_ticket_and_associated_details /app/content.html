@@ -1,0 +1,38 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="modal.css">
+<div class="wrapper">
+    <div id="sidebar" class="clearfix">
+        <div class="pull-left">
+            <select id="codeDemo">
+                <option value="ticket" selected>Ticket</option>
+                <option value="requester">Requester</option>
+                <option value="agent">Agent</option>
+                <option value="department">Department</option>
+                <option value="group">Group</option>
+                <option value="associatedProblem">Associated Problem</option>
+                <option value="associatedChange">Associated Change</option>
+                <option value="associatedTasks">Associated Task</option>
+                <option value="recentChildTickets">Recent Child Tickets</option>
+                <option value="requesterAssets">Requester Assets</option>
+                <option value="ticketAssets">Ticket Assets</option>
+            </select>
+        </div>
+        <div class="pull-right">
+            <ul class="navigation-menu">
+                <li><a href="javascript:void(0)" data-target="prev" class="disabled"><span></span></a></li>
+                <li><a href="javascript:void(0)" data-target="next"><span></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="renderOutput">
+            <ul></ul>
+        </div>
+    </div>
+</div>
+<script src="modal.js"></script>

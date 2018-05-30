@@ -1,0 +1,22 @@
+.fw-widget-wrapper {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 7px 14px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border: 1px solid #dadfe3;
+    border-radius: 2px;
+    color: #111315;
+    font-weight: normal;
+    outline: none;
+}
+
