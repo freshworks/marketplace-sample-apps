@@ -46,7 +46,7 @@ function fetchContactDetails(contactId) {
 
 function getTicketContact() {
   return new Promise(function(resolve) {
-    client.data.get('contact')
+    client.data.get('requester')
     .then(function(data) {
       resolve(data);
     }, function() {
@@ -89,7 +89,7 @@ $(document).ready( function() {
 
     function(contactInformation, callback) {
       // Search CRM
-      searchContact(contactInformation.contact.email)
+      searchContact(contactInformation.requester.email)
       .then(function(searchResult) {
         callback(null, searchResult);
       });
