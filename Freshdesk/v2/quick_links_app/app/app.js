@@ -35,24 +35,24 @@ $(document).ready(function() {
   // Updates the tickets array
   function changeBookmarks(type, ticketObj) {
     return getBookmarks().then(function(result) {
-        var index = result.tickets.map(function(val){ return val.id;}).indexOf(ticketObj.id);
-        if(type == 'add') {
-          if(index < 0) {
-            tickets.push(pickKeysFromObj(currentTicketObj));
-            setBookmarks();
-          }
-        }
-        else if (type == 'remove') {
-          if(index > -1) {
-            tickets.splice(index , 1);
-            setBookmarks();
-          }
-        }
-      }, function(error) {
-        if(error.status == 404 && type == 'add') {
-          tickets = [ pickKeysFromObj(currentTicketObj) ];
+      var index = (result.tickets || []).map(function(val){ return val.id;}).indexOf(ticketObj.id);
+      if(type == 'add') {
+        if(index < 0) {
+          tickets.push(pickKeysFromObj(currentTicketObj));
           setBookmarks();
         }
+      }
+      else if (type == 'remove') {
+        if(index > -1) {
+          tickets.splice(index , 1);
+          setBookmarks();
+        }
+      }
+    }, function(error) {
+      if(error.status == 404 && type == 'add') {
+        tickets = [ pickKeysFromObj(currentTicketObj) ];
+        setBookmarks();
+      }
     });
   }
 
@@ -88,7 +88,7 @@ $(document).ready(function() {
       currentTicketObj = value[1].ticket;
       if(userId && ticketId) {
         getBookmarks().then (function(records) {
-          tickets = records.tickets;
+          tickets = records.tickets || [];
           displayBookmarks();
         });
       }
