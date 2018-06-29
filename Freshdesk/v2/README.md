@@ -205,3 +205,13 @@ This app demonstrates the following features
 
 1. App Location - Ticket Editor
 2. Using Interface API to add the translated text into the reply editor.
+
+### [Scheduled Events Sample App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/scheduled_events_sample_app)
+
+This app enables agents to schedule the creation of tickets.
+
+This app demonstrates the following features
+
+1. Scheduled Event - onScheduledEvent
+2. Using server method invocation (SMI) to schedule the creation of tickets
+3. Using a modal to display a ticket create form
