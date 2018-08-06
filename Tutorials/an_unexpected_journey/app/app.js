@@ -28,7 +28,7 @@ function lookForBaggins() {
     client.data.get('loggedInUser').then(
         function(data) {
             current_user = data.loggedInUser.contact.name;
-            if (current_user.indexOf('Satwik') >= 0) {
+            if (current_user.indexOf('Baggins') >= 0) {
                 is_baggins = true;
             }
             if (is_baggins) {
