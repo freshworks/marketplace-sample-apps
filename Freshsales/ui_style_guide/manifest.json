@@ -1,0 +1,28 @@
+  {
+    "platform-version": "2.0",
+    "product": {
+      "freshsales": {
+        "location": {
+          "lead_entity_menu": {
+            "url": "template.html",
+            "icon": "icon.svg"
+          },
+          "deal_entity_menu": {
+            "url": "template.html",
+            "icon": "icon.svg"
+          },
+          "contact_entity_menu": {
+            "url": "template.html",
+            "icon": "icon.svg"
+          },
+          "sales_account_entity_menu": {
+            "url": "template.html",
+            "icon": "icon.svg"
+          }
+        }
+      }
+    },
+    "whitelisted-domains": [
+      "https://www.google.com"
+  ]
+  }
