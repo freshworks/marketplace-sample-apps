@@ -54,6 +54,17 @@ This app demonstrates the following features
 1. Using data API to get the ticket requester's details
 2. Request API - GET request to retrieve the ticket requester’s details
 
+### [Sample Full-page App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/sample_full_page_app)
+
+This app shows you a bar graph of ticket count grouped by the status and also lists the tickets based on the selected status.
+
+This app demonstrates the following features:
+1. Full page app feature - can be configured based on the app location
+    - Data API to get the `domainName` info
+    - Interface API to navigate to a ticket details page
+2. Using Freshdesk API to get ticket data
+
+
 ### [External Events App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/external_events_app)
 
   This app creates an outbound email ticket in Freshdesk every time an issue of type “bug” is created in JIRA. The requester of the ticket will be the person who created the bug in JIRA
@@ -190,7 +201,7 @@ This app demonstrates the following features:
 
 ### [Sentimental Jeff App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/sentimental_jeff_app)
 
-This app analyses the ticket sentiment of the requestor and rates it. It can tell you if the tone of the message is angry, sad, indifferent or happy. 
+This app analyses the ticket sentiment of the requestor and rates it. It can tell you if the tone of the message is angry, sad, indifferent or happy.
 
 This app demonstrates the following features
 
