@@ -1,0 +1,13 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshservice": {}
+  },
+  "dependencies": {
+    "base-64": "0.1.0"
+  },
+  "whitelisted-domains": [
+    "https://*.freshservice.com",
+    "https://*.freshdesk.com"
+  ]
+}

@@ -1,0 +1,632 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <link rel='stylesheet' type='text/css' href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .input-section {
+			    margin-top : 10px;
+			}
+
+			.domain-name-field {
+				width: 450px;
+			}
+
+			.api-key-field {
+			    width: 438px;
+			}
+
+			.form-actions {
+			    margin-top: 10px;
+			    margin-right: 10px;
+			    float: right;
+			}
+			.field-tip {
+			    color: grey;
+			    font-size: 12px;
+	        	margin-top: 5px;
+    			display: inline-block;
+			}
+			.hide-element {
+				display: none;
+			}
+
+			.validation {
+			    color: red;
+			}
+
+			#danger-message {
+	            display: none;
+	        }
+
+	        .list-group-item {
+	        	display: flex;
+	        	border-right: none;
+    			border-left: none;
+	        }
+
+	        li.list-group-item select, 
+	        li.list-group-item input {
+			    margin-right: 10px;
+			}
+
+	        li.list-group-item .delete-key {
+	            color: #fff;
+	            padding: 0px 5px;
+	            background-color: red;
+	            border-radius: 50%;
+	            text-decoration: none;
+	            cursor: pointer;
+	            margin-right: 10px;
+	            height: 20px;
+	            margin-top: 5px;
+	        }
+
+	        .list-group-item:first-child {
+			    border-top-right-radius: 0px;
+			    border-top-left-radius: 0px;
+			}
+
+			.rule-top-content {
+				display: flex;
+			    justify-content: space-between;
+			    align-items: center;
+			    align-content: center;
+			}
+
+	        .add-new-rule, .remove-rule {
+	        	list-style: none;
+	        	text-decoration: none;
+	        }
+
+	        .remove-rule {
+			    cursor: pointer;
+			    text-decoration: none;
+			    margin-right: 10px;
+			    color: red;
+	        }
+
+	        .remove-rule:hover {
+	        	text-decoration: none;
+	        	color: red;	
+	        }
+
+	        .add-new-rule:hover, #add-new-rule:hover {
+	        	cursor: pointer;
+	        	text-decoration: none;
+	        }
+
+	        .row {
+	        	margin-left: 0px;
+	        	margin-right: 0px;
+	        }
+
+	        .ml-10 {
+	        	margin-left : 10px !important;
+	        }
+
+	        .ml-30 {
+	        	margin-left : 30px !important;	
+	        }
+
+	        .mb-20 {
+	        	margin-bottom : 20px !important;
+	        }
+
+	        .pl-10 {
+	        	padding-left: 10px;
+	        }
+
+	        .pl-20 {
+	        	padding-left: 20px;
+	        }
+
+	        .pr-15 {
+	        	padding-right: 15px;
+	        }
+
+	        .pt-10 {
+	        	padding-top: 10px;
+	        }
+	        
+	        .flex {
+	        	dispaly : flex;
+	        }
+
+	        #sync_settings select {
+	        	width: 250px;
+	        }
+
+            #sync_settings h6 {
+                font-size: 12px;
+                margin-bottom: 35px;
+                margin-top: 15px;
+            }
+
+	        label {
+	        	font-size: 12px;
+	        	margin-bottom: 5px;
+	        }
+
+	        select {
+	        	height: 25px;
+                font-size: 12px;
+	        }
+
+	        input[type=checkbox] {
+	        	top: 2px;
+	        }
+
+	        h4 {
+	        	font-weight: 400;
+	        }
+
+	        h5 {
+	        	padding-top: 10px;
+	        	font-weight: 600;
+	        }
+
+	        h6 {
+			    font-size: 13px;
+			}
+
+	        hr {
+	        	margin-top: 25px;
+	        	border-top: 1px solid #dadfe3;
+	        }
+
+	        #set_rules h5 {
+	        	font-weight: 400;
+	        	padding-bottom: 10px;
+	        }
+
+	        .badge {
+	        	color: #444;
+			    background-color: #ebeef1;
+			    font-weight: 400;
+			    padding-bottom: 4px;
+	        }
+
+	        .input-group-addon {
+	        	position: relative;
+			    left: -25px;
+			    line-height: 0.75;
+	        }
+
+	        #is_add_private_note,
+	        #iparams_authenticate {
+	        	outline: none !important;
+	        }
+
+	        #auth_fields input[type=text]:focus +.input-group-addon {
+	        	border-color: #02b875;
+    			outline: none !important;
+	        }
+
+		</style>
+</head>
+
+<body>
+    <div class="ml-30">
+        <div class="alert alert-danger" id="danger-message">
+        </div>
+        <div id="auth_fields">
+            <h4> Freshdesk - Freshservice Auth Settings </h4>
+            <h5>Freshdesk account details</h5>
+            <div class="input-section domain-name-field">
+                <label> Enter your Freshdesk Subdomain</label>
+                <div class="input-group">
+                    <input id="fd_subdomain" type="text" />
+                    <span class="input-group-addon">.freshdesk.com</span>
+                </div>
+                <span class = "field-tip">
+				     	<i class = "icon-question"></i>
+				     	subdomain should be in the format subdomain.freshdesk.com
+				     </span>
+            </div>
+            <div class="input-section api-key-field">
+                <label> Enter your Freshdesk's admin API Key</label>
+                <input value="" id="fd_api_key" type="text">
+                <span class = "field-tip">
+				    	<i class = "icon-question"></i>
+				    	you can find the API key under profile settings
+				    </span>
+            </div>
+            <hr>
+            <h5>Freshservice account details</h5>
+            <div class="input-section domain-name-field">
+                <label> Enter your Freshservice Subdomain</label>
+                <div class="input-group">
+                    <input value="" id="fs_subdomain" type="text">
+                    <span class="input-group-addon">.freshservice.com</span>
+                </div>
+                <span class = "field-tip">
+				    	<i class = "icon-question"></i>
+				    	subdomain should be in the format subdomain.freshservice.com
+				   	</span>
+            </div>
+            <div class="input-section api-key-field">
+                <label> Enter your Freshservice's admin API Key</label>
+                <input value="" id="fs_api_key" type="text">
+                <span class = "field-tip">
+				    	<i class = "icon-question"></i>
+				    	you can find the API key under profile settings
+				    </span>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" id="iparams_authenticate">Authenticate</button>
+            </div>
+        </div>
+        <div id="set_rules">
+            <h4>Ticket Flow Settings</h4>
+            <h5>Set rules for outgoing tickets from Freshdesk</h5>
+            <div class="form-group" id="rule_container">
+            </div>
+            <li class="add-new-rule">
+                <a id="add-new-rule">+ Add New Condition</a>
+            </li>
+            <div class="input-section">
+                <input type="checkbox" name="is_add_private_note" id="is_add_private_note" value="" />
+                <span class="ml-10">Add existing conversation from Freshdesk as private note in Freshservice</span>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" id="after_select_rule">Next</button>
+            </div>
+        </div>
+        <div id="sync_settings" class="mb-20">
+            <h4>Sync Updates</h4>
+            <h6>When a corresponding Freshservice ticket is created for a Freshdesk ticket perform below actions</h6>
+            <div class="row mb-20 pt-10">
+                <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> When ticket status is updated in Freshdesk</label>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <select id="fd_status_updated">
+                        <option value="add_private_note_in_fs">Add a Private Note in Freshservice ticket</option>
+                        <option value="do_nothing">Do nothing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-20">
+                <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> When a note is added in Freshdesk</label>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <select id="fd_note_added">
+                        <option value="add_private_note_in_fs">Add a Private Note in Freshservice ticket</option>
+                        <option value="do_nothing">Do nothing</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+var _this = this;
+var authFormFields = ["fd_subdomain", "fd_api_key", "fs_subdomain", "fs_api_key"];
+var syncFields = ["fd_status_updated", "fd_note_added"];
+var fd_subdomain,
+    fs_subdomain,
+    fd_api_key,
+    fs_api_key,
+    fdTicketProperties = [],
+    fsTicketProperties = [],
+    isFdAuthenticated = false,
+    isFsAuthenticated = false,
+    isRuleSet = false,
+    ruleMap = {};
+
+function getConfigs(savedConfigs) {
+    if (savedConfigs) {
+        authFormFields.forEach(function(key) {
+            $(`#${key}`).val(savedConfigs[key]);
+        });
+
+        syncFields.forEach(function(key) {
+            $(`#${key}`).val(savedConfigs[key]);
+        });
+
+        $(`#${'ruleMap'}`).val(savedConfigs['ruleMap']);
+        ruleMap = savedConfigs['ruleMap'];
+    }
+}
+
+function postConfigs() {
+    let config = {};
+    authFormFields.forEach(function(key) {
+        config[key] = $(`#${key}`).val();
+    });
+
+    syncFields.forEach(function(key) {
+        config[key] = $(`#${key}`).val();
+    });
+
+    config['ruleMap'] = ruleMap;
+    return config;
+}
+
+function validate() {
+    let isValid = false;
+    if (isFdAuthenticated && isFsAuthenticated && isRuleSet) {
+        isValid = true;
+    }
+    return isValid;
+}
+
+function authFormValidation() {
+    let isValid = true;
+    authFormFields.forEach(function(field) {
+        if (!$(`#${field}`).val()) {
+            isValid = false;
+        }
+    });
+    return isValid;
+}
+
+function showRuleFields() {
+    jQuery("#auth_fields").hide();
+    jQuery("#set_rules").show();
+
+    for (var rule in ruleMap) {
+        if (rule.indexOf('rule_') != -1) {
+            _this.addNewRule(ruleMap[rule]);
+        } else {
+            jQuery("#is_add_private_note").prop('checked', ruleMap[rule]);
+        }
+    }
+
+    //_this.addNewRule();
+
+}
+
+jQuery("#install_fields").hide();
+jQuery("#set_rules").hide();
+jQuery("#sync_settings").hide();
+
+jQuery('#iparams_authenticate').on('click', function(ev) {
+    var isValid = _this.authFormValidation();
+    fd_subdomain = $('#fd_subdomain').val();
+    fd_api_key = $('#fd_api_key').val();
+
+    fs_subdomain = $('#fs_subdomain').val();
+    fs_api_key = $('#fs_api_key').val();
+
+    var fd_base_url = "https://" + fd_subdomain + ".freshdesk.com";
+    var fs_base_url = "https://" + fs_subdomain + ".freshservice.com";
+
+    if (isValid) {
+
+        var fsUrl = fs_base_url + '/api/v2/ticket_fields';
+        var fsOptions = {
+            headers: {
+                "Authorization": "Basic " + btoa(fs_api_key + ':x'),
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        var fdUrl = fd_base_url + '/api/v2/ticket_fields';
+        var fdOptions = {
+            headers: {
+                "Authorization": "Basic " + btoa(fd_api_key + ':x'),
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        $.when(
+            client.request.get(fsUrl, fsOptions).then(
+                function(data) {
+                    fsTicketProperties = JSON.parse(data.response);
+                    isFsAuthenticated = true;
+                },
+                function(error) {
+                    showError('Could not verify api key. Please check domain name and API key for Freshservice.');
+                    isFsAuthenticated = false;
+                }
+            ),
+
+            client.request.get(fdUrl, fdOptions).then(
+                function(data) {
+                    fdTicketProperties = JSON.parse(data.response);
+                    isFdAuthenticated = true;
+                },
+                function(error) {
+                    showError('Could not verify api key. Please check domain name and API key for Freshdesk.');
+                    isFdAuthenticated = false;
+                }
+            )
+
+        ).then(
+            function() {
+                if (isFdAuthenticated && isFsAuthenticated) {
+                    _this.showRuleFields('rule_container');
+                }
+            }
+        );
+
+    } else {
+        showError('Please fill the "Domain Name" and "API key" for freshdesk and freshservice');
+    }
+});
+
+jQuery('#add-new-rule').on('click', function(ev) {
+    _this.addNewRule();
+});
+
+function getFieldsList() {
+    var namelist = [];
+    var acceptedFieldList = ['default_status', 'default_group', 'default_ticket_type'];
+    fdTicketProperties.forEach(property => {
+        if (acceptedFieldList.indexOf(property.type) != -1) {
+            namelist.push({
+                id: property.id,
+                name: property.name,
+                label: property.label,
+                type: property.field_type
+            });
+        }
+
+    });
+    return namelist;
+}
+
+function addNewRule(rule) {
+    var namelist = getFieldsList();
+    var prop = '';
+
+    namelist.forEach(element => {
+        prop = prop + '<option value="' + element.name + '">' + element.label + '</option>';
+    });
+
+    var ul_count = $('#rule_container ul').length + 1;
+    var ruleElement = '<div id="rule_inner_container"><div class="rule-top-content"><h6 id = "rule_' + ul_count + '">Rule ' + ul_count + '</h6><a class="remove-rule" id="remove_rule_' + ul_count + '">- Remove Rule</a></div><ul class="list-group" id="rule_' + ul_count + '">';
+
+
+    ruleElement = ruleElement +
+        '<li class="row list-group-item" id="rule_' + ul_count + '_group">' +
+        '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' +
+        '<span class="badge">Group</span>' +
+        '<span class="pl-10 pr-15">is</span>' +
+        '</div>' +
+        '<select class="col-lg-5 col-md-5 col-sm-5 col-xs-5" name="group">' +
+        (rule ? getOptions('default_group', rule.group) : getOptions('default_group')) +
+        '</select>' +
+        '</li>' +
+        '<li class="row list-group-item" id="rule_' + ul_count + '_status">' +
+        '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' +
+        '<span class="badge">Status</span>' +
+        '<span class="pl-10 pr-15">is</span>' +
+        '</div>' +
+        '<select class="col-lg-5 col-md-5 col-sm-5 col-xs-5" name="status">' +
+        (rule ? getOptions('default_status', rule.status) : getOptions('default_status')) +
+        '</select>' +
+        '</li>' +
+        '<li class="row list-group-item" id="rule_' + ul_count + '_type">' +
+        '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' +
+        '<span class="badge">Type</span>' +
+        '<span class="pl-20 pr-15">is</span>' +
+        '</div>' +
+        '<select class="col-lg-5 col-md-5 col-sm-5 col-xs-5" name="type">' +
+        (rule ? getOptions('default_ticket_type', rule.type) : getOptions('default_ticket_type')) +
+        '</select>' +
+        '</li>' +
+        '</ul>' +
+        '</div>';
+
+    $('#rule_container').append(ruleElement);
+}
+
+function getOptions(property_type, old_rule_value) {
+    var optionValues = fdTicketProperties.filter(item => item.type == property_type)[0].choices;
+    var options = '';
+
+    if (property_type == 'default_status') {
+        for (var option in optionValues) {
+            if (old_rule_value) {
+                if (old_rule_value == option) {
+                    options = options + '<option value="' + option + '" selected>' + optionValues[option][0] + '</option>';
+                } else {
+                    options = options + '<option value="' + option + '">' + optionValues[option][0] + '</option>';
+                }
+            } else {
+                options = options + '<option value="' + option + '">' + optionValues[option][0] + '</option>';
+            }
+
+        }
+    } else if (property_type == 'default_group') {
+        for (var option in optionValues) {
+            if (old_rule_value) {
+                if (old_rule_value == optionValues[option]) {
+                    options = options + '<option value="' + optionValues[option] + '" selected>' + option + '</option>';
+                } else {
+                    options = options + '<option value="' + optionValues[option] + '">' + option + '</option>';
+                }
+            } else {
+                options = options + '<option value="' + optionValues[option] + '">' + option + '</option>';
+            }
+
+        }
+    } else if (property_type == 'default_ticket_type') {
+        for (var option in optionValues) {
+            if (old_rule_value) {
+                if (old_rule_value == optionValues[option]) {
+                    options = options + '<option value="' + optionValues[option] + '" selected>' + optionValues[option] + '</option>';
+                } else {
+                    options = options + '<option value="' + optionValues[option] + '">' + optionValues[option] + '</option>';
+                }
+
+            } else {
+                options = options + '<option value="' + optionValues[option] + '">' + optionValues[option] + '</option>';
+            }
+
+        }
+    }
+
+    options = options + '+';
+    return options;
+};
+
+jQuery('body').on('click', '.remove-rule', function(element) {
+
+    jQuery(this).parents('#rule_inner_container').remove();
+
+    $("#rule_container #rule_inner_container").each(function(i, element) {
+        var new_id = i + 1;
+        jQuery(this).find('h6').attr("id", "rule_" + new_id);
+        jQuery(this).find('h6').text("Rule " + new_id);
+        jQuery(this).find('.remove-rule').attr("id", "remove_rule_" + new_id);
+
+        jQuery(this).find('ul').each(function() {
+            jQuery(this).attr("id", "rule_" + new_id);
+
+            jQuery(this).find('li select[name=status]').attr("id", "rule_" + new_id + "_status");
+            jQuery(this).find('select[name=status]').parents('li').attr("id", "rule_" + new_id + "_status");
+
+            jQuery(this).find('li select[name=group]').attr("id", "rule_" + new_id + "_group");
+            jQuery(this).find('select[name=group]').parents('li').attr("id", "rule_" + new_id + "_group");
+
+            jQuery(this).find('li select[name=type]').attr("id", "rule_" + new_id + "_type");
+            jQuery(this).find('select[name=type]').parents('li').attr("id", "rule_" + new_id + "_type");
+        })
+    });
+});
+
+jQuery("#after_select_rule").on('click', function() {
+    ruleMap = {};
+    $("#rule_container ul").each(function(i, element) {
+
+        var status,
+            group,
+            type;
+        var ruleName = $(this).parents('#rule_inner_container').find('h6').attr('id');
+        ruleMap[ruleName] = {
+            status: $(this).find('li select[name=status]').val(),
+            group: $(this).find('li select[name=group]').val(),
+            type: $(this).find('li select[name=type]').val()
+        }
+
+    });
+
+    ruleMap['add_private_note'] = $("input[name=is_add_private_note]").prop('checked');
+
+    jQuery("#set_rules").hide();
+    jQuery("#sync_settings").show();
+    isRuleSet = true;
+});
+
+
+function showError(msg) {
+    $('#danger-message').html(msg);
+    $('#danger-message').show();
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0;
+    setTimeout(function(param) {
+        $('#danger-message').hide();
+    }, 3000);
+}
+
+app.initialized().then(function(client) {
+    window.client = client;
+});
+</script>
+
+</html>
