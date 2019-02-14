@@ -16,6 +16,18 @@ $(document).ready(function() {
           }).fail(function(){
             client.interface.trigger("showNotify", {type: "danger", message: "Ajax Request failed."});
           });
+
+          // -------------------------
+          // USING REQUERST API INSTEAD
+          // -------------------------
+          // client.request.post('http://localhost:8000/auth-test', {
+          //   headers: { auth: jwt },
+          //   body: data,
+          // }).then(function(){
+          //   client.interface.trigger("showNotify", {type: "success", message: "Ajax Request successful."});
+          // }).catch(function(){
+          //   client.interface.trigger("showNotify", {type: "danger", message: "Ajax Request failed."});
+          // });
         }, function(err) {
           client.interface.trigger("showNotify", {type: "danger", message: "JWT SMI failed."});
         });
