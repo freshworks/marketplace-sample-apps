@@ -5,7 +5,7 @@
  */
 
 $(document).ready(() => {
-  app.initialized().then(function(_client) { // Client Object is obtained
+  app.initialized().then((_client) => { // Client Object is obtained
     const client = _client;
     /**
      * app.activated() is bought into scope, and timing differs
