@@ -14,16 +14,20 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.post('/auth-test', (req, res) => {
+function auth (req, res, next) {
   try {
     var encoded = jwt.verify(req.header('auth'), SECRET);
-    console.log('>> JWT Encoded:', encoded);
-    console.log('>> Data:', req.body);
-    res.status(200).end();
+    console.log('>> JWT payload:', encoded);
+    return next();
   } catch(e) {
     console.log('>> JWT verification failed:', JSON.stringify(req.header('auth')));
-    res.status(500).end();
+    return res.status(500).end();
   }
+}
+
+app.post('/auth-test', auth, (req, res) => {
+  console.log('>> Data:', req.body);
+  res.json({ message: 'ok' }).end();
 });
 
 const port = 8000;
