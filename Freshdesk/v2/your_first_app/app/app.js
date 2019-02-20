@@ -14,7 +14,7 @@ $(document).ready(() => {
     client.events.on('app.activated', () => {
       /**
        * Making an Asyc call to Data API and feching the details from
-       * the sample Payload.
+       * the current ticket Payload.
        */
       client.data.get('contact').then(function(data) {
         $('#apptext').text("Ticket created by "+ data.contact.name);
