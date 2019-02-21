@@ -158,7 +158,7 @@ This app demonstrates the following features:
 1. Using data API to fetch the ticket's data.
 2. Using intercept APIs to check and stop the close action if there are no tags attached to the ticket.
 
-### [Simple Events Api App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/simple_events_api_app)
+### [Simple Events Api App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/simple_events_api_app
 
 Whenever an agent clicks on the send reply button in the ticket details page, this app displays a success notification.
 
