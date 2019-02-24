@@ -1,12 +1,16 @@
-$(document).ready(function () {
-  app.initialized()
-    .then(function (_client) {
+/**
+ * This app analyses the ticket sentiment of the requestor and rates it. It can
+ * tell you if the tone of the message is angry, sad, indifferent or happy.
+ */
+
+$(document).ready(() => {
+  app.initialized().then( (_client) => {
       window.client = _client;
       client.events.on('app.activated',
-        function () {
+         () => {
           calculateSentiment();
         },
-        function (error) {
+         (error) => {
           notifyError();
         });
     });
@@ -20,24 +24,25 @@ $(document).ready(function () {
       .split(' ');
   }
 
+  /**Finds the score */
   function findScore(phrase) {
-    var tokens = tokenize(phrase),
-      score = 0;
+    let tokens = tokenize(phrase),score = 0;
+    let len = tokens.length;
 
-    var len = tokens.length;
     while (len--) {
-      var obj = tokens[len];
+      let obj = tokens[len];
       if (!AFINN.hasOwnProperty(obj)) {
         continue;
       }
 
-      var item = AFINN[obj];
+      let item = AFINN[obj];
       score += item;
     }
 
     return score;
   }
 
+  /** Assign setiment value depending upon the score. */
   function findSentiment(score) {
     var sentiment = "";
     if (score > 2) {
@@ -54,31 +59,27 @@ $(document).ready(function () {
   }
 
   function calculateSentiment() {
-    client.data.get("ticket").then(
-      function (ticketDetail) {
-        client.data.get("domainName").then(
-          function (domainDetail) {
+    client.data.get("ticket").then((ticketDetail) => {
+        client.data.get("domainName").then((domainDetail) => {
             let dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
-
             let headers = { "Authorization": "Basic <%= encode(iparam.apiKey) %>" };
             let options = { headers: headers };
 
             client.request.get(dataUrl, options)
-              .then(
-                function (data) {
+              .then((data) => {
                   calculateSentimentFromData(JSON.parse(data.response));
                 },
-                function (error) {
+                 (error) => {
                   notifyError();
                 }
               );
           },
-          function (error) {
+          (error) => {
             notifyError();
           }
         );
       },
-      function (error) {
+       (error) => {
         notifyError();
       }
     );
@@ -94,8 +95,8 @@ $(document).ready(function () {
       scores.push(findScore(conversation.body_text));
     });
 
-    var averageScore = 0;
-    for (var i = scores.length - 1; i >= 0; i--) {
+    let averageScore = 0;
+    for (let i = scores.length - 1; i >= 0; i--) {
       averageScore += scores[i] * (i + 1);
     }
     averageScore /= scores.length * (scores.length + 1) / 2;
@@ -112,7 +113,12 @@ $(document).ready(function () {
     $(`#spinner`).addClass('display-none');
   }
 
+  /**@fires - A Notification with Danger Label */
   function notifyError() {
-    client.interface.trigger("showNotify", { type: "Danger", title: "Sentimental Jeff Error", message: error.message });
+    client.interface.trigger("showNotify", { 
+      type: "Danger", 
+      title: "Sentimental Jeff Error", 
+      message: error.message
+    });
   }
 });
