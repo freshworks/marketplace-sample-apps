@@ -1,3 +1,9 @@
+/**
+ * Merges Tickets created by the same requester within a configurable time
+ * window. Also, adds useful notes on the tickets mentioning the ticket to from
+ * which the merge was done. Requires the Freshdesk API key to make the necessary
+ * API calls to add notes, close tickets etc.,
+ */
 'use strict';
 
 var helpers = require('./helpers');
@@ -60,7 +66,7 @@ exports = {
 
     if (requester.id) {
       $db.get(requester.id.toString())
-        .done(function(primaryTicket) {
+        .done((primaryTicket) => {
           mergeWithPrimary({
             requester: requester,
             domain: payload.domain,
@@ -70,7 +76,7 @@ exports = {
             secondaryTicket: secondaryTicket
           });
         })
-        .fail(function(error) {
+        .fail((error) => {
           if (error.status === 404) {
             return helpers.saveTicket(requester.id, secondaryTicket);
           }
