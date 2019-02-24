@@ -1,3 +1,11 @@
+/**@desc - This app enables agents to schedule the creation of tickets.
+ * 
+ * @features -
+ * 1. Scheduled Event - onScheduledEvent
+ * 2. Using server method invocation(SMI) to schedule the creation of tickets
+ * 3. Using a modal to display a ticket create form
+ * 
+ */
 var request = require('request');
 var base64 = require('base-64');
 
@@ -16,7 +24,7 @@ function createTicket(args) {
       priority: args.data.priority,
       status: args.data.status
     }
-  }, function(err, res, body) {
+  }, (err, res, body) => {
     if (err) {
       console.log(err);
       return;
@@ -52,52 +60,47 @@ exports = {
     { event: 'onScheduledEvent', callback: 'onScheduledEventHandler' }
   ],
 
-  createSchedule: function(args) {
+  createSchedule: (args) => {
     $schedule.create({
       name: args.scheduleName,
       data: args.scheduleData,
       schedule_at: args.scheduleData.scheduleAtUTC
-    }).then(function(data) {
+    }).then((data) => {
       renderData(null, data);
-    }, function(err) {
+    }, (err) => {
       renderData(err);
     });
   },
 
-  fetchSchedule: function(args) {
+  fetchSchedule: (args) => {
     $schedule.fetch({
       name: args.scheduleName
-    }).then(function(data) {
+    }).then((data) => {
       renderData(null, data);
-    }, function(err) {
-      renderData(err);
+    }, (err) => {renderData(err);
     });
   },
 
-  updateSchedule: function(args) {
+  updateSchedule: (args) => {
     $schedule.update({
       name: args.scheduleName,
       data: args.scheduleData,
       schedule_at: args.scheduleData.scheduleAtUTC
-    }).then(function(data) {
-      renderData(null, data);
-    }, function(err) {
-      renderData(err);
+    }).then((data)=> {renderData(null, data);
+    }, (err) => {renderData(err);
     });
   },
 
-  deleteSchedule: function(args) {
+  deleteSchedule: (args) => {
     $schedule.delete({
       name: args.scheduleName
-    }).then(function(data) {
-      renderData(null, data);
-    }, function(err) {
-      renderData(err);
+    }).then((data) => {renderData(null, data);
+    }, (err) => {renderData(err);
     });
   },
 
-  onScheduledEventHandler: function(args) {
-    removeScheduleFromList(args.data.loggedInUserId, args.data.scheduleName, function() {
+  onScheduledEventHandler: (args) => {
+    removeScheduleFromList(args.data.loggedInUserId, args.data.scheduleName, () => {
       createTicket(args);
     });
   }
