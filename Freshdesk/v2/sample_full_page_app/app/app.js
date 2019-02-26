@@ -41,6 +41,7 @@ $(document).ready( () => {
      * @description - Go and get json data, and pass it on to render() for 
      * further Processing.
      * @fires - Request API's GET request with authentication
+     * 
      * @param - string, domainName
      */
 
@@ -68,7 +69,6 @@ $(document).ready( () => {
     function render(responses) {
       /** Convert JSON String into Javascript Object */
       const data = responses.map(r => JSON.parse(r.response));
-      console.log(responses.response);
       const max = Math.max(...data.map(d => d.total));
 
       data.forEach((res, i) => {

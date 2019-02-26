@@ -27,7 +27,6 @@ $(document).ready( function() {
           "Content-Type": "application/json"
         }
       };
-
       client.request[method](url, options)
       .then(() => {
         displayStatus('success', method.toUpperCase() + ' request successful.');
