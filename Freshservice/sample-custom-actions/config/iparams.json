@@ -1,0 +1,14 @@
+{
+   "gitAdminKey": {
+      "display_name": "Git hub Admin Key",
+      "description": "Please enter the git key",
+      "type": "text",
+      "required": true
+    },
+    "organisation": {
+      "display_name": "Git hub Organisation",
+      "description": "Please enter the git org name",
+      "type": "text",
+      "required": true
+    }
+}

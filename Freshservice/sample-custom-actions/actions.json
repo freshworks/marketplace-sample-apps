@@ -1,0 +1,38 @@
+{
+  "inviteUser" : {
+   "display_name" : "Invite User to Organisation",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+        "user_github_handle": {
+          "type": "string"
+        },
+        "user_role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_github_handle",
+        "user_role"
+      ]
+    },
+   "description": "Test description"
+ },
+ "deleteUser" : {
+   "display_name" : "test",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+       "user_github_handle": {
+         "type": "string"
+       }
+     },
+     "required": [
+       "user_github_handle"
+     ]
+   },
+   "description": "Test description"
+ }
+}
