@@ -17,10 +17,10 @@
         "user_role"
       ]
     },
-   "description": "Test description"
+   "description": "Send an email invitation to the user to join the organisation"
  },
  "deleteUser" : {
-   "display_name" : "test",
+   "display_name" : "Deletes User from Organisation",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",
@@ -33,6 +33,6 @@
        "user_github_handle"
      ]
    },
-   "description": "Test description"
+   "description": "Removes the user from the organisation"
  }
 }
