@@ -15,6 +15,7 @@ $(document).ready(() => {
       /**
        * Making an Asyc call to Data API and feching the details from
        * the current ticket Payload.
+       * @info - https://developers.freshdesk.com/v2/docs/data-api/#contactAPI
        */
       client.data.get('contact').then(function(data) {
         $('#apptext').text("Ticket created by "+ data.contact.name);
