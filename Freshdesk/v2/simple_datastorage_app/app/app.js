@@ -22,6 +22,7 @@ function displayNote() {
 }
 /** @fires - Notification pop on top right corner */
 function notify(status, message) {
+  /** @info - https://developers.freshdesk.com/v2/docs/interface-api/ */
   client.interface.trigger('showNotify', {
     type: status,
     message: message
