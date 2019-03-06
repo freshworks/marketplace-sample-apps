@@ -1,8 +1,8 @@
 # Your First App
 
-![](screenshots/AppOnly.png)
-
 This app shows the Freshdesk logo and the name of the ticket requester.
+
+![](screenshots/AppOnly.png)
 
 This app demonstrates the following features
 
