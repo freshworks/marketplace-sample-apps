@@ -2,6 +2,8 @@
 
 This app demonstrates the usage of modals and Instance APIs.
 
+![](screenshots/appView.png)
+
 This app demonstrates the following features:
 
 1. Using data API to get the ticket requester's details.
