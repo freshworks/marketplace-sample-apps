@@ -24,7 +24,7 @@ function createTicket(args) {
       priority: args.data.priority,
       status: args.data.status
     }
-  }, (err, res, body) => {
+  }, function(err, res, body) {
     if (err) {
       console.log(err);
       return;
@@ -60,47 +60,52 @@ exports = {
     { event: 'onScheduledEvent', callback: 'onScheduledEventHandler' }
   ],
 
-  createSchedule: (args) => {
+  createSchedule: function(args) {
     $schedule.create({
       name: args.scheduleName,
       data: args.scheduleData,
       schedule_at: args.scheduleData.scheduleAtUTC
-    }).then((data) => {
+    }).then(function(data) {
       renderData(null, data);
-    }, (err) => {
+    }, function(err) {
       renderData(err);
     });
   },
 
-  fetchSchedule: (args) => {
+  fetchSchedule: function(args) {
     $schedule.fetch({
       name: args.scheduleName
-    }).then((data) => {
+    }).then(function(data) {
       renderData(null, data);
-    }, (err) => {renderData(err);
+    }, function(err) {
+      renderData(err);
     });
   },
 
-  updateSchedule: (args) => {
+  updateSchedule: function(args) {
     $schedule.update({
       name: args.scheduleName,
       data: args.scheduleData,
       schedule_at: args.scheduleData.scheduleAtUTC
-    }).then((data)=> {renderData(null, data);
-    }, (err) => {renderData(err);
+    }).then(function(data) {
+      renderData(null, data);
+    }, function(err) {
+      renderData(err);
     });
   },
 
-  deleteSchedule: (args) => {
+  deleteSchedule: function(args) {
     $schedule.delete({
       name: args.scheduleName
-    }).then((data) => {renderData(null, data);
-    }, (err) => {renderData(err);
+    }).then(function(data) {
+      renderData(null, data);
+    }, function(err) {
+      renderData(err);
     });
   },
 
-  onScheduledEventHandler: (args) => {
-    removeScheduleFromList(args.data.loggedInUserId, args.data.scheduleName, () => {
+  onScheduledEventHandler: function(args) {
+    removeScheduleFromList(args.data.loggedInUserId, args.data.scheduleName, function() {
       createTicket(args);
     });
   }
