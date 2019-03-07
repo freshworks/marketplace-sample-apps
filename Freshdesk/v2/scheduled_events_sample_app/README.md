@@ -2,7 +2,7 @@
 
 This app enables agents to schedule the creation of tickets.
 
-![](/screenshots/appView.png)
+![](screenshots/appView.png)
 
 This app demonstrates the following features
 
