@@ -2,6 +2,8 @@
 
 Whenever an agent clicks on the send reply button in the ticket details page, this app displays a success notification.
 
+![](screenshots/appViewBig.gif)
+
 This app demonstrates the following:
 
 1. App location - ticket_background.
