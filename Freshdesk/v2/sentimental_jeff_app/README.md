@@ -3,7 +3,7 @@
 
 This app analyses the ticket sentiment of the requestor and rates it. It can tell you if the tone of the message is angry, sad, indifferent or happy.
 
-![](/screenshots/appView.png)
+![](screenshots/appView.png)
 
 This app demonstrates the following features
 
