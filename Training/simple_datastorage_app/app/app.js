@@ -32,6 +32,7 @@ $(document).ready(function() {
     client.events.on('app.activated', function() {
 
       fetchInfo(function(ticketData) {
+        console.log(ticketData, 'Ticket data');
 
         displayNote();
 
