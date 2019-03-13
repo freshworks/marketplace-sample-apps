@@ -19,7 +19,7 @@ var timerValidation = function (event)
       };
       
       // to load all time-entries for the ticket
-      // @tutorial - explanation: https://developers.freshdesk.com/v2/docs/request-api/
+      // @info: https://developers.freshdesk.com/v2/docs/request-api/
       client.request.get(url, options).then((data) => {
         if (data.status === 200) {
           const response = JSON.parse(data.response);
