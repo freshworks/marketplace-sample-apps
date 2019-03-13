@@ -15,10 +15,6 @@ exports = {
     }, function (error, response) {
       renderData(error, response);
     });
-  },
-
-  getJWT: function() {
-    renderData(null, jwt.sign(JWTpayload, SECRET, { expiresIn: '1h' }));
   }
 
 };
