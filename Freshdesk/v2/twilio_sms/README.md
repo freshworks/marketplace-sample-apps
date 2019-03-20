@@ -1,11 +1,13 @@
 ## Twilio SMS:
 
-  This app enables an agent to send a message (entered by the agent) as an SMS.
+This app enables an agent to send a message (entered by the agent) as an SMS.
 
-  This app demonstrates the following features
-  1. Server method invocation i.e the front end component (app.js) of the app calling a serverless method (server.js)
-  2. Making an API request in server.js
-  3. Using an NPM library (twilio)
+This app demonstrates the following features
+1. Server method invocation i.e the front end component (app.js) of the app calling a serverless method (server.js)
+2. Making an API request in server.js
+3. Using an NPM library (twilio)
+
+![](screenshots/appView.png)
 
 ### Prerequisites:
 

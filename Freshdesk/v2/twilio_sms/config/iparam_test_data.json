@@ -1,5 +1,5 @@
 {
-  "from_number": "",
-  "account_sid": "",
-  "auth_token": ""
+  "from_number": "xxx",
+  "account_sid": "xxx",
+  "auth_token": "xxx"
 }
