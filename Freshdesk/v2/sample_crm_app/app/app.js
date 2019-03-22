@@ -73,7 +73,6 @@ function searchContact(email) {
       }
     })
     .then(function(data) {
-      console.log('tried resolving!');
       resolve(JSON.parse(data.response));
     }, function() {
       displayErr('Error searching CRM database');
