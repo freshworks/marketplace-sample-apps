@@ -1,0 +1,44 @@
+.logo {
+  background: url('freshdesk_logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  margin-top: 25px;
+}
+
+.call-container {
+  text-align: center;
+}
+.call-container h4 {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.call-container input[type]:not([type=checkbox]):not([type=radio]):disabled {
+  border-bottom: none;
+  font-size: 1.3em;
+  opacity: 0.6;
+  background: #ddd;
+  padding: 5px 10px;
+}
+
+.btn-simulate {
+  float: right;
+  margin-top: 10px;
+  text-transform: none; 
+}
+
+.ticket-create-container {
+  text-align: center;
+}
+.ticket-create-container h3 {
+  margin-top: 0;
+}
+.ticket-create-container input {
+  margin-bottom: 15px;
+  width: 100%;
+}
+.ticket-create-container textarea {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+}

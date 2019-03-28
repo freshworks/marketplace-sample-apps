@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script src="cti-sdk-stub.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div class="fw-widget-wrapper">
+      <div class="call-container">
+        <h4>Make a Call</h4>
+        <input type="text" placeholder="Phone number" class="phone">
+        <div class="btn btn-primary btn-call">Call</div>
+        <div class="btn btn-primary btn-attend hide">Attend</div>
+        <div class="btn btn-danger btn-end hide">End call</div>
+      </div>
+      <div class="ticket-create-container hide">
+        <h3>Create ticket</h3>
+        <input type="text" class="contact-phone" placeholder="Contact phone">
+        <input type="text" class="contact-name" placeholder="Contact name">
+        <input type="text" class="contact-email" placeholder="Contact email">
+        <input type="text" class="ticket-subject" placeholder="Ticket subject">
+        <textarea class="ticket-desc" placeholder="Ticket description"></textarea>
+        <div class="pull-right">
+          <div class="btn btn-secondary btn-skip">Skip</div>
+          <div class="btn btn-primary btn-create">Create</div>
+        </div>
+      </div>
+      <div class="btn btn-link btn-simulate">Simulate call</div>
+      <audio loop="true">
+        <source src="./tring_tring_mr_bean.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </body>
+</html>
