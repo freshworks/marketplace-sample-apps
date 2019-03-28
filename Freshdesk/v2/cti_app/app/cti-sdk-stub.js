@@ -4,11 +4,7 @@ window.cti = {
 
   onCallReceieve(callback) {
     this.call_callback.push(callback)
-    return {
-      onEnd: callback => {
-        this.end_callback.push(callback)
-      }
-    }
+    return { onEnd: this.end_callback.callback.push }
   },
 
   _call(phone) {
@@ -16,11 +12,7 @@ window.cti = {
   },
 
   call(phone) {
-    return {
-      onEnd: callback => {
-        this.end_callback.push(callback)
-      }
-    }
+    return { onEnd: this.end_callback.push }
   },
 
   _end(phone) {
