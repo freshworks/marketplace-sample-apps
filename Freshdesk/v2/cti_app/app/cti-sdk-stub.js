@@ -1,3 +1,6 @@
+// ----------------------------
+// NOTE: cti is a mock object, you must replace with the correct sdk from a CTI provider
+// ----------------------------
 window.cti = {
   call_callback: [],
   end_callback: [],
@@ -11,7 +14,7 @@ window.cti = {
     this.call_callback.map(cb => cb(phone))
   },
 
-  call(phone) {
+  call() {
     return { onEnd: this.end_callback.push }
   },
 
