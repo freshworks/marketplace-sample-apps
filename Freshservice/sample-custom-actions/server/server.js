@@ -6,14 +6,14 @@ exports = {
 
   inviteUser : function(args) {
     const options = {
-      url : `https://api.github.com/orgs/${args.iparams.organisation}/memberships/${args.actionparams.user_github_handle}`,
+      url : `https://api.github.com/orgs/${args.iparams.organisation}/memberships/${args.user_github_handle}`,
       headers : {
         Authorization : `Bearer ${args.iparams.gitAdminKey}`,
         'Content-Type': 'application/json'
       },
       method: 'PUT',
       data: {
-        'role': args.actionparams.user_role || 'member'
+        'role': args.user_role || 'member'
       }
     };
 
@@ -28,7 +28,7 @@ exports = {
 
   deleteUser: function(args) {
     const options = {
-      url : `https://api.github.com/orgs/${args.iparams.organisation}/memberships/${args.actionparams.user_github_handle}`,
+      url : `https://api.github.com/orgs/${args.iparams.organisation}/memberships/${args.user_github_handle}`,
       headers : {
         Authorization : `Bearer ${args.iparams.gitAdminKey}`,
         'Content-Type': 'application/json'
