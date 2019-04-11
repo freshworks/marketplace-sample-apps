@@ -11,11 +11,11 @@
 
 1.
 
-![](/screenshots/FDView.png)
+![](screenshots/FDView.png)
 
 2.
 
-![](/screenshots/jiraView.png)
+![](screenshots/jiraView.png)
 
 ### Prerequisites:
 
