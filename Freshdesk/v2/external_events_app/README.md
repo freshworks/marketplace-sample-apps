@@ -7,6 +7,13 @@
   2. Responding to the JIRA webhook using external events
   3. Making an API request in server.js
 
+## Screenshots
+
+1.
+![](/screenshots/FDView.png)
+2.
+![](/screenshots/jiraView.png)
+
 ### Prerequisites:
 
 1. It is mandatory to have a Atlassian JIRA account (free trial available).
