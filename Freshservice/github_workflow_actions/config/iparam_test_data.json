@@ -1,4 +1,4 @@
 {
-  "gitAdminKey": "",
-  "organisation": ""
+  "GitHubApiKey": "<INSERT YOUR GITHUB API KEY>",
+  "GitHubOrganization": "<INSERT YOUR GITHUB ORGANIZATION NAME>"
 }
