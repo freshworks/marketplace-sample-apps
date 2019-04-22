@@ -20,7 +20,7 @@
    "description": "Sends an email invitation to the user to join the GitHub organization"
  },
  "deleteUser" : {
-   "display_name" : "Delete user from the GitHub organisation",
+   "display_name" : "Delete user from the GitHub organization",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",
