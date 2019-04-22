@@ -7,7 +7,8 @@ exports = {
     const options = {
       headers: {
         Authorization: `Bearer ${args.iparams.github_api_key}`,
-        'User-Agent': 'Awesome-Octocat-App' // This is required by the GitHub API
+        'User-Agent': 'Awesome-Octocat-App', // This is required by the GitHub API
+        'Content-Type': 'application/json'
       },
       // sending the request body as value in json key will automatically append the request type header
       json: { role: args.user_role || 'member' }
@@ -15,8 +16,8 @@ exports = {
     $request.put(url, options)
       .then(
         data => { renderData(null, { success: true, data: data.response }) },
-        () => {
-          console.log('Failed to invite the user to the GitHub organization')
+        error => {
+          console.log('Failed to invite the user to the GitHub organization.', error.response.message)
           renderData(null, { success: false, error: 'Failed to invite the user to the GitHub organization' })
         }
       )
@@ -27,15 +28,16 @@ exports = {
     const options = {
       headers: {
         Authorization: `Bearer ${args.iparams.github_api_key}`,
-        'User-Agent': 'Awesome-Octocat-App'
+        'User-Agent': 'Awesome-Octocat-App',
+        'Content-Type': 'application/json'
       }
     }
     $request.delete(url, options)
       .then(
         data => { renderData(null, { success: true, data: data }) },
-        () => {
-          console.log('Failed to invite the user to the GitHub organization')
-          renderData(null, { success: false, error: response.body })
+        error => {
+          console.log('Failed to delete the user from the GitHub organization.', error.response.message)
+          renderData(null, { success: false, error: 'Failed to delete the user from the GitHub organization' })
         }
       )
   }
