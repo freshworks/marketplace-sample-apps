@@ -3,29 +3,25 @@
     "display_name": "JIRA URL",
     "description": "Please enter your JIRA URL - Example: https://yourdomain.atlassian.net",
     "type": "text",
-    "required": true,
-    "secure":true
+    "required": true
   },
   "jira_username": {
     "display_name": "JIRA Username",
     "description": "Please enter your JIRA Username",
     "type": "text",
-    "required": true,
-    "secure":true
+    "required": true
   },
   "jira_password": {
     "display_name": "JIRA Password",
     "description": "Please enter your JIRA Password",
     "type": "text",
-    "required": true,
-    "secure": true
+    "required": true
   },
   "freshdesk_domain": {
     "display_name": "Freshdesk domain",
     "description": "Please enter freshdesk subdomain - Example: https://yourdomain.freshdesk.com",
     "type": "text",
-    "required": true,
-    "secure":true
+    "required": true
   },
   "freshdesk_key": {
     "display_name": "Freshdesk API Key",
