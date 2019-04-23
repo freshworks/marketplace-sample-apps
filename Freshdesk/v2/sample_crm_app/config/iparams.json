@@ -3,15 +3,13 @@
     "display_name": "Subdomain",
     "description": "Please enter your freshsales subdomain",
     "type": "text",
-    "required": true,
-    "secure":true
+    "required": true
   },
   "username": {
     "display_name": "Username",
     "description": "Please enter your freshsales username (email)",
     "type": "text",
-    "required": true,
-    "secure":true
+    "required": true
   },
   "password": {
     "display_name": "Password",

@@ -3,8 +3,7 @@
     "display_name": "Freshdesk domain",
     "description": "Please enter freshdesk subdomain - Example: https://yourdomain.freshdesk.com",
     "type": "text",
-    "required": true,
-    "secure":true
+    "required": true
   },
   "freshdesk_key": {
     "display_name": "Freshdesk API Key",

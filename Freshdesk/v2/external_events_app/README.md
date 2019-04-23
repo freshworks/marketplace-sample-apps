@@ -9,11 +9,11 @@
 
 ## Screenshots
 
-1.
+
 
 ![](screenshots/FDView.png)
 
-2.
+
 
 ![](screenshots/jiraView.png)
 
