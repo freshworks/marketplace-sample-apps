@@ -1,5 +1,5 @@
 .DS_Store
-.fdk
-coverage
-.report.json
+**/.fdk/**
+**/coverage/**
+**/.report.json
 

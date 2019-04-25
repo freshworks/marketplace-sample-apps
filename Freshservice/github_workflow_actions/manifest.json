@@ -1,0 +1,12 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshservice": {}
+  },
+  "dependencies" : {
+    "request": "2.87.0"
+  },
+  "whitelisted-domains": [
+    "https://api.github.com"
+  ]
+}
