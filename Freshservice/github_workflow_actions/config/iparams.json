@@ -1,14 +1,15 @@
 {
-   "gitAdminKey": {
-      "display_name": "Git hub Admin Key",
-      "description": "Please enter the git key",
-      "type": "text",
-      "required": true
-    },
-    "organisation": {
-      "display_name": "Git hub Organisation",
-      "description": "Please enter the git org name",
-      "type": "text",
-      "required": true
-    }
+  "github_api_key": {
+    "display_name": "GitHub API key",
+    "description": "Enter the GitHub API key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "github_organization": {
+    "display_name": "GitHub Organization",
+    "description": "Enter the GitHub organization name",
+    "type": "text",
+    "required": true
+  }
 }

@@ -1,47 +1,44 @@
-'use strict';
-
-const request = require('request');
+'use strict'
 
 exports = {
 
-  inviteUser : function(args) {
+  inviteUser: function (args) {
+    const url = `https://api.github.com/orgs/${args.iparams.github_organization}/memberships/${args.user_github_handle}`
     const options = {
-      url : `https://api.github.com/orgs/${args.iparams.organisation}/memberships/${args.user_github_handle}`,
-      headers : {
-        Authorization : `Bearer ${args.iparams.gitAdminKey}`,
+      headers: {
+        Authorization: `Bearer ${args.iparams.github_api_key}`,
+        'User-Agent': 'Awesome-Octocat-App', // This is required by the GitHub API
         'Content-Type': 'application/json'
       },
-      method: 'PUT',
-      data: {
-        'role': args.user_role || 'member'
-      }
-    };
-
-    request(options, function(error, response) {
-      if(!error && response.statusCode === 200) {
-        renderData(null, {'success': true, 'data': response.body});
-      }
-
-      renderData(null,{'success': false, 'error': 'Error while sending request to user'});
-    });
+      // sending the request body as value in json key will automatically append the request type header
+      json: { role: args.user_role || 'member' }
+    }
+    $request.put(url, options)
+      .then(
+        data => { renderData(null, { success: true, data: data.response }) },
+        error => {
+          console.log('Failed to invite the user to the GitHub organization.', error.response.message)
+          renderData(null, { success: false, error: 'Failed to invite the user to the GitHub organization' })
+        }
+      )
   },
 
-  deleteUser: function(args) {
+  deleteUser: function (args) {
+    const url = `https://api.github.com/orgs/${args.iparams.github_organization}/memberships/${args.user_github_handle}`
     const options = {
-      url : `https://api.github.com/orgs/${args.iparams.organisation}/memberships/${args.user_github_handle}`,
-      headers : {
-        Authorization : `Bearer ${args.iparams.gitAdminKey}`,
+      headers: {
+        Authorization: `Bearer ${args.iparams.github_api_key}`,
+        'User-Agent': 'Awesome-Octocat-App',
         'Content-Type': 'application/json'
-      },
-      method: 'DELETE'
-    };
-
-    request(options, function(error, response) {
-      if(!error && response.statusCode === 204) {
-        renderData(null, {'success': true, 'data': response});
       }
-
-      renderData(null,{'success': false, 'error': response.body});
-    });
+    }
+    $request.delete(url, options)
+      .then(
+        data => { renderData(null, { success: true, data: data }) },
+        error => {
+          console.log('Failed to delete the user from the GitHub organization.', error.response.message)
+          renderData(null, { success: false, error: 'Failed to delete the user from the GitHub organization' })
+        }
+      )
   }
-};
+}
