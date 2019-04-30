@@ -15,6 +15,7 @@
     "display_name": "Password",
     "description": "Please enter your freshsales password",
     "type": "text",
-    "required": true
+    "required": true,
+    "secure":true
   }
 }

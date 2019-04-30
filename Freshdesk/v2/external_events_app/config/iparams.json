@@ -27,6 +27,7 @@
     "display_name": "Freshdesk API Key",
     "description": "Please enter freshdesk api key",
     "type": "text",
-    "required": true
+    "required": true,
+    "secure":true
   }
 }

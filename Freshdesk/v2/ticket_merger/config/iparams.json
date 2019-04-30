@@ -10,6 +10,7 @@
     "display_name": "API Key",
     "description": "The API Key for your Freshdesk account is required to merge tickets.",
     "type": "text",
-    "required": true
+    "required": true,
+    "secure":true
   }
 }

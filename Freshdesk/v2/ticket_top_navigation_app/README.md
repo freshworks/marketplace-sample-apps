@@ -2,6 +2,8 @@
 
 This app adds a shortcut to start the timer in the top navigation of the ticket details page. On clicking the app icon, the Start Timer form will be shown.
 
+![](screenshots/fullShot.png)
+
 This app demonstrates the following features
 
 1. App location - ticket_top_navigation.
