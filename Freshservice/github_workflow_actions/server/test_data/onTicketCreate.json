@@ -1,0 +1,98 @@
+{
+  "account_id": 1,
+  "domain": "sample.freshservice.com",
+  "timestamp" : 1496400354326,
+  "region" : "US",
+  "event": "onTicketCreate",
+  "data" : {
+    "ticket": {
+      "subject": "Support Needed...",
+      "description": "<div>Some details on the issue ..</div>",
+      "is_description_truncated": false,
+      "description_text": "Some details on the issue ...",
+      "is_description_text_truncated": false,
+      "due_by": "2015-07-14T13:08:06Z",
+      "fr_due_by": "2015-07-14T13:08:06Z",
+      "fr_escalated": false,
+      "is_escalated": false,
+      "fwd_emails": ["charles@freshservice.com", "diana@freshservice.com"],
+      "reply_cc_emails": ["charles@freshservice.com", "diana@freshservice.com"],
+      "email_config_id": 77123,
+      "id": 1,
+      "group_id": 351,
+      "group_name": "Service Desk",
+      "department_id": 2,
+      "department_name": "HR",
+      "requester_id": 5483,
+      "requester_name": "Rachel",
+      "responder_id": 320,
+      "responder_email": "andrea@freshservice.com",
+      "responder_name": "Andrea",
+      "status": 2,
+      "status_name": "Open",
+      "priority": 1,
+      "priority_name": "Low",
+      "urgency": 1,
+      "urgency_name": "Low",
+      "impact": 1,
+      "impact_name": "Low",
+      "type": 1,
+      "type_name": "Incident",
+      "tags": ["sales", "marketing"],
+      "spam": false,
+      "source": 2,
+      "source_name": "Portal",
+      "category": "Hardware",
+      "sub_category": "Laptop",
+      "item_category": "Mac",
+      "cc_emails": ["ram@freshservice.com", "diana@freshservice.com"],
+      "to_emails": ["ram@freshservice.com", "diana@freshservice.com"],
+      "created_at": "2015-07-09T13:08:06Z",
+      "updated_at": "2015-07-09T13:08:06Z",
+      "attachments": [
+        {
+          "name": "sample.jpg",
+          "attachment_url": "https://s3.amazonaws.com/cdn.freshservice.com/data/helpdesk/attachments/production/9019290053/original/sample.jpg"
+        }
+      ],
+      "problem": [
+        {
+          "problem_id": 1223,
+          "problem_name": "Problem in..."
+        }
+      ],
+      "change": [
+        {
+          "change_id": 13442,
+          "change_name": "Change for..."
+        }
+      ],
+      "assets": [
+        {
+          "asset_id": 1,
+          "asset_name": "Laptop",
+          "asset_impact": "High"
+        }
+      ],
+      "custom_fields": [
+        {
+          "name": "Org code",
+          "value": "XMO_12"
+        },
+        {
+          "name": "RCA",
+          "value": "fix steps were..."
+        }
+      ]
+      },
+    "requester": {
+      "id": 5483,
+      "name": "Rachel",
+      "email": "rachel@freshservice.com",
+      "mobile": 7654367287,
+      "phone": 4352789885,
+      "language": "en",
+      "created_at": "2015-03-28T09:08:16Z"
+    }
+  }
+}

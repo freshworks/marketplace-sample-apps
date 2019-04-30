@@ -1,0 +1,9 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshservice": {}
+  },
+  "whitelisted-domains": [
+    "https://api.github.com"
+  ]
+}

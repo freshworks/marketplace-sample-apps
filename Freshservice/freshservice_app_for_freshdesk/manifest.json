@@ -5,10 +5,10 @@
   },
   "dependencies": {
     "request": "2.72.0",
-    "base-64": "0.1.0"
+    "base-64": "0.1.0",
+    "moment": "2.22.2"
   },
   "whitelisted-domains": [
-    "https://bharath1.freshcmdb.com",
     "https://*.freshservice.com",
     "https://*.freshdesk.com"
   ]

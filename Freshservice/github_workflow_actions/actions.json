@@ -1,0 +1,38 @@
+{
+  "inviteUser" : {
+   "display_name" : "Invite user to the GitHub organization",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+        "user_github_handle": {
+          "type": "string"
+        },
+        "user_role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_github_handle",
+        "user_role"
+      ]
+    },
+   "description": "Sends an email invitation to the user to join the GitHub organization"
+ },
+ "deleteUser" : {
+   "display_name" : "Delete user from the GitHub organization",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+       "user_github_handle": {
+         "type": "string"
+       }
+     },
+     "required": [
+       "user_github_handle"
+     ]
+   },
+   "description": "Removes the user from the GitHub organization"
+ }
+}
