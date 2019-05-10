@@ -3,8 +3,7 @@
     "display_name": "GitHub API key",
     "description": "Enter the GitHub API key",
     "type": "text",
-    "required": true,
-    "secure": true
+    "required": true
   },
   "github_organization": {
     "display_name": "GitHub Organization",
