@@ -1,67 +1,87 @@
+
 /**
  * @desc - This app allows you to save a memo linked to the ticket
  * @info - https://developers.freshdesk.com/v2/docs/data-storage/
  */
+
 let noteKey;
 
-/** Fetch Info of userData and ticketData from the current tickt page */
-function fetchInfo(callback) {
-  client.data.get('loggedInUser').then((userData) => {
-    client.data.get('ticket').then((ticketData) => {
-      noteKey = userData.loggedInUser.id + ":" + ticketData.ticket.id;
-      callback();
-    });
-  });
-}
-
-/** @fires - Gets the data from db and populates #note element */
-function displayNote() {
-  client.db.get(noteKey).then((data) => {
-    jQuery("#note").val(data.note);
-  });
-}
-/** @fires - Notification pop on top right corner */
-function notify(status, message) {
-  /** @info - https://developers.freshdesk.com/v2/docs/interface-api/ */
-  client.interface.trigger('showNotify', {
-    type: status,
-    message: message
-  });
-}
-
-$(document).ready(() => {
-  app.initialized().then((_client) => {
+$(document).ready(()=>{
+(function(){
+  app.initialized(_client).then(()=>{
     window.client = _client;
-    client.events.on('app.activated',() => {
-      fetchInfo(() => {
-        
+    client.events.on('app.activated',()=>{
+      fetchInfo(()=>{
         displayNote();
-        jQuery("#note-save").click(() => {
-          var noteData = jQuery("#note").val();
-          if (noteData == '') {
-            notify('warning', 'Note is empty');
-            return;
-          }
-          client.db.set(noteKey, { note: noteData}).then(() => {
-            notify('success', 'Note has been stored');
-          }, () => {
-            notify('danger', 'Error storing the note');
-          });
+        $("#note-save").click(()=>{
+          savenote();
         });
-        jQuery("#note-delete").click(() => {
-          client.db.delete(noteKey)
-          .then(function() {
-            jQuery("#note").val('');
-            notify('success', 'Note has been deleted');
-          }, function() {
-            notify('danger', 'Error deleting the note');
-          });
-        
-        
-        
+        $("#note-delete").click(()=>{
+          deletenote();
         });
-      
+      });
+    })
+  },(err)=>{
+    showerror();
+  });
+
+
+  function showerror(){
+    client.interface.trigger("showNotify", {
+      type: "warning", title: "Warning",
+      message: "Error: App is facing issues during initialzation"
+    }).then(function(data) {
+    console.log(`Err: Interface API - ${data}`);
+    }).catch(function(error) {
+    console.log(`Some error Encountered: ${error}`);
+    });
+  }
+
+  function savenote(){
+    jQuery("#note-save").click(() => {
+      var noteData = jQuery("#note").val();
+      if (noteData == '') {
+        notify('warning', 'Note is empty');
+        return;
+      }
+      client.db.set(noteKey, { note: noteData}).then(() => {
+        notify('success', 'Note has been stored');
+      }, () => {
+        notify('danger', 'Error storing the note');
       });
     });
-  });
+  }
+
+  function deletenote(){
+    client.db.delete(noteKey)
+      .then(function() {
+        jQuery("#note").val('');
+        notify('success', 'Note has been deleted');
+      }, function() {
+        notify('danger', 'Error deleting the note');
+      });
+  }
+
+  function displayNote(){
+    client.db.get(noteKey).then((data)=>{
+      $("#note").val(data.note);
+    });
+  }
+
+  function notify(status,message){
+    client.interface.trigger('showNotify',{
+      type: status,
+      message: message
+    });
+  }
+
+  function fetchInfo(callback){
+    client.data.get('loggedInUser').then((userData)=>{
+      client.data.get('ticket').then((ticketData)=>{
+        noteKey = `${userData.loggedInUser.id} : ${ticketData.ticket.id}`;
+        callback();
+      });
+    });
+  }
+})();
 });
