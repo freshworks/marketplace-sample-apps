@@ -6,14 +6,18 @@
  */
 
 exports = {
-
   events: [
     { event: 'onTicketCreate', callback: 'onTicketCreateHandler' }
   ],
   // args is a JSON block containing the payload information.
   // args['iparam'] will contain the installation parameter values.
-  onTicketCreateHandler: function (args) {
-    console.log('Hello ' + args['data']['requester']['name']);
+  onTicketCreateHandler: function (payload) {
+    console.log(`
+      Details from payload:
+      ${payload['data']['requester']['name']}
+      email: ${payload['data']['requester']['email']}
+      mobile: ${payload['data']['requester']['mobile']}
+    `);
   }
   
 };
