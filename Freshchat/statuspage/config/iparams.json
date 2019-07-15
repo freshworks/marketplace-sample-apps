@@ -6,7 +6,7 @@
         "required": true
     },
     "status_page_api_key": {
-        "display_name": "Status Page API",
+        "display_name": "Status Page API Key",
         "description": "Enter the status page user API Key.",
         "type": "text",
         "required": true,
