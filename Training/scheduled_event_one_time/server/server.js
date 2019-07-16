@@ -38,6 +38,7 @@ exports = {
    * @param {object} args - SMI args
    */
   createSchedule: function(args) {
+    console.log(`Scheduling an event to run at - ${args.schedule_at}`);
     $schedule.create({
       name: `ticket_${args.ticket_id}`,
       data: {
