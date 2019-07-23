@@ -4,8 +4,7 @@
     "freshdesk": {
       "location": {
         "ticket_background": {
-          "url": "template.html",
-          "id": "sendReply"
+          "url": "template.html"
         }
       }
     }
