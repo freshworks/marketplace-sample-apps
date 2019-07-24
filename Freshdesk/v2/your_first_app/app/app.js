@@ -5,19 +5,17 @@
 
 $(document).ready(function () {
   app.initialized().then((_client) => {
-    client = _client;
+    window.client = _client;
     client.events.on('app.activated', () => {
       getcontactdata(client);
     });
-  });
+  }, err);
 
   function getcontactdata(client) {
     client.data.get('contact').then((data) => {
       $('#apptext').text(`Ticket created by ${data.contact.name}`);
       congratulations();
-    }, (e) => {
-      console.log('Found some error. More info:', e);
-    });
+    }, err);
   }
 
   function congratulations() {
