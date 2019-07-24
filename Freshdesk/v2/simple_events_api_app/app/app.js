@@ -18,7 +18,6 @@ init = function () {
 }
 
 showNotification = function (clientObj) {
-  console.log("Inside showNotification method");
   client = clientObj;
   const notifyReply = function () {
     client.interface.trigger("showNotify", {
@@ -33,12 +32,11 @@ showNotification = function (clientObj) {
 }
 
 showError = function (err) {
-  console.log("Inside showError method");
   client.interface.trigger("showNotify", {
     type: "warning",
     message: {
       title: "Failed to connect",
-      description: "Error: Your message has not been sent"
+      description: `Error: Your message has not been sent. The error is ${JSON.stringify(err)}`
     }
   });
 }
