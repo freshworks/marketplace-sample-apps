@@ -1,1 +1,4 @@
-/dist/
+dist
+coverage
+.report.json
+.fdk
