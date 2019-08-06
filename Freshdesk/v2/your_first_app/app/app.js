@@ -7,11 +7,11 @@ $(document).ready(function () {
   app.initialized().then((_client) => {
     window.client = _client;
     client.events.on('app.activated', () => {
-      getcontactdata(client);
+      getContactData(client);
     });
   }, err);
 
-  function getcontactdata(client) {
+  function getContactData(client) {
     client.data.get('contact').then((data) => {
       $('#apptext').text(`Ticket created by ${data.contact.name}`);
       congratulations();
