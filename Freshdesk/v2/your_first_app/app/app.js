@@ -15,7 +15,7 @@ $(document).ready(function () {
     client.data.get('contact').then((data) => {
       $('#apptext').text(`Ticket created by ${data.contact.name}`);
       congratulations();
-    }, err);
+    });
   }
 
   function congratulations() {
