@@ -1,11 +1,12 @@
+
 /**
  * @desc - Sample App shows fectching Contact from Data API and shows on Ticket
  * sidebar
  */
 
-$(document).ready(function () {
-  app.initialized().then((_client) => {
-    window.client = _client;
+$(document).ready(() => {
+  app.initialized().then((_client) => { 
+    const client = _client;
     client.events.on('app.activated', () => {
       getContactData(client);
     });
