@@ -5,6 +5,7 @@
  */
 
 $(document).ready(() => {
+
   app.initialized().then((_client) => {
     const client = _client;
     client.events.on('app.activated', () => {
