@@ -1,0 +1,9 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshsales": {}
+  },
+  "whitelisted-domains": [
+    "https://<%= iparam.freshsales_subdomain %>.freshdesk.com"
+  ]
+}

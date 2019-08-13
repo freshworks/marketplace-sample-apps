@@ -1,0 +1,10 @@
+{
+  "client_id": "0e550cfffafc0ef64c9e",
+  "client_secret": "bb1eb921530923a4302127ad0cd26228aa525fb3",
+  "authorize_url": "https://github.com/login/oauth/authorize",
+  "token_url": "https://github.com/login/oauth/access_token",
+  "options": {
+    "scope": "repo"
+  },
+  "token_type": "account"
+}
