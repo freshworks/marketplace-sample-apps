@@ -28,6 +28,6 @@
 - [Freshservice](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshservice)
 
 
-###### For more information on getting started, please refer [here](https://developers.freshdesk.com/v2/docs/quick-start/#).
+###### For more information on getting started, please refer [here](https://developers.freshdesk.com/v2/docs/quick-start/#). Contributions are welcome 🎉
 
-Feel free to contribute
+
