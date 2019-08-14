@@ -2,10 +2,10 @@
 
 
 ![alt text](https://blog-assets.freshworks.com/freshworks/wp-content/uploads/2019/04/24100815/Marketplace.jpg)
-<p align="center">This repository contains sample apps to use for the freshworks app developers. Each sample app illustrates certian platform feature that app developer can leverage in currently being buit apps.
+<p align="left">Contains sample apps for Freshworks app developers. Each sample app illustrates a platform feature that an app developer can leverage to build apps.
  </p>
  
- This repository demonstrates capabilities that you can leverage in your custom/public apps,
+ Capabilities that you can leverage in your custom/public apps include the following : 
 
 1. App Configuration
    - App Manifest
@@ -21,7 +21,7 @@
    - Request API
    - OAuth
   
-#### Sample Code for
+#### Product specific sample apps can be found here : 
 - [Freshdesk](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk)
 - [Freshchat](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshchat)
 - [Freshsales](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshsales)
@@ -30,3 +30,4 @@
 
 ###### For more information on getting started, please refer [here](https://developers.freshdesk.com/v2/docs/quick-start/#).
 
+Feel free to contribute
