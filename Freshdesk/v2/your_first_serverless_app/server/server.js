@@ -9,8 +9,10 @@ exports = {
   events: [
     { event: 'onTicketCreate', callback: 'onTicketCreateHandler' }
   ],
-  // args is a JSON block containing the payload information.
-  // args['iparam'] will contain the installation parameter values.
+  /**
+   * When ticket is created, some details from the payload sent is logged.
+   * @param {string} - A JSON string
+   */
   onTicketCreateHandler: function (payload) {
     console.log(`
       Details from payload:
@@ -19,5 +21,5 @@ exports = {
       mobile: ${payload['data']['requester']['mobile']}
     `);
   }
-  
+
 };
