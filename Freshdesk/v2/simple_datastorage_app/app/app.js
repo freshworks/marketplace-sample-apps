@@ -31,9 +31,9 @@ $(document).ready(() => {
         type: "warning", title: "Warning",
         message: `Error: App is facing issues during initialzation - ${err}`
       }).then(function (data) {
-        console.log(`Err: Interface API - ${data}`);
+        console.info(`Err: Interface API - ${data}`);
       }).catch(function (error) {
-        console.log(`Some error Encountered: ${error}`);
+        console.error(`Some error Encountered: ${error}`);
       });
     }
 
