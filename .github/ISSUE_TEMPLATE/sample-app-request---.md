@@ -2,7 +2,7 @@
 name: "Sample App Request \U0001F36D"
 about: You can request a sample app from the team. Please make sure you have gone
   through the repo completely before raising a new sample app request.
-title: "[FEATURE REQUEST] - "
+title: "[Feature Request] - "
 labels: feature-request
 assignees: hemchander23, ravirajthedeveloper, Saif-Shines
 
