@@ -47,6 +47,7 @@ function showNotify(type, message) {
  * @param {Boolean} override - boolean to decide where to check and alert based on the key's existence in the data storage
  */
 function constructOptions(ttl, override) {
+  /** The ttl is added as an attribute by default to the returning Object. The setIf attribute is added only if the override is true. */
   return Object.assign({ ttl: ttl }, override ? {} : { setIf: 'not_exist' });
 }
 
