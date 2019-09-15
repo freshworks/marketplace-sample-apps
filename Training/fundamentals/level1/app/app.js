@@ -13,7 +13,7 @@ $(document).ready(function () {
 });
 
 /**
- *   Collection of on load Click events 
+ *   Register click event handler for `Create Ticket` button
  */
 function onLoadClickEventHandler() {
 	$('#createTicket').click(function () {
