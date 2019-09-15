@@ -122,7 +122,7 @@ exports = {
    *
    * @param {object} args - payload
    */
-  onUnInstallHandler: function (args) {
+  onUnInstallHandler: function () {
     $db.get('githubWebhookId').then(function (data) {
       $request.delete(data.url, {
         headers: {

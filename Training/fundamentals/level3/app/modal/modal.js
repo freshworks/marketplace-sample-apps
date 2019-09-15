@@ -30,7 +30,7 @@ function onModalLoad(ticket) {
  * @param {function} callback Callback function
  */
 function getIssue(ticketID,callback) {
-  var dbKey = String(`gitissue:${ticketID}`).substr(0, 30);
+  var dbKey = String(`fdTicket:${ticketID}`).substr(0, 30);
   client.db.get(dbKey)
     .then(callback)
     .catch(function (error) {
