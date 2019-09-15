@@ -1,4 +1,3 @@
 {
-  "github_repo": "<USERNAME/REPOSITORY NAME>",
-  "freshdesk_api_key": "<YOUR FRESHDESK API KEY>"
+  "github_repo": "<GITHUB_USERNAME/REPO_NAME>"
 }
