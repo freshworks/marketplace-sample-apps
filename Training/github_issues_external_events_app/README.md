@@ -19,3 +19,8 @@
 1. It is mandatory to have a GitHub account.
 2. The app needs the GitHub username, to authenticate the app to create and delete the webhook over REST API.
 3. The ngrok application installed in the local machine to expose localhost to the internet
+
+### Links:
+
+* Create an OAuth App - [Link](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
+* Register GitHub webhook - [Link](https://developer.github.com/webhooks/creating/)
