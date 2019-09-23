@@ -1,8 +1,0 @@
-{
-  "email": {
-    "display_name": "Email address",
-    "description": "Please enter the email address used to login to your gmail account",
-    "type": "text",
-    "required": true
-  }
-}
