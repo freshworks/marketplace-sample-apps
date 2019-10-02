@@ -14,12 +14,13 @@ exports = {
    * @param {string} - A JSON string
    */
   onTicketCreateHandler: function (payload) {
-    console.log(`
-      Details from payload:
-      ${payload['data']['requester']['name']}
-      email: ${payload['data']['requester']['email']}
-      mobile: ${payload['data']['requester']['mobile']}
-    `);
+    const details = `${payload['data']['requester']['name']}`;
+    const email = `${payload['data']['requester']['email']}`;
+    const mobile = `${payload['data']['requester']['mobile']}`;
+    console.log(JSON.stringify({
+      Details: details,
+      email: email,
+      mobile: mobile
+    }));
   }
-
 };
