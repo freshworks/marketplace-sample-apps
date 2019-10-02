@@ -1,42 +1,49 @@
+"use strict";
+
 /**
  * @desc - Whenever an agent clicks on the send reply button in the ticket
  * details page, this app displays a success notification.
  */
-let showNotification, showError, client;
-
+var showNotification, showError, client;
 $(document).ready(function () {
   init();
 });
 
-let init = function () {
-  console.info('App init invoked');
-  app.initialized().then(function (_client) {
-    client = _client;
-    showNotification(client);
-  }, function (err) {
-    showError(err);
-  });
-}
+var init = function init() {
+  console.info("App init invoked");
+  app.initialized().then(
+    function (_client) {
+      client = _client;
+      showNotification(client);
+    },
+    function (err) {
+      showError(err);
+    }
+  );
+};
 
-showNotification = function () {
-  const notifyReply = function () {
+showNotification = function showNotification() {
+  var notifyReply = function notifyReply() {
     client.interface.trigger("showNotify", {
       type: "success",
       message: {
         title: "Success",
         description: "Your message has been sent"
-      },
+      }
     });
-  }
-  client.events.on("ticket.sendReply", notifyReply);
-}
+  };
 
-showError = function (err) {
+  client.events.on("ticket.sendReply", notifyReply);
+};
+
+showError = function showError(err) {
   client.interface.trigger("showNotify", {
     type: "warning",
     message: {
       title: "Failed to connect",
-      description: `Error: Your message has not been sent. The error is ${JSON.stringify(err)}`
+      description: "Your message has not been sent. The error is ".concat(
+        JSON.stringify(err)
+      )
     }
   });
-}
+};
