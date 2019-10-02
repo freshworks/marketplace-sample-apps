@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * @description - Whenever a ticket is expected to be closed, this app checks
  * if there are any tags attached to the ticket, Upon no tags, it halts the close
@@ -8,32 +10,33 @@
  * tags attached to the ticket.
  *
  */
+$(document).ready(function () {
+  app.initialized().then(function (_client) {
+    window.client = _client;
 
-$(document).ready(() => {
-  app.initialized().then((_client) => {
-    let client = _client;
-    let checkTags = function (event) {
+    var checkTags = function checkTags(event) {
       client.data.get("ticket").then(function (data) {
         if (data.ticket.tags.length > 0) {
           event.helper.done();
-        }
-        else {
+        } else {
           event.helper.fail("Please add atleast one tag!");
         }
       }, errorHandler);
-    }
+    };
 
-    client.events.on("ticket.closeTicketClick", checkTags, { intercept: true });
+    client.events.on("ticket.closeTicketClick", checkTags, {
+      intercept: true
+    });
 
-    const errorHandler = function (err) {
-      client.interface.trigger("showNotify",
-        {
-          type: "error",
-          message: {
-            title: "Error",
-            description: "Error while trying to fetch data"
-          }
-        });
-    }
+    var errorHandler = function errorHandler(err) {
+      client.interface.trigger("showNotify", {
+        type: "error",
+        message: {
+          title: "Error",
+          description: "Error while trying to fetch data"
+        }
+      });
+      console.error("Error information:" + err);
+    };
   });
-})
+});
