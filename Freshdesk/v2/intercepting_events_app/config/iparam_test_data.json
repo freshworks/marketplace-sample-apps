@@ -1,4 +1,4 @@
 {
-  "freshdesk_domain": "Enter your freshdesk domain here",
-  "freshdesk_key": "Please enter your API Key"
+  "freshdesk_domain": "Please enter domain name",
+  "freshdesk_key": "Your freshdesk portal API key"
 }

@@ -33,7 +33,7 @@ function addNote(lastNoteIndex, note) {
   return new Promise((resolve, reject) => {
     client.db.update(`${userId}-notes-${lastNoteIndex}`, 'append', { notes: [note] }).then(resolve, error => {
       if (error.status === 400 && error.message === 'The combined size of the key and value should not exceed 8KB') {
-        createNewList(`${userId} + -notes- + ${(lastNoteIndex + 1)}`, note).then(resolve, reject);
+        createNewList(`${userId}-notes-${(lastNoteIndex + 1)}`, note).then(resolve, reject);
       } else {
         console.log('failed to add note to the list with error');
         console.log(error);
@@ -57,8 +57,8 @@ function createNewList(noteKey, note) {
       client.db.update(`${userId}-notes`, 'increment', { 'last_note_index': 1 }).then(() => {
         resolve(newValue);
       }, error => {
-        console.log('failed to increament the last node index')
-        console.log(error)
+        console.log('failed to increament the last node index');
+        console.log(error);
         reject(error);
       });
     }, error => {

@@ -1,0 +1,4 @@
+{
+  "freshdesk_api_key": "<INSERT YOUR FRESHDESK API KEY HERE>",
+  "freshdesk_subdomain": "<INSERT YOUR FRESHDESK SUB-DOMAIN HERE>"
+}

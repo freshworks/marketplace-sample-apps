@@ -66,7 +66,6 @@ var propertiesUpdatedCallback = function propertiesUpdatedCallback(event) {
   if (data.changedAttributes.status && data.changedAttributes.status[1] === 5) {
     timerValidation(event);
   } else {
-    // Proceed with other properties update
     event.helper.done();
   }
 };
