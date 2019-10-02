@@ -41,9 +41,8 @@ showError = function showError(err) {
     type: "warning",
     message: {
       title: "Failed to connect",
-      description: "Your message has not been sent. The error is ".concat(
-        JSON.stringify(err)
-      )
+      description: "Your message has not been sent. Some error occured"
     }
   });
+  console.error("Error".concat(JSON.stringify(err)));
 };
