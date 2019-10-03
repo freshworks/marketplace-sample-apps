@@ -31,7 +31,6 @@ function registerClickEventHandlers() {
 function createIssue() {
 	console.log("Proceeding to create issue from the ticket");
 	getTicketDetails(function (ticketData) {
-		console.log(ticketData);
 		checkAndCreateIssue(
 			ticketData.ticket.id,
 			function () {
@@ -111,7 +110,6 @@ function getTicketDetails(success, error) {
  */
 function checkAndCreateIssue(ticketID, issueExistCallback, issueDoesntExistCallback) {
 	var dbKey = String(`fdTicket:${ticketID}`).substr(0, 30);
-	console.log(dbKey);
 	client.db.get(dbKey)
 		.then(issueExistCallback)
 		.catch(issueDoesntExistCallback);
