@@ -1,3 +1,3 @@
 ## Freshdesk app for Freshcaller
 
-Freshdesk app for freshcaller fetches curreent caller's email ID and fetches all tickets from Freshdesk 
+Freshdesk app for Freshcaller fetches current caller's email ID and fetches all the tickets from Freshdesk 
