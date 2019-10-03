@@ -17,9 +17,7 @@ $(document).ready(function () {
 		 */
 		function  clickEventHandler(){
 			$('#get-tickets').on('click', function () {
-				console.log('click working');
 				let formVal = $('#email-ticket').val();
-				console.log('formVal', formVal);
 				getTickets(formVal);
 			})
 		}
@@ -31,7 +29,7 @@ $(document).ready(function () {
 			client.data.get('currentCaller')
 			.then(function (data) {
 				if (!data.email) {
-					$('#email-ticket').val('no value')
+					$('#email-ticket').val('')
 				}
 				if (data.email) {
 					$('#email-ticket').val(data.email)
@@ -39,7 +37,7 @@ $(document).ready(function () {
 				}
 			})
 			.catch(function (e) {
-				console.log('Exception - ', e);
+				console.error('Exception - ', e);
 			});
 		}
 
@@ -58,7 +56,7 @@ $(document).ready(function () {
 				appendHMTL(JSON.parse(data.response));
 			})
 				.catch(function (error) {
-					console.log('error', error);
+					console.error('error', error);
 				});
 		}
 
