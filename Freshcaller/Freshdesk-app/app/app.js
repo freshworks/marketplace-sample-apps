@@ -4,16 +4,14 @@ $(document).ready(function () {
 			window.client = _client;
 			client.events.on('app.activated',
 				function () {
-
 					clickEventHandler();
 					setUserEmail();
-
 				});
 		});
 
 
 		/**
-		 * Collect of click events
+		 * Collection of click events
 		 */
 		function  clickEventHandler(){
 			$('#get-tickets').on('click', function () {
@@ -63,7 +61,7 @@ $(document).ready(function () {
 
 		/**
 		 * Function to append list of tickets in html
-		 * @param {String} data      Ticket details to append in html
+		 * @param {String} data  Ticket details to append in html
 		 */
 		function appendHMTL(data) {
 
