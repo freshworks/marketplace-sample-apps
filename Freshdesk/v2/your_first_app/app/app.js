@@ -10,7 +10,7 @@ $(document).ready(function() {
     client.events.on('app.activated', function() {
       getContactData(client);
     });
-  }, err);
+  });
 
   function getContactData(client) {
     client.data.get('contact').then(function(data) {
