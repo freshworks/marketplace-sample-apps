@@ -34,8 +34,8 @@ $(document).ready(function () {
           getTickets(data.email)
         }
       })
-      .catch(function (e) {
-        console.error('Exception - ', e);
+      .catch(function (error) {
+        console.error('Unable to fetch current caller', error);
       });
   }
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
       appendHMTL(JSON.parse(data.response));
     })
       .catch(function (error) {
-        console.error('error', error);
+        console.error('Unable to fetch Tickets from freshdesk', error);
       });
   }
 
