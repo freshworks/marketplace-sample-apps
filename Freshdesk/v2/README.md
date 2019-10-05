@@ -5,6 +5,9 @@ This repository contains sample apps demonstrating the various features availabl
 
 This app shows the Freshdesk logo and the name of the ticket requester.
 
+![Screenshot 2019-10-05 at 11 29 52 AM](https://user-images.githubusercontent.com/6701828/66250692-9d660c00-e763-11e9-8c04-fe360e731c4f.png)
+
+
 This app demonstrates the following features
 
 1. Using data API to get the ticket requester's details
