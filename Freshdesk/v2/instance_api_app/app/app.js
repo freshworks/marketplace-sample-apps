@@ -6,27 +6,27 @@
  */
 
 $(document).ready(function () {
-    app.initialized().then(function (_client) {
-        var client = _client;
-        client.events.on('app.activated', fireModal);
+  app.initialized().then(function (_client) {
+    var client = _client;
+    client.events.on('app.activated', fireModal);
 
-        function fireModal() {
-            client.data.get('contact').then(function (data) {
-                $('#send-details').click(function () {
-                    /**
-                     * @fires - Interface API to show Modal and insert modal.html
-                     * Also, Data API to get requester's details
-                     *            */
-                    client.interface.trigger("showModal", {
-                        title: "Contact Form",
-                        template: "modal.html",
-                        data: {
-                            name: data.contact.name,
-                            email: data.contact.email
-                        }
-                    });
-                });
-            });
-        }
-    });
+    function fireModal() {
+      client.data.get('contact').then(function (data) {
+        $('#send-details').click(function () {
+          /**
+           * @fires - Interface API to show Modal and insert modal.html
+           * Also, Data API to get requester's details
+           *            */
+          client.interface.trigger("showModal", {
+            title: "Contact Form",
+            template: "modal.html",
+            data: {
+              name: data.contact.name,
+              email: data.contact.email
+            }
+          });
+        });
+      });
+    }
+  });
 });

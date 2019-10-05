@@ -6,18 +6,18 @@
  */
 
 $(document).ready(function () {
-    app.initialized().then(function (_client) {
-        var client = _client;
-        client.instance.context().then(function (context) {
-            console.log("Modal instance API context", context);
-            /* Output: Modal instance API context
-            * { instanceId: "4",   location: "modal", parentId: "1",
-            * modalData: {name: "James", email: "James@freshdesk.com"}
-            * }"
-            * */
+  app.initialized().then(function (_client) {
+    var client = _client;
+    client.instance.context().then(function (context) {
+      console.log("Modal instance API context", context);
+      /* Output: Modal instance API context
+      * { instanceId: "4",   location: "modal", parentId: "1",
+      * modalData: {name: "James", email: "James@freshdesk.com"}
+      * }"
+      * */
 
-            $('#name').val(context.data.name);
-            $('#email').val(context.data.email);
-        });
+      $('#name').val(context.data.name);
+      $('#email').val(context.data.email);
     });
+  });
 });
