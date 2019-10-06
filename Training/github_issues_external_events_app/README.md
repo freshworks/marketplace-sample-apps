@@ -7,11 +7,11 @@
   2. Making an API request in server.js
 
   And the following platform features
-  1. External Events
-  2. OAuth
-  3. Secure installation parameter
-  4. Request API
-  5. Data Storage
+  1. [External Events](https://developer.freshdesk.com/v2/docs/external-events/)
+  2. [OAuth](https://developer.freshdesk.com/v2/docs/oauth/)
+  3. [Secure installation parameter](https://developer.freshdesk.com/v2/docs/installation-parameters/)
+  4. [Request API](https://developer.freshdesk.com/v2/docs/request-api/)
+  5. [Data Storage](https://developer.freshdesk.com/v2/docs/data-storage/)
 
 
 ### Prerequisites:
