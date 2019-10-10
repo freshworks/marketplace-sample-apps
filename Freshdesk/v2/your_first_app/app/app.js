@@ -2,16 +2,17 @@
  * @desc - Sample App shows fectching Contact from Data API and shows on Ticket
  * sidebar
  */
-$(document).ready(() => {
-  app.initialized().then((_client) => { 
+
+$(document).ready(function() {
+  app.initialized().then(function(_client) {
     const client = _client;
-    client.events.on('app.activated', () => {
+    client.events.on('app.activated', function() {
       getContactData(client);
     });
-  }, err);
+  });
 
   function getContactData(client) {
-    client.data.get('contact').then((data) => {
+    client.data.get('contact').then(function(data) {
       $('#apptext').text(`Ticket created by ${data.contact.name}`);
       congratulations();
     });
