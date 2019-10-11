@@ -4,10 +4,10 @@
 
   This app demonstrates the following features
 
-  1. OAuth 2.0 - account level OAuth
-  2. Making an API request through Request API using oauth tokens to authenticate
-  3. Freshdesk Product event - onTicketCreate
-  4. Using a custom installation page to dynamically populate dependent fields (workspace, project)
+  1. [OAuth 2.0 - account level OAuth](https://developer.freshdesk.com/v2/docs/oauth/)
+  2. Making an API request through [Request API](https://developer.freshdesk.com/v2/docs/request-api/) using oauth tokens to authenticate
+  3. [Freshdesk Product event - onTicketCreate](https://developer.freshdesk.com/v2/docs/product-events/#onticketcreate)
+  4. Using a [custom installation page](https://developer.freshdesk.com/v2/docs/custom-installation-page/) to dynamically populate dependent fields (workspace, project)
 
 ### Prerequisites:
 
