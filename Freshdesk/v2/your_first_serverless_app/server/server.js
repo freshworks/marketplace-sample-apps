@@ -19,9 +19,9 @@ exports = {
    * @param {string} - A JSON string
    */
   onTicketCreateHandler: function onTicketCreateHandler(payload) {
-    var details = "".concat(payload["data"]["requester"]["name"]);
-    var email = "".concat(payload["data"]["requester"]["email"]);
-    var mobile = "".concat(payload["data"]["requester"]["mobile"]);
+    var details = String(payload["data"]["requester"]["name"]);
+    var email = String(payload["data"]["requester"]["email"]);
+    var mobile = payload["data"]["requester"]["mobile"];
     console.log(
       JSON.stringify({
         Details: details,
