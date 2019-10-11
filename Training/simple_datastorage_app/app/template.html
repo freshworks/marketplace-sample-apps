@@ -8,15 +8,13 @@
   </head>
   <body>
     <div class="fw-widget-wrapper">
-      <b>Enter your note here</b>
-      <textarea class="form-control" placeholder="Note here" id="note"></textarea>
-      <div class="action-holder">
-        <span>
-          <button class="btn btn-primary" id="note-save">Save</button>
-          <button class="btn btn-danger" id="note-delete">Delete</button>
-          <button class="btn btn-primary" id="msg-update">set</button>
-          <button class="btn btn-danger" id="msg-remove">remove</button>
-        </span>
+      <div>
+          <button class="btn btn-primary" id="set-status">Set Status</button>
+          <button class="btn btn-danger" id="remove-status">Remove Status</button>
+      </div>
+      <div style="margin-top: 20px">
+        <p id="visits">Visits: 0</p>
+        <p id="status">Active: N/A</p>
       </div>
     </div>
   </body>
