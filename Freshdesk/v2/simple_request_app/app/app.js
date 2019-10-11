@@ -1,10 +1,10 @@
 /**
  * @description - This app makes REST API calls to httpbin.org.
- * 
+ *
  * 1. Request API - GET, POST, PUT & DELETE
  */
 
-const BASE_URL = "https://httpbin.org/"
+const BASE_URL = "https://httpbin.org/";
 
 
  $(document).ready(function(){
@@ -13,7 +13,7 @@ const BASE_URL = "https://httpbin.org/"
       window.client = _client;
       client.events.on('app.activated', init);
     });
-    
+
     function init(){
       $(".request-btn").click((e)=>{
         let method = e.target.getAttribute('method');
@@ -23,10 +23,17 @@ const BASE_URL = "https://httpbin.org/"
           "Content-Type": "application/json"
         }
         };
-        console.log(`${e}`);
         req(method,url,options);
       });
     }
+
+    /**
+     * The method will make a request to httpbin.org. There parameters define the kind of request.
+     *
+     * @method {String} - GET/POST request
+     * @url {String} - The URL of the endpoint
+     * 
+     */
 
     function req(method,url,options){
       client.request[method](url, options)
@@ -43,6 +50,6 @@ const BASE_URL = "https://httpbin.org/"
         message: message
       });
     }
-  
+
   })();
  });
