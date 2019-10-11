@@ -9,7 +9,7 @@
  *
  */
 
-$(document).readqy(() => {
+$(document).ready(() => {
   app.initialized().then((_client) => {
     let client = _client;
     let eventCallback = function (event) {
