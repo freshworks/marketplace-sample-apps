@@ -1,4 +1,3 @@
-var request = require('request');
 var util = require('./lib/util');
 
 var APP_REGISTRATION_ERR = 'App registration failed';
@@ -20,30 +19,31 @@ exports = {
    */
   onInstallHandler: function(args) {
     generateTargetUrl().done(function(targetUrl) {
-      request.post({
-        url: args.iparams.jira_url + "/rest/webhooks/1.0/webhook",
-        headers: {
-          "Authorization": "Basic " + util.getJiraKey(args)
-        },
-        json: {
-          url: targetUrl,
-          name: "External events - Freshdesk Integration",
-          events: ["jira:issue_created"],
-          excludeIssueDetails : false
+      $request.post(
+        args.iparams.jira_url + "/rest/webhooks/1.0/webhook",
+        {
+          headers: {
+            "Authorization": "Basic " + util.getJiraKey(args)
+          }, 
+          body: {
+            url: targetUrl,
+            name: "External events - Freshdesk Integration",
+            events: ["jira:issue_created"],
+            excludeIssueDetails : false  
+          }
         }
-      }, function(err, res, body){
-        if (err) {
-          renderData({ message: APP_REGISTRATION_ERR });
-        }
-        else {
-          var result = body;
-          $db.set('jiraWebhookId', { url : result.self }).done(function(){
+      )
+      .then((data) => {
+        $db
+          .set('jiraWebhookId', { url : data.self })
+          .done(() => {
             renderData();
           })
-          .fail(function() {
+          .fail(() => {
             renderData({ message: APP_REGISTRATION_ERR });
-          });
-        }
+          })
+      }, (error) => {
+        renderData({ message: APP_REGISTRATION_ERR });
       });
     })
     .fail(function(){
@@ -58,16 +58,18 @@ exports = {
    */
   onUnInstallHandler: function(args) {
     $db.get('jiraWebhookId').done(function(data){
-      request.delete({
-        url: data.url,
-        headers: {
-          Authorization: "Basic " + util.getJiraKey(args)
+      $request.delete(
+        data.url,
+        {
+          headers: {
+            Authorization: "Basic " + util.getJiraKey(args)
+          }
         }
-      }, function(err){
-        if (err) {
-          return renderData({ message: APP_DEREGISTRATION_ERR });
-        }
+      )
+      .then((data) => {
         renderData();
+      }, (error) => {
+        renderData({ message: APP_DEREGISTRATION_ERR });
       });
     })
     .fail(function(){
@@ -82,24 +84,24 @@ exports = {
    */
   onWebhookCallbackHandler: function(args) {
     if (args.data.issue.fields.issuetype.name == 'Bug') {
-      request({
-        url: args.iparams.freshdesk_domain + "/api/v2/tickets",
-        headers: {
-          Authorization: util.getFreshdeskKey(args)
-        },
-        json: {
-          status: 2,
-          priority: 3,
-          email: args.data.issue.fields.creator.emailAddress,
-          subject: args.data.issue.fields.summary,
-          description: args.data.issue.fields.summary
-        },
-        method: "POST"
-      }, function(err) {
-        if (err) {
-          return console.log('Ticket creation failed');
+      $request.post(
+        args.iparams.freshdesk_domain + "/api/v2/tickets",
+        {
+          headers: {
+            Authorization: util.getFreshdeskKey(args)  
+          },
+          body: {
+            status: 2,
+            priority: 3,
+            email: args.data.issue.fields.creator.emailAddress,
+            subject: args.data.issue.fields.summary,
+            description: args.data.issue.fields.summary  
+          }
         }
+      ).then((data) => {
         console.log('Ticket created successfully');
+      }, (error) => {
+        console.log('Ticket creation failed');
       });
     }
   }
