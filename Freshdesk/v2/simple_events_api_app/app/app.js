@@ -8,7 +8,6 @@ $(document).ready(function () {
 });
 
 let init = function () {
-  console.info('App init invoked');
   app.initialized().then(function (_client) {
     var client = _client;
     showNotification(client);
