@@ -1,0 +1,8 @@
+{
+    "hubspot_url": "https://api.hubapi.com",
+    "hubspot_app_id" : "199193",
+    "hubspot_key": "8d68536e-2ec8-46be-9cd6-735f3481effe",
+    "hubspot_dev_key": "f4943b7f-4f2b-4b5b-b08e-5758e7f2c072",
+    "freshdesk_domain": "https://freshworkshelp576.freshdesk.com",
+    "freshdesk_key": "gm07e4GuWT4EGc7lZy6m"
+}

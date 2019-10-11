@@ -1,0 +1,11 @@
+
+{
+    "client_id": "af0ef631-472f-4ba6-96f8-c8e031ddd499",
+    "client_secret": "67203547-e05c-49a4-af66-0eb5a5e2e474",
+    "authorize_url": "https://app.hubspot.com/oauth/authorize",
+    "token_url": "https://api.hubapi.com/oauth/v1/token",
+    "options": {
+        "scope": "contacts"
+    },
+    "token_type": "account"
+}

@@ -1,0 +1,9 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {}
+  },
+  "dependencies": {
+    "base-64" : "0.1.0"
+  }
+}
