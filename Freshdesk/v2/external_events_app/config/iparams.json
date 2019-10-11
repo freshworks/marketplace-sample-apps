@@ -9,13 +9,15 @@
     "display_name": "JIRA Username",
     "description": "Please enter your JIRA Username",
     "type": "text",
-    "required": true
+    "required": true,
+    "secure": true
   },
   "jira_password": {
     "display_name": "JIRA Password",
     "description": "Please enter your JIRA Password",
     "type": "text",
-    "required": true
+    "required": true,
+    "secure": true
   },
   "freshdesk_domain": {
     "display_name": "Freshdesk domain",
@@ -23,11 +25,11 @@
     "type": "text",
     "required": true
   },
-  "freshdesk_key": {
+  "freshdesk_api_key": {
     "display_name": "Freshdesk API Key",
     "description": "Please enter freshdesk api key",
     "type": "text",
     "required": true,
-    "secure":true
+    "secure": true
   }
 }

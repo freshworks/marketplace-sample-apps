@@ -3,5 +3,5 @@
   "jira_username": "Enter your jira username",
   "jira_password": "Enter your jira password",
   "freshdesk_domain": "Enter your freshdesk domain url",
-  "freshdesk_key": "Enter your freshdesk API key"
+  "freshdesk_api_key": "Enter your freshdesk API key"
 }

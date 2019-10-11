@@ -1,63 +1,64 @@
-var util = require('./lib/util');
-
-var APP_REGISTRATION_ERR = 'App registration failed';
-var APP_DEREGISTRATION_ERR = 'App deregistration failed';
+const util = require('./lib/util');
 
 exports = {
 
   events: [
     { event: 'onAppInstall', callback: 'onInstallHandler' },
     { event: 'onAppUninstall', callback: 'onUnInstallHandler' },
-    { event: 'onExternalEvent', callback: 'onWebhookCallbackHandler'}
+    { event: 'onExternalEvent', callback: 'onWebhookCallbackHandler' }
   ],
 
   /**
-   * onAppInstall:
+   * Handler for onAppInstall event
+   *
    * Webhook url is created through generateTargetUrl function
    * The generated url is registered with jira for "issue_created" event and the same is triggered when an issues is created.
-   * On successful registration, the id is stored using $db
+   * On successful registration, the webhook URL  is stored using $db
+   *
+   * @param {object} args - payload
    */
-  onInstallHandler: function(args) {
-    generateTargetUrl().done(function(targetUrl) {
+  onInstallHandler: function (args) {
+    generateTargetUrl().done(function (targetUrl) {
       $request.post(
         args.iparams.jira_url + "/rest/webhooks/1.0/webhook",
         {
           headers: {
             "Authorization": "Basic " + util.getJiraKey(args)
-          }, 
-          body: {
+          },
+          json: {
             url: targetUrl,
             name: "External events - Freshdesk Integration",
             events: ["jira:issue_created"],
-            excludeIssueDetails : false  
+            excludeIssueDetails: false
           }
         }
       )
-      .then((data) => {
-        $db
-          .set('jiraWebhookId', { url : data.self })
-          .done(() => {
+        .then((data) => {
+          $db.set('jiraWebhookId', { url: data.self }).done(() => {
             renderData();
+          }).fail(() => {
+            renderData({ message: 'Webhook registration failed' });
           })
-          .fail(() => {
-            renderData({ message: APP_REGISTRATION_ERR });
-          })
-      }, (error) => {
-        renderData({ message: APP_REGISTRATION_ERR });
-      });
-    })
-    .fail(function(){
-      renderData({ message: APP_REGISTRATION_ERR });
+        }, error => {
+          console.error('Failed to register the webhook');
+          console.error(error);
+          renderData({ message: 'Webhook registration failed' });
+        });
+    }).fail(function () {
+      renderData({ message: 'Webhook registration failed' });
     });
   },
 
   /**
-   * onAppUninstall:
-   * Get the webhook id from database through $db that was stored during installation
-   * Deregister the webhook from jira with the id
+   * Handler for onAppUninstall event
+   *
+   * Get the webhook URL from data storage through $db that was stored during installation
+   * Deregister the webhook from JIRA with the URL over REST API
+   *
+   * @param {object} args - payload
    */
-  onUnInstallHandler: function(args) {
-    $db.get('jiraWebhookId').done(function(data){
+  onUnInstallHandler: function (args) {
+    $db.get('jiraWebhookId').done(function (data) {
       $request.delete(
         data.url,
         {
@@ -65,43 +66,47 @@ exports = {
             Authorization: "Basic " + util.getJiraKey(args)
           }
         }
-      )
-      .then((data) => {
+      ).then(() => {
         renderData();
-      }, (error) => {
-        renderData({ message: APP_DEREGISTRATION_ERR });
+      }, error => {
+        console.error('Failed to deregister the webhook');
+        console.error(error);
+        renderData({ message: 'Webhook deregistration failed' });
       });
-    })
-    .fail(function(){
-      renderData({ message: APP_DEREGISTRATION_ERR });
+    }).fail(function () {
+      renderData({ message: 'Webhook deregistration failed' });
     });
   },
 
   /**
-   * onExternalEvent:
-   * Check if the received issue is of type 'Bug'
-   * Create a ticket in freshdesk with bug creators email and summary
+   * Handler for onExternalEvent event
+   *
+   * Check if the issue received from JIRA is of type 'Bug'
+   * Create a ticket in Freshdesk with bug creators email and summary
+   *
+   * @param {object} payload - payload with the data from the third-party applications along with iparams and other metadata
    */
-  onWebhookCallbackHandler: function(args) {
-    if (args.data.issue.fields.issuetype.name == 'Bug') {
+  onWebhookCallbackHandler: function (args) {
+    if (args.data.issue.fields.issuetype.name === 'Bug') {
       $request.post(
         args.iparams.freshdesk_domain + "/api/v2/tickets",
         {
           headers: {
-            Authorization: util.getFreshdeskKey(args)  
+            Authorization: "Basic <%= encode(iparam.freshdesk_api_key) %>"
           },
-          body: {
+          json: {
             status: 2,
             priority: 3,
             email: args.data.issue.fields.creator.emailAddress,
             subject: args.data.issue.fields.summary,
-            description: args.data.issue.fields.summary  
+            description: args.data.issue.fields.summary
           }
         }
-      ).then((data) => {
-        console.log('Ticket created successfully');
-      }, (error) => {
-        console.log('Ticket creation failed');
+      ).then(() => {
+        console.info('Ticket created successfully');
+      }, error => {
+        console.error('Ticket creation failed');
+        console.error(error);
       });
     }
   }
