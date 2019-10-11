@@ -2,7 +2,6 @@
  * @desc - Whenever an agent clicks on the send reply button in the ticket
  * details page, this app displays a success notification.
  */
-let showNotification, showError, client;
 
 $(document).ready(function () {
   init();
@@ -11,7 +10,7 @@ $(document).ready(function () {
 let init = function () {
   console.info('App init invoked');
   app.initialized().then(function (_client) {
-    client = _client;
+    var client = _client;
     showNotification(client);
   }, function (err) {
     showError(err);
