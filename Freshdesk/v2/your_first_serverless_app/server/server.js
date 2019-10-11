@@ -22,7 +22,7 @@ exports = {
     var details = String(payload["data"]["requester"]["name"]);
     var email = String(payload["data"]["requester"]["email"]);
     var mobile = payload["data"]["requester"]["mobile"];
-    console.log(
+    console.info(
       JSON.stringify({
         Details: details,
         email: email,
