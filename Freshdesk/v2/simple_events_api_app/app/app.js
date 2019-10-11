@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * @desc - Whenever an agent clicks on the send reply button in the ticket
  * details page, this app displays a success notification.
@@ -34,8 +36,8 @@ showError = function (err) {
     type: "warning",
     message: {
       title: "Failed to connect",
-      description: "Error: Your message has not been sent."
+      description: "Your message has not been sent. Some error occured"
     }
   });
-  console.error("Error" + JSON.stringify(err));
-}
+  console.error("Error".concat(JSON.stringify(err)));
+};

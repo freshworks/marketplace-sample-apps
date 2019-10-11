@@ -9,5 +9,5 @@ jobs:
     - uses: actions/first-interaction@v1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: 'Hello, Thanks for taking the step forward to create an issue that would improve our sample apps. 🙂\n\nThis will be picked up by one of us soon. Watch the issue notifications for updates'
-        pr-message: 'Thanks for your contribution to Freshworks sample apps. 🎉\n\nOur maintainers will review your pull request soon.'
+        issue-message: 'Hello, Thanks for taking the step forward to create an issue that would improve our sample apps. 🙂 This will be picked up by one of us soon. Watch the issue notifications for updates'
+        pr-message: 'Thanks for your contribution to Freshworks sample apps. 🎉 Our maintainers will review your pull request soon.'
