@@ -1,7 +1,7 @@
 /**
  * This method fetches all the notes and renders in the notes container element.
  */
-function displayNotess() {
+function displayNotes() {
   getAllNotes().then(data => {
     jQuery('#note').val('');
     const noteList = [];
