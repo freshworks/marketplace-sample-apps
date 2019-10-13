@@ -28,3 +28,18 @@ Products| App SDK | API | Description
  [Freshchat](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshchat) | [App Quickstart](https://developers.freshchat.com/v2/docs/quick-start/) | [Web SDK](https://developers.freshchat.com/web-sdk/) | Customer messaging software
  [Freshsales](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshsales) | [Documentation](https://developers.freshsales.io/docs/quick-start/) | [Reference](https://www.freshsales.io/api/) | Sales CRM software
  Freshcaller | Coming soon| Coming soon | Call center software
+
+ ## Sample Apps by Platform features
+
+Platform feature | Sample code | Notes
+---------------- | ----------- | -----|
+App Manifest | Common Available | [The manifest file](https://developers.freshdesk.com/v2/docs/app-manifest/) will allow the same app on different products(if compatible) by just updating name in this file.
+App location | Commonly available | App locations differs across product - [Freshdesk](https://developers.freshdesk.com/v2/docs/app-locations/) / [Freshsales](https://developers.freshsales.io/docs/app-locations/) / [Freshchat placeholder](https://developers.freshchat.com/v2/docs/placeholders/) / [Freshservice](https://developers.freshservice.com/docs/app-locations/)
+[Installation Parameters](https://medium.com/freshworks-developer-blog/securing-sensitive-installation-parameters-3879908ade17) | [Sentimental Jeff App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/sentimental_jeff_app/config), [Github workflow actions](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshservice/github_workflow_actions/config) | Common pattern across all products
+[Custom Installation Page](https://medium.com/freshworks-developer-blog/updates-to-the-custom-installation-page-b787b66c8a39) | [Custom Installation page demo App](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshdesk/v2/custom_installation_page_app) | NaN
+[Data API]()||
+Events API||
+Interface API ||
+Data Storage ||
+Request API ||
+OAuth 2||
