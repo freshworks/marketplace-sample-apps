@@ -1,6 +1,6 @@
 {
-  "client_id": "591590311655-fov7k5eq0t21597cgqtilo0pkjlej56p.apps.googleusercontent.com",
-  "client_secret": "eg0_EyIA6dIAufMaRA6NVTdp",
+  "client_id": "Please enter your client ID",
+  "client_secret": "eg0_EyIA6dIAufMaRA6NVTdp-example",
   "authorize_url": "https://accounts.google.com/o/oauth2/auth",
   "token_url": "https://oauth2.googleapis.com/token",
   "options": {
