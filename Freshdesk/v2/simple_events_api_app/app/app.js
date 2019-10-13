@@ -9,7 +9,7 @@ $(document).ready(function () {
   init();
 });
 
-let init = function () {
+var init = function () {
   app.initialized().then(function (_client) {
     var client = _client;
     showNotification(client);
@@ -18,7 +18,7 @@ let init = function () {
   });
 }
 
-showNotification = function () {
+var showNotification = function () {
   const notifyReply = function () {
     client.interface.trigger("showNotify", {
       type: "success",
@@ -31,7 +31,7 @@ showNotification = function () {
   client.events.on("ticket.sendReply", notifyReply);
 }
 
-showError = function (err) {
+var showError = function (err) {
   client.interface.trigger("showNotify", {
     type: "warning",
     message: {
