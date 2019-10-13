@@ -9,15 +9,6 @@ $(document).ready(function () {
   init();
 });
 
-var init = function () {
-  app.initialized().then(function (_client) {
-    var client = _client;
-    showNotification(client);
-  }, function (err) {
-    showError(err);
-  });
-}
-
 var showNotification = function () {
   const notifyReply = function () {
     client.interface.trigger("showNotify", {
@@ -41,3 +32,13 @@ var showError = function (err) {
   });
   console.error("Error".concat(JSON.stringify(err)));
 };
+
+
+var init = function () {
+  app.initialized().then(function (_client) {
+    var client = _client;
+    showNotification(client);
+  }, function (err) {
+    showError(err);
+  });
+}
