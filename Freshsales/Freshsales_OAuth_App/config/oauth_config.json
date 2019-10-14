@@ -1,6 +1,6 @@
 {
-  "client_id": "Please enter your client ID",
-  "client_secret": "eg0_EyIA6dIAufMaRA6NVTdp-example",
+  "client_id": "<ENTER_YOUR_CLIENT_ID_HERE>",
+  "client_secret": "<ENTER_YOUR_CLIENT_SECRET_HERE>",
   "authorize_url": "https://accounts.google.com/o/oauth2/auth",
   "token_url": "https://oauth2.googleapis.com/token",
   "options": {
