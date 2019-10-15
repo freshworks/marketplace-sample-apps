@@ -2,7 +2,6 @@
  * tickt details page. On clicking the app icon, the Start Timer form will be
  * shown.
  */
-
 $(document).ready(function () {
   /**
  * Initialize channel
