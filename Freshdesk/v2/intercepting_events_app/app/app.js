@@ -9,10 +9,8 @@
 var timerValidation = function timerValidation(event) {
   client.data.get("ticket").then(
     function (ticketData) {
-      var baseUrl = "https://<%= iparam.freshdesk_domain %>.freshdesk.com";
-      var url = ""
-        .concat(baseUrl, "/api/v2/tickets/")
-        .concat(ticketData.ticket.id, "/time_entries");
+      var baseUrl = "https://<%= iparam.freshdesk_domain %>.freshdesk.com/";
+      var url = baseUrl.concat(ticketData.ticket.id, "/time_entries");
       var options = {
         headers: {
           "Content-Type": "application/json",
