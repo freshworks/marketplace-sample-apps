@@ -68,7 +68,6 @@ function voucherClickHandler(e) {
     })
     .catch(function (error) {
       console.error("Error occured while setting editor value", error);
-      showNotification("alert", "Unable to set the chat editor content. Refer the console for detailed error");
       client.instance.close();
     });
 };
