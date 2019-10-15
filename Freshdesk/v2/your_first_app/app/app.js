@@ -3,9 +3,8 @@
  * sidebar
  */
 
-
-$(document).ready(function () {
-  app.initialized().then(function (_client) {
+$(document).ready(function() {
+  app.initialized().then(function(_client) {
     const client = _client;
     client.events.on('app.activated', function () {
       getContactData(client);
