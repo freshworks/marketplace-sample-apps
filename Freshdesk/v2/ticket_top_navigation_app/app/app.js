@@ -4,12 +4,19 @@
  */
 
 $(document).ready(function () {
-  // Initialize channel
+  /**
+ * Initialize channel
+ *
+ * @param {string} _client - A string param
+ *
+ */
   app.initialized().then(function (_client) {
     var client = _client; // App activate callback
 
     client.events.on('app.activated', function () {
-      // Open modal to collect params to start timer Interface API
+        /**
+         * Open modal to collect params to start timer Interface API
+         */
       client.interface.trigger('showModal', {
         title: 'Start timer',
         template: 'startTimer.html'
@@ -24,13 +31,21 @@ $(document).ready(function () {
       var data = event.helper.getData();
 
       if (data.message.agent) {
-        // start the timer
+          /**
+           * start the timer
+           */
         client.interface.trigger('start', {
           id: 'timer',
           value: data.message
         });
       }
     });
+    /**
+     * This is a function.
+     *
+     * @param {string} error -The string error message
+     *
+     */
   }, function (error) {
     client.interface.trigger('showNotify', {
       type: 'error',
