@@ -1,4 +1,3 @@
-
 /**
  * Freshsales: simple_request_app
  * A sample app that fetches and displays details about the current Lead 
