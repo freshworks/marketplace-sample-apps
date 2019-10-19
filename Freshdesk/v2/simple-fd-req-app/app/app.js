@@ -18,12 +18,10 @@ function openModal() {
 $(document).ready( function() {
     app.initialized()
         .then(function(_client) {
-            console.info('lala');
           var client = _client;
           window.client = client;
           client.events.on('app.activated',
             function() {
-                console.info('lala');
                 client.data.get('loggedInUser')
                     .then(function(response) {
                        window.loggedInUser = response.loggedInUser;

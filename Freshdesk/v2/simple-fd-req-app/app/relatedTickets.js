@@ -1,3 +1,10 @@
+function alertFreshdesk(message) {
+    return client.interface.trigger("showNotify", {
+        type: "alert", title: "Try again",
+        message
+      });
+}
+
 $(document).ready( function() {
     app.initialized()
         .then(function(_client) {
@@ -6,6 +13,9 @@ $(document).ready( function() {
             .then(function(context) {
                 var loggedInUser = context.data.id;
                 getRelatedTickets(client, loggedInUser)
+            })
+            .catch(function(){
+                return alertFreshdesk('Error opening modal')
             })
     });
 });
@@ -46,7 +56,7 @@ function getAllAgentTickets(client, iparams, loggedInUser) {
                 })
                 .catch(function(er) {
                     console.error(`Couldnt retrieve tickets. Status : ${er.status}`);
-                    reject([]);
+                    reject(er);
                 })
     })
 }
@@ -73,10 +83,8 @@ function generateList(allAgentTickets) {
  * @param {*} loggedInUser 
  */
 function getRelatedTickets(client, loggedInUser) {
-    console.info(client, loggedInUser);
     client.request.invoke('getIparams',{})
         .then(function(result) {
-            console.info(result);
             var fd_api_key = result.response.fd_api_key;
             var fd_domain = result.response.fd_domain;
             window.fd_domain = fd_domain;
@@ -84,5 +92,8 @@ function getRelatedTickets(client, loggedInUser) {
         })
         .then(function(allAgentTickets) {
             generateList(allAgentTickets)
+        })
+        .catch(function() {
+            return alertFreshdesk('Error retrieving tickets')
         })
 }
