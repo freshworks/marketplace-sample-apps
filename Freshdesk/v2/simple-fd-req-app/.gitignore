@@ -1,0 +1,4 @@
+.fdk
+coverage
+node_modules/
+config/
