@@ -9,10 +9,11 @@ $(document).ready( function() {
     app.initialized()
         .then(function(_client) {
           var client = _client;
+          window.client = client;
           client.instance.context()
             .then(function(context) {
                 var loggedInUser = context.data.id;
-                getRelatedTickets(client, loggedInUser)
+                getRelatedTickets(loggedInUser)
             })
             .catch(function(){
                 return alertFreshdesk('Error opening modal')
@@ -25,39 +26,38 @@ $(document).ready( function() {
  * @param {*} iparams 
  * @param {*} loggedInUser 
  */
-function getAllAgentTickets(client, iparams, loggedInUser) {
+function getAllAgentTickets(loggedInUser) {
     return new Promise(function(resolve, reject) {
-            var { fd_domain, fd_api_key } = iparams,
-            options  = {
-                headers :  {
-                    Authorization : `Basic ${fd_api_key}`
-                }
+        options  = {
+            headers :  {
+                'Authorization': 'Basic <%= encode(iparam.fd_api_key) %>'
             }
-            var baseUrl = `https://${fd_domain}/api/v2/search/tickets?query="agent_id:${loggedInUser}"`;
-            client.request.get(baseUrl, options)
-                .then(function(resp) {
-                    var { total } = JSON.parse(resp.response);
-                    return Math.floor(total/30 + 1);
-                })
-                .then(function(totalPages) {
-                    var ticketPromises = [];
-                    for(let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
-                        url = `${baseUrl}&page=${pageNumber}`;
-                        ticketPromises.push(client.request.get(url, options))
-                    }
-                    return Promise.all(ticketPromises);
-                })
-                .then(function(resolvedTickets) {
-                    var allAgentTickets = [];
-                    resolvedTickets.forEach(function(resolvedTicket) {
-                        allAgentTickets = allAgentTickets.concat(JSON.parse(resolvedTicket.response).results)
-                    });
-                    return resolve(allAgentTickets)
-                })
-                .catch(function(er) {
-                    console.error(`Couldnt retrieve tickets. Status : ${er.status}`);
-                    reject(er);
-                })
+        }
+        var baseUrl = `https://${fd_domain}/api/v2/search/tickets?query="agent_id:${loggedInUser}"`;
+        client.request.get(baseUrl, options)
+            .then(function(resp) {
+                var { total } = JSON.parse(resp.response);
+                return Math.floor(total/30 + 1);
+            })
+            .then(function(totalPages) {
+                var ticketPromises = [];
+                for(let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                    url = `${baseUrl}&page=${pageNumber}`;
+                    ticketPromises.push(client.request.get(url, options))
+                }
+                return Promise.all(ticketPromises);
+            })
+            .then(function(resolvedTickets) {
+                var allAgentTickets = [];
+                resolvedTickets.forEach(function(resolvedTicket) {
+                    allAgentTickets = allAgentTickets.concat(JSON.parse(resolvedTicket.response).results)
+                });
+                return resolve(allAgentTickets)
+            })
+            .catch(function(er) {
+                console.error(`Couldnt retrieve tickets. Status : ${er.status}`);
+                reject(er);
+            })
     })
 }
 /**
@@ -82,13 +82,12 @@ function generateList(allAgentTickets) {
  * @param {*} client 
  * @param {*} loggedInUser 
  */
-function getRelatedTickets(client, loggedInUser) {
-    client.request.invoke('getIparams',{})
+function getRelatedTickets(loggedInUser) {
+    client.data.get('domainName')
         .then(function(result) {
-            var fd_api_key = result.response.fd_api_key;
-            var fd_domain = result.response.fd_domain;
+            var fd_domain = result.domainName;
             window.fd_domain = fd_domain;
-            return getAllAgentTickets(client, {fd_domain, fd_api_key}, loggedInUser);
+            return getAllAgentTickets(loggedInUser);
         })
         .then(function(allAgentTickets) {
             generateList(allAgentTickets)
