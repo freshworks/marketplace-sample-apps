@@ -9,3 +9,4 @@ A sample app that fetches and displays details about the current Lead in the Lea
 - Run 'fdk run' from the app directory and append '?dev=true' in the lead details page url. The app is rendered in the 'lead_entity_menu' location.
 
 ![Screenshot](app/screenshot.png)
+
