@@ -1,7 +1,7 @@
 {
   "account": {
     "display_name": "Freshsales acount url",
-    "description": "Please enter your Freshsales account url in the format https://domain.freshsales.io",
+    "description": "Please enter your Freshsales account url in the format https://domain.fsales.io",
     "type": "text",
     "required": true
   },
