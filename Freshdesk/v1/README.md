@@ -1,3 +1,7 @@
+
+"This is to notify that this version of app is NO LONGER SUPPORTED" 
+
+
 ## Freshdesk sample apps (v1)
 This repository contains sample apps demonstrating the various features available in the v1 App Framework. It contains the follwing apps:
 
