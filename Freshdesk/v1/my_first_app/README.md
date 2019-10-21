@@ -20,3 +20,5 @@ This app demonstrates the following features
     │   ├── iparam_en.yml         Installation parameter config in English language.
     │   └── iparam_test_data.yml  Installation parameter data used for local testing.
     └── manifest.yml              App manifest.
+
+### Note: We do not support version v1 of the platform anymore
