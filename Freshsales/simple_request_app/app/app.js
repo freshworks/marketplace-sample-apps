@@ -33,7 +33,7 @@ function getLeadDetails(leadId) {
         displayLeadDetails(data.response);
         showNotification('success', 'Lead info retrieved successfully');
     }).catch(function(e) {
-        console.error('Exception - ', e);
+        console.error('Error occurred while retrieving lead details: ', e);
     });
 }
 

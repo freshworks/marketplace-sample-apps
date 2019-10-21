@@ -9,6 +9,7 @@
     "display_name": "API token",
     "description": "Please enter your Freshsales API token obtained from Settings -> API Settings",
     "type": "text",
-    "required": true
+    "required": true,
+    "secure": true
   }
 }
