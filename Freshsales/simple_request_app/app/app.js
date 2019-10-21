@@ -84,3 +84,4 @@ function addRow(tableID, key, value) {
     var cellTwoText = document.createTextNode(value);
     cellTwo.appendChild(cellTwoText);
 }
+
