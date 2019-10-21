@@ -1,5 +1,5 @@
 var BASE_URL = 'https://<%= iparam.subdomain %>.freshsales.io';
-var AUTHORIZATION_TEMPLATE = "Basic <%= encode(iparam.username + ':' + iparam.password)%>";
+var AUTHORIZATION_TEMPLATE = "Token token=<%= iparam.apiKey%>";
 var CONTACT_INFO_MAPPING = {
   display_name: 'Name',
   email: 'Email',
