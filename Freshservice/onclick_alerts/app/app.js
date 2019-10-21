@@ -1,16 +1,36 @@
+/**
+ * @module app
+ */
 !(function($) {
     var clientAPP = null,
         successMessage = "All ticket properties have now been updated",
         requiredStatus = "5"; //Close Status Value
+
+    /**
+     * Entry point after the app is initialized
+     * 
+     * @param {Object} _client - The client object used to communicate with the parent page and access APIs
+     * @memberof module:app
+     */
     initAPP = function(_client) {
         clientAPP = _client;
         clientAPP.events.on('app.activated', initHandlers);
     };
 
+    /**
+     * Shows a confirmation message before closing the ticket
+     * 
+     * @memberof module:app
+     */
     closeTicketConfirmation = function() {
         clientAPP.interface.trigger("showConfirm", { title: "Confirm", message: "Are you sure you want to close this ticket?" })//Open the confirm box with pre-filled content
     };
 
+    /**
+     * Assigns handlers for the required events
+     * 
+     * @memberof module:app
+     */
     initHandlers = function() {
         clientAPP.events.on("ticket.propertiesUpdated", function() {
             client.interface.trigger("showNotify", { type: "success", message: successMessage });//displays the flash notice at the top

@@ -1,14 +1,31 @@
+/**
+ * @module modal
+ */
 !(function($) {
     var clientAPP = null,
         targetContainer = "#renderOutput ul",
         $li,
         $label,
         $value;
+
+    /**
+     * Entry point after the modal page is initialized
+     * 
+     * @param {Object} _client - The client object used to communicate with the parent page and access APIs
+     * @memberof module:modal
+     */
     initModal = function(_client) {
         clientAPP = _client;
         getData();
     };
 
+    /**
+     * Flattens the input object into string
+     * 
+     * @param {*} _v - The object which needs to be flattened to a string
+     * @returns {String} - Hyphen if input is null or empty, trimmed string if string, comma separated string if array, HTML content if otherwise
+     * @memberof module:modal
+     */
     flattenToString = function(_v) {
         var swapVariable = "";
         if (typeof _v == "string") {
@@ -24,7 +41,12 @@
         }
         return _v;
     };
-    //This method gets the value of associated child tickets and prints the details of the first child ticket.
+
+    /**
+     * Gets the associated child tickets and shows the details of the most recent child ticket
+     * 
+     * @memberof module:modal
+     */
     getData = function() {
         var $targetContainer = $(targetContainer);
         $(targetContainer).empty();
