@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Notify user with message and type
+ * @param {String} status - type of the notification
+ * @param {String} message - content to be shown in the notification
+ */
 function notifyUser(status, message) {
   client.interface.trigger('showNotify', {
     type: status,
@@ -7,6 +12,9 @@ function notifyUser(status, message) {
   });
 }
 
+/**
+ * Send SMS notification to user with the given message and status
+ */
 function notifySMS(event) {
   var req_phone = body.find('#to').val();
   var msgContent = body.find('#sms_message').val();
@@ -26,6 +34,9 @@ function notifySMS(event) {
   });
 }
 
+/**
+ * Render the application on click of the user notification SMS
+ */
 function renderApp() {
     body.find('#send_sms').on('click', notifySMS);
 
