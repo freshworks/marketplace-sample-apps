@@ -11,3 +11,5 @@
 
 1. It is mandatory to have a OneDrive account.
 2. You must have an OAuth app registered in OneDrive - https://dev.onedrive.com/app-registration.htm.
+
+### Note: We do not support version v1 of the platform anymore
