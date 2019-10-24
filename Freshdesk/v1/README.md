@@ -1,3 +1,5 @@
+# ⚠ Apps built on V1 development platform are no longer supported. Please refer to the [V2 apps directory](../v2) ⚠ 
+
 ## Freshdesk sample apps (v1)
 This repository contains sample apps demonstrating the various features available in the v1 App Framework. It contains the follwing apps:
 
