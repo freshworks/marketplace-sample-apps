@@ -2,9 +2,11 @@
 
 Freshdesk app for Freshcaller fetches current caller's email ID and fetches all the tickets from Freshdesk 
 
+![](screenshots/email.png)
+
 This app demonstrates the following features
 
-1. [Easy number management] - You can port your own number or purchase a new number from us.
-2. [Custom reporting] - You can use pre-built or custom reports along with report delivery options.
-3. [Advanced Inbound routing engine] - This helps you to set route for inbound calls.
-4. [Best-in-class Supervisor Controls]- You can virtually monitor every conversation keep the track of service levels and call queues
+1. It fetches current caller email ID and autofill in the form
+2. On submit it authorize the user
+3. If the user is authorised it fetches list of tickets and display 
+4. If the user is not authorised it display error message and you need to manually enter email ID
