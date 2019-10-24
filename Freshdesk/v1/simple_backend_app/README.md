@@ -12,3 +12,5 @@
 
 1. It is mandatory to have a Twilio account.
 2. The app needs the Twilio account_sid and auth_token to make the api call.
+
+### Note: We do not support version v1 of the platform anymore

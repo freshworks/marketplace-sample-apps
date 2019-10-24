@@ -8,3 +8,5 @@ This app demonstrates the following features
 2. Accessing data from the backend event payload
 
 This app was created using SDK v2.3.2
+
+### Note: We do not support version v1 of the platform anymore

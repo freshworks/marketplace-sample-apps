@@ -11,3 +11,5 @@
 
 1. It is mandatory to have a Atlassian JIRA account (free trial available).
 2. The app needs the Atlassian JIRA domain, username, and password to create and delete the webhook.
+
+### Note: We do not support version v1 of the platform anymore

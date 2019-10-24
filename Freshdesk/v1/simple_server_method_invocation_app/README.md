@@ -12,3 +12,5 @@
 1. It is mandatory to have a Twillio account (free trial available).
 2. The app needs the Twillio account_sid and auth_token to make the API call.
 3. The app sends the SMS using the Twillio phone number. You can get this number at https://www.twilio.com/console/phone-numbers/getting-started once you have registered.
+
+### Note: We do not support version v1 of the platform anymore

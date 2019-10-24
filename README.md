@@ -27,6 +27,7 @@
 - [Freshsales](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshsales)
 - [Freshservice](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshservice)
 
+### Note: We do not support version v1 of the platform anymore
 
 ###### For more information on getting started, please refer [here](https://developers.freshdesk.com/v2/docs/quick-start/#). Contributions are welcome 🎉
 

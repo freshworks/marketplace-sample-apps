@@ -82,3 +82,5 @@ This app demonstrates the following features
 
 1. Backend event - onTicketCreate
 2. Accessing data from the backend event payload
+
+### Note: We do not support version v1 of the platform anymore
