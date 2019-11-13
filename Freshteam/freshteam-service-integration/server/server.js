@@ -4,8 +4,10 @@ exports = {
     { event: 'onEmployeeCreate', callback: 'onEmployeeCreateHandler' }
   ],
 
-  // args is a JSON block containing the payload information.
-  // args['iparam'] will contain the installation parameter values.
+/**
+ * 
+ * @param {object} args  Payload from the event 
+ */
   onEmployeeCreateHandler: function (args) {
 
     var employeeName = `${args.data.employee.first_name} ${args.data.employee.last_name}`;
@@ -41,7 +43,9 @@ function CreateFreshserviceTicket(title, description, email) {
   }).then(function () {
     console.info('Successfully created ticket');
   },
-    function () {
+    function (error) {
       console.error('Unable to create ticket');
+      console.error(error);
+      
     });
 }
