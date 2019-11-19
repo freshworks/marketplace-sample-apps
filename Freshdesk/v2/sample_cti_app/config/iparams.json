@@ -1,0 +1,29 @@
+{
+  "freshdesk_api_key": {
+    "display_name": "Freshdesk API key",
+    "description": "Please enter your Freshdesk API key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "twilio_sid": {
+    "display_name": "Twilio account SID",
+    "description": "Please enter your Twilio account SID",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "twilio_auth_token": {
+    "display_name": "Twilio auth token",
+    "description": "Please enter your Twilio auth token",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "twilio_number": {
+    "display_name": "Twilio phone number",
+    "description": "Please enter your Twilio phone number",
+    "type": "text",
+    "required": true
+  }
+}
