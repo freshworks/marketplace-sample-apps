@@ -5,11 +5,7 @@
  *
  * @param {Object} data - Issue data to be stored
  */
-function saveMapping(data) {
-  var dbKey = String(`fdTicket:${data.ticketID}`).substr(0, 30);
-  var dbKey2 = String(`gitIssue:${data.issueNumber}`).substr(0, 30);
-  return Promise.all([$db.set(dbKey, { issue_data: data }), $db.set(dbKey2, { issue_data: data })])
-}
+//👇 Paste code for saveMapping() here 👇 - 🚩
 
 /**
  * Get Github issue data with issue number from the data storage
@@ -37,33 +33,7 @@ exports = {
    *
    * @param {object} args - payload
    */
-  onTicketCreateHandler: function (args) {
-    $request.post(`https://api.github.com/repos/${args.iparams.github_repo}/issues`, {
-      headers: {
-        Authorization: 'token <%= access_token %>',
-        'User-Agent': 'FreshHuddle Sample User Agent'
-      },
-      isOAuth: true,
-      json: {
-        title: args.data.ticket.subject,
-        body: args.data.ticket.description_text,
-        labels: [
-          "bug"
-        ]
-      }
-    }).then(data => {
-      console.info('Successfully created the GitHub issue for the Freshdesk ticket');
-      saveMapping({ ticketID: args.data.ticket.id, issueID: data.id, issueNumber: data.number }).then(function () {
-        console.info('Successfully set the mapping in the db');
-      }, error => {
-        console.error('Error: Failed to set the mapping in the db');
-        console.error(error);
-      });
-    }, error => {
-      console.error('Error: Failed to create the GitHub issue for the Freshdesk ticket');
-      console.error(error);
-    });
-  },
+   //👇 Paste code for onTicketCreateHandler() here 👇- 🚩
 
   /**
    * Handler for onAppInstall event
