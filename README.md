@@ -47,3 +47,4 @@ Products| App SDK | API | Description
 ###### ✍️Developer Blogs and Training
 - [Developer Platform Blog](https://medium.com/freshworks-developer-blog)
 - [Get Started](http://developers.freshworks.com/community)
+- [Code Review Guidelines](https://developers.freshdesk.com/v2/docs/code-review-guidelines/)
