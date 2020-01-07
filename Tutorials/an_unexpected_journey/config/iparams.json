@@ -1,9 +1,0 @@
-{
-  "api_key": {
-    "display_name": "TMDB API Key",
-    "description": "Please enter your TMDB API key",
-    "type": "text",
-    "required": true,
-    "secure": true
-  }
-}

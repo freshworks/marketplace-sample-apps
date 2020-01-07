@@ -1,9 +1,0 @@
-{
-  "api_key": {
-    "display_name": "Freshdesk API Key",
-    "description": "Please enter your freshdesk api key",
-    "type": "text",
-    "required": true,
-    "secure":true
-  }
-}
