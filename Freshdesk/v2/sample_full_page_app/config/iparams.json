@@ -1,0 +1,9 @@
+{
+  "api_key": {
+    "display_name": "Freshdesk API key",
+    "description": "Please enter your Freshdesk API key. You can find it in the profile section page.",
+    "type": "text",
+    "secure": true,
+    "required": true
+  }
+}

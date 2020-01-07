@@ -1,0 +1,112 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #4d4d4d;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+#content {
+    padding: 0px;
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+    border: solid 1px #dadfe3;
+}
+
+
+#renderOutput ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#renderOutput ul li {
+    border-bottom: 1px solid #dadfe3;
+    display: flex;
+}
+
+#renderOutput ul li label {
+    width: 50%;
+    display: block;
+    float: left;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+    color: #414655;
+}
+
+#renderOutput ul li label.info {
+    background: #f8f9fa;
+    border-right: 1px solid #dadfe3 !important;
+}
+
+#renderOutput ul li label.value {
+    background: #fff;
+    white-space: pre-wrap;
+    overflow-x: scroll;
+}

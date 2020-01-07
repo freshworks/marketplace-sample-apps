@@ -1,0 +1,14 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshsales": {
+      "location": {
+        "lead_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 48 48">
+    <g fill="none" fill-rule="nonzero">
+        <path fill="#FFA800" d="M24 48C10.752 48 0 37.248 0 24S10.752 0 24 0h18c3.312 0 6 2.688 6 6v18c0 13.248-10.752 24-24 24z"/>
+        <g fill="#FFF" transform="translate(13.44 12)">
+            <circle cx="10.8" cy="4.704" r="4.704"/>
+            <path d="M.24 11.136l8.256 8.208V24h4.128v-4.656l8.256-8.208z"/>
+        </g>
+    </g>
+</svg>

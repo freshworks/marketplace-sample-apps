@@ -1,0 +1,4 @@
+{
+  "freshdesk_domain": "Enter your domain name (Only the one before `.freshdesk.com`)",
+  "freshdesk_key": "Enter your API key here"
+}

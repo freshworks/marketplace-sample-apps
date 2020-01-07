@@ -1,0 +1,11 @@
+input[type="text"] {
+	background-color: transparent;
+}
+
+textarea.form-control {
+	background-color: transparent;
+}
+
+.sms_button {
+	margin-top: 15px;
+}

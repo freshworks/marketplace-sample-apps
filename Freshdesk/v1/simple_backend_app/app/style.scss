@@ -1,0 +1,5 @@
+#logo {
+    background: url("{{'logo.png' | asset_url}}");
+    background-repeat: no-repeat;
+    height: 41px;
+}
