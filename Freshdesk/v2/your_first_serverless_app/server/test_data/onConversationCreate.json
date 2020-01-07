@@ -1,0 +1,37 @@
+{
+  "data": {
+    "conversation": {
+      "body": "<div>Hi tom, Still Angry</div>",
+      "is_body_truncated": false,
+      "body_text": "Hi tom, Still Angry",
+      "is_body_text_truncated": false,
+      "id": 5,
+      "from_email": "rachel@freshdesk.com",
+      "bcc_emails": ["ram@freshdesk.com", "diana@freshdesk.com"],
+      "support_email": "rachel@freshdesk.com",
+      "user_id": 23423,
+      "ticket_id": 452,
+      "private": false,
+      "incoming": false,
+      "source": 2,
+      "cc_emails": ["ram@freshdesk.com", "diana@freshdesk.com"],
+      "to_emails": ["ram@freshdesk.com", "diana@freshdesk.com"],
+      "created_at": "2015-07-09T13:08:06Z",
+      "updated_at": "2015-07-09T13:08:06Z",
+      "attachments": [
+        {
+          "id": 9019290053,
+          "content_type": "image/jpeg",
+          "file_size": 78942,
+          "name": "sample.jpg",
+          "attachment_url": "https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/9019290053/original/sample.jpg",
+          "created_at": "2016-12-22T09:37:47Z",
+          "updated_at": "2016-12-22T09:37:47Z"
+        }
+      ]
+    }
+  },
+  "account_id" : 13,
+  "domain" : "sample.freshdesk.com",
+  "event": "onConversationCreate"
+}

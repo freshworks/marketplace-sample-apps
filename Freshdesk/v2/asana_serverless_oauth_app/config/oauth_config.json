@@ -1,0 +1,9 @@
+{
+  "client_id": "your_asana_client_id",
+  "client_secret": "your_asana_client_secret",
+  "authorize_url": "https://app.asana.com/-/oauth_authorize",
+  "token_url": "https://app.asana.com/-/oauth_token",
+  "options": {
+  },
+  "token_type": "account"
+}
