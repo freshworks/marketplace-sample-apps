@@ -1,0 +1,15 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_background": {
+          "url": "template.html"
+        }
+      }
+    }
+  },
+    "whitelisted-domains": [
+    "https://api.themoviedb.org"
+  ]
+}
