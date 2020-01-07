@@ -1,6 +1,0 @@
-platform-version: '1.0'
-pages:
-  - ticket
-  - contact
-whitelisted-domains:
-  - https://httpbin.org
