@@ -1,15 +1,23 @@
-## An Unexpected Journey
+# An Unexpected Journey
 
 Used for the tutorial "The Anatomy of an App - The Front-end App"
 
-Every time the ticket details page is loaded, check to see if Mr. Baggins is the current agent, and if it is him, set the priority to urgent and disable the priority field. If Mr. Baggins tries to reassign the ticket, show a notification warning him of dire consequences. 
-Also make an API request to The Movie Database to search for a movie named "an unexpected journey" and display its overview in a notification.
+## What does the app do ?
 
-This app is located in the ticket_background location and demonstrates the following features
+1. The app loads in the ticket background.
+2. App checks if the current logged in agent is **Mr.Baggins** and shows the relavant notifications.
+3. Makes an api call searching "an unexpected journey" on themoviedb.org and displays it's overview in a notification.
 
-1. App location - ticket_background
-2. Using Interface APIs to set and disable ticket properties.
-3. Using a data API to fetch data from the page
-4. Using an event API to listen for a change event on the page
-5. Displaying a notification to the user
-6. Making a secure API request to fetch data from an external API endpoint
+Feature demonstrated | Notes
+-------------------- | ------
+App Location: ticket_background |
+Interface API | Disables ticket properties
+Event API | Listens for a change event on the page
+Request API | To fetch data from themoviedb API endpoint
+
+Capability Demonstrated | Leveragable Potential
+----------------------- | ---------------------
+Demonstrates ticket background app location applicable for Freshdesk & Freshservice | Freshchat, Freshsales, Freshcaller can also demonstrate same with respective App locations.
+
+###### Pro Tip
+- The platform features that you use to build using FDK is compatible with any Freshworks product with very less differences.
