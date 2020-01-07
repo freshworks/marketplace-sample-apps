@@ -1,5 +1,4 @@
 {
-  "_comment":" location can be updated depending on the target product",
   "platform-version": "2.0",
   "product": {
     "freshdesk": {
