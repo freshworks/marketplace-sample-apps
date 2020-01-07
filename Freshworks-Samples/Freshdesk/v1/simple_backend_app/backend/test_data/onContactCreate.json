@@ -1,0 +1,25 @@
+{
+  "data": {
+    "contact": {
+      "active": false,
+      "address": "221 B, Baker Street, London.",
+      "company_id": 1,
+      "description": "Sherlocks contact details.",
+      "email": "superman@freshdesk.com",
+      "id": 2,
+      "job_title": "Investigator",
+      "language": "en",
+      "mobile": 3545643254,
+      "name": "Sherlock Holmes",
+      "phone": "98765315",
+      "time_zone": "London",
+      "twitter_id": "234xsdf",
+      "other_emails": ["lex@freshdesk.com","louis@freshdesk.com"],
+      "created_at": "2015-08-28T09:08:16Z",
+      "updated_at": "2015-08-28T09:08:16Z",
+      "tags": ["marketing"]
+    }
+  },
+  "account_id" : 13,
+  "domain" : "http://sample.freshdesk.com"
+}

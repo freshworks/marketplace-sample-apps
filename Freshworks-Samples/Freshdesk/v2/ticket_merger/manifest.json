@@ -1,0 +1,9 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {}
+  },
+  "dependencies": {
+    "needle": "1.6.0"
+  }
+}
