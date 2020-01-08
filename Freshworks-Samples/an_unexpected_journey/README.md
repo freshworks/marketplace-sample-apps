@@ -15,6 +15,8 @@ Interface API | Disables ticket properties
 Event API | Listens for a change event on the page
 Request API | To fetch data from themoviedb API endpoint
 
+###### Caveats
+
 Capability Demonstrated | Leveragable Potential
 ----------------------- | ---------------------
 Demonstrates ticket background app location applicable for Freshdesk & Freshservice | Freshchat, Freshsales, Freshcaller can also demonstrate same with respective App locations.
