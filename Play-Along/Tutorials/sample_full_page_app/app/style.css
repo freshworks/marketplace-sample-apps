@@ -1,0 +1,143 @@
+.logo {
+  background: url('freshdesk_logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  margin-top: 25px;
+}
+
+.fw-widget-wrapper {
+  padding: 15px;
+}
+
+#domain {
+  height: 25px;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+#chart {
+  width: 100%;
+  height: calc(100% - 60px);
+  position: relative;
+  transition: height .2s linear;
+}
+#chart.minimize {
+  height: 90px;
+}
+#chart:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: #333;
+}
+#chart:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #333;
+  transition: all .2s linear;
+}
+#chart.minimize:after {
+  background: transparent;
+}
+
+#chart .status {
+  width: 25%;
+  height: 100%;
+  float: left;
+  position: relative;
+  cursor: pointer;
+  z-index: 0;
+}
+#chart .status:hover {
+  background: #eee;
+}
+
+#chart .status-bar {
+  height: 0;
+  background: #00b973;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: height .2s linear;
+}
+#chart .status:hover .status-bar {
+  background: #02905a;
+}
+#chart.minimize .status-bar {
+  height: 100% !important;
+}
+#chart.minimize .status:not(.active) .status-bar {
+  background: #ccc;
+}
+
+#chart .status-label {
+  width: 100%;
+  padding: 5px;
+  background: #fff;
+  background: #fffa;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#chart .status:hover .status-label {
+  background: #ddda;
+}
+
+#chart .status-label .status-value {
+  font-size: 3em;
+}
+
+#ticket-list {
+  margin-top: 20px;
+}
+#ticket-list table {
+  width: 100%;
+}
+#ticket-list tr {
+  cursor: pointer;
+}
+#ticket-list td {
+  padding: 10px;
+}
+#ticket-list td:last-child {
+  text-align: right;
+}
+#ticket-list tr:hover td {
+  background: #00b97366;
+}
+#ticket-list td.priority {
+  position: relative;
+}
+#ticket-list td.priority:before {
+  content: '';
+  width: 3px;
+  height: calc(100% - 20px);
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  background: #ccc;
+  margin: 10px;
+}
+#ticket-list td.priority-1:before {
+  background: #9fd763;
+}
+#ticket-list td.priority-2:before {
+  background: #489fff;
+}
+#ticket-list td.priority-3:before {
+  background: #ffd100;
+}
+#ticket-list td.priority-4:before {
+  background: #ff5754;
+}
