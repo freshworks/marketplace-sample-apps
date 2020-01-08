@@ -21,8 +21,5 @@
           }
         }
       }
-    },
-    "whitelisted-domains": [
-      "https://www.google.com"
-  ]
+    }
   }
