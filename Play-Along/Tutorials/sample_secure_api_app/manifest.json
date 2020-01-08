@@ -1,0 +1,17 @@
+{
+  "platform-version": "2.0",
+  "dependencies": {
+    "request": "2.72.0",
+    "jsonwebtoken": "8.4.0"
+  },
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    }
+  }
+}
