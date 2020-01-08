@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="http://static.freshdev.io/fdk/2.0/assets/freshsales.css">
+      <style>
+        .code-snippet {
+          display: block;
+          position: relative;
+          color: #1a1a1a;
+          font-size: 14px;
+          line-height: 1;
+          font-weight: 400;
+          padding: 10px;
+          margin: 10px 0;
+          margin-top: 20px;
+          background-color: rgba(229,229,229,0.5);
+          border: 1px solid #e6e6e6;
+          border-radius: 3px;
+          font-family: monospace !important;
+        }
+      </style>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.6.0/async.min.js"></script>
+      <script src="app.js"></script>
+   </head>
+   <body>
+     <div class="fs-widget-wrapper">
+       <div class="panel">
+         <div class="panel-heading">
+           <h1>Buttons</h1>
+         </div>
+         <div class="panel-body">
+           <button type="reset" class="btn btn-default">Sample button</button>
+           <button type="submit" class="btn btn-primary"><span>Sample button</span></button>
+           <span class="code-snippet">
+               &lt;button type="reset" class="btn btn-default"&gt;Sample button&lt;/button&gt;
+           </span>
+           <br>
+         </div>
+       </div>
+       <div class="panel">
+         <div class="panel-heading">
+           <h1>Headings, Label, External Links</h1>
+         </div>
+         <div class="panel-body">
+           <label class="control-label text-muted">Sample Label</label>
+           <h1>Heading 1 (16px)</h1>
+           <h2>Heading 2 (14px)</h2>
+           <h3>Heading 3 (12px)</h3>
+           <h6>Heading 4 (10px)</h6>
+           <a href="www.google.com">This is the sample link, which navigates to Google</a>
+           <span class="code-snippet">
+             &lt;label class=&quot;control-label text-muted&quot;&gt;Sample Label&lt;/label&gt;
+             <br>
+             &lt;h1&gt;Heading 1 (16px)&lt;/h1&gt;
+             <br>
+             &lt;h2&gt;Heading 2 (14px)&lt;/h2&gt;
+             <br>
+             &lt;h3&gt;Heading 3 (12px)&lt;/h3&gt;
+             <br>
+             &lt;h6&gt;Heading 4 (10px)&lt;/h6&gt;
+             <br>
+             &lt;a href=&quot;www.google.com&quot;&gt;This is the sample link, which navigates to Google&lt;/a&gt;
+           </span>
+         </div>
+       </div>
+       <div class="panel">
+         <div class="panel-heading">
+           <h1>Basic Form Inputs</h1>
+         </div>
+         <div class="panel-body">
+           <div class="text-field form-group">
+             <label class="control-label">
+               Last name
+             </label>
+             <input placeholder="Enter value" class="form-control">
+           </div>
+           <span class="code-snippet">
+             &lt;div class=&quot;text-field form-group&quot;&gt;
+               <br>
+               &nbsp;&lt;label class=&quot;control-label&quot;&gt;Last name&lt;/label&gt;
+               <br>
+               &nbsp;&lt;input placeholder=&quot;Enter value&quot; class=&quot;form-control&quot;&gt;
+               <br>
+             &lt;/div&gt;
+           </span>
+           <br/>
+           <p>Input Field with error message</p>
+           <div class="has-error">
+             <input placeholder="Enter value" class="form-control">
+             <div class="validation-msg">error message</div>
+           </div>
+           <span class="code-snippet">
+             &lt;div class=&quot;has-error&quot;&gt;
+               <br>
+               &nbsp;&lt;input placeholder=&quot;Enter value&quot; class=&quot;form-control&quot;&gt;
+               <br>
+               &nbsp;&lt;div class=&quot;validation-msg&quot;&gt;error message&lt;/div&gt;
+               <br>
+             &lt;/div&gt;
+           </span>
+           <br/>
+           <p>Custom checkbox</p>
+           <div class="custom-checkbox">
+             <input id="check" type="checkbox">
+             <label for="check">Check me</label>
+           </div>
+           <span class="code-snippet">
+             &lt;div class=&quot;custom-checkbox&quot;&gt;
+               <br>
+               &nbsp;&lt;input id=&quot;check&quot; type=&quot;checkbox&quot;&gt;
+               <br>
+               &nbsp;&lt;label for=&quot;check&quot;&gt;Check me&lt;/label&gt;
+               <br>
+             &lt;/div&gt;
+           </span>
+         </div>
+       </div>
+       <div class="panel">
+         <div class="panel-heading">
+           <h1>Pagination Support</h1>
+         </div>
+         <div class="panel-body">
+           <ul class="pager">
+             <a href="#" class="pager-item pager-previous">Previous</a>
+             <span class="bullet"></span>
+             <a href="#" class="pager-item pager-next">Next</a>
+           </ul>
+           <span class="code-snippet">
+             &lt;ul class=&quot;pager&quot;&gt;
+               <br>
+               &nbsp;&lt;a href=&quot;#&quot; class=&quot;pager-item pager-previous&quot;&gt;Previous&lt;/a&gt;
+               <br>
+               &nbsp;&lt;span class=&quot;bullet&quot;&gt;&lt;/span&gt;
+               <br>
+               &nbsp;&lt;a href=&quot;#&quot; class=&quot;pager-item pager-next&quot;&gt;Next&lt;/a&gt;
+               <br>
+             &lt;/ul&gt;
+           </span>
+         </div>
+       </div>
+       <div class="panel">
+         <div class="panel-heading">
+           <h1>Sample Table(Replica of Bootstrap Table)</h1>
+         </div>
+         <div class="panel-body">
+           <table class="table table-hover table-striped table-condensed table-bordered">
+             <thead>
+               <tr>
+                 <th>First Name</th>
+                 <th>Last Name</th>
+                 <th>eMail</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>Mickey</td>
+                 <td>Mouse</td>
+                 <td>miki@duckburg.org</td>
+               </tr>
+               <tr>
+                 <td>Donald</td>
+                 <td>Duck</td>
+                 <td>don@ducktales.org</td>
+               </tr>
+               <tr>
+                 <td>Minnie</td>
+                 <td>Mouse</td>
+                 <td>min@mousetown.com</p>
+               </tr>
+             </tbody>
+           </table>
+           <span class="code-snippet">
+             &lt;table class=&quot;table table-hover table-striped table-condensed table-bordered&quot;&gt;
+               <br>
+               &nbsp;&lt;thead&gt;
+                 <br>
+                 &nbsp;&nbsp;&lt;tr&gt;
+                   <br>
+                   &nbsp;&nbsp;&nbsp;&lt;th&gt;...&lt;/th&gt;
+                   <br>
+                 &nbsp;&nbsp;&lt;/tr&gt;
+                 <br>
+               &nbsp;&lt;/thead&gt;
+               <br>
+               &nbsp;&lt;tbody&gt;
+                 <br>
+                 &nbsp;&nbsp;&lt;tr&gt;...&lt;/tr&gt;
+                 <br>
+               &nbsp;&lt;/tbody&gt;
+               <br>
+             &lt;/table&gt;
+           </span>
+         </div>
+       </div>
+     </div>
+   </body>
+</html>
