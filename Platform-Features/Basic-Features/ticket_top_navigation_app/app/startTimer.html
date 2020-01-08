@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="startTimer.js"></script>
+  </head>
+  <body>
+    <div class='container-fluid'>
+      <form>
+        <div class="spinner alert col-md-6">
+          <button class="btn btn-warning btn-lg"><i class="fa fa-spinner fa-spin"></i> Loading...</button>
+        </div>
+        <div class="alert alert-success">
+          Started timer successfully.
+        </div>
+        <div class="alert alert-danger">
+          Some error has occured while fetching Agents.
+        </div>
+        <div id='fields'>
+          <div class="form-group">
+            <label for="agent">Agent:</label>
+            <select class="form-control" id='agent' name='agent'>
+            </select>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" id='billable'>Billable</label>
+          </div>
+          <div class="form-group">
+            <label for="note">Note</label>
+            <textarea class="form-control" class="form-control" id="note" name='note'></textarea>
+          </div>
+          <button class='btn btn-default btn-xs' id='startTimer' onclick="addTimer()">Start</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
