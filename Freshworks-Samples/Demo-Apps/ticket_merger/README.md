@@ -1,11 +1,30 @@
-## Ticket Merger
+# Ticket Merger
 
+### Description:
 Merges Tickets created by the same requester within a configurable time window. Also adds useful notes on the tickets mentioning the ticket to/from which the merge was done. Requires the Freshdesk API key to make the necessary API calls to add notes, close tickets etc.
-    
+
+Features demonstrated | Notes
+-------------------- | ------
+Product Event | onTicketCreate
+Making an API calls to Freshdesk using proper Authentication and Authorization. | NA
+Data Persistence to keep track of ticket create events. | NA
+
+### Prerequisites:
+1. Make sure you have a trial Freshdesk account created
+2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+
+_[From point 3, add some of the important prerequisites which are specific to this app]_
+
+### Procedure to run the app:
+1. Fill the `iparam_test_data.json` before running the app locally.
+2. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
+3. Append `?dev=true` to the Freshworks product URL to see the changes
+
+_[ Special instructions for realizing the value out of this app]_
+
+### Screenshots:
+
 ![](screenshots/simulation.gif)
 
-This app demonstrates the following features,
-
-1. Freshdesk Product event - onTicketCreate
-2. Making an API calls to Freshdesk using proper Authentication and Authorization.
-3. Data Persistence to keep track of ticket create events.
+###### Protip
+- [Pending]

@@ -1,18 +1,30 @@
-## Freshdesk app to request Freshdesk API 
+# [Name of the App]
 
-Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
+### Description:
+[Pending]
 
-### Folder structure explained
+Features demonstrated | Notes
+-------------------- | ------
+Pending | Pending
 
-    .
-    ├── README.md                  This file
-    ├── app                        Contains the files that are required for the front end component of the app
-    │   ├── app.js                 JS to render the dynamic portions of the app
-    │   ├── icon.svg               Sidebar icon SVG file. Should have a resolution of 64x64px.
-    │   ├── freshdesk_logo.png     The Freshdesk logo that is displayed in the app
-    │   ├── style.css              Style sheet for the app
-    │   ├── template.html          Contains the HTML required for the app’s UI
-    ├── config                     Contains the installation parameters and OAuth configuration
-    │   ├── iparams.json           Contains the parameters that will be collected during installation
-    │   └── iparam_test_data.json  Contains sample Iparam values that will used during testing
-    └── manifest.json              Contains app meta data and configuration information
+
+
+### Prerequisites:
+1. Make sure you have a trial Freshdesk account created
+2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+
+_[From point 3, add some of the important prerequisites which are specific to this app]_
+
+### Procedure to run the app:
+1. Fill the `iparam_test_data.json` before running the app locally.
+2. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
+3. Append `?dev=true` to the Freshworks product URL to see the changes
+
+_[ Special instructions for realizing the value out of this app]_
+
+### Screenshots:
+
+[Pending]
+
+###### Protip
+- [Pending]

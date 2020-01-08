@@ -1,26 +1,36 @@
-## External Events App
+# External Events App
 
-  This app creates a ticket in Freshdesk every time an issue created for the configured repository in GitHub.
+### Description:
+This app creates a ticket in Freshdesk every time an issue created for the configured repository in GitHub.
 
-  This app demonstrates the following generic features
-  1. Using App Setup events to create and delete the GitHub webhoook
-  2. Making an API request in server.js
-
-  And the following platform features
-  1. [External Events](https://developer.freshdesk.com/v2/docs/external-events/)
-  2. [OAuth](https://developer.freshdesk.com/v2/docs/oauth/)
-  3. [Secure installation parameter](https://developer.freshdesk.com/v2/docs/installation-parameters/)
-  4. [Request API](https://developer.freshdesk.com/v2/docs/request-api/)
-  5. [Data Storage](https://developer.freshdesk.com/v2/docs/data-storage/)
-
+Features demonstrated | Notes
+-------------------- | ------
+App Setup events | To create and delete Github webhoook
+external events | NA
+Making an API request in server.js | NA
+Secure Installation Parameters | NA
+Data Storage | NA
+OAuth | NA
 
 ### Prerequisites:
+1. Make sure you have a trial Freshdesk account created
+2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+3. Create an OAuth App - [Link](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
+4. Register GitHub webhook - [Link](https://developer.github.com/webhooks/creating/)
+5. The app needs the GitHub username, to authenticate the app to create and delete the webhook over REST API.
+6. The ngrok application installed in the local machine to expose localhost to the internet
 
-1. It is mandatory to have a GitHub account.
-2. The app needs the GitHub username, to authenticate the app to create and delete the webhook over REST API.
-3. The ngrok application installed in the local machine to expose localhost to the internet
 
-### Links:
+### Procedure to run the app:
+1. Fill the `iparam_test_data.json` before running the app locally.
+2. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
+3. Append `?dev=true` to the Freshworks product URL to see the changes
 
-* Create an OAuth App - [Link](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
-* Register GitHub webhook - [Link](https://developer.github.com/webhooks/creating/)
+_[ Special instructions for realizing the value out of this app]_
+
+### Screenshots:
+
+[Pending]
+
+###### Protip
+- [Pending]
