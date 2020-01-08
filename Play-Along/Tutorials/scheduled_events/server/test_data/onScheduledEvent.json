@@ -1,7 +1,11 @@
 {
   "timestamp": 1496400354326,
-  "account_id" : 13,
-  "domain" : "sample.freshdesk.com",
+  "account_id": 13,
+  "domain": "sample.freshdesk.com",
   "event": "onScheduledEvent",
-  "region": "US"
+  "region": "US",
+  "data": {
+    "userId": "Demo userId",
+    "note": "Demo note"
+  }
 }
