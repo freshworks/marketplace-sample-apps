@@ -1,9 +1,0 @@
-{
-    "fd_api_key": {
-      "display_name": "freshdesk domain",
-      "description": "Please enter your Freshdesk domain",
-      "type": "text",
-      "required": true,
-      "secure": true
-    }
-}
