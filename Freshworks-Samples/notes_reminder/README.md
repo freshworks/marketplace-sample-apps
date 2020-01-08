@@ -1,4 +1,4 @@
-# Scheduled events
+# Notes Reminder App
 You can add a note and set a reminder so that app will remind your note after a set period of time as scheduled.
 
 ###### Protip
