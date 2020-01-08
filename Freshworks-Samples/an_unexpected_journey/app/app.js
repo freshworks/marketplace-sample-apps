@@ -1,3 +1,14 @@
+$(document).ready(function () {
+    // Initialize channel
+    app.initialized().then(function (_client) {
+        window.client = _client;
+        // App activate callback
+        client.events.on('app.activated', function () {
+            lookForBaggins();
+            displayOverview();
+        });
+    });
+});
 
 function displayOverview() {
     let base_url = 'https://api.themoviedb.org/3/search/movie';
@@ -13,7 +24,7 @@ function displayOverview() {
                 for (let result in response.results) {
                     let overview = response.results[0].overview;
                     displayMessage('success', overview);
-                    break;                  
+                    break;
                 }
             },
             function(error) {
@@ -53,15 +64,3 @@ function onPropertyChange(event) {
 function displayMessage(type, message) {
     client.interface.trigger('showNotify', { type: type, message: message});
 }
-
-$(document).ready( function() {
-  // Initialize channel
-  app.initialized().then(function(_client) {
-    window.client = _client;
-    // App activate callback
-    client.events.on('app.activated', function() {
-        lookForBaggins();
-        displayOverview();
-    });
-  });
-});

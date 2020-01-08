@@ -3,11 +3,14 @@
   "product": {
     "freshdesk": {
       "location": {
-        "ticket_sidebar": {
+        "ticket_top_navigation": {
           "url": "template.html",
           "icon": "icon.svg"
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://<%= iparam.freshdesk_domain %>.freshdesk.com"
+  ]
 }
