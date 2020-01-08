@@ -1,6 +1,6 @@
 # An Unexpected Journey
 
-Used for the tutorial "The Anatomy of an App - The Front-end App"
+"The Anatomy of an App - The Front-end App"
 
 ## What does the app do ?
 
@@ -18,6 +18,7 @@ Request API | To fetch data from themoviedb API endpoint
 Capability Demonstrated | Leveragable Potential
 ----------------------- | ---------------------
 Demonstrates ticket background app location applicable for Freshdesk & Freshservice | Freshchat, Freshsales, Freshcaller can also demonstrate same with respective App locations.
+As Freshdesk app, it gets logged in 'user' with Data API | For Freshservice app, you can get logged in 'agent' to check for Mr.Baggins
 
 ###### Pro Tip
 - The platform features that you use to build using FDK is compatible with any Freshworks product with very less differences.
