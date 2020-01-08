@@ -8,8 +8,5 @@
         }
       }
     }
-  },
-    "whitelisted-domains": [
-    "https://api.themoviedb.org"
-  ]
+  }
 }
