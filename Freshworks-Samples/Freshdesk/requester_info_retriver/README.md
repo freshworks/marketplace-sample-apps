@@ -1,4 +1,4 @@
-# Sample CRM App
+# Requester info Retriver - Freshsales CRM
 
 ### Description:
 Every time the ticket details page is loaded, this app makes an API call to the Freshsales CRM to retrieve additional information about the ticket requester.
