@@ -1,4 +1,4 @@
-## Ticket Tag checker
+## Intercepting Events App 2
 
 Whenever a ticket is closed, this app checks if there are any tags attached to the ticket and if no tags are attached, stops the close event and displays an error notification.
 
