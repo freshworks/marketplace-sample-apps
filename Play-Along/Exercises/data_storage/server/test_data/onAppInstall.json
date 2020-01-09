@@ -1,7 +1,0 @@
-{
-  "timestamp": 1496400354326,
-  "account_id" : 13,
-  "domain" : "sample.freshdesk.com",
-  "event": "onAppInstall",
-  "region": "US"
-}
