@@ -1,4 +1,4 @@
-## Tickets Creation Scheduler App
+## Scheduled Events Sample App
 
 This app enables agents to schedule the creation of tickets.
 
