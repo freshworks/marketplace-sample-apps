@@ -3,7 +3,7 @@
 We'd love for you to contribute to our source code and to make AngularJS even better than it is
 today! Here are the guidelines we'd like you to follow:
 
-* [Code of Conduct](CODE_OF_CONDUCT.MD)
+* [Code of Conduct](https://github.com/freshdesk/marketplace-sample-apps/blob/master/.github/CODE_OF_CONDUCT.MD)
 * [Questions and Problems](#question)
 * [Issues and Bugs](#issue)
 * [Feature Requests](#feature)
