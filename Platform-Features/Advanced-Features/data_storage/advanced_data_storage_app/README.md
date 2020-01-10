@@ -1,8 +1,14 @@
-## Advanced Data Storage App
+# Advanced Data Storage App
+
+### Description:
 
 This app allows you to set aliases for links similar to URL shortner services such as bit.ly.
 The links can be fetched with the set alias. But, it is stored only for a day time in the data storage just like Instagram story and WhatsApp status. ;)
 This app can be used to share a secret with peer support agents without actually sending the link but the alias of the link.
+
+### Screenshots:
+
+_[Screenshots that are not too big/small. Gifs are best. Let's just stick to 3 screenshots at the max]_
 
 ### Features demonstrated
 
@@ -16,3 +22,9 @@ This app can be used to share a secret with peer support agents without actually
 1. Clone the repository and navigate to Freshdesk/v2/advanced_data_storage_app
 2. Execute **_fdk run_** on the folder
 3. Visit **_https://domain.freshdesk.com/a/tickets/123?dev=true_** in the browser to see the app loading in the ticket details page sidebar. In the specified URL, the **_domain_** should be replaced by your domain and **_123_** should be replaced by the ticket ID of available ticket in your Freshdesk instance
+
+### Prerequisites:
+1. Make sure you have a trial [FreshworksProduct] account created
+2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+
+_[From point 3, add some of the important prerequisites which are specific to this app]_
