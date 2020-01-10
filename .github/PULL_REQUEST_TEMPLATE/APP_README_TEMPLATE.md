@@ -6,7 +6,7 @@ _[Description of the sample app]_
 
 Features demonstrated | Notes
 -------------------- | ------
- | 
+ _Feature Name_ | _How the app is using it_
 
 ### Prerequisites:
 1. Make sure you have a trial [FreshworksProduct] account created
