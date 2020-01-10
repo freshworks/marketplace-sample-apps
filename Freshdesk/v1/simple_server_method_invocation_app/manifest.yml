@@ -1,8 +1,0 @@
-platform-version: '1.0'
-dependencies:
-  twilio: 2.11.1
-pages:
-  - ticket
-  - contact
-features:
-  - backend
