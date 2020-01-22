@@ -4,22 +4,17 @@ about: You can request a sample app from the team. Please make sure you have gon
   through the repo completely before raising a new sample app request.
 title: "[Feature Request] - "
 labels: feature-request
-assignees: hemchander23, ravirajthedeveloper, Saif-Shines
 
 ---
 
 **Describe the sample app use-case :**
-Describe the scenario, use-case and how it will help others if added as a sample app. 
+Describe the scenario, use-case and how it will help others if added as a sample app.
 
-**For which product ? :**
-- [ ] Freshdesk
-- [ ] Freshchat
-- [ ] Freshsales
-- [ ] Freshservice
-- [ ] Freshcaller
+**List the Platform feature(s) that you want the app to demonstrate :**
+
 
 **Do you already have a sample app / PR ready? :**
-Yes/No
+If Yes, please state the link to your Pull Request here.
 
-**More details :**
+**Comments :**
 Screenshots, docs and further details.
