@@ -24,7 +24,7 @@ app.post('/call-forward', (req, res) => {
     action: '/handle-dial-call-status',
     method: 'POST',
     timeLimit: 60
-  }, '<TEST_PHONE_NUMBER_TO_RECEIVE_INCOMING_CALL>'); \
+  }, '<TEST_PHONE_NUMBER_TO_RECEIVE_INCOMING_CALL>');
   res.type('text/xml');
   res.send(twiml.toString());
 });

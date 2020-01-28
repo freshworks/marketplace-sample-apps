@@ -20,7 +20,7 @@ function createTicket(event) {
 
   event.data.client.data.get("domainName").then(
     function (data) {
-      client.request.post(data.domainName + "/api/v2/tickets",
+      client.request.post(data.domainName + "api/v2/tickets",
         {
           headers: {
             Authorization: '<%= encode(iparam.freshdesk_api_key) %>'
@@ -29,7 +29,8 @@ function createTicket(event) {
             priority: priorities[ticketDetails.priority],
             email: ticketDetails.email,
             subject: ticketDetails.subject,
-            description: ticketDetails.description
+            description: ticketDetails.description,
+            status: 2
           },
           method: "POST"
         }).then(() => {
@@ -47,7 +48,8 @@ function createTicket(event) {
 
 function onDocumentReady() {
   app.initialized()
-    .then(function (client) {
+    .then(function (_client) {
+      window.client = _client
       client.instance.context().then(function (context) {
         $('#description').val(context.data.callNotes);
 

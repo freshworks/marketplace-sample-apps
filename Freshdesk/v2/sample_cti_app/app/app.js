@@ -24,6 +24,7 @@ function hideSpinner() {
 function callNumber(phone_number) {
     hideSpinner();
     $('#output').val(phone_number)
+    makeCall(phone_number);
 };
 
 /**
@@ -86,7 +87,7 @@ function showOnCallScreen() {
     hideMainScreen();
     $('#onCallScreen').show();
     $("#btnEndCall").off('click');
-    $('#btnEndCall').on('click', hangupActiveCallApi);
+    $('#btnEndCall').on('click', true, hangupActiveCallApi);
     $('#createTicket').on('click', openCreateTicketModal);
 }
 
@@ -153,28 +154,28 @@ function endIncompleteCall() {
 function callApi(phoneNumber) {
     var headers = {
         "Authorization": "Basic <%= encode(iparam.twilio_sid + ':' + iparam.twilio_auth_token) %>",
-        'content-type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
     };
     var options = {
         headers: headers,
-        json: {
-            Url: "http://demo.twilio.com/docs/voice.xml",
-            To: phoneNumber,
-            From: userPhone,
-            statusCallbackEvent: ["initiated", "ringing", "answered", "completed"]
+        form: {
+            "Url": "http://demo.twilio.com/docs/voice.xml",
+            "To": phoneNumber,
+            "From": userPhone,
+            "statusCallbackEvent": ["initiated", "ringing", "answered", "completed"]
         }
     };
-    var url = "https://api.twilio.com/2010-04-01/Accounts/<% iparam.twilio_sid %>/Calls.json";
+    var url = "https://api.twilio.com/2010-04-01/Accounts/<%= iparam.twilio_sid %>/Calls.json";
     client.request.post(url, options)
         .then(
             function (data) {
-                activeCallSid = data.sid;
-            },
-            function (error) {
-                console.error('failed to make a call API')
-                console.error(error);
-                showNotify('danger', 'failed to make a call. Try again later.');
-            });
+    activeCallSid = data.sid;
+    },
+    function (error) {
+        console.error('failed to make a call API')
+        console.error(error);
+        showNotify('danger', 'failed to make a call. Try again later.');
+    });
 }
 
 function setCallSid(sid) {
@@ -187,7 +188,7 @@ function setCallSid(sid) {
  * @param {Boolean} isCallIncomplete - to navigate the call screen based on the call status
  **/
 function hangupActiveCallApi(isCallIncomplete) {
-    if (isCallIncomplete) {
+    if ((isCallIncomplete === true) || isCallIncomplete.data) {
         endIncompleteCall();
         return;
     }
@@ -207,14 +208,14 @@ function hangupActiveCallApi(isCallIncomplete) {
         var url = `https://api.twilio.com/2010-04-01/Accounts/<% iparam.twilio_sid %>/Calls/${activeCallSid}.json`;
         client.request.post(url, options).then(
             function () {
-                activeCallSid = null;
-                showCallSummaryScreen();
-            },
-            function (error) {
-                console.error('failed to make call hangup API');
-                console.error(error);
-                showNotify('danger', 'failed hangup the call. Try again.');
-            });
+        activeCallSid = null;
+        showCallSummaryScreen();
+        },
+        function (error) {
+            console.error('failed to make call hangup API');
+            console.error(error);
+            showNotify('danger', 'failed hangup the call. Try again.');
+        });
     }
 }
 
