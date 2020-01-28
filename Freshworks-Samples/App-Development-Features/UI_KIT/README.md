@@ -5,14 +5,17 @@ This Folder contains sample apps for Freshworks UI kit
 ## The following are the list apps under this folder
 
   1. Github Issue Creator for Freshdesk and the app uses following components
+  
     - Tabs
     - Button
 
   2. Ticket Creator for Freshdesk App and the app uses following components
+  
     - Input
     - Button
 
   3. Ticket Details App for Freshservice
+  
     - Button
     - Select
 
