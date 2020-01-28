@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script type="module" src="https://static-dev.freshcloud.io/freshworks-ui-kit/freshworks-ui-kit.esm.js"></script>
+  <script nomodule src="https://static-dev.freshcloud.io/freshworks-ui-kit/freshworks-ui-kit.js"></script>
+  <script src="app.js" async="false"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="fw-widget-wrapper padding">
+
+    <form role="form" id='ticketForm'>
+      <fw-input placeholder="Enter Ticket Title" type="text" label="Title" id="title"></fw-input>
+      <fw-textarea placeholder="Enter ticket Description" id="desc"> </fw-textarea>
+      <fw-input placeholder="Enter your Email" type="email" label="Email" id="email"></fw-input>
+    </form>
+    <div>
+      
+    </div>
+<fw-tabs>
+  <fw-tab title="tab 1">
+    <fw-button id="createTicket">Create Ticket</fw-button>
+  </fw-tab>
+  <fw-tab title="tab 2">
+
+  </fw-tab>
+</fw-tabs>
+
+  </div>
+</body>
+
+</html>
