@@ -1,0 +1,21 @@
+.logo {
+  background: url('freshdesk_logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  margin-top: 25px;
+}
+
+body{
+  background: transparent;
+}
+
+.banner {
+  margin: 0 auto;
+}
+
+.alignments{
+  padding-top: 7em;
+  padding-left: 2em;
+}
+
