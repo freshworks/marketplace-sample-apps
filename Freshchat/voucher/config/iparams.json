@@ -1,8 +1,0 @@
-{
-  "voucher_api": {
-    "display_name": "Voucher API URL",
-    "description": "Enter the Voucher API URL. Only secure APIs are allowed. Skip the protocol while entering the API URL. For ex: 'example.com/vouchers' ",
-    "type": "text",
-    "required": true
-  }
-}

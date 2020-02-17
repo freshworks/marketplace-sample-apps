@@ -1,6 +1,0 @@
-# from_number: 'Enter your twillio phone number'
-# to_number: 'Enter your phone number to get the sms'
-# account_sid: 'Twillio account_sid'
-# auth_token: 'Twillio auth_token'
-# msg_content: "Default message content"
-# domain: 'enter your freshdesk domain'
