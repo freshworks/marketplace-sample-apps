@@ -1,0 +1,9 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshteam": {}
+  },
+  "dependencies": {
+    "@sendgrid/mail": "6.5.3"
+  }
+}
