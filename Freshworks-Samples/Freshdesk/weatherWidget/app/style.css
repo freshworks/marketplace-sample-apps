@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+
+.clear {
+	clear: both;
+}
+
+.a{
+	cursor: pointer;
+}
+
+.fw-widget-wrapper{
+	background-color: #222831;
+	color: #ffffff;
+	height: 200px;
+}
+
+.weather-side {
+	position: relative;
+	height: 70%;
+	width: 85px;
+	float: left;
+	background:#000;
+}
+
+.date-container {
+	position: absolute;
+	top: 25px;
+	left: 10px;
+}
+
+.date-dayname {
+	margin: 0;
+	font-size: 12px;
+
+}
+
+.date-day {
+	display: block;
+	padding-top: 5px;
+	font-size: 10px;
+
+}
+
+.location {
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+.location-icon {
+	display: inline-block;
+	height: 0.8em;
+	width: auto;
+	margin-right: 5px;
+
+}
+
+.weather-container {
+	position: absolute;
+    bottom: 5px;
+	left: 10px;
+}
+
+.weather-temp {
+	margin: 0;
+	font-weight: 100;
+	font-size: 1.5em;
+}
+
+
+.info-side {
+	position: relative;
+	float: left;
+	height: auto;
+	padding-top: 15px;
+	width: 100px;
+	
+}
+
+.today-info-container{
+	background:#000;
+	height: 60px;
+	margin-top: -60px;
+	margin-left: -15px
+}
+
+.today-info {
+	padding: 10px;
+	margin: 200px 5px 0 10px;
+}
+
+.today-info>div:not(:last-child) {
+	margin: 0 0 10px 0;
+	
+}
+
+.today-info>div .title {
+	float: left;
+	font-weight: 700;
+	font-size: 12px;
+	margin-top: 20px;
+	
+}
+
+.today-info>div .value {
+	float: left;
+	margin-left: 5px;
+	font-size: 12px;
+	margin-top: 20px;
+}
+
+.week-container{
+	position: relative;
+	width: auto;
+}
+
+.week-list, .history-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 5px 5px;
+	width: 100px;
+}
+
+.week-list>li {
+	float: left;
+	padding: 0 10px 0 10px;
+	cursor: pointer;
+	
+}
+
+.week-list>li:hover {
+	background: #fff;
+	color: #222831;
+}
+
+.history-list>li {
+	float: left;
+	padding: 0 35px 0 5px;
+}
+
+.history-list>li:hover {
+	background: #fff;
+	color: #222831;
+}
+
+.week-list>li .day-name {
+	display: block;
+	margin: 5px 0 -5px 0;
+	text-align: center;
+}
+
+.week-list>li .day-temp {
+	display: block;
+	text-align: center;
+	margin: 10px 0 0 0;
+	font-weight: 600;
+}
+
+.location-container {
+	margin: 0 5px 0 0;
+}
+
+.location-button {
+	border: none;
+	padding: 5px;
+	font-family: 'Montserrat', sans-serif;
+	background: #000;
+	color:#fff;
+	font-weight: 700;
+	cursor: pointer;
+	margin-right: 0;
+	float: right;
+}
+
+.location-input {
+	border: none;
+	padding: 5px;
+	margin-left: 5px;
+	color: #000;
+	width: 60px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.location-container>div .location-input {
+	float: left;
+}
+
+.location-container>div .location-button {
+	float: right;
+}
+
+.pastbtn {
+  background-color: #000;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  margin-left: 5px;
+}
