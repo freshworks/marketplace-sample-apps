@@ -1,18 +1,31 @@
-## Freshteam App Project
+# Feedback App For new Hires
+## Description:
 
-Congratulations on creating your App Project! Feel free to replace this text with your project description.
+After a new Hire joins the team, HR might want to reiterate to the new hire asking for anonymous feedback. To resolve this problem we have created a serverless app Which generates a trigger email after 30 days of joining for new hires with an anonymous feedback form.
 
-### Project folder structure explained
+## Screenshot:
 
-    .
-    ├── README.md                  This file.
-    ├── config                     Installation parameter configs.
-    │   ├── iparams.json           Installation parameter config in English language.
-    │   └── iparam_test_data.json  Installation parameter data for local testing.
-    └── manifest.json              Project manifest.
-    └── server                     Business logic for remote request and event handlers.
-        ├── lib
-        │   └── handle-response.js
-        ├── server.js
-        └── test_data
-            └── onEmployeeCreate.json
+
+ 
+## Features demonstrated Notes:
+#### On new Hire create
+pp is using this features to get the details of new hires and create event for new hire
+
+#### Schedule events
+App is using this feature to schedule the time for the event which is after 30 days.
+
+## Prerequisites:
+Make sure you have a trial [FreshworksProduct] account created
+
+Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+
+Explore FreshTeam documentation to use lavarges.
+## Procedure to run the app:
+Fill the iparam_test_data.json before running the app locally.
+
+Run the app locally using the fdk run command
+
+Append ?dev=true to the Freshworks product URL to see the changes
+
+   
+   
