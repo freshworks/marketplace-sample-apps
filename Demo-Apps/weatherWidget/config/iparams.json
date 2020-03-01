@@ -1,7 +1,7 @@
 {
     "apiKey": {
     "display_name": "Api Key",
-    "type": "text",
+    "type": "OpenWeatherApp API Key",
      "required": true
      
 }
