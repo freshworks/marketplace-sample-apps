@@ -1,4 +1,5 @@
 $(document).ready(function () {
+// some change
     app.initialized()
         .then(function (_client) {
             var client = _client;
