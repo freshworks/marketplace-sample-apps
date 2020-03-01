@@ -1,5 +1,4 @@
 $(document).ready(function () {
-// some change
     app.initialized()
         .then(function (_client) {
             var client = _client;
@@ -70,12 +69,6 @@ $(document).ready(function () {
                                             $("#hide").show();
                                             $(".week-list").hide();
                                             $(".history-list").show();
-                                            // client.db.delete("pastSearches").then(function(data){
-                                            //     console.log(data);
-                                            // },
-                                            // function(error){
-                                            //     console.log(error, "couldn't delete it");
-                                            // });
                                             client.db.get("pastSearches").then(function (data) {
                                                 past = data.p1;
                                                 if (past.length < 5) {
@@ -84,11 +77,6 @@ $(document).ready(function () {
                                                     past.shift();
                                                     past.push(result.city.name)
                                                 }
-                                                // $("#h1").text(past[0]);
-                                                // $("#h2").text(past[1]);
-                                                // $("#h3").text(past[2]);
-                                                // $("#h4").text(past[3]);
-                                                // $("#h5").text(past[4]);
                                                 past.forEach(function(ele) {
                                                     let blk = `<li>${ele}</li>`;
                                                     $('#history').prepend(blk);
@@ -118,7 +106,7 @@ $(document).ready(function () {
                                                                 console.log(error);
                                                             });
 
-                                                });
+                                               });
                                         });
 
                                     }, function (error) {
@@ -129,10 +117,8 @@ $(document).ready(function () {
                                             message: " This city doesn't exist"
                                         })
                                             .then(function (data) {
-                                                // data - success message
                                                 console.log(data);
                                             }, function (error) {
-                                                // error - error object
                                                 console.log(error);
                                             });
                                     }
