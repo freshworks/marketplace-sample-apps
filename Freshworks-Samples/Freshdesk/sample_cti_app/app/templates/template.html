@@ -1,0 +1,129 @@
+<html>
+
+<head>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script
+    src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="../app.js"></script>
+  <script src="../scripts/call.js"></script>
+  <script src="../scripts/socket.js"></script>
+  <script src="../scripts/ticket.js"></script>
+  <script src="../scripts/contact.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+</head>
+
+<body>
+  <div class="fw-widget-wrapper">
+
+    <div id="mainContent">
+
+      <div class="container">
+
+        <div class="tab-content">
+          <!-- Dialpad - start -->
+          <div id="dialpad" class="tab-pane active">
+            <div>
+              <input type="input" id="output" />
+            </div>
+            <div class="digits">
+              <div class="row">
+                <div class="digit" id="one">1</div>
+                <div class="digit" id="two">2</div>
+                <div class="digit" id="three">3</div>
+              </div>
+              <div class="row">
+                <div class="digit" id="four">4</div>
+                <div class="digit" id="five">5</div>
+                <div class="digit" id="six">6</div>
+              </div>
+              <div class="row">
+                <div class="digit" id="seven">7</div>
+                <div class="digit" id="eight">8</div>
+                <div class="digit" id="nine">9</div>
+              </div>
+              <div class="row">
+                <div class="digit" id="plus">+</div>
+                <div class="digit" id="zero">0</div>
+                <div class="digit" id="hash">#</div>
+              </div>
+            </div>
+            <div class="botrow">
+              <div id="call"><strong>Call</strong></div>
+            </div>
+          </div>
+          <!-- Dialpad - end -->
+
+          <!-- On call screen - start -->
+          <div id="onCallScreen" class="tab-pane">
+            <div>
+              <h2>Call in progress</h2>
+            </div>
+            <div class="fw-divider"></div>
+            <div>
+              <p>Call notes</p>
+              <input type="input" id="callNotes" />
+            </div>
+            <div class="fw-divider"></div>
+            <div class="row">
+              <div class="col-6" class="button" id="mute">Mute</div>
+              <div class="col-6" class="button" id="createTicket">Create ticket
+              </div>
+            </div>
+            <div class="botrow">
+              <div class="button" id="btnEndCall"><strong>End Call</strong>
+              </div>
+            </div>
+          </div>
+          <!-- On call screen - end -->
+
+          <!-- On call screen - start -->
+          <div id="callSummaryScreen" class="tab-pane">
+            <div>
+              <h4>Call Summary</h4>
+              <p>Call notes</p>
+              <input type="input" id="callNotesOnSummary" />
+            </div>
+            <div class="fw-divider"></div>
+            <div class="botrow">
+              <div class="button" id="btnCreateTicketWithNotes">Save notes and
+                create ticket</div>
+              <div class="button" id="btnCancel">Cancel</div>
+            </div>
+          </div>
+          <!-- On call screen - end -->
+
+          <!-- contacts - start -->
+          <div id="contacts" class="tab-pane">
+            <h4>Contacts</h4>
+            <ul class="list-group" id="contactsList"></ul>
+          </div>
+          <!-- contacts - end -->
+        </div>
+        <ul class="nav nav-tabs nav-justified navbar-bottom">
+          <li class="nav-item"><a class="nav-link" data-toggle="tab"
+              href="#dialpad">Dialpad</a>
+          </li>
+          <li id="tabContacts" class="nav-item"><a class="nav-link"
+              data-toggle="tab" href="#contacts">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>
