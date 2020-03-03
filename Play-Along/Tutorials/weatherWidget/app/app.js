@@ -128,10 +128,8 @@ $(document).ready(function () {
                                             message: " This city doesn't exist"
                                         })
                                             .then(function (data) {
-                                                // data - success message
                                                 console.log(data);
                                             }, function (error) {
-                                                // error - error object
                                                 console.log(error);
                                             });
                                     }
