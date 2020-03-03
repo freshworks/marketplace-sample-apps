@@ -2,6 +2,7 @@
     "apiKey": {
              "display_name": "Api Key",
              "type": "text",
+             "description": "Open Weather API Key", 
               "required": true,
               "secure": true
    }
