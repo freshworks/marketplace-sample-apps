@@ -8,8 +8,8 @@ $(document).ready(function () {
                         $("#hide").hide();
                         $(".history-list").hide();
                         $("#check-input").click(function () {
-                            let city = $("#input-city").val();
-                            let url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=<%= iparam.apiKey %>';
+                            var city = $("#input-city").val();
+                            var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&appid=<%= iparam.apiKey %>';
                             client.request.post(url)
                                 .then(
                                     function (result) {
@@ -91,8 +91,8 @@ $(document).ready(function () {
                                                 client.db.update("pastSearches", "set", {
                                                     "p1": past
                                                 }).then(function (data) {
-                                                    console.log(data),
-                                                    function (error) { console.log(error) }
+                                                    function (error) { 
+                                                    }
                                                 });
 
                                             }
@@ -100,26 +100,21 @@ $(document).ready(function () {
                                                     console.log(error);
                                                     client.db.set("pastSearches", { "p1": [result.city.name] })
                                                         .then(function (data) {
-                                                            console.log(data);
                                                         },
                                                             function (error) {
-                                                                console.log(error);
                                                             });
 
                                                 });
                                         });
 
                                     }, function (error) {
-                                        console.log(error);
                                         client.interface.trigger("showNotify", {
                                             type: "info",
                                             title: "Invalid",
                                             message: " This city doesn't exist"
                                         })
                                             .then(function (data) {
-                                                console.log(data);
                                             }, function (error) {
-                                                console.log(error);
                                             });
                                     }
                                 );
