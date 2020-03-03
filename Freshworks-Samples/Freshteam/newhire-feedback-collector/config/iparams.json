@@ -2,7 +2,7 @@
     "apiKey": {
              "display_name": "Api Key",
              "type": "text",
-             "description": "Open Weather API Key", 
+             "description": "Open Weather API Key for forcasting next five days temprature and wind speed", 
               "required": true,
               "secure": true
    }
