@@ -1,4 +1,4 @@
-let html_msg = `<!doctype html>
+const html_msg = `<!doctype html>
 <html ⚡4email>
  <head><meta charset="utf-8"><style amp4email-boilerplate>body{visibility:hidden}</style><script async src="https://cdn.ampproject.org/v0.js"></script> 
    
