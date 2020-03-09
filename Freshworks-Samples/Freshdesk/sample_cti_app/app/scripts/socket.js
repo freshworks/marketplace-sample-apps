@@ -13,6 +13,9 @@ function socketIo() {
     if (data.callInfo.CallStatus === 'completed') {
       console.info('the call has been completed');
       hangupActiveCallApi(false);
+    } else if (data.callInfo.CallStatus === 'in-progress') {
+      console.info('the call is in-progress');
+      hangupActiveCallApi(false);
     } else if (data.callInfo.CallStatus === 'answered') {
       console.info('the call has been answered');
     } else if (data.callInfo.CallStatus === 'busy') {

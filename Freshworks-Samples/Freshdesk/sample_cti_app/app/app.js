@@ -42,6 +42,7 @@ function showOnCallScreen() {
  * Opens up the call summary screen
  **/
 function showCallSummaryScreen() {
+    hideMainScreen();
     $('#onCallScreen').hide();
     $('#callSummaryScreen').show();
     $('#callNotesOnSummary').val($('#callNotes').val());
@@ -94,6 +95,9 @@ function addEventListeners() {
 }
 
 function onAppActivated() {
+    window.activeCallSid = null;
+    window.callTicket = null;
+    client.instance.resize({ height: "500px" });
     client.data.get("loggedInUser").then(
         function (data) {
             const phone = data.loggedInUser.contact.phone ? data.loggedInUser.contact.phone : data.loggedInUser.contact.mobile ? data.loggedInUser.contact.mobile : null;
@@ -113,9 +117,6 @@ function onDocumentReady() {
     app.initialized()
         .then(function (_client) {
             window.client = _client;
-            window.activeCallSid = null;
-            window.callTicket = null;
-            client.instance.resize({ height: "500px" });
             socketIo();
             client.events.on('app.activated', onAppActivated);
         }).catch(function (error) {

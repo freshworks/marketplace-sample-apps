@@ -32,9 +32,6 @@ function callApi(phoneNumber) {
     .then(
       function (data) {
         activeCallSid = JSON.parse(data.response).sid;
-        console.info('call ID');
-        console.info(activeCallSid);
-        activeCallSid = 1;
         callTicket = null;
         showOnCallScreen();
       },
@@ -61,8 +58,10 @@ function callNumber(phoneNumber) {
 function showCTIApp(event) {
   client.interface.trigger("show", { id: "softphone" })
     .then(function () {
-      var data = event.helper.getData();
-      callNumber(data.number);
+      if (event) {
+        var data = event.helper.getData();
+        callNumber(data.number);
+      }
     }).catch(function (error) {
       console.error('failed to open CTI placeholder');
       console.error(error);
@@ -116,7 +115,7 @@ function hangupActiveCallApi(isCallIncomplete) {
         Status: "completed"
       }
     };
-    var url = `https://api.twilio.com/2010-04-01/Accounts/<% iparam.twilio_sid %>/Calls/${activeCallSid}.json`;
+    var url = `https://api.twilio.com/2010-04-01/Accounts/<%= iparam.twilio_sid %>/Calls/${activeCallSid}.json`;
     client.request.post(url, options).then(
       function () {
         activeCallSid = null;

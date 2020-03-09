@@ -6,7 +6,7 @@ function createTicketWithCallNotes(event) {
   const callDescription = callEnded ? $('#callNotesOnSummary').val().toString() : $('#callNotes').val().toString();
   const ticketDetails = {
     email: 'sample@samplemail.com',
-    subject: 'Call with Sampleton',
+    subject: 'Call with the customer',
     priority: 1,
     description: callDescription === "" ? "Ticket from call" : callDescription,
     status: 2
@@ -45,7 +45,7 @@ function createTicketWithCallNotes(event) {
 
 /**
  * To navigate the page to the given ticket
- * 
+ *
  * @param {Event} event
  **/
 function navigateToTicket(event) {
