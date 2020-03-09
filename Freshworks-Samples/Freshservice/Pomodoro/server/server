@@ -1,0 +1,169 @@
+exports = {
+
+  events: [
+    { event: 'onScheduledEvent', callback: 'scheduledEventHandler' }
+  ],
+  serverMethod: function(args) {
+    console.log("creating scheduled event...");
+    console.log("args are...\n" + JSON.stringify(args));
+    let uid = args.id.toString();
+    $schedule.create({
+      name: "test_schedule",
+      data: {type: "regular", id: uid},
+      schedule_at: args["date"],
+      repeat: {
+        time_unit: "minutes",
+        frequency: 2
+      }
+    })
+    .then(function(data) {
+      console.log("schedule created sucessfully");
+      console.log("promise of server method:\n" + JSON.stringify(data));
+
+
+      $db.set(
+        uid, 
+        {
+          totalDays: 0,
+          history: [
+            {
+              noOfSessions: 0,
+              noOfInterruptions: 0
+            }
+          ]
+        },
+        {
+          setIf: "not_exist"
+        })
+        .done(function(data) {
+          console.log("Data skeleton created successfully!\nargs: " + JSON.stringify(data))
+        })
+        .fail(function(err) {
+          console.log("Data skeleton already available, skipping creation!\nargs: " + JSON.stringify(err));
+        });
+
+
+        $schedule.fetch({
+          name: "Increment_day"
+        })
+        .then(function(data){
+          console.log("schedule already defined for the day!");
+          console.log(JSON.stringify(data));
+        },
+        function(err){
+          console.log("initializing for the day!");
+          console.log(JSON.stringify(err));
+          let x = new Date(args["date"]);
+          x.setHours(0, 0, 0, 0);
+          x.setDate(x.getDate() + 1);
+          console.log("printing x from fetch schedule!", x.toString());
+          $schedule.create({
+            name: "Increment_Day",
+            data: {type: "incrementDay"},
+            schedule_at: x.toISOString()
+          })
+          .then(function(data) {
+            console.log(`incrementDay successfully created!\nargs["date"] : ${args["date"]}\nnew Date: ${x}`);
+            console.log(JSON.stringify(data));
+          },
+          function(err) {
+            console.log("Couldn't create incrementDay...");
+            console.log(JSON.stringify(err));
+          });
+        });
+    },
+
+    function(err) {
+      console.log("Couldn't create schedule sucessfully!\n");
+      console.log(JSON.stringify(err));
+    });
+    
+    renderData(null, {reply: "created events sucessfully"});
+  },
+
+  scheduledEventHandler: function(args) {
+    console.log("args are:\n" + JSON.stringify(args));
+    if(args.type == "regular") {
+      $db.get(args.id)
+      .then(function(data) {
+        data = JSON.parse(data);
+        td = data.totalDays;
+        hs = data.history;
+        hs[td].noOfSessions += 1;
+        $db.update(
+          args.id.toString(),
+          "set",
+          JSON.stringify({totalDays: td, history : hs})
+        )
+        .then(function(data) {
+          console.log("updated noOfSessions successfully!");
+          console.log("args: " + JSON.stringify(data));
+        },
+        function(err) {
+          console.log("Couldn't update noOfSessions!");
+          console.log("args: " + JSON.stringify(err));
+        });
+      },
+      function(err) {
+        console.log("couldn't access data from scheduledEventHandler....\nargs: " + JSON.stringify(err));
+      });
+    }
+    else {
+      $db.get(args.id)
+      .then(function(data) {
+        data = JSON.parse(data);
+        td = data.totalDays;
+        hs = data.history;
+        if(data.totalDays < 29) {
+          td += 1;
+          hs.push({noOfSessions: 0, noOfInterruptions: 0});
+        }
+        else {
+          hs.shift();
+          hs.push({noOfSessions: 0, noOfInterruptions: 0});
+        }
+        $db.update(
+          args.id.toString(),
+          "set",
+          JSON.stringify({history: hs})
+        )
+      });
+    }
+  },
+
+  deleteSchedule: function(args) {
+    console.log("Deleteing schedule...");
+    $schedule.delete({
+      name: "test_schedule"
+    })
+    .then(function(data) {
+      console.log("schedule deleted successfully!");
+      $db.get(data.id)
+      .then(function(data) {
+        data = JSON.parse(data);
+        td = data.totalDays;
+        hs = data.history;
+        hs[td].noOfInterruptions += 1;
+        $db.update(
+          data.id.toString(),
+          "set",
+          JSON.stringify({history: hs}))
+          .then(function(data){
+            console.log("Successfully recorded interrupption!");
+          },
+          function(err){
+            console.log("couldn't update noOfInterruptions!\nargs: " + JSON.stringify(err));
+          });
+      },
+      function(err) {
+        console.log("couldn't fetch data from deleteSchedule Method\nargs: "+ JSON.stringify(err));
+      });
+    },
+    function(err) {
+      console.log("Couldn't delete schedule successfully!\n" + JSON.stringify(err));
+    });
+    renderData(null, {reply: "deleted events sucessfully"});
+  }
+
+
+};
