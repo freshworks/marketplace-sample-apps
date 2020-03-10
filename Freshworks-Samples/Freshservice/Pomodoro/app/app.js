@@ -10,9 +10,7 @@ $(document).ready(function() {
   app.initialized().then(function(_client) {
     client = _client;
     client.events.on("app.activated", function() {
-      console.log("checkTimer start");
       checkTimer();
-      console.log("checkTimer end");
       /**
        * get the id of the user loged in using the data API
        */
@@ -21,7 +19,8 @@ $(document).ready(function() {
           user_id = data.loggedInUser.user.id.toString();
         },
         function(err) {
-          console.log(JSON.stringify(err));
+          // console.log(JSON.stringify(err));
+          console.error("couldn't get loggedInUser, %o", err);
         }
       );
 
@@ -31,15 +30,10 @@ $(document).ready(function() {
       $("#ip").click(function() {
         if (!stage) {
           makeSMICall("serverMethod");
-          startTimer();
-          countdown();
           session();
-          stopText();
           stage = true;
         } else {
           stopPromodoro(0);
-          stopTimer();
-          clearInterval(t5);
           stage = false;
         }
       });
@@ -68,10 +62,11 @@ $(document).ready(function() {
             });
           },
           function(err) {
-            console.log(
-              "Couldn't get data for ShowActivity!\nargs: " +
-                JSON.stringify(err)
-            );
+            // console.log(
+            //   "Couldn't get data for ShowActivity!\nargs: " +
+            //     JSON.stringify(err)
+            // );
+            console.error("couldn't et data fir showActivity, %o", err);
           }
         );
       });
@@ -103,16 +98,18 @@ function notifyUser(notificationType, notificationMessage) {
       message: notificationMessage
     })
     .then(function(data) {
-      console.log(
-        "Notification for " + notificationMessage + " showed successfully!"
-      );
-      console.log(JSON.stringify(data));
+      // console.log(
+      //   "Notification for " + notificationMessage + " showed successfully!"
+      // );
+      // console.log(JSON.stringify(data));
+      console.log("notification for %s was shown successfully!", notificationMessage);
     })
     .catch(function(err) {
-      console.log(
-        "Notification for " + notificationMessage + " couldn't be shown!"
-      );
-      console.log(JSON.stringify(err));
+      // console.log(
+      //   "Notification for " + notificationMessage + " couldn't be shown!"
+      // );
+      // console.log(JSON.stringify(err));
+      console.error("Notification for %s couldn't be shown, %o",notificationMessage, err );
     });
 }
 
@@ -138,6 +135,9 @@ function stopText() {
 function session() {
   notifyUser("warning", "your 25 mins streak starts!");
   t2 = setTimeout(takeBreak, 1500000);
+  startTimer();
+  countdown();
+  stopText();
 }
 
 /**
@@ -172,7 +172,8 @@ function nextSessionCheck() {
       }
     })
     .catch(function(err) {
-      console.log("error with showConfirm: " + JSON.stringify(err));
+      // console.error("error with showConfirm: " + JSON.stringify(err));
+      console.error("Error with showConfirm: %o", err);
     });
 }
 
@@ -187,6 +188,7 @@ function stopPromodoro(flag) {
   else{
     makeSMICall("interruptSchedule");
   }
+  stopTimer();
   clearTimeout(t1);
   clearTimeout(t3);
   clearTimeout(t2);
@@ -214,7 +216,6 @@ function makeSMICall(methodName) {
 function saveTimer() {
   console.log("saveTimer invoked! stage: " + stage + " " + endTime);
   if (stage) {
-    console.log("saving item" + stage + " " + endTime);
     localStorage.setItem(
       "timerStorage",
       JSON.stringify({ state: stage, end: endTime })

@@ -12,8 +12,7 @@ exports = {
    * @param {string} args - id of the user passed by the front-end using SMI call
    */
   serverMethod: function(args) {
-    console.log("creating scheduled event...");
-    console.log("args are...\n" + JSON.stringify(args));
+    console.log("creating scheduled event, %o", args);
     let uid = args.id;
 
     $schedule
@@ -22,28 +21,26 @@ exports = {
       })
       .then(
         function(data) {
-          console.log("schedule already defined for the day!");
-          console.log(JSON.stringify(data));
+          console.log("schedule already defined for the day, %o", data);
         },
         function(err) {
           console.log("initializing for the day!");
           console.log(JSON.stringify(err));
-          let x = new Date(args["date"]);
+          let x = new Date();
           x.setHours(0, 0, 0, 0);
           x.setDate(x.getDate() + 1);
+          x = x.toISOString();
           $schedule.create({
             name: "Increment_Day",
             data: {type: "incrementDay", id: uid},
-            schedule_at: x.toISOString()
+            schedule_at: x
           })
             .then(
               function(data) {
-                console.log("incrementDay successfully created!");
-                console.log(JSON.stringify(data));
+                console.log("incrementDay successfully created, %o", data);
               },
               function(err) {
-                console.log("Couldn't create incrementDay...");
-                console.log(JSON.stringify(err));
+                console.error("Couldn't create incrementDay, %o", err);
               }
             );
         }
@@ -61,13 +58,13 @@ exports = {
       })
       .then(
         function(data) {
-          console.log("schedule created sucessfully");
-          console.log("promise of server method:\n" + JSON.stringify(data));
+          console.log("regular_schedule created sucessfully, %o", data);
         },
 
         function(err) {
-          console.log("Couldn't create schedule sucessfully!\n");
-          console.log(JSON.stringify(err));
+          // console.log("Couldn't create schedule sucessfully!\n");
+          // console.log(JSON.stringify(err));
+          console.error("regular_schedule couldn't be created, %o", err);
         }
       );
       let td = 0;
@@ -81,33 +78,27 @@ exports = {
    * @param {JSON} args - data passed by scheduled events which inclues ID of the user and the type of schedule calling the handler
    */
   scheduledEventHandler: function(args) {
-    console.log("args are:\n" + JSON.stringify(args));
     obj = this;
     if (args.data.type == "regular") {
       $db.get(args.data.id).then(
         function(data) {
-          console.log(
-            "printing data from scheduledEventhandler...\ndata: " +
-              JSON.stringify(data)
-          );
           let td = data.totalDays;
           let hs = data.history;
           hs[td].noOfSessions += 1;
-          
           obj.updateDataSkeleton(args.data.id, {history: hs}, "regular");
         },
         function(err) {
-          console.log(
-            "couldn't access data from scheduledEventHandler....\nargs: " +
-              JSON.stringify(err)
-          );
+          // console.log(
+          //   "couldn't access data from scheduledEventHandler....\nargs: " +
+          //     JSON.stringify(err)
+          // );
+          console.error("Couldn't access data from scheduldEventHandler, %o", err);
         }
       );
     } else {
       $db.get(args.data.id).then(function(data) {
         td = data.totalDays;
         hs = data.history;
-        console.log("after day, hs: " + hs + " td: " + td);
         if (data.totalDays < 29) {
           td += 1;
           hs.push({ noOfSessions: 0, noOfInterruptions: 0 });
@@ -125,7 +116,6 @@ exports = {
    * @param {JSON} args - conatins the user id passed by the front - end
    */
   interruptSchedule: function(args) {
-    console.log("Deleteing schedule...\nargs: " + JSON.stringify(args));
     let uid = args.id;
     let td = null, hs = null;
     let obj = this;
@@ -136,13 +126,14 @@ exports = {
           hs = data.history;
           hs[td].noOfInterruptions += 1;
           console.log(hs);
-          obj.updateDataSkeleton(uid, {history: hs}, "record interruption");
+          obj.updateDataSkeleton(uid, {history: hs}, "recorded interruption");
         },
         function(err) {
-          console.log(
-            "couldn't fetch data from deleteSchedule Method\nargs: " +
-              JSON.stringify(err)
-          );
+          // console.log(
+          //   "couldn't fetch data from deleteSchedule Method\nargs: " +
+          //     JSON.stringify(err)
+          // );
+          console.error("Couldn't fetch data from interruptSchedule method, %o", err);
         }
       );
     renderData(null, { reply: "deleted events sucessfully" });
@@ -153,8 +144,7 @@ exports = {
    * @param {JSON} args - contains the user id passed by the front - end
    */
   deleteSchedule: function(args) {
-    console.log("delete schedule invoked!\nargs: " + JSON.stringify(args));
-    let uid = args.id;
+    console.log("delete schedule invoked!, %o" + args);
     this.removeSchedule("regular_schedule");
   },
 
@@ -163,21 +153,22 @@ exports = {
    * @param {JSON} args - conatins the user id passed by the front - end
    */
   clearActivity: function(args) {
-    console.log("clearActivity invoked!\nargs: " + JSON.stringify(args));
     let uid = args.id;
     this.removeSchedule("Increment_Day");
     this.removeSchedule("regular_schedule");
 
     $db.delete(uid).then(
       function(data) {
-        console.log(
-          "cleaned data successfully!\nargs: " + JSON.stringify(data)
-        );
+        // console.log(
+        //   "cleaned data successfully!\nargs: " + JSON.stringify(data)
+        // );
+        console.log("Data cleaning succeeded, %o", data);
       },
       function(err) {
-        console.log(
-          "couldn't clean data successfully!\nargs: " + JSON.stringify(err)
-        );
+        // console.log(
+        //   "couldn't clean data successfully!\nargs: " + JSON.stringify(err)
+        // );
+        console.error("Data cleaingfailed, %o", err);
       }
     );
     renderData(null, { reply: "deleted events sucessfully" });
@@ -188,7 +179,6 @@ exports = {
    * @param {JSON} args - contains the user id passed by the front - end 
    */
   testData: function(args) {
-    console.log("testData invoked!");
     let uid = args.id;
     let td = 29;
     let hs = [];
@@ -211,10 +201,12 @@ exports = {
       name: scheduleName
     })
     .then(function(data) {
-      console.log(scheduleName + " deleted successfully!\nargs: " + JSON.stringify(data));
+      // console.log(scheduleName + " deleted successfully!\nargs: " + JSON.stringify(data));
+      console.log("%s deleted successfully!, %o", scheduleName, data);
     },
     function(err) {
-      console.log(scheduleName + " couldn't be deleted successfully!\nargs: " + JSON.stringify(err));
+      // console.log(scheduleName + " couldn't be deleted successfully!\nargs: " + JSON.stringify(err));
+      console.error("%s couldn't be deleted successfully!, %o", scheduleName, err);
     });
   },
 
@@ -225,17 +217,18 @@ exports = {
    * @param {string} message  - passed by the calling function to identify themselves in the logs
    */
   updateDataSkeleton: function(uid, updateObject, message) {
-    console.log("message" + updateObject);
     $db.update(uid, "set", updateObject).then(
       function(data) {
-        console.log(
-          "Success! "+ message +"\nargs: " + JSON.stringify(data)
-        );
+        // console.log(
+        //   "Success! "+ message +"\nargs: " + JSON.stringify(data)
+        // );
+        console.log("Success %s : %o", message, data);
       },
       function(err) {
-        console.log(
-          "Failure! "+ message +"\nargs: " + JSON.stringify(err)
-        );
+        // console.log(
+        //   "Failure! "+ message +"\nargs: " + JSON.stringify(err)
+        // );
+        console.error("Failure %s err: %o", message, err);
       }
     );
   },
@@ -250,14 +243,16 @@ exports = {
     $db
       .set(uid, dataObject, {setIf: "not_exist"})
       .done(function(data) {
-        console.log(
-          "Success! " + message + "\nargs: " + JSON.stringify(data)
-        );
+        // console.log(
+        //   "Success! " + message + "\nargs: " + JSON.stringify(data)
+        // );
+        console.log("Success %s : %o", message, data);
       })
       .fail(function(err) {
-        console.log(
-          "Failure! " + message + "\nargs: " + JSON.stringify(err)
-        );
+        // console.log(
+        //   "Failure! " + message + "\nargs: " + JSON.stringify(err)
+        // );
+        console.error("Failure %s err: %o", message, err);
       });
   }
 };
