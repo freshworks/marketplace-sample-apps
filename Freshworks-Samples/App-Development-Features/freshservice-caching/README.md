@@ -1,18 +1,15 @@
-## Your First App
+## Request API caching in Freshservice
 
-Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
+This app demonstrates request api caching in freshservice. at this point caching is supported only in freshservice.
 
-### Folder structure explained
+### Features demonstrated
 
-    .
-    ├── README.md                  This file
-    ├── app                        Contains the files that are required for the front end component of the app
-    │   ├── app.js                 JS to render the dynamic portions of the app
-    │   ├── icon.svg               Sidebar icon SVG file. Should have a resolution of 64x64px.
-    │   ├── freshservice_logo.png  The Freshservice logo that is displayed in the app
-    │   ├── style.css              Style sheet for the app
-    │   ├── template.html          Contains the HTML required for the app’s UI
-    ├── config                     Contains the installation parameters and OAuth configuration
-    │   ├── iparams.json           Contains the parameters that will be collected during installation
-    │   └── iparam_test_data.json  Contains sample Iparam values that will used during testing
-    └── manifest.json              Contains app meta data and configuration information
+    * Request API with caching.
+    * Interface API
+
+### How to run this app
+
+    1. Clone the repository and navigate to this folder.
+    2. fire *fdk run* command and start the local server.js
+    3. Navigate to installation page and fill in you API key and  freshservice domain and install the app.
+    4. Open your freshservice portal and append *?dev=true* at the end of the URL and test the app.

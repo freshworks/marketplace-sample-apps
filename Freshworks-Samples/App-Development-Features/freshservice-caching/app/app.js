@@ -6,7 +6,8 @@ $(document).ready(function () {
         function () {
           cachedResponse();
         },
-        function (){
+        function (error){
+          console.log('Error',error);
           notify('info','Unable to Open to App')
         }
         );
