@@ -62,8 +62,6 @@ exports = {
         },
 
         function(err) {
-          // console.log("Couldn't create schedule sucessfully!\n");
-          // console.log(JSON.stringify(err));
           console.error("regular_schedule couldn't be created, %o", err);
         }
       );
@@ -88,10 +86,6 @@ exports = {
           obj.updateDataSkeleton(args.data.id, {history: hs}, "regular");
         },
         function(err) {
-          // console.log(
-          //   "couldn't access data from scheduledEventHandler....\nargs: " +
-          //     JSON.stringify(err)
-          // );
           console.error("Couldn't access data from scheduldEventHandler, %o", err);
         }
       );
@@ -129,10 +123,6 @@ exports = {
           obj.updateDataSkeleton(uid, {history: hs}, "recorded interruption");
         },
         function(err) {
-          // console.log(
-          //   "couldn't fetch data from deleteSchedule Method\nargs: " +
-          //     JSON.stringify(err)
-          // );
           console.error("Couldn't fetch data from interruptSchedule method, %o", err);
         }
       );
@@ -159,15 +149,9 @@ exports = {
 
     $db.delete(uid).then(
       function(data) {
-        // console.log(
-        //   "cleaned data successfully!\nargs: " + JSON.stringify(data)
-        // );
         console.log("Data cleaning succeeded, %o", data);
       },
       function(err) {
-        // console.log(
-        //   "couldn't clean data successfully!\nargs: " + JSON.stringify(err)
-        // );
         console.error("Data cleaingfailed, %o", err);
       }
     );
@@ -201,11 +185,9 @@ exports = {
       name: scheduleName
     })
     .then(function(data) {
-      // console.log(scheduleName + " deleted successfully!\nargs: " + JSON.stringify(data));
       console.log("%s deleted successfully!, %o", scheduleName, data);
     },
     function(err) {
-      // console.log(scheduleName + " couldn't be deleted successfully!\nargs: " + JSON.stringify(err));
       console.error("%s couldn't be deleted successfully!, %o", scheduleName, err);
     });
   },
@@ -219,15 +201,9 @@ exports = {
   updateDataSkeleton: function(uid, updateObject, message) {
     $db.update(uid, "set", updateObject).then(
       function(data) {
-        // console.log(
-        //   "Success! "+ message +"\nargs: " + JSON.stringify(data)
-        // );
         console.log("Success %s : %o", message, data);
       },
       function(err) {
-        // console.log(
-        //   "Failure! "+ message +"\nargs: " + JSON.stringify(err)
-        // );
         console.error("Failure %s err: %o", message, err);
       }
     );
@@ -243,15 +219,9 @@ exports = {
     $db
       .set(uid, dataObject, {setIf: "not_exist"})
       .done(function(data) {
-        // console.log(
-        //   "Success! " + message + "\nargs: " + JSON.stringify(data)
-        // );
         console.log("Success %s : %o", message, data);
       })
       .fail(function(err) {
-        // console.log(
-        //   "Failure! " + message + "\nargs: " + JSON.stringify(err)
-        // );
         console.error("Failure %s err: %o", message, err);
       });
   }

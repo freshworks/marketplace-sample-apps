@@ -19,7 +19,6 @@ $(document).ready(function() {
           user_id = data.loggedInUser.user.id.toString();
         },
         function(err) {
-          // console.log(JSON.stringify(err));
           console.error("couldn't get loggedInUser, %o", err);
         }
       );
@@ -62,10 +61,6 @@ $(document).ready(function() {
             });
           },
           function(err) {
-            // console.log(
-            //   "Couldn't get data for ShowActivity!\nargs: " +
-            //     JSON.stringify(err)
-            // );
             console.error("couldn't et data fir showActivity, %o", err);
           }
         );
@@ -98,17 +93,9 @@ function notifyUser(notificationType, notificationMessage) {
       message: notificationMessage
     })
     .then(function(data) {
-      // console.log(
-      //   "Notification for " + notificationMessage + " showed successfully!"
-      // );
-      // console.log(JSON.stringify(data));
       console.log("notification for %s was shown successfully!", notificationMessage);
     })
     .catch(function(err) {
-      // console.log(
-      //   "Notification for " + notificationMessage + " couldn't be shown!"
-      // );
-      // console.log(JSON.stringify(err));
       console.error("Notification for %s couldn't be shown, %o",notificationMessage, err );
     });
 }
@@ -172,7 +159,6 @@ function nextSessionCheck() {
       }
     })
     .catch(function(err) {
-      // console.error("error with showConfirm: " + JSON.stringify(err));
       console.error("Error with showConfirm: %o", err);
     });
 }
