@@ -35,12 +35,12 @@ function cachedResponse() {
 
       } catch (error) {
         console.error("Error while attempting to show issue", error);
-        notify('eror', 'Error while attempting to show issue, kindly refresh the page ');
+        notify('error', 'Error while attempting to show issue, kindly refresh the page ');
       }
     })
     .catch(function (error) {
       console.error("error", error);
-      notify('eror', 'Error while attempting to show issue, kindly refresh the page ');      
+      notify('error', 'Error while attempting to show issue, kindly refresh the page ');      
     });
 }
 

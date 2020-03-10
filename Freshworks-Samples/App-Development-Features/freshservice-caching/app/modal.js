@@ -40,12 +40,12 @@ function getAgentData(agentID) {
         renderTable(JSON.parse(data.response).agent);
       } catch (error) {
         console.error("Error while attempting to show issue", error);
-        notify('eror', 'Unable to Display Data, kindly refresh the page ');
+        notify('error', 'Unable to Display Data, kindly refresh the page ');
       }
     })
     .catch(function (error) {
       console.error("error", error);
-      notify('eror', 'Unable to Display Data, kindly refresh the page ');
+      notify('error', 'Unable to Display Data, kindly refresh the page ');
     });
 }
 
