@@ -1,6 +1,6 @@
 let client = null;
 let user_id = null;
-let stage = false;
+let sessionState = false;
 let t1 = null,
   t2 = null,
   t3 = null,
@@ -27,13 +27,13 @@ $(document).ready(function() {
        * a click event handler to start and stop pomodoro sessions
        */
       $("#ip").click(function() {
-        if (!stage) {
+        if (!sessionState) {
           makeSMICall("serverMethod");
           session();
-          stage = true;
+          sessionState = true;
         } else {
           stopPromodoro(0);
-          stage = false;
+          sessionState = false;
         }
       });
 
@@ -169,7 +169,7 @@ function nextSessionCheck() {
  */
 function stopPromodoro(flag) {
   if(flag == 1) {
-    makeSMICall("deleteSchedule");
+    makeSMICall("stopSchedule");
   }
   else{
     makeSMICall("interruptSchedule");
@@ -200,11 +200,11 @@ function makeSMICall(methodName) {
 
 /** a function to save data of running counter using localstorage */
 function saveTimer() {
-  console.log("saveTimer invoked! stage: " + stage + " " + endTime);
-  if (stage) {
+  console.log("saveTimer invoked! sessionState: " + sessionState + " " + endTime);
+  if (sessionState) {
     localStorage.setItem(
       "timerStorage",
-      JSON.stringify({ state: stage, end: endTime })
+      JSON.stringify({ state: sessionState, end: endTime })
     );
   }
 }
@@ -212,7 +212,7 @@ function saveTimer() {
 /** a function to set the session's end time and start countdown */
 function startTimer() {
   endTime = new Date();
-  endTime.setMinutes(endTime.getMinutes() + 1);
+  endTime.setMinutes(endTime.getMinutes() + 25);
   t4 = setInterval(countdown, 999);
 }
 
@@ -224,14 +224,14 @@ function countdown() {
   $("#timer").text(`${minutes} min  :  ${seconds} sec`);
 }
 
-/** function to check if there is a running session, if so change the global variables which affetcs the UI and starts the timer */
+/** function to check if there is a running session, if so change the global variables which affetcs the UI and resumes the timer */
 function checkTimer() {
   console.log("inside");
   if (localStorage.getItem("timerStorage") !== null) {
     let temp = localStorage.getItem("timerStorage");
     temp = JSON.parse(temp);
     endTime = new Date(temp.end);
-    stage = temp.state;
+    sessionState = temp.state;
     stopText();
     countdown();
     t4 = setInterval(countdown, 998);

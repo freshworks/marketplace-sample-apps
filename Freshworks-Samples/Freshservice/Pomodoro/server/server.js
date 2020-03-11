@@ -133,7 +133,7 @@ exports = {
    * only deletes schedule without recording interruption
    * @param {JSON} args - contains the user id passed by the front - end
    */
-  deleteSchedule: function(args) {
+  stopSchedule: function(args) {
     console.log("delete schedule invoked!, %o" + args);
     this.removeSchedule("regular_schedule");
   },
