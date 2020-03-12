@@ -16,6 +16,7 @@ $(document).ready(function() {
        */
       client.data.get("loggedInUser").then(
         function(data) {
+          console.log("%o", data);
           user_id = data.loggedInUser.user.id.toString();
           console.info("id of the user is %s", user_id);
           debugger;
