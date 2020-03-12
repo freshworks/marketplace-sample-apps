@@ -1,24 +1,29 @@
+
 /**
  * Sendgrid API is used to Send mails 
  */
 const sgMail = require('@sendgrid/mail');
+const htmlMsg = require('./Template').html_msg;
 exports = {
   events: [
     { event: "onNewHireCreate", callback: "onNewHireCreateCallback"},
   ],
 /**
  * Assigning onNewHireCreateCallback to onNewHireCreate event
- */
-  onNewHireCreateCallback: function(payload) {
+ */	
+     onNewHireCreateCallback: function(payload) {
+	console.log(htmlMsg);
     console.log('payload.iparams.apiKey')
 	console.log(payload.iparams.apiKey)
-	 sgMail.setApiKey(payload.iparams.apiKey);
+	
+    sgMail.setApiKey(payload.iparams.apiKey);
+
         const msg = {
           to: payload.data.newhire.user_emails[0],
           from: 'sjuhi1818@gmail.com',   
           subject: 'Feedback Form for New Hires',
-          text: '',
-          html: "Hello! Welcome to Freshworks.It's been a month as you have joined the company.We were happy to have you onboard.Hope your experience with us so far has been great. Your feedback on our hiring and on-boarding processes is of paramount importance to better ourselves.We hope you'll help us by taking the survey.Please make some time to fill out the feedback form attached with this email. Hope this suffices",
+          text: 'xyz',
+          html: htmlMsg,
         };
         sgMail.send(msg);
 /**
@@ -34,3 +39,8 @@ exports = {
   }
 }
   
+
+
+  
+
+    
