@@ -7,78 +7,76 @@ let t1 = null,
   t4 = null;
 let endTime = null;
 $(document).ready(function() {
+  checkTimer();
   app.initialized().then(function(_client) {
     client = _client;
     client.events.on("app.activated", function() {
-      checkTimer();
       /**
        * get the id of the user loged in using the data API
        */
       client.data.get("loggedInUser").then(
         function(data) {
           user_id = data.loggedInUser.user.id.toString();
+          console.info("id of the user is %s", user_id);
+          debugger;
         },
         function(err) {
           console.error("couldn't get loggedInUser, %o", err);
         }
       );
-
-      /**
-       * a click event handler to start and stop pomodoro sessions
-       */
-      $("#ip").click(function() {
-        if (!sessionState) {
-          makeSMICall("serverMethod");
-          session();
-          sessionState = true;
-        } else {
-          stopPromodoro(0);
-          sessionState = false;
-        }
-      });
-
-      /** a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
-       * refer mod.js for flow continuation
-       */
-      $("#sa").click(function() {
-        let hs = [];
-        let td = null;
-        client.db.get(user_id).then(
-          function(data) {
-            console.log(data);
-            td = data.totalDays;
-            data.history.forEach((element, index) => {
-              hs.push([
-                index + 1,
-                element.noOfSessions,
-                element.noOfInterruptions
-              ]);
-            });
-            client.interface.trigger("showModal", {
-              title: "sample modal",
-              template: "./mod.html",
-              data: { totalDays: td, history: hs }
-            });
-          },
-          function(err) {
-            console.error("couldn't et data fir showActivity, %o", err);
-          }
-        );
-      });
-
-      /** a click event handler to clear all of the user's activity and schedules using clearActivity server.js method */
-      $("#ca").click(function() {
-        makeSMICall("clearActivity");
-      });
-
-      /** a click event handler to populate user data randomly using testData server.js method */
-      $("#td").click(function() {
-        makeSMICall("testData");
-      });
-      /** registering an event to save timer if the pages was unloaded during session */
-      $(window).on("beforeunload", saveTimer);
     });
   });
+  /**
+   * a click event handler to start and stop pomodoro sessions
+   */
+  $("#ip").click(function() {
+    if (!sessionState) {
+      debugger;
+      makeSMICall("serverMethod");
+      session();
+      sessionState = true;
+    } else {
+      stopPromodoro(0);
+      sessionState = false;
+    }
+  });
+
+  /** a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
+   * refer mod.js for flow continuation
+   */
+  $("#sa").click(function() {
+    let hs = [];
+    let td = null;
+    client.db.get(user_id).then(
+      function(data) {
+        console.log(data);
+        td = data.totalDays;
+        data.history.forEach((element, index) => {
+          hs.push([index + 1, element.noOfSessions, element.noOfInterruptions]);
+        });
+        client.interface.trigger("showModal", {
+          title: "sample modal",
+          template: "./mod.html",
+          data: { totalDays: td, history: hs }
+        });
+      },
+      function(err) {
+        console.error("couldn't et data fir showActivity, %o", err);
+      }
+    );
+  });
+
+  /** a click event handler to clear all of the user's activity and schedules using clearActivity server.js method */
+  $("#ca").click(function() {
+    makeSMICall("clearActivity");
+  });
+
+  /** a click event handler to populate user data randomly using testData server.js method */
+  $("#td").click(function() {
+    makeSMICall("testData");
+  });
+  /** registering an event to save timer if the pages was unloaded during session */
+  $(window).on("beforeunload", saveTimer);
 });
 
 /**
@@ -87,17 +85,10 @@ $(document).ready(function() {
  * @param {string} notificationMessage - notification message to be displayed
  */
 function notifyUser(notificationType, notificationMessage) {
-  client.interface
-    .trigger("showNotify", {
-      type: notificationType,
-      message: notificationMessage
-    })
-    .then(function(data) {
-      console.log("notification for %s was shown successfully!", notificationMessage);
-    })
-    .catch(function(err) {
-      console.error("Notification for %s couldn't be shown, %o",notificationMessage, err );
-    });
+  client.interface.trigger("showNotify", {
+    type: notificationType,
+    message: notificationMessage
+  });
 }
 
 /**
@@ -149,12 +140,9 @@ function nextSessionCheck() {
         "your break's about to be over, do you want to start a new pomodoro session ? "
     })
     .then(function(result) {
-      console.log(JSON.stringify(result));
-      if (result.message == "OK") {
-        console.log("user is continuing with next session!");
+      if (result.message === "OK") {
         t1 = setTimeout(session, 10000);
       } else {
-        console.log("user is stopping sessions!");
         stopPromodoro(1);
       }
     })
@@ -168,17 +156,21 @@ function nextSessionCheck() {
  * It also clears the setTimeout and setInterval events put forth by takeBreak and takebreak itself
  */
 function stopPromodoro(flag) {
-  if(flag == 1) {
-    makeSMICall("stopSchedule");
+  // let state = null;
+  // if(flag === 1) {
+  //   state = makeSMICall("stopSchedule");
+  // }
+  // else{
+  //   makeSMICall("interruptSchedule");
+  // }
+  let state = flag === 1 ? makeSMICall("stopSchedule") : makeSMICall("interruptSchedule");
+  if (state) {
+    stopTimer();
+    clearTimeout(t1);
+    clearTimeout(t3);
+    clearTimeout(t2);
+    startText();
   }
-  else{
-    makeSMICall("interruptSchedule");
-  }
-  stopTimer();
-  clearTimeout(t1);
-  clearTimeout(t3);
-  clearTimeout(t2);
-  startText();
 }
 
 /**
@@ -187,25 +179,31 @@ function stopPromodoro(flag) {
  * @param {string} - methodName name of the server.js method you wish to call
  */
 function makeSMICall(methodName) {
-  client.request.invoke(methodName, { id: user_id }).then(
-    function(data) {
-      console.log("server method request id: " + data.requestID);
-      console.log("response: " + data.response.reply);
-    },
-    function(err) {
-      console.log(JSON.stringify(err));
-    }
-  );
+  console.log("smi, id of the user is: " + user_id);
+  client.request.invoke(methodName, { id: user_id })
+    // .then(
+    //   function(data) {
+    //     console.log("server method request id: " + data.requestID);
+    //     console.log("response: " + data.response.reply);
+    //   },
+    //   function(err) {
+    //     console.log(JSON.stringify(err));
+    //   }
+    // );
+    .then(
+      () => true,
+      (err) => {
+        console.error("%o", err);
+        notifyUser("error", "requested operation couldn't be done!");
+        return false;
+      }
+    );
 }
 
 /** a function to save data of running counter using localstorage */
 function saveTimer() {
-  console.log("saveTimer invoked! sessionState: " + sessionState + " " + endTime);
   if (sessionState) {
-    localStorage.setItem(
-      "timerStorage",
-      JSON.stringify({ state: sessionState, end: endTime })
-    );
+    localStorage.setItem("timerStorage",cvJSON.stringify({ state: sessionState, end: endTime }));
   }
 }
 
@@ -226,7 +224,6 @@ function countdown() {
 
 /** function to check if there is a running session, if so change the global variables which affetcs the UI and resumes the timer */
 function checkTimer() {
-  console.log("inside");
   if (localStorage.getItem("timerStorage") !== null) {
     let temp = localStorage.getItem("timerStorage");
     temp = JSON.parse(temp);
@@ -235,8 +232,6 @@ function checkTimer() {
     stopText();
     countdown();
     t4 = setInterval(countdown, 998);
-  } else {
-    console.log("no timerStorage");
   }
 }
 
