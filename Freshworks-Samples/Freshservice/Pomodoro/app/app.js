@@ -12,7 +12,7 @@ $(document).ready(function() {
     client = _client;
     client.events.on("app.activated", function() {
       /**
-       * get the id of the user loged in using the data API
+       * get the id of the user logged in using the data API
        */
       client.data.get("loggedInUser").then(
         function(data) {

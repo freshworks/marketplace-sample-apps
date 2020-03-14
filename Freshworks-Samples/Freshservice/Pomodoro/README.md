@@ -48,8 +48,8 @@ for other screenshots please refer to the [Screenshots](https://github.com/Raj-1
 
 ### Additional Notes
 
-* The Clear data button clears all the history of the user.
-* The Show activity button shows the user's history in a chart form created using google charts.
-* The Test data button populates the user's history with random data.
-* The timer doesn't get reset if the user reloades the page or moves to another ticket.
-* when the session is stopped midway, it is recorded as interruption. This information is used along with no of sessions is used to produce chart where the user can assess his productivity by himself.
+* The Clear data button clears all thier history.
+* The Show activity button shows their history in a chart form created using google charts.
+* The Test data button populates the their history with random data.
+* The timer doesn't get reset if the they reloades the page or moves to another ticket.
+* when the session is stopped midway, it is recorded as interruption. This information along with no of sessions is used to produce chart where the they can assess their productivity by temselves.
