@@ -53,8 +53,6 @@ class Todolist extends React.Component {
   handleChecked(index) {
     let updateTodo = this.state.todos
 
-    console.log('todo before checking', updateTodo);
-
     if (updateTodo[index].state == true) {
       updateTodo[index].state = false
       client.db.set('todos', { "todos": updateTodo })
