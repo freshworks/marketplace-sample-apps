@@ -23,6 +23,7 @@ class Todolist extends React.Component {
       todos: []
     };
     this.handleChecked = this.handleChecked.bind(this);
+    this.getList();
   }
 
 
