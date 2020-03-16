@@ -115,10 +115,10 @@ class Todo extends React.Component {
   updateTodos(todo) {
     client.db.update("todos", "append", { "todos": [todo] }).then(
       function (data) {
-        console.log('data Updated', data)
+        console.log('Successfully written Todos', data)
       },
       function (error) {
-        console.error('error', error)
+        console.error('Unable to write Todos into the data storage', error)
       });
 
   }
