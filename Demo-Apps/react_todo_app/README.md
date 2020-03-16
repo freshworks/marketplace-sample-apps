@@ -21,5 +21,5 @@ This app demonstrates how to use a React library in a Freshdesk app (will be the
 
 1. Clone the repo and navigate to this folder 
 2. Run *fdk run*
-3. open the freshdesk portal and append *?dev=true* in the ticket URL.
+3. Open the freshdesk portal and append *?dev=true* in the ticket URL.
 
