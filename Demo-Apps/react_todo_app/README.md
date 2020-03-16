@@ -25,4 +25,4 @@ This app demonstrates how to use a React library in a Freshdesk app (will be the
 
 ### *Note*
 
-This is a demonstration of a very basic method of using React in a Freshdesk app. React is has much more powerful features that can be implemented in other different methods 
+This is a demonstration of a very basic method of using React in a Freshdesk app. React has more powerful features that can be implemented in other different methods 
