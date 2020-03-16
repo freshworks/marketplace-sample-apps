@@ -80,7 +80,7 @@ class Todolist extends React.Component {
 
       </div>
     );
-  }a
+  }
 }
 
 /**
