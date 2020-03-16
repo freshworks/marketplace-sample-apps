@@ -1,17 +1,15 @@
-$(document).ready(function () {
-  app.initialized()
-    .then(function (_client) {
-      window.client = _client;
-      client.events.on('app.activated',
-        function () {
-          ReactDOM.render(<div>
-            <Todolist />
-            <Todo />
-          </div>
-            , document.getElementById('mydiv'))
-        });
-    });
-});
+app.initialized()
+  .then(function (_client) {
+    window.client = _client;
+    client.events.on('app.activated',
+      function () {
+        ReactDOM.render(<div>
+          <Todolist />
+          <Todo />
+        </div>
+          , document.getElementById('mydiv'))
+      });
+  });
 
 /**
  * React Component to list todo's 
@@ -23,7 +21,7 @@ class Todolist extends React.Component {
       todos: []
     };
     this.handleChecked = this.handleChecked.bind(this);
-    this.getList();
+    this.getList()
   }
 
 
@@ -51,29 +49,28 @@ class Todolist extends React.Component {
    * Handle checkbox's updated value
    * @param {number} index Index of curret todo
    */
-  handleChecked(index) {
+  handleChecked(event) {
     let updateTodo = this.state.todos
 
-    if (updateTodo[index].state == true) {
-      updateTodo[index].state = false
-      client.db.set('todos', { "todos": updateTodo })
-    }
-    if (updateTodo[index].state == false) {
-      updateTodo[index].state = true
-      client.db.set('todos', { "todos": updateTodo })
-    }
+    updateTodo[event.target.value].state = event.target.checked
+
+    client.db.set('todos', { "todos": updateTodo })
+
+    this.setState({
+      todos: updateTodo
+    })
   }
 
   render() {
 
-    const { todos } = this.state;
+    const { todos } = this.state
     return (
       <div className="App">
         <h4>TODO</h4>
         {
           todos.map((todo, index) =>
             <div key={index}>
-              <input checked={todo.state} type="checkbox" id={todo.index} onChange={() => this.handleChecked(index)} name={todo.index} value={todo.state} />
+              <input checked={todo.state} type="checkbox" id={todo.index} onChange={this.handleChecked} name={todo.index} value={index} />
               <label for={todo.index}>{todo.todo}</label>
             </div>
           )
