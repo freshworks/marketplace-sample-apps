@@ -1,18 +1,15 @@
-## Your First App
+## React Todo app for freshdesk
 
-Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
+This is a sample react app for freshdesk. 
 
-### Folder structure explained
 
-    .
-    ├── README.md                  This file
-    ├── app                        Contains the files that are required for the front end component of the app
-    │   ├── app.js                 JS to render the dynamic portions of the app
-    │   ├── icon.svg               Sidebar icon SVG file. Should have a resolution of 64x64px.
-    │   ├── freshdesk_logo.png     The Freshdesk logo that is displayed in the app
-    │   ├── style.css              Style sheet for the app
-    │   ├── template.html          Contains the HTML required for the app’s UI
-    ├── config                     Contains the installation parameters and OAuth configuration
-    │   ├── iparams.json           Contains the parameters that will be collected during installation
-    │   └── iparam_test_data.json  Contains sample Iparam values that will used during testing
-    └── manifest.json              Contains app meta data and configuration information
+### About the app 
+
+the app uses react framework through CDN to demonstrate the use of react in a freshdesk app. the app is a simple todo that uses data storage to save and retriev note
+
+### how to run 
+
+1. Clone the repo and navigate to this foler 
+2. Run *fdk run*
+3. open the freshdesk portal and append *?dev=true* in the ticket URL.
+
