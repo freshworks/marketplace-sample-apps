@@ -9,7 +9,7 @@ The app uses react framework through CDN to demonstrate the use of react in a fr
 
 ### how to run 
 
-1. Clone the repo and navigate to this foler 
+1. Clone the repo and navigate to this folder 
 2. Run *fdk run*
 3. open the freshdesk portal and append *?dev=true* in the ticket URL.
 
