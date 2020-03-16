@@ -5,7 +5,7 @@ This is a sample react app for freshdesk.
 
 ### About the app 
 
-the app uses react framework through CDN to demonstrate the use of react in a freshdesk app. the app is a simple todo that uses data storage to save and retriev note
+The app uses react framework through CDN to demonstrate the use of react in a freshdesk app. the app is a simple todo that uses data storage to save and retrieve note
 
 ### how to run 
 
