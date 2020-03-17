@@ -1,6 +1,6 @@
 app.initialized().then(function(_client) {
   let client = _client;
-  /** we use the context API to get the data skeleton from app.js  */
+  /** we use the context API to get the data retrieved app.js  */
   client.instance.context()
     .then(function(context) {
 
@@ -46,6 +46,10 @@ app.initialized().then(function(_client) {
       }
     })
     .catch(function(err) {
-      console.log(JSON.stringify(err));
+      client.interface.trigger("showNotify", {
+        type: "error",
+        message: "Couldn't show modal"
+      });
+      console.error("%o", err);
     });
 });

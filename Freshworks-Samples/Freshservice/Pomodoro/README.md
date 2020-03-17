@@ -12,7 +12,7 @@ The Pomodoro app lets the users to schedule work sessions based on pomodoro tech
 
 <img src="./Screenshots/App Face.png" width="250">  
 
-for other screenshots please refer to the [Screenshots](https://github.com/Raj-1337/Pomodoro_App/tree/master/Screenshots) folder
+for other screenshots please refer to the [Screenshots](./Screenshots/) folder
 
 * * *
 

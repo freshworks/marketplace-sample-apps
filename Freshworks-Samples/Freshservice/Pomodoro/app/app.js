@@ -16,10 +16,7 @@ $(document).ready(function() {
        */
       client.data.get("loggedInUser").then(
         function(data) {
-          console.log("%o", data);
           user_id = data.loggedInUser.user.id.toString();
-          console.info("id of the user is %s", user_id);
-          debugger;
         },
         function(err) {
           console.error("couldn't get loggedInUser, %o", err);
@@ -32,12 +29,10 @@ $(document).ready(function() {
    */
   $("#ip").click(function() {
     if (!sessionState) {
-      debugger;
-      makeSMICall("serverMethod");
-      session();
-      sessionState = true;
+      makeSMICall("startPomodoro")
+      .then(() => {session(); sessionState = true;}, (err) => {console.error("%o", err);notifyUser('error', "Couldn't start session");})
     } else {
-      stopPromodoro(0);
+      stopPomodoro(0);
       sessionState = false;
     }
   });
@@ -50,31 +45,33 @@ $(document).ready(function() {
     let td = null;
     client.db.get(user_id).then(
       function(data) {
-        console.log(data);
         td = data.totalDays;
         data.history.forEach((element, index) => {
           hs.push([index + 1, element.noOfSessions, element.noOfInterruptions]);
         });
         client.interface.trigger("showModal", {
           title: "sample modal",
-          template: "./mod.html",
+          template: "./modal/mod.html",
           data: { totalDays: td, history: hs }
         });
       },
       function(err) {
-        console.error("couldn't et data fir showActivity, %o", err);
+        console.error("couldn't get data for showActivity, %o", err);
       }
     );
   });
 
   /** a click event handler to clear all of the user's activity and schedules using clearActivity server.js method */
   $("#ca").click(function() {
-    makeSMICall("clearActivity");
+    makeSMICall("clearActivity")
+    .then(() => notifyUser("success", "cleared all activity!"), () => notifyUser("error", "couldn't clear activity"));
+    
   });
 
-  /** a click event handler to populate user data randomly using testData server.js method */
+  /** a click event handler to populate user data randomly using generateTestData server.js method */
   $("#td").click(function() {
-    makeSMICall("testData");
+    makeSMICall("generateTestData")
+    .then(() => notifyUser("success", "Test data populated successfully!"), () => notifyUser("error", "couldn't populate test data"));
   });
   /** registering an event to save timer if the pages was unloaded during session */
   $(window).on("beforeunload", saveTimer);
@@ -92,17 +89,11 @@ function notifyUser(notificationType, notificationMessage) {
   });
 }
 
-/**
- * simple function to change UI
- */
 function startText() {
   $("#apptext").text("Click me to start focus mode!!!");
   $("#ip").html("start");
 }
 
-/**
- * simple function to change UI
- */
 function stopText() {
   $("#apptext").text("Click me to stop focus mode!!!");
   $("#ip").html("stop");
@@ -144,7 +135,7 @@ function nextSessionCheck() {
       if (result.message === "OK") {
         t1 = setTimeout(session, 10000);
       } else {
-        stopPromodoro(1);
+        stopPomodoro(1);
       }
     })
     .catch(function(err) {
@@ -156,22 +147,15 @@ function nextSessionCheck() {
  * This function invokes interruptSchedule server.js methods via a helper function
  * It also clears the setTimeout and setInterval events put forth by takeBreak and takebreak itself
  */
-function stopPromodoro(flag) {
-  // let state = null;
-  // if(flag === 1) {
-  //   state = makeSMICall("stopSchedule");
-  // }
-  // else{
-  //   makeSMICall("interruptSchedule");
-  // }
-  let state = flag === 1 ? makeSMICall("stopSchedule") : makeSMICall("interruptSchedule");
-  if (state) {
+function stopPomodoro(flag) {
+  flag === 1 ? makeSMICall("stopSchedule") : makeSMICall("interruptSchedule")
+  .then(() => {
     stopTimer();
     clearTimeout(t1);
     clearTimeout(t3);
     clearTimeout(t2);
     startText();
-  }
+  }, () => notifyUser("error", "couldn't stop session!"));
 }
 
 /**
@@ -180,31 +164,13 @@ function stopPromodoro(flag) {
  * @param {string} - methodName name of the server.js method you wish to call
  */
 function makeSMICall(methodName) {
-  console.log("smi, id of the user is: " + user_id);
-  client.request.invoke(methodName, { id: user_id })
-    // .then(
-    //   function(data) {
-    //     console.log("server method request id: " + data.requestID);
-    //     console.log("response: " + data.response.reply);
-    //   },
-    //   function(err) {
-    //     console.log(JSON.stringify(err));
-    //   }
-    // );
-    .then(
-      () => true,
-      (err) => {
-        console.error("%o", err);
-        notifyUser("error", "requested operation couldn't be done!");
-        return false;
-      }
-    );
+  return client.request.invoke(methodName, { id: user_id })
 }
 
 /** a function to save data of running counter using localstorage */
 function saveTimer() {
   if (sessionState) {
-    localStorage.setItem("timerStorage",cvJSON.stringify({ state: sessionState, end: endTime }));
+    localStorage.setItem("timerStorage",JSON.stringify({ state: sessionState, end: endTime }));
   }
 }
 
@@ -212,7 +178,7 @@ function saveTimer() {
 function startTimer() {
   endTime = new Date();
   endTime.setMinutes(endTime.getMinutes() + 25);
-  t4 = setInterval(countdown, 999);
+  t4 = setInterval(countdown, 1000);
 }
 
 /** function to update the counter */
@@ -232,7 +198,14 @@ function checkTimer() {
     sessionState = temp.state;
     stopText();
     countdown();
-    t4 = setInterval(countdown, 998);
+    t4 = setInterval(countdown, 1000);
+    let difference = endTime.getTime() - new Date().getTime();
+    if (difference > 300000) {
+      t2 = setTimeout(takeBreak, (difference - 300000));
+    }
+    else {
+      t3 = setTimeout(nextSessionCheck, (difference - 10000));
+    }
   }
 }
 
