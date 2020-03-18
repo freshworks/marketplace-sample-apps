@@ -33,7 +33,7 @@
      */
     initHandlers = function() {
         clientAPP.events.on("ticket.propertiesUpdated", function() {
-            client.interface.trigger("showNotify", { type: "success", message: successMessage });//displays the flash notice at the top
+            clientAPP.interface.trigger("showNotify", { type: "success", message: successMessage });//displays the flash notice at the top
         });
 
         clientAPP.events.on("ticket.closeTicketClick", closeTicketConfirmation);//triggered when the close button is clicked on the top nav bar
