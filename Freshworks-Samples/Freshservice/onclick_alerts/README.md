@@ -6,7 +6,8 @@ The Onclick alerts app displays notification on updating ticket properties and c
 
 ## Screenshots
 
-![app face](./screenshots/App face.png)  
+<img src="./Screenshots/App Face.png" width="250">  
+
 For other screenshots please refer to [screenshots](./screenshots/) folder
 
 ***
