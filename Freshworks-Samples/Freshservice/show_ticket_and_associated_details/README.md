@@ -8,6 +8,8 @@ The  Show Ticket and Associated Details app leverages the data APIs in the ticke
 
 <img src="./screenshots/ModalContainingData.png">
 
+for other screenshots please refer to [screenshots](./screenshots) folder
+
 ## Features demonstrated
 
 | Feature | Notes |
