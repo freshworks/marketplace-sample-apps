@@ -12,6 +12,8 @@ for other screenshots please refer to [screenshots](./screenshots) folder
 
 ## Features demonstrated
 
+App location: ticket_sidebar on ticket details page
+
 | Feature | Notes |
 | :---: | --- |
 | [`Data API`](https://developer.freshservice.com/docs/data-api/#) | This app extensively uses various Data APIs to retrieve and show various informations regarding ticket, assets, requester, etc...|
@@ -27,7 +29,6 @@ for other screenshots please refer to [screenshots](./screenshots) folder
 ## Procedure to run the app
 
 1. Run the app locally using the [`fdk run`](https://developers.freshservice.com/docs/freshworks-cli/#_run) command.
-2. Navigate to the tickets page and select any ticket
-3. Append `?dev=true` to the URL to see the changes
-
-    > **NOTE:** If you dont see anything please refer to the [test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+2. Go to Freshservice, navigate to the tickets page and select any ticket
+3. Refer to the [Test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+4. Append `?dev=true` to the URL to see the changes

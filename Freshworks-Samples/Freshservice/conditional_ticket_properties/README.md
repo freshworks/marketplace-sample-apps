@@ -14,6 +14,8 @@
 
 ## Features demonstrated
 
+  App location: ticket_sidebar
+
   | Feautre | Notes |
   | :---: | --- |
   | [`Data API`](https://developer.freshservice.com/docs/data-api/#ticket_details_page) | Data API has been used to retrieve _loggedInUser_  and _ticket_ objects to get information about the user and the ticket properties respectively|
@@ -25,17 +27,16 @@
 ## Prerequisites
 
 1. Make sure you have a trial Freshservice account created
-2. Ensure that your [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/freshworks-cli/) is set up and configured properly.
+2. Ensure that your [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/quick-start/#test_your_app) is set up and configured properly.
 
 ***
 
 ## Procedure to run the app
 
 1. Run the app locally using the [`fdk run`](https://developers.freshservice.com/docs/freshworks-cli/#_run) command.
-2. Navigate to the tickets page and select any ticket
-3. Append `?dev=true` to the URL to see the changes
-
-    > **NOTE:** If you dont see anything please refer to the [test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+2. Go to Freshservice, navigate to the tickets page and select any ticket.
+3. Refer to the [Test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+4. Append `?dev=true` to the URL to run the app.
 
 ***
 
