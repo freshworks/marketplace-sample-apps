@@ -31,7 +31,7 @@ For other screenshots please refer to [screenshots](./screenshots/) folder
 
 ## Procedure to run the app
 
-1. Run the app locally using the [`fdk run`](https://developers.freshservice.com/docs/freshworks-cli/#_run) command.
+1. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command.
 2. Navigate to the tickets page and select any ticket
 3. Append `?dev=true` to the URL to see the changes
 
