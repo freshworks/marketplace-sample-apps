@@ -1,26 +1,31 @@
 # Show Ticket and Associated Details
 
-### Description:
+## Description
 
 The  Show Ticket and Associated Details app leverages the data APIs in the ticket details page to show additional relevant information about the ticket. Based on the selection from the dropdown, an agent can now get more context about few of the aspects like (and not limiting to) the requester, ticket associations such as Problem, Change, Assets etc.
 
-### Screenshots:
+## Screenshots
 
-_[Screenshots that are not too big/small. Gifs are best. Let's just stick to 3 screenshots at the max]_
+<img src="./screenshots/ModalContainingData.png">
 
-### Features demonstrated
-1. Rendering apps on Ticket details page (sidebar location).
-2. Usage of Data APIs for Ticket details page.
+## Features demonstrated
 
-### Prerequisites:
-1. Make sure you have a trial [FreshworksProduct] account created
-2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+| Feature | Notes |
+| :---: | --- |
+| [`Data API`](https://developer.freshservice.com/docs/data-api/#) | This app extensively uses various Data APIs to retrieve and show various informations regarding ticket, assets, requester, etc...|
+| [`Interface API`](https://developer.freshservice.com/docs/interface/) | Interface API specifically _showModal_ has been used to show various data retrieved by Data APIs |
 
-_[From point 3, add some of the important prerequisites which are specific to this app]_
+## Prerequisites
 
-### Procedure to run the app:
-1. Fill the `iparam_test_data.json` before running the app locally.
-2. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
-3. Append `?dev=true` to the Freshworks product URL to see the changes
+1. Make sure you have a trial Freshservice account created
+2. Ensure that your [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/freshworks-cli/) is set up and configured properly.
 
-_[ Special instructions for realizing the value out of this app]_
+***
+
+## Procedure to run the app
+
+1. Run the app locally using the [`fdk run`](https://developers.freshservice.com/docs/freshworks-cli/#_run) command.
+2. Navigate to the tickets page and select any ticket
+3. Append `?dev=true` to the URL to see the changes
+
+    > **NOTE:** If you dont see anything please refer to the [test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
