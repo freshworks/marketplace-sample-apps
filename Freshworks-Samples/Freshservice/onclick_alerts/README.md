@@ -14,6 +14,8 @@ For other screenshots please refer to [screenshots](./screenshots/) folder
 
 ## Features demonstrated
 
+App location: ticket_sidebar on ticket details page
+
 | Feature | Notes |
 |:---: |---|
 | [`Events API`](https://developer.freshservice.com/docs/events/#ticket_page_events) | Events API specifically _ticket details page events_  has been used to trigger notifications on updating ticket properties. |
@@ -31,8 +33,7 @@ For other screenshots please refer to [screenshots](./screenshots/) folder
 
 ## Procedure to run the app
 
-1. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command.
-2. Navigate to the tickets page and select any ticket
-3. Append `?dev=true` to the URL to see the changes
-
-    > **NOTE:** If you dont see anything please refer to the [test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+1. Run the app locally using the [`fdk run`](https://developers.freshservice.com/docs/freshworks-cli/#_run) command.
+2. Go to Freshservcie, navigate to the tickets page and select any ticket
+3. Refer to the [Test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+4. Append `?dev=true` to the URL to see the changes
