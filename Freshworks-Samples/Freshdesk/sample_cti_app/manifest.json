@@ -5,7 +5,7 @@
       "location": {
         "cti_global_sidebar": {
           "url": "templates/template.html",
-          "icon": "icon.svg"
+          "icon": "assets/icon.svg"
         }
       }
     }

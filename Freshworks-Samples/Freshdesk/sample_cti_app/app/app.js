@@ -1,4 +1,4 @@
-var middlewareUrl = 'https://abcd1234.ngrok.io';
+var middlewareUrl = 'https://<NGROK_GENERATED_SUBDOMAIN>.ngrok.io';
 
 /**
  * Show a notification toast with the given type and message
