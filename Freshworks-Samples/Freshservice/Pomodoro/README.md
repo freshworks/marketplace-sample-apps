@@ -19,7 +19,7 @@ for other screenshots please refer to the [Screenshots](./Screenshots/) folder
 ### Feautres Demonstrated
 
 | Feature | Notes |
-| --- | --- |
+| :---: | --- |
 | [`Interface API`](https://developer.freshservice.com/docs/interface/) | Interface API is used to notify users about their session progress|
 | [`Data API`](https://developer.freshservice.com/docs/data-api/) | Data API is used to retrieve the id of the logged-in user |
 | [`SMI`](https://developer.freshservice.com/docs/server-method-invocation/) | Server Method Invocation is to call the serverless components|
