@@ -50,6 +50,6 @@ app.initialized().then(function(_client) {
         type: "error",
         message: "Couldn't show modal"
       });
-      console.error("%o", err);
+      console.error("Error in fetching data using context API\n%o", err);
     });
 });

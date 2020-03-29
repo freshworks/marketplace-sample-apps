@@ -2,9 +2,9 @@
 
 ### Description
 
-The Pomodoro app lets the users to schedule work sessions based on pomodoro technique.
+The pomodoro app enables users to schedule work sessions based on the pomodoro technique.
 
-> The pomodoro technique is a productivity hack. It splits the work time into small segments where each segment is made up of 25 minutes work and 5 minutes break. By taking small breaks in between 25 short work sessions you can boost your productivity significantly and reduce the risk of being exhausted and unproductive.
+> The Pomodoro technique is a productivity hack. It splits the work time into small segments where each segment is made up of 25 minutes of work and 5 minutes break. By taking small breaks in between 25 short work sessions you can boost your productivity significantly and reduce the risk of being exhausted and unproductive.
 
 * * *
 
@@ -20,36 +20,35 @@ for other screenshots please refer to the [Screenshots](./Screenshots/) folder
 
 | Feature | Notes |
 | --- | --- |
-| [`Interface API`](https://developer.freshservice.com/docs/interface/) | Interface API to notify users about thier session progress|
-| [`Data API`](https://developer.freshservice.com/docs/data-api/) | Data API is used to retrieve the id of the user logged in |
-| [`SMI`](https://developer.freshservice.com/docs/server-method-invocation/) | SMI  (Server Method Invocation) is used by the app to call the serverless components|
-| [`Instance API`](https://developer.freshservice.com/docs/instance-api/#parenttomodal) | Instance API, _specifically the parent to modal using context_ has been used to send the user's history to the modal where it will be displayed as a chart|
-| [`Data Storage`](https://developer.freshservice.com/docs/data-storage/) | Various data storage commands have been used to store and manipulate user's data |
-| [`Scheduled Events`](https://developer.freshservice.com/docs/scheduled-events/) | Scheduled events are used to manipulate user's data |
+| [`Interface API`](https://developer.freshservice.com/docs/interface/) | Interface API is used to notify users about their session progress|
+| [`Data API`](https://developer.freshservice.com/docs/data-api/) | Data API is used to retrieve the id of the logged-in user |
+| [`SMI`](https://developer.freshservice.com/docs/server-method-invocation/) | Server Method Invocation is to call the serverless components|
+| [`Instance API`](https://developer.freshservice.com/docs/instance-api/#parenttomodal) | Instance API, _specifically the parent to modal using context_ is used to send the user's history to the modal where it is displayed as a chart|
+| [`Data Storage`](https://developer.freshservice.com/docs/data-storage/) | Various data storage commands are used to store and manipulate the user's data |
+| [`Scheduled Events`](https://developer.freshservice.com/docs/scheduled-events/) | Scheduled events are used to manipulate the user's data |
 
 * * *
 
 ### Prerequisites
 
-1. Make sure you have a trial Freshservice account created
-2. Ensure that your [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/freshworks-cli/) is set up and configured properly.
+1. Trial Freshservice account.
+2. A properly configured [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/freshworks-cli/).
 
 * * *
 
-### Procedure to run the app
+## Procedure to run the app
 
-1. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command.
-2. Navigate to the tickets page and select any ticket
-3. Append `?dev=true` to the URL to see the changes
-
-    > **NOTE:** If you dont see anything please refer to the [test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+1. Run the app locally using the [`fdk run`](https://developers.freshservice.com/docs/freshworks-cli/#_run) command.
+2. Go to Freshservcie, navigate to the tickets page and select any ticket
+3. Refer to the [Test your app](https://developer.freshservice.com/docs/quick-start/) section of the quickstart guide to allow insecure content.
+4. Append `?dev=true` to the URL to see the changes
 
 * * *
 
 ### Additional Notes
 
-* The Clear data button clears all thier history.
-* The Show activity button shows their history in a chart form created using google charts.
-* The Test data button populates the their history with random data.
-* The timer doesn't get reset if the they reloades the page or moves to another ticket.
-* when the session is stopped midway, it is recorded as interruption. This information along with no of sessions is used to produce chart where the they can assess their productivity by temselves.
+* If a pomodoro session is stopped midway, the app records it as an interruption. Using this information and the number of sessions the app generates charts by using google charts. App users can self-assess their productivity based on these charts.
+* If a page is reloaded or if a user moves to another ticket, the app does not reset the timer.
+* To display user history in a chart form, on the app UI click **Show activity**.
+* To populate the chart with random data, click **Test data**.
+* To clear all user history, click **Clear data**.

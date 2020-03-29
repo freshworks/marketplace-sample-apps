@@ -46,10 +46,10 @@ exports = {
           let hs = data.history;
           hs[td].noOfSessions += 1;
           obj.updateDataSkeleton(args.data.id, { history: hs })
-          .then(null, err => console.error("%o", err));
+          .then(null, err => console.error("couldn't update session info in scheduledEventHandler\n%o", err));
         },
         function(err) {
-          console.error("%o", err);
+          console.error("couldn't fetch data in scheduledEventHandler for updating sessions\n%o", err);
         }
       );
     } else {
@@ -59,10 +59,10 @@ exports = {
         data.totalDays < 29 ? td += 1 : hs.shift();
         hs.push({ noOfSessions: 0, noOfInterruptions: 0 });
         obj.updateDataSkeleton(args.data.id, { history: hs })
-        .then(null, err => console.error("%o", err));
+        .then(null, err => console.error("couldn't update data skeleton for next dayin scheduledEventHandler\n%o", err));
       },
       function(err) {
-        console.error("%o", err);
+        console.error("couldn't fetch data in scheduledEventHandler to prepare for next day\n%o", err);
       }
     )};
   },
@@ -84,7 +84,7 @@ exports = {
         .then(() => renderData(null, {}), err => renderData(err));
       },
       function(err) {
-        console.error("%o", err);
+        console.error("couldn't fetch data in interruptSchedule\n%o", err);
         renderData(err);
       }
     );
@@ -151,7 +151,7 @@ exports = {
    * This function updates the data skeleton with the new values using data storage API
    * @param {string} uid - ID of the user logged in
    * @param {string} dataObject - js object containing the data to create the skeleton with
-   * @returns {Promise} retruns promise of data storage API
+   * @returns {Promise} returns promise of data storage API
    */
   createDataSkeleton: function(uid, dataObject) {
     return $db.set(uid, dataObject, { setIf: "not_exist" });

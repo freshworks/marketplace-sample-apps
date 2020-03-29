@@ -27,10 +27,10 @@ $(document).ready(function() {
   /**
    * a click event handler to start and stop pomodoro sessions
    */
-  $("#ip").click(function() {
+  $("#startStopButton").click(function() {
     if (!sessionState) {
       makeSMICall("startPomodoro")
-      .then(() => {session(); sessionState = true;}, (err) => {console.error("%o", err);notifyUser('error', "Couldn't start session");})
+      .then(() => {startSession(); sessionState = true;}, (err) => {console.error("Couldn't start sessions\n%o", err);notifyUser('error', "Couldn't start session");})
     } else {
       stopPomodoro(0);
       sessionState = false;
@@ -40,7 +40,7 @@ $(document).ready(function() {
   /** a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
    * refer mod.js for flow continuation
    */
-  $("#sa").click(function() {
+  $("#showActivity").click(function() {
     let hs = [];
     let td = null;
     client.db.get(user_id).then(
@@ -62,14 +62,14 @@ $(document).ready(function() {
   });
 
   /** a click event handler to clear all of the user's activity and schedules using clearActivity server.js method */
-  $("#ca").click(function() {
+  $("#clearActivity").click(function() {
     makeSMICall("clearActivity")
     .then(() => notifyUser("success", "cleared all activity!"), () => notifyUser("error", "couldn't clear activity"));
     
   });
 
   /** a click event handler to populate user data randomly using generateTestData server.js method */
-  $("#td").click(function() {
+  $("#testData").click(function() {
     makeSMICall("generateTestData")
     .then(() => notifyUser("success", "Test data populated successfully!"), () => notifyUser("error", "couldn't populate test data"));
   });
@@ -90,19 +90,19 @@ function notifyUser(notificationType, notificationMessage) {
 }
 
 function startText() {
-  $("#apptext").text("Click me to start focus mode!!!");
-  $("#ip").html("start");
+  $("#sessionText").text("Click me to start focus mode!!!");
+  $("#startStopButton").html("start");
 }
 
 function stopText() {
-  $("#apptext").text("Click me to stop focus mode!!!");
-  $("#ip").html("stop");
+  $("#sessionText").text("Click me to stop focus mode!!!");
+  $("#startStopButton").html("stop");
 }
 
 /**
  * Function to show user that his session has started using a helper function
  */
-function session() {
+function startSession() {
   notifyUser("warning", "your 25 mins streak starts!");
   t2 = setTimeout(takeBreak, 1500000);
   startTimer();
@@ -159,9 +159,12 @@ function stopPomodoro(flag) {
 }
 
 /**
- * This is a helper function which calls server.js methods using client.request.invoke API (SMI)
- * Data for a particular user has been atached to his ID in the database, hence the need for pasing user_id via SMI
+ * SMI stands for Server Method Invocation
+ * It is a mechanism through which frontend part of the app can call the backend part of the APP
+ * Here we call the method (paramter methodName) which is defined in the server.js and will be executed in the server.
+ * We can also pass data to it in the form JSON. here we pass the ID of the user logged in.
  * @param {string} - methodName name of the server.js method you wish to call
+ * @param {JSON} - ID of the username logged in
  */
 function makeSMICall(methodName) {
   return client.request.invoke(methodName, { id: user_id })
