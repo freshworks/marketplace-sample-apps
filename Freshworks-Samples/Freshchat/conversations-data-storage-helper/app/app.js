@@ -1,3 +1,5 @@
+const PREFIX = 'convo-';
+
 /**
  * To store a note to the data storage.
  *
@@ -5,18 +7,7 @@
  * @param {String} note - Note typed by the agent
  **/
 function storeNote(conversationId, note) {
-    const prefix = 'convo-';
-    return client.db.set(prefix + conversationId, { "note": note })
-}
-
-/**
- * To retrieve the note from the data storage.
- *
- * @param {String} conversationId - The conversation_id of the Agent conversation.
- **/
-function retrieveNote(conversationId) {
-    const prefix = 'convo-';
-    return client.db.get(prefix + conversationId)
+    return client.db.set(PREFIX + conversationId, { "note": note });
 }
 
 function showNotification(type, message) {
@@ -52,8 +43,8 @@ function saveNote() {
                 });;
         },
         function (error) {
-            console.error('Failed to get conversation details.')
-            console.error(error)
+            console.error('Failed to get conversation details.');
+            console.error(error);
             showNotification('danger', "Unable to store the note. Retry later.");
         }
     );
@@ -69,22 +60,22 @@ function getNote() {
             client.request.invoke("getNote", { conversation_id: conversationData.conversation.conversation_id }).then(
                 function (noteData) {
                     $('#noteContainer').show();
-                    $('#savedNote').html(noteData.response.note)
+                    $('#savedNote').html(noteData.response.note);
                 },
                 function (error) {
                     if (error.status === 404) {
-                        console.error('No note is saved yet.')
-                        showNotification('warning', "No note is saved yet.")
+                        console.error('No note is saved yet.');
+                        showNotification('warning', "No note is saved yet.");
                     } else {
-                        console.error('Failed to get conversation details.')
-                        console.error(error)
+                        console.error('Failed to get conversation details.');
+                        console.error(error);
                         showNotification('danger', "Failed to get note. Retry later.");
                     }
                 });
         },
         function (error) {
-            console.error('failed to get note')
-            console.error(error)
+            console.error('failed to get note');
+            console.error(error);
             showNotification('danger', "Failed to get note. Retry later.");
         });
 }
@@ -96,10 +87,10 @@ $(document).ready(function () {
             client.events.on('app.activated',
                 function () {
                     $('#noteContainer').hide();
-                    $("#btnSaveNote").off()
+                    $("#btnSaveNote").off();
                     $("#btnSaveNote").on('click', saveNote);
 
-                    $("#btnGetNote").off()
+                    $("#btnGetNote").off();
                     $("#btnGetNote").on('click', getNote);
                 });
         }).catch(function (error) {

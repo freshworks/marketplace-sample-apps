@@ -1,15 +1,6 @@
 const helper = require('./helper');
 
-/**
- * To store a note to the data storage.
- *
- * @param {String} conversationId - The conversation_id of the Agent conversation.
- * @param {String} note - Note typed by the agent
- **/
-function storeNote(conversationId, note) {
-  const prefix = 'convo-';
-  return $db.set(prefix + conversationId, { "note": note })
-}
+const PREFIX = 'convo-';
 
 /**
  * To retrieve the note from the data storage.
@@ -17,8 +8,7 @@ function storeNote(conversationId, note) {
  * @param {String} conversationId - The conversation_id of the Agent conversation.
  **/
 function retrieveNote(conversationId) {
-  const prefix = 'convo-';
-  return $db.get(prefix + conversationId)
+  return $db.get(`${PREFIX}${conversationId}`);
 }
 
 exports = {
@@ -29,16 +19,16 @@ exports = {
   * @param {String} conversationId - The conversation_id of the Agent conversation.
   **/
   getNote: function (payload) {
-    const encodedConversationId = helper.encode(payload.conversation_id)
+    const encodedConversationId = helper.encode(payload.conversation_id);
     retrieveNote(encodedConversationId).then(
       function (data) {
-        console.info('got the key-value pair from db successfully')
-        console.info(data)
+        console.info('Seccessfully fetched the note data from db');
+        console.info(data);
         renderData(null, data);
       },
       function (error) {
-        console.error('failed to store the key-value pair successfully')
-        console.error(error)
+        console.error('failed to store the key-value pair successfully');
+        console.error(error);
         renderData(error);
       });
   }
