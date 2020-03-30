@@ -160,7 +160,7 @@ function stopPomodoro(flag) {
 
 /**
  * SMI stands for Server Method Invocation
- * It is a mechanism through which frontend part of the app can call the backend part of the APP
+ * It is a mechanism through which frontend component of an app can invoke the serverless component of the app.
  * Here we call the method (paramter methodName) which is defined in the server.js and will be executed in the server.
  * We can also pass data to it in the form JSON. here we pass the ID of the user logged in.
  * @param {string} - methodName name of the server.js method you wish to call
@@ -196,7 +196,12 @@ function countdown() {
 function checkTimer() {
   if (localStorage.getItem("timerStorage") !== null) {
     let temp = localStorage.getItem("timerStorage");
-    temp = JSON.parse(temp);
+    // temp = JSON.parse(temp);
+    try {
+      temp = JSON.parse(temp);
+    } catch (error) {
+      console.error("couldn't parse the stored time", error.name, error.message);
+    }
     endTime = new Date(temp.end);
     sessionState = temp.state;
     stopText();
