@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+  }
+  .logo {
+    background: url('freshservice_logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 25px;
+    margin-top: 25px;
+  }
+  p{
+      text-align: center;
+  }
+  .add{
+    background-color:#e7e7e7;
+    position: absolute; 
+    left: 20px;
+  }
+  .show{
+    background-color:#e7e7e7;
+    position: absolute; 
+    left: 100px;
+  }
+  
+  .clear1
+  {
+    background-color:#e7e7e7;
+    margin-right: 20px;
+  }
+  .summary{
+    position: absolute; 
+    left: 20px;
+    width:90%
+  }
+  .search{
+    position: absolute;
+    left: 2.5px;
+  }
+  .list_summary{
+    position: absolute;
+    left: 20px;
+    width:95%
+  }
+  table, th, td {
+    border: 1px solid black;
+  }
+
+
+  

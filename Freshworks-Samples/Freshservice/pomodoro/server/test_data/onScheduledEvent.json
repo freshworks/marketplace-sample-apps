@@ -1,0 +1,12 @@
+{
+  "account_id": "value",
+  "event": "onScheduledEvent",
+  "region": "value",
+  "timestamp": "value",
+  "domain": "value",
+  "data": {},
+  "iparams": {
+    "Param1": "value",
+    "Param2": "value"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "account_id": 13,
+  "domain": "sample.freshservice.com",
+  "event": "onAppInstall",
+  "timestamp": 1496400354326,
+  "region": "US",
+  "iparams": {
+    "username": "Rachel",
+    "url": "http://sample.freshservice.com"
+  }
+}
