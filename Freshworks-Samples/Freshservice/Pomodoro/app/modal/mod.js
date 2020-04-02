@@ -4,16 +4,13 @@ app.initialized().then(function(_client) {
   /** we use the context API to get the data retrieved app.js  */
   client.instance.context()
     .then(function(context) {
-
       const hs = context.data.history;
-      
       google.charts.load("current", { packages: ["corechart"] });
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         // Create the data table.
         var data = new google.visualization.DataTable();
-
         data.addColumn("number", "Days");
         data.addColumn("number", "No. of sessions");
         data.addColumn("number", "No. of interuptions");
@@ -39,18 +36,14 @@ app.initialized().then(function(_client) {
               title: "no. of sessions / interruptions"
           }
         };
-
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.LineChart(
           document.getElementById("chart_div")
         );
-        
         chart.draw(data, options);
-        
       }
 
     })
-
     .catch(function(err) {
       console.error("Error in fetching data using context API\n%o", err);
       client.interface.trigger("showNotify", {

@@ -12,38 +12,31 @@ exports = {
     let promise1 = this.prepareForNextDay(args.id);
     let promise2 = this.startSessions(args.id);
     let obj = this;
-    Promise.all([promise1, promise2])
-      .then(() => {
-        
+    Promise.all([promise1, promise2]).then(
+      () => {
         let td = 0;
         let hs = [{ noOfSessions: 0, noOfInterruptions: 0 }];
         obj.getDataSkeleton(args.id).then(
-
-          () => {renderData(null, {})},
+          () => renderData(null, {}),
 
           () => {
             obj.createDataSkeleton(args.id, { totalDays: td, history: hs })
-            .then(
+              .then(
+                () => renderData(null, {}),
 
-              () => renderData(null, {}),
-
-              err => {
-                console.error("couldn't create data skeleton in startPomodoro\n%o", err);
-                renderData({ status: err.status, message: err.message })
-              }
-
-            );
+                err => {
+                  console.error("couldn't create data skeleton in startPomodoro\n%o",err);
+                  renderData({ status: err.status, message: err.message });
+                });
           }
-
         );
-
       },
-      
+
       err => {
         console.error("Error in startPomodoro promises\n%o", err);
         renderData({ status: err.status, message: err.message });
-      });
-
+      }
+    );
   },
 
   /**
@@ -51,44 +44,39 @@ exports = {
    * @param {object} args - data passed by scheduled events which inclues ID of the user and the type of schedule calling the handler
    */
   scheduledEventHandler: function(args) {
-
     obj = this;
     if (args.data.type == "regular") {
-
       obj.getDataSkeleton(args.data.id).then(
-
         function(data) {
           let td = data.totalDays;
           let hs = data.history;
           hs[td].noOfSessions += 1;
-          obj.updateDataSkeleton(args.data.id, { history: hs })
-          .then(null, err => console.error("couldn't update session info in scheduledEventHandler\n%o", err));
+          obj.updateDataSkeleton(args.data.id, { history: hs }).then(null, err =>
+              console.error("couldn't update session info in scheduledEventHandler\n%o",err)
+            );
         },
+
         function(err) {
-          console.error("couldn't fetch data in scheduledEventHandler for updating sessions\n%o", err);
+          console.error("couldn't fetch data in scheduledEventHandler for updating sessions\n%o",err);
         }
       );
-
     } else {
-      
       obj.getDataSkeleton(args.data.id).then(
-
         function(data) {
-        td = data.totalDays;
-        hs = data.history;
-        data.totalDays < 29 ? td += 1 : hs.shift();
-        hs.push({ noOfSessions: 0, noOfInterruptions: 0 });
-        obj.updateDataSkeleton(args.data.id, { history: hs })
-        .then(null, err => console.error("couldn't update data skeleton for next dayin scheduledEventHandler\n%o", err));
+          td = data.totalDays;
+          hs = data.history;
+          data.totalDays < 29 ? (td += 1) : hs.shift();
+          hs.push({ noOfSessions: 0, noOfInterruptions: 0 });
+          obj.updateDataSkeleton(args.data.id, { history: hs }).then(null, err =>
+              console.error("couldn't update data skeleton for next dayin scheduledEventHandler\n%o",err)
+            );
         },
-        
-      function(err) {
-        console.error("couldn't fetch data in scheduledEventHandler to prepare for next day\n%o", err);
+
+        function(err) {
+          console.error("couldn't fetch data in scheduledEventHandler to prepare for next day\n%o",err);
         }
       );
-    
     }
-
   },
 
   /**
@@ -96,43 +84,43 @@ exports = {
    * @param {JSON} args - conatins the user id passed by the front - end
    */
   interruptSchedule: function(args) {
-
     let obj = this;
     let promise1 = obj.removeSchedule("regular_schedule");
     obj.getDataSkeleton(args.id).then(
-
       function(data) {
         let td = data.totalDays;
         let hs = data.history;
         hs[td].noOfInterruptions += 1;
         let promise2 = obj.updateDataSkeleton(args.id, { history: hs });
-        Promise.all([promise1, promise2])
-        .then(() => renderData(null, {}), err => {
-          console.error("promise error in intteruptSchedule method\n%o", err);
-          renderData(err);
-        });
+        Promise.all([promise1, promise2]).then(
+          () => renderData(null, {}),
+
+          err => {
+            console.error("promise error in intteruptSchedule method\n%o", err);
+            renderData(err);
+          }
+        );
       },
 
       function(err) {
         console.error("couldn't fetch data in interruptSchedule\n%o", err);
         renderData(err);
       }
-
     );
-
   },
 
   /**
    * only deletes schedule without recording interruption
    */
   stopSchedule: function() {
+    this.removeSchedule("regular_schedule").then(
+      () => renderData(null, {}),
 
-    this.removeSchedule("regular_schedule")
-    .then(() => renderData(null, {}), err => {
-      console.error("couldn't delete regular_schedule\n%o", err);
-      renderData(err)
-    });
-
+      err => {
+        console.error("couldn't delete regular_schedule\n%o", err);
+        renderData(err);
+      }
+    );
   },
 
   /**
@@ -140,15 +128,16 @@ exports = {
    * @param {JSON} args - conatins the user id passed by the front - end
    */
   clearActivity: function(args) {
-
     this.removeSchedule("Increment_Day");
     this.removeSchedule("regular_schedule");
-    $db.delete(args.id)
-    .then(() => renderData(null, {}), err => {
-      console.error("Error in clear activity\n%o", err);
-      renderData(err)
-    });
+    $db.delete(args.id).then(
+      () => renderData(null, {}),
 
+      err => {
+        console.error("Error in clear activity\n%o", err);
+        renderData(err);
+      }
+    );
   },
 
   /**
@@ -156,7 +145,6 @@ exports = {
    * @param {JSON} args - contains the user id passed by the front - end
    */
   generateTestData: function(args) {
-
     let uid = args.id;
     let td = 29;
     let hs = [];
@@ -166,12 +154,17 @@ exports = {
         noOfInterruptions: Math.ceil(Math.random() * 10)
       });
     }
-    this.createDataSkeleton(uid,{ totalDays: td, history: hs })
-    .then(() => renderData(null, {}), err => {
-      console.error("couldn't create data skeleton in generateTestData\n%o", err);
-      renderData(err)
-    });
+    this.createDataSkeleton(uid, { totalDays: td, history: hs }).then(
+      () => renderData(null, {}),
 
+      err => {
+        console.error(
+          "couldn't create data skeleton in generateTestData\n%o",
+          err
+        );
+        renderData(err);
+      }
+    );
   },
 
   /**
@@ -221,20 +214,17 @@ exports = {
    */
   prepareForNextDay: function(user_id) {
     $schedule.fetch({ name: "Increment_Day" }).then(null, () => {
-      
       let x = new Date();
       x.setHours(0, 0, 0, 0);
       x.setDate(x.getDate() + 1);
       x = x.toISOString();
-      
+
       return $schedule.create({
         name: "Increment_Day",
         data: { type: "incrementDay", id: user_id },
         schedule_at: x
       });
-    
     });
-  
   },
 
   /**
@@ -245,7 +235,6 @@ exports = {
    * @returns {Promise} returns the promise of the scheduled events creator
    */
   startSessions: function(user_id) {
-
     return $schedule.create({
       name: "regular_schedule",
       data: { type: "regular", id: user_id },
@@ -255,7 +244,5 @@ exports = {
         frequency: 25
       }
     });
-
   }
-
 };
