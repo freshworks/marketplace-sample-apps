@@ -3,13 +3,16 @@
         targetContainer = "#renderOutput ul",
         $li,
         $label,
-        $valu,
         arrayModules = ["associatedTasks", "recentChildTickets", "requesterAssets", "ticketAssets"];//this array is used to check if the data api returns an array of objects
     initModal = function(_client) {
         clientAPP = _client;
         initHandlers();
     };
 
+    /**
+     * This function takes in a data and formats it according to its data type for displaying
+     * @param _v - the data to be formatted 
+     */
     flattenToString = function(_v) {
         var swapVariable = "";
         if (typeof _v == "string") {
@@ -25,7 +28,12 @@
         }
         return _v;
     };
-    //This method gets the corresponding data whenever the navigation button or the button from the dropdown is clicked
+    
+    /**
+     * This method gets the corresponding name of the data to be retrieved whenever the navigation button from the dropdown is clicked
+     * It retrieves the data using Data API, formats it using another function and then displays it
+     * @param {string} module - name of the object to be retrieved 
+     */
     getData = function(module) {
         var $targetContainer = $(targetContainer),
             _data;
@@ -54,6 +62,9 @@
             });
     };
 
+    /**
+     * This function handles the dropdown and pagination and populates the table (output) with coreesponding data.
+     */
     initHandlers = function() {
         var targetDirection,
             currentValue,

@@ -4,6 +4,10 @@
         clientAPP = _client;
         clientAPP.events.on('app.activated', initHandlers);
     };
+
+    /**
+     * A function to open the modal to display ticket and it's associated data.
+     */
     initDemoApp = function() {
         clientAPP.interface.trigger('showModal', { title: 'Ticket and Associated Details', template: 'content.html' })
             .then(
@@ -13,7 +17,7 @@
                 function(error) {
                     console.log(error);
                 }
-            );//opens the modal which will display the ticket and associated data
+            );
     };
     initHandlers = function() {
         $(document).on("click", "#startDemo", initDemoApp);

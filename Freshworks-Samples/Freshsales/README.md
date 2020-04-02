@@ -1,8 +1,9 @@
-## Freshsales sample apps 
-This repository contains sample apps demonstrating the various features available Freshsales Marketplace . It contains the following apps:
+# Freshsales sample apps
 
-### [UI Style Guide](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshsales/ui_style_guide)
+This repository contains sample apps demonstrating the various features available Freshsales Marketplace. It contains the following apps:
 
-Sample app with a table and button
-
-This is a sample app that you could use to create a table and have a button that can enforce an action. Some of the typical scenarios to use this app would be is when you want to represent a list of recent invoices, recent orders, recent purchases.
+| App Name | Description |
+| --- | --- |
+| [Contacts_Sync_Apps](./Contacts_Sync_Apps/) | Pair of apps which syncs contacts between Freshdesk and Freshsales |
+| [Simple_request_app](./simple_request_app/) | An sample app which retrieves and displays details about current lead |
+| [ui_style_guide](./ui_style_guide) | A sample app demonstrating how HTML elements are created and rendered using [crayons](../App-Development-Features/crayons) adhering to the [UI Style Guide](https://developers.freshsales.io/docs/ui-style-guide/) |
