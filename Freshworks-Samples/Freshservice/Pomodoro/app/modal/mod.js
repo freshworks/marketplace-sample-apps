@@ -1,13 +1,15 @@
 app.initialized().then(function(_client) {
-  let client = _client;
+
+  const client = _client;
   /** we use the context API to get the data retrieved app.js  */
   client.instance.context()
     .then(function(context) {
 
-      let hs = context.data.history;
+      const hs = context.data.history;
       
       google.charts.load("current", { packages: ["corechart"] });
       google.charts.setOnLoadCallback(drawChart);
+
       function drawChart() {
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -42,14 +44,19 @@ app.initialized().then(function(_client) {
         var chart = new google.visualization.LineChart(
           document.getElementById("chart_div")
         );
+        
         chart.draw(data, options);
+        
       }
+
     })
+
     .catch(function(err) {
+      console.error("Error in fetching data using context API\n%o", err);
       client.interface.trigger("showNotify", {
         type: "error",
         message: "Couldn't show modal"
       });
-      console.error("Error in fetching data using context API\n%o", err);
     });
+
 });

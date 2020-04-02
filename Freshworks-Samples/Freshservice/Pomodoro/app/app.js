@@ -1,5 +1,5 @@
-let client = null;
-let user_id = null;
+const client = null;
+const user_id = null;
 let sessionState = false;
 let t1 = null,
   t2 = null,
@@ -7,73 +7,108 @@ let t1 = null,
   t4 = null;
 let endTime = null;
 $(document).ready(function() {
+
   checkTimer();
   app.initialized().then(function(_client) {
+
     client = _client;
     client.events.on("app.activated", function() {
+
       /**
        * get the id of the user logged in using the data API
        */
       client.data.get("loggedInUser").then(
+
         function(data) {
           user_id = data.loggedInUser.user.id.toString();
         },
+
         function(err) {
+          notifyUser("error", "couldn't get loggedInUser");
           console.error("couldn't get loggedInUser, %o", err);
         }
+
       );
+
     });
+
   });
+
   /**
    * a click event handler to start and stop pomodoro sessions
    */
   $("#startStopButton").click(function() {
     if (!sessionState) {
+
       makeSMICall("startPomodoro")
-      .then(() => {startSession(); sessionState = true;}, (err) => {console.error("Couldn't start sessions\n%o", err);notifyUser('error', "Couldn't start session");})
+      .then(() => {
+        startSession(); 
+        sessionState = true;
+      }, 
+      
+      (err) => {
+        console.error("Couldn't start sessions\n%o", err);
+        notifyUser('error', "Couldn't start session");
+      })
+
     } else {
       stopPomodoro(0);
       sessionState = false;
     }
   });
 
-  /** a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
+  /** 
+   * a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
    * refer mod.js for flow continuation
    */
   $("#showActivity").click(function() {
+
     let hs = [];
     let td = null;
+
     client.db.get(user_id).then(
+
       function(data) {
+        
         td = data.totalDays;
         data.history.forEach((element, index) => {
           hs.push([index + 1, element.noOfSessions, element.noOfInterruptions]);
         });
+
         client.interface.trigger("showModal", {
           title: "sample modal",
           template: "./modal/mod.html",
           data: { totalDays: td, history: hs }
         });
       },
+      
       function(err) {
         console.error("couldn't get data for showActivity, %o", err);
       }
+
     );
+
   });
 
-  /** a click event handler to clear all of the user's activity and schedules using clearActivity server.js method */
+  /** 
+   * a click event handler to clear all of the user's activity and schedules using clearActivity server.js method
+   */
   $("#clearActivity").click(function() {
     makeSMICall("clearActivity")
     .then(() => notifyUser("success", "cleared all activity!"), () => notifyUser("error", "couldn't clear activity"));
-    
   });
 
-  /** a click event handler to populate user data randomly using generateTestData server.js method */
+  /**
+   * a click event handler to populate user data randomly using generateTestData server.js method 
+   */
   $("#testData").click(function() {
     makeSMICall("generateTestData")
     .then(() => notifyUser("success", "Test data populated successfully!"), () => notifyUser("error", "couldn't populate test data"));
   });
-  /** registering an event to save timer if the pages was unloaded during session */
+  
+  /**
+   * registering an event to save timer if the pages was unloaded during session 
+   */
   $(window).on("beforeunload", saveTimer);
 });
 
@@ -125,12 +160,14 @@ function takeBreak() {
  * They can give thier response using the showConfirm interface triggered by this method
  */
 function nextSessionCheck() {
+
   client.interface
     .trigger("showConfirm", {
       title: "Do you want to continue ?",
       message:
         "your break's about to be over, do you want to start a new pomodoro session ? "
     })
+
     .then(function(result) {
       if (result.message === "OK") {
         t1 = setTimeout(session, 10000);
@@ -138,9 +175,11 @@ function nextSessionCheck() {
         stopPomodoro(1);
       }
     })
+
     .catch(function(err) {
       console.error("Error with showConfirm: %o", err);
     });
+    
 }
 
 /**
@@ -155,7 +194,10 @@ function stopPomodoro(flag) {
     clearTimeout(t3);
     clearTimeout(t2);
     startText();
-  }, () => notifyUser("error", "couldn't stop session!"));
+  },
+
+  () => notifyUser("error", "couldn't stop session!")
+  );
 }
 
 /**
@@ -170,21 +212,27 @@ function makeSMICall(methodName) {
   return client.request.invoke(methodName, { id: user_id })
 }
 
-/** a function to save data of running counter using localstorage */
+/** 
+ * a function to save data of running counter using localstorage
+ */
 function saveTimer() {
   if (sessionState) {
     localStorage.setItem("timerStorage",JSON.stringify({ state: sessionState, end: endTime }));
   }
 }
 
-/** a function to set the session's end time and start countdown */
+/** 
+ * a function to set the session's end time and start countdown 
+ */
 function startTimer() {
   endTime = new Date();
   endTime.setMinutes(endTime.getMinutes() + 25);
   t4 = setInterval(countdown, 1000);
 }
 
-/** function to update the counter */
+/** 
+ * function to update the counter
+ */
 function countdown() {
   let current = endTime - new Date();
   let minutes = Math.floor((current % (1000 * 60 * 60)) / (1000 * 60));
@@ -192,32 +240,44 @@ function countdown() {
   $("#timer").text(`${minutes} min  :  ${seconds} sec`);
 }
 
-/** function to check if there is a running session, if so change the global variables which affetcs the UI and resumes the timer */
+/**
+ * function to check if there is a running session, 
+ * if so change the global variables which affetcs the UI and resumes the timer 
+ */
 function checkTimer() {
+
   if (localStorage.getItem("timerStorage") !== null) {
+
     let temp = localStorage.getItem("timerStorage");
-    // temp = JSON.parse(temp);
+
     try {
       temp = JSON.parse(temp);
     } catch (error) {
+      notifyUser("error", "couldn't parse the stored time");
       console.error("couldn't parse the stored time", error.name, error.message);
     }
+
     endTime = new Date(temp.end);
     sessionState = temp.state;
     stopText();
     countdown();
     t4 = setInterval(countdown, 1000);
     let difference = endTime.getTime() - new Date().getTime();
+
     if (difference > 300000) {
       t2 = setTimeout(takeBreak, (difference - 300000));
     }
     else {
       t3 = setTimeout(nextSessionCheck, (difference - 10000));
     }
+
   }
+
 }
 
-/** function to remove countdown and endTime */
+/** 
+ * function to remove countdown and endTime
+ */
 function stopTimer() {
   endTime = null;
   $("#timer").empty();
