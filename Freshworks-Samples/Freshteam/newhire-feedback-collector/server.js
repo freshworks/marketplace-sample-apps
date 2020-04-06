@@ -1,46 +1,36 @@
-
 /**
  * Sendgrid API is used to Send mails 
  */
 const sgMail = require('@sendgrid/mail');
-const htmlMsg = require('./Template').html_msg;
+/**
+ * Assigning onNewHireCreateCallback to onNewHireCreate event
+ */
 exports = {
   events: [
     { event: "onNewHireCreate", callback: "onNewHireCreateCallback"},
+    { event: "onScheduledEvent", callback: "onScheduledEventHandler" }
   ],
-/**
- * Assigning onNewHireCreateCallback to onNewHireCreate event
- */	
-     onNewHireCreateCallback: function(payload) {
-	console.log(htmlMsg);
-    console.log('payload.iparams.apiKey')
-	console.log(payload.iparams.apiKey)
-	
+  onNewHireCreateCallback: function(payload) {
     sgMail.setApiKey(payload.iparams.apiKey);
-
-        const msg = {
+          const msg = {
           to: payload.data.newhire.user_emails[0],
-          from: 'sjuhi1818@gmail.com',   
-          subject: 'Feedback Form for New Hires',
-          text: 'xyz',
-          html: htmlMsg,
+          from: payload.iparams.Email,
+          subject: payload.iparams.Subject,
+          Text: payload.iparams.Text,
         };
         sgMail.send(msg);
-/**
- *Using Shedule event for sending mail after 30 days
- */
-    let d = new Date();
-    d.setMonth(d.getMonth()+1);
-    $schedule.create({
-      name: "ticket_reminder",
-      data: {ticket_id: 100001},
-      schedule_at: d.toISOString(),
-    })
-  }
-}
-  
-
-
-  
-
-    
+      },
+      onScheduledEventHandler: function(payload) {
+        console.log("Logging arguments from onScheduledEvent: " +  JSON.stringify(payload));
+        if(payload.data.account_id = 3)
+          {
+            let d = new Date();
+              d.setMonth(d.getMonth()+1);
+              $schedule.create({
+              name: "ticket_reminder",
+             data: {ticket_id: 100001},
+             schedule_at: d.toISOString(),
+            })
+          }
+        }
+    }
