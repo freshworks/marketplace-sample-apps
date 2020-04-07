@@ -2,3 +2,4 @@
 **/.fdk/**
 **/coverage/**
 **/.report.json
+**/.vscode/**
