@@ -1,0 +1,16 @@
+{
+  "account_id": 12345,
+  "event": "onExternalEvent",
+  "timestamp": 1496400354326,
+  "region": "US",
+  "domain": "https://example.freshteam.com",
+  "data": {
+    "message": {
+      "id": 12345,
+      "action": "Employee has added an onboarding document"
+    }
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}
