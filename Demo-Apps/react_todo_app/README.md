@@ -1,28 +1,44 @@
 # React Todo app for freshdesk
 
-### Description:
+## Description
 
-This is a sample React app for Freshdesk using react CDN
+This is a sample React app for Freshdesk using react CDN. It demonstrates how to use a React library in a Freshdesk app (will be the same for all the other Freshworks products)
 
+***
 
-### Features demonstrated 
+## Screenshots
 
-This app demonstrates how to use a React library in a Freshdesk app (will be the same for all the other Freshworks products)
+<img src="./screenshots/App Face.png" height="300" width="300">
 
+***
 
-### Prerequisites:
+## Features Demonstrated
 
-1. Basic knowledge or exposure to React
-2. Experience in Freshworks developer platform
-3. Latest version of FDK
+App location: ticket_sidebar on ticket details page
 
+| Feature | Notes |
+| :---: | --- |
+| [`Data Storage API`](https://developers.freshdesk.com/v2/docs/data-storage/) | Data storage API has been used to store and queue notes |
+| React class components | React class components is used to render TodoList and Todo components and manages state |
 
-### Procedure to run the app:
+## Prerequisites
 
-1. Clone the repo and navigate to this folder 
-2. Run *fdk run*
-3. Open the freshdesk portal and append *?dev=true* in the ticket URL.
+1. Make sure you have a trial Freshdesk account created
+2. A properly configured [Development environment](https://developers.freshdesk.com/v2/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developers.freshdesk.com/v2/docs/freshworks-cli/).
+3. Basic exposure to React library
 
-### *Note*
+***
 
-This is a demonstration of a very basic method of using React in a Freshdesk app. React has more powerful features that can be implemented in other different methods 
+## Procedure to run the app
+
+1. Run the app locally using the [`fdk run`](https://developers.freshdesk.com/v2/docs/freshworks-cli/#run) command.
+2. Go to Freshdesk, navigate to the tickets page and select any ticket
+3. Refer to the [Test your app](https://developers.freshdesk.com/v2/docs/quick-start/#test_your_app) section of the quickstart guide to allow insecure content.
+4. Append `?dev=true` to the URL to see the changes
+
+***
+
+## Additional Notes
+
+* This is a very basic demonstration of using React library in a Freshdesk app.
+* React has other powerful features which can be implemented in various other ways.
