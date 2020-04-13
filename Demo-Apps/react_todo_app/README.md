@@ -8,7 +8,7 @@ This is a sample React app for Freshdesk using react CDN. It demonstrates how to
 
 ## Screenshots
 
-<img src="./screenshots/App Face.png" height="300" width="300">
+<img src="./Screenshots/App Face.png" height="300" width="300">
 
 ***
 
