@@ -8,7 +8,7 @@ This app analyses the ticket sentiment of the requestor and rates it. It can tel
 
 ## Screenshots
 
-<img src="./screenshots/AppView.png" height="300">
+![appView](./screenshots/appView.png)
 
 For other screenshots please refer to [screenshots](./screenshots/) folder
 
