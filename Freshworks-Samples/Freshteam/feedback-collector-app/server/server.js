@@ -22,7 +22,7 @@ exports = {
         sgMail.send(msg);
       },
       onScheduledEventHandler: function(payload) {
-        console.log("Logging arguments from onScheduledEvent: " +  JSON.stringify(payload));
+        console.info("Logging arguments from onScheduledEvent: " +  JSON.stringify(payload));
         if(payload.data.account_id = 3)
           {
             let d = new Date();
