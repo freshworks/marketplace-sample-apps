@@ -10,6 +10,8 @@ Whenever a new hire is created, a freshservice ticket is created for the IT team
 
 <img src="./screenshots/created_ticket.png">
 
+for other screenshots please refer to the [screenshots](./screenshots/) folder.
+
 ***
 
 ## Features Demonstrated
