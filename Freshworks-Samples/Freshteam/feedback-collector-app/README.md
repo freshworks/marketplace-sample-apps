@@ -11,7 +11,6 @@ Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
 Explore FreshTeam documentation to use lavarges.
 
 ## Procedure to run the app
-Fill the iparam_test_data.json before running the app locally.
 Run the app locally using the fdk run command
 Append ?dev=true to the Freshworks product URL to see the changes
    
