@@ -1,7 +1,7 @@
 {
     "apiKey": {
              "display_name": "Api Key",
-             "description": "Please enter your Api Key"
+             "description": "Please enter your Api Key",
              "type": "text",
               "required": true,
               "secure": true
@@ -31,3 +31,4 @@
       "required": true
     }
   }
+
