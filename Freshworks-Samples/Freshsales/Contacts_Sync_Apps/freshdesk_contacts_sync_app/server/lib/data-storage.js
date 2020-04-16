@@ -28,7 +28,6 @@ async function setData(contactId, key, value) {
 async function getData(contactId, key) {
   try {
     const data = await $db.get('contact:' + contactId);
-
     return data[key];
   } catch (error) {
     console.log('failed to get stored contact information');
