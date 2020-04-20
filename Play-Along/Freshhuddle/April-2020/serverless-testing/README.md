@@ -1,9 +1,15 @@
-## Serverless Testing
+# Serverless Testing
 
-A sample app to demonstrate serverless testing through the test framework.
+### Description:
 
-This app demonstrates the following features
+A sample app to demonstrate serverless testing with the help of platform's testing framework.
 
-1. Test suite structure.
-2. Usage of test interfaces (invoke & stub).
-3. Usage of `devDependencies` to include additional testing tools.
+Features demonstrated | Notes
+--------------------- | ------
+Serverless Testing    | Test Structure, Usage of the interfaces (stub & invoke), devDependencies
+
+### Prerequisites:
+1. Ensure that you have the Freshworks Developer Kit (FDK) installed.
+
+### Procedure to run the app:
+1. Run the tests using `fdk test` command
