@@ -5,8 +5,16 @@ const helper = require('./lib/helper');
 exports = {
 
   events: [
+    { event: 'onAppInstall', callback: 'onAppInstallHandler' },
     { event: 'onTicketCreate', callback: 'onTicketCreateHandler' }
   ],
+
+  /**
+   * Runs as part of app install to setup pre-requisite
+   */
+  onAppInstallHandler: function() {
+    // Add your code here
+  },
 
   /**
    * Makes a request to httpbin with ticket id, subject and sets the status
@@ -24,10 +32,10 @@ exports = {
         subject
       }
     }).then(function() {
-      console.log('Request successful');
+      console.info('Request successful');
       helper.setStatus(ticketId, true);
     }, function() {
-      console.log('Request failed');
+      console.error('Request failed');
       helper.setStatus(ticketId, false);
     });
   },
