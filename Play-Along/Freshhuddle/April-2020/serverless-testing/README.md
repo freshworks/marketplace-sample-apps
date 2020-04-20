@@ -8,6 +8,10 @@ Features demonstrated | Notes
 --------------------- | ------
 Serverless Testing    | Test Structure, Usage of the interfaces (stub & invoke), devDependencies
 
+### Screenshots
+
+<img src="./screenshots/serverless-testing.png">
+
 ### Prerequisites:
 1. Ensure that you have the Freshworks Developer Kit (FDK) installed.
 
