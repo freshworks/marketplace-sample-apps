@@ -3,3 +3,4 @@
 **/coverage/**
 **/.report.json
 **/.vscode/**
+**/node_modules/**
