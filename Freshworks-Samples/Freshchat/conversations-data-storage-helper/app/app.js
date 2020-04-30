@@ -31,21 +31,21 @@ function saveNote() {
             const encodedConversationId = encode(conversationData.conversation.conversation_id);
             storeNote(encodedConversationId, note).then(
                 function () {
-                    console.info('stored the key-value pair successfully');
+                    console.info('Successfully stored the key-value pair');
                     showNotification('success', "Successfully stored the note.");
                     $('#note').val("");
                     $('#noteContainer').hide();
                 },
                 function (error) {
-                    console.error('failed to store the key-value pair successfully');
+                    console.error('Failed to store the key-value pair');
                     console.error(error);
                     showNotification('danger', "Unable to store the note. Retry again.");
                 });;
         },
         function (error) {
-            console.error('Failed to get conversation details.');
+            console.error('Failed to get conversation details');
             console.error(error);
-            showNotification('danger', "Unable to store the note. Retry later.");
+            showNotification('danger', "Unable to store the note. Retry again.");
         }
     );
 }
@@ -64,7 +64,7 @@ function getNote() {
                 },
                 function (error) {
                     if (error.status === 404) {
-                        console.error('No note is saved yet.');
+                        console.error('No note is saved yet');
                         showNotification('warning', "No note is saved yet.");
                     } else {
                         console.error('Failed to get conversation details.');
@@ -74,7 +74,7 @@ function getNote() {
                 });
         },
         function (error) {
-            console.error('failed to get note');
+            console.error('Failed to get note');
             console.error(error);
             showNotification('danger', "Failed to get note. Retry later.");
         });

@@ -15,6 +15,11 @@ This app demonstrates the following features:
 2. Data Storage - It is used to store and retrieve a note for the conversations.
 3. Interface method - The showNotify method from this method is used to show success and failure notification to the user.
 
+**About buffer library:**
+* `Buffer.from('...','hex')` would work fine as long as the input is subjected to certain conditions. For example, it has to be a valid hex and not end in single hex digit.
+Conversation ID of Freshchat adheres to Version 4 UUID which fall under this condition.
+* Since no bundler is used in this application, a standalone script is loaded as file from `/app/util/buffer.min.js` that is compiled from [Buffer NPM library](https://www.npmjs.com/package/buffer).
+
 ### Prerequisites:
 1. Make sure you have a Freshchat account created.
 2. Ensure that you have the Freshworks Developer Kit (FDK) installed.
