@@ -67,6 +67,9 @@
       "created_at": "2016-12-12T09:37:47Z"
     }
   },
+  "iparams": {
+    "github_repo": "username/repo-name"
+  },
   "account_id": 13,
   "domain": "sample.freshdesk.com",
   "event": "onTicketCreate"
