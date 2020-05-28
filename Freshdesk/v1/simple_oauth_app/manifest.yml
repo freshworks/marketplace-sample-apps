@@ -1,9 +1,0 @@
-platform-version: '1.0'
-source-charset: utf8
-features:
-  - oauth
-pages:
-  - ticket
-  - contact
-whitelisted-domains:
-  - https://api.onedrive.com

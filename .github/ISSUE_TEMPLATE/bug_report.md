@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve !
 title: '[Bug] - '
-labels: 
+labels:
 assignees: ''
 
 ---
@@ -10,12 +10,8 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**Noted in which product sample app**
-- [ ] Freshdesk
-- [ ] Freshchat
-- [ ] Freshsales
-- [ ] Freshservice
-- [ ] Freshcaller
+**Link to the bug'd Sample App**
+[URL]
 
 **To Reproduce**
 Steps to reproduce the behavior:

@@ -1,0 +1,13 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "cti_global_sidebar": {
+          "url": "templates/template.html",
+          "icon": "assets/icon.svg"
+        }
+      }
+    }
+  }
+}

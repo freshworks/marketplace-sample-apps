@@ -1,0 +1,84 @@
+/* Dialpad - start */
+.container {
+  background-color: white;
+  text-align: center;
+  padding: 0px;
+  border-bottom: none;
+}
+
+#output {
+  font-family: "Exo";
+  font-size: 2rem;
+  height: 60px;
+  font-weight: bold;
+  color: #1976d2;
+}
+.row {
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  text-align: center;
+  font-family: 'Exo';
+}
+.digits {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+.digit {
+  grid-column: 3;
+  grid-row: 4;
+  padding: 20px 45px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+#call, .button {
+  display: inline-block;
+  background-color: #66bb6a;
+  padding: 4px 30px;
+  margin: 10px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.botrow {
+  margin: 0 auto;
+  width: 280px;
+  clear: both;
+  text-align: center;
+  font-family: 'Exo';
+}
+
+.digit:active,
+.dig:active {
+  background-color: #e6e6e6;
+}
+
+#call:hover {
+  background-color: #81c784;
+}
+
+.dig {
+  float: left;
+  padding: 10px 20px;
+  margin: 10px;
+  width: 30px;
+  cursor: pointer;
+}
+/* Dialpad - end */
+
+/* Nav Tabs - Start */
+ul.nav-tabs.nav-justified {
+  width: 90%;
+  margin-bottom: -1px;
+}
+.nav-tabs {
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+}
+nav-tabs.nav-item.nav-link.active {
+  background-color: #4CAF50;
+  color: white;
+}
+/* Nav Tabs - End */
