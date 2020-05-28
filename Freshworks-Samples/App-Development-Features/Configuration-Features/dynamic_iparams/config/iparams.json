@@ -1,0 +1,68 @@
+{
+    "twitter_id": {
+        "display_name": "Twitter ID",
+        "description": "Please enter your Acc. ID",
+        "type": "text",
+        "required": true,
+        "events": [{
+            "change": "checkAccountID"
+        }]
+    },
+    "twitter_tags": {
+        "display_name": "Interested Tags",
+        "description": "Enter comma-seperated value of tags that you are interested in",
+        "type": "text",
+        "required": true,
+        "events": [{
+            "change": "populateTags"
+        }]
+    },
+    "mobile": {
+        "display_name": "Phone Number",
+        "description": "Please enter your phone number with the country code",
+        "type": "phone_number",
+        "required": true
+    },
+    "domain_name": {
+        "display_name": "Domain Name",
+        "description": "Please enter your domain name",
+        "type": "domain",
+        "type_attributes": {
+            "product": "freshdesk"
+        },
+        "required": true
+    },
+    "api_key": {
+        "display_name": "API Key",
+        "description": "Please enter your api_key",
+        "type": "api_key",
+        "secure": true,
+        "required": true,
+        "type_attributes": {
+            "product": "freshdesk"
+        }
+    },
+    "contact_methods": {
+        "display_name": "Contact Methods",
+        "description": "Please select the preferred contact methods",
+        "type": "multiselect",
+        "options": [
+            "Mobile",
+            "Twitter ID"
+        ],
+        "events": [{
+            "change": "contactMethodChanged"
+        }],
+        "default_value": [
+            "Mobile",
+            "Twitter ID"
+        ]
+    },
+    "tags": {
+        "display_name": "Tags as Multichoice",
+        "description": "These tags are dynamically generated based on values entered in `Interested Tags` text iparam",
+        "type": "multiselect",
+        "options": [],
+        "default_value": []
+    }
+}

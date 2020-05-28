@@ -1,0 +1,4 @@
+.report.json
+.fdk
+/node_modules
+/coverage
