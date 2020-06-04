@@ -11,14 +11,14 @@ app.initialized().then(
     },
     function (error) {
         //If unsuccessful
-        console.log(error);
+        console.error(error);
     }
 );
 
 /**
  * Using this iparam callback function, we are validating the details using a third-party API. 
  * In this case, we are making use of `httpbin.org` to return 200 OK status. 
- * In real-world, this could be a valid third-party API that can return an approporiate status code
+ * In real-world, this could be a valid third-party API that can return an appropriate status code
  * Payload and other options can be specified using `options`
  * 
  * @param {string} newValue The new value of the iparam field
@@ -41,7 +41,7 @@ function checkAccountID(newValue) {
                 resolve();
             },
             function (error) {
-                // Upon failure - send an approporiate validation error message
+                // Upon failure - send an appropriate validation error message
                 reject("This Account ID does not exist. Please enter the right one");
             }
         );
@@ -49,7 +49,7 @@ function checkAccountID(newValue) {
     return Promise.resolve();
 }
 /**
- * When the contact method changes, hide or show approporiate fields
+ * When the contact method changes, hide or show appropriate fields
  */
 function contactMethodChanged() {
     //Let us get the selected options for contact methods

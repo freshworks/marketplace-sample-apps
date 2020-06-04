@@ -26,10 +26,6 @@ App location: ticket details page
 
 1. Run the app locally using the [`fdk run`](https://developers.freshdesk.com/v2/docs/freshworks-cli/#run) command.
 2. Go to `http://localhost:10001/custom_configs` in your browser to test the installation page
-3. You can add new callback functions associated with iparam fields in iparams.js
-4. You can also modify the code directly in iparams.js page to see the changes in the Installation pages.
+3. You can add new callback functions associated with iparam fields in `iparams.js`
+4. You can also modify the code directly in the `iparams.js` file to see the changes in the Installation pages.
 
-
-## Additional Notes
-N.A
-<!-- Nothing as of now -->

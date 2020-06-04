@@ -9,7 +9,7 @@ $(document).ready(function () {
 							$('#apptext').text("Ticket created by " + data.contact.name);
 						})
 						.catch(function (e) {
-							console.log('Exception - ', e);
+							console.error('Exception - ', e);
 						});
 				});
 		});
