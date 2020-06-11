@@ -45,6 +45,7 @@ exports = {
    * @param {object} args - payload
    */
   onInstallHandler: function (args) {
+    
     generateTargetUrl().then(function (targetUrl) {
       $request.post(`https://api.github.com/repos/${args.iparams.github_repo}/hooks`, {
         headers: {
@@ -104,7 +105,7 @@ exports = {
       }).then(() => {
         console.info('Successfully deregistered the webhook for GitHub repo');
         renderData();
-      }, () => renderData())
+      }, error => renderData({error: error}));
     }, error => {
       console.error('Error: Failed to get the stored webhook URL from the db');
       console.error(error)

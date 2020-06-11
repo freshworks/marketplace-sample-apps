@@ -42,10 +42,11 @@ function CreateFreshserviceTicket(title, description, email) {
     })
   }).then(function () {
     console.info('Successfully created ticket');
-  },
-    function (error) {
-      console.error('Unable to create ticket');
-      console.error(error);
-      
-    });
+  }).catch(
+     function (error) {
+    console.error('Unable to create ticket');
+    console.error(error);
+    
+  });
+
 }
