@@ -78,7 +78,6 @@ async function fetchContactIdFromFreshdesk(freshsalesContact) {
 async function getFreshdeskContactId(payload) {
   try {
     const data = await contacts.getContactMapping(payload.data.contact.id);
-
     return data ? data : await fetchContactIdFromFreshdesk(payload.data.contact);
   } catch (error) {
     console.log('unable to get existing contact');
@@ -94,7 +93,7 @@ function addName(firstName, newFirstName, lastName, newLastName) {
   if (!newFirstName && !newLastName) {
     return null;
   }
-  return { name: ((newFirstName[1] || firstName) + ' ' + (newLastName[1] || lastName)) };
+  return { name: (((newFirstName && newFirstName[1]) || firstName) + ' ' + ((newLastName && newLastName[1]) || lastName)) };
 }
 
 const contactAttributes = {
@@ -120,8 +119,9 @@ function fetchUpdates(contact) {
       newContact[contactAttributes[attribute]] = changes[attribute][1];
     }
   });
+  console.log('first_name', changes.first_name, 'last_name', changes.last_name)
   return Object.assign({}, newContact,
-    { twitter_id: changes.twitter[1].split('https://twitter.com/')[1] },
+    changes.twitter ? { twitter_id: changes.twitter[1].split('https://twitter.com/')[1] } : null,
     addName(contact.first_name, changes.first_name, contact.last_name, changes.last_name)
   );
 }
@@ -151,6 +151,31 @@ exports = {
   ],
 
   /**
+  * In the following event listerner method, contact attributes are captured from the payload
+  * passed as the argument to the method.
+  *
+  * The same contact will be create in the Freshdesk account through a POST API request.
+  */
+  onContactCreateHandler: async function (payload) {
+    try {
+      const freshdeskContactId = await getFreshdeskContactId(payload);
+
+      console.log('Contact already exists with email:', payload.data.contact.email, ' with id:', freshdeskContactId);
+    } catch (error) {
+      console.log('Contact does not exist already. Creating a new contact.');
+      const contactAttributes = fetchContactAttributes(payload.data.contact);
+
+      try {
+        await utils.makePostRequest(postRequestOptions(contactAttributes));
+        console.log('successfully created freshdesk contact');
+      } catch (error) {
+        console.log('failed to create a freshdesk contact');
+        console.log(error);
+      }
+    }
+  },
+
+  /**
    * In the following event listerner method, contact attributes and it's changes are captured from the payload
    * passed as the argument to the method.
    *
@@ -176,31 +201,6 @@ exports = {
     } catch (error) {
       console.log('failed to fetch the freshdesk contact');
       console.log(error);
-    }
-  },
-
-  /**
-  * In the following event listerner method, contact attributes are captured from the payload
-  * passed as the argument to the method.
-  *
-  * The same contact will be create in the Freshdesk account through a POST API request.
-  */
-  onContactCreateHandler: async function (payload) {
-    try {
-      const freshdeskContactId = await getFreshdeskContactId(payload);
-
-      console.log('Contact already exists with email:', payload.data.contact.email, ' with id:', freshdeskContactId);
-    } catch (error) {
-      console.log('Contact does not exist already. Creating a new contact.');
-      const contactAttributes = fetchContactAttributes(payload.data.contact);
-
-      try {
-        await utils.makePostRequest(postRequestOptions(contactAttributes));
-        console.log('successfully created freshdesk contact');
-      } catch (error) {
-        console.log('failed to create a freshdesk contact');
-        console.log(error);
-      }
     }
   },
 
