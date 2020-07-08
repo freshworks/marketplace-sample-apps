@@ -8,15 +8,6 @@
             "change": "checkAccountID"
         }]
     },
-    "twitter_tags": {
-        "display_name": "Interested Tags",
-        "description": "Enter comma-seperated value of tags that you are interested in",
-        "type": "text",
-        "required": true,
-        "events": [{
-            "change": "populateTags"
-        }]
-    },
     "mobile": {
         "display_name": "Phone Number",
         "description": "Please enter your phone number with the country code",
@@ -43,7 +34,7 @@
         }
     },
     "contact_methods": {
-        "display_name": "Contact Methods",
+        "display_name": "Preferred Contact Method",
         "description": "Please select the preferred contact methods",
         "type": "multiselect",
         "options": [
@@ -57,12 +48,5 @@
             "Mobile",
             "Twitter ID"
         ]
-    },
-    "tags": {
-        "display_name": "Tags as Multichoice",
-        "description": "These tags are dynamically generated based on values entered in `Interested Tags` text iparam",
-        "type": "multiselect",
-        "options": [],
-        "default_value": []
     }
 }
