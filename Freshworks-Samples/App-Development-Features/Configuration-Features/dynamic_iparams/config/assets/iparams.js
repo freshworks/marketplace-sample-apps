@@ -1,5 +1,5 @@
 /* global app,client, utils */
-
+var timeout;
 /**
  * App lifecycle method to initialize the app and to obtain the `client` object
  * More details on Dynamic Installation parameters can be found at the link below ⬇️
@@ -7,7 +7,6 @@
  */
 app.initialized().then(
   function (_client) {
-    //If successful, register the app activated and deactivated event callback.
     window.client = _client;
   },
   function (error) {
@@ -17,37 +16,53 @@ app.initialized().then(
 );
 
 /**
- * Using this iparam callback function, we are validating the details using a third-party API. 
- * In this case,for example, we are making use of `httpbin.org` to return 200 OK status. 
- * In real-world, this could be a valid third-party API that can return an appropriate status code indicating the status of validation
- * Payload and other options can be specified using `options`
- * 
+ * Using this iparam callback function, we are validating the details using a third-party API
+ *  
  * @param {string} newValue The new value of the iparam field
  */
 function checkAccountID(newValue) {
-  //Validate
-  if (!isNaN(newValue))
+  // Input type validation
+  if (!isNaN(newValue)) {
     return Promise.reject("Account ID has to be a string");
-  //Verify account ID
+  }
+  // Validation will be performed based on the value
+  // A promise will be returned indicating the status of validation
+  return validateWithAPI(newValue);
+}
+/**
+ * In this case,for example, we are making use of `httpbin.org` to return 200 OK status. 
+ * In real-world, this could be a valid third-party API that can return an appropriate status code indicating the status of validation
+ * Payload and other options can be specified using `options`
+ * Notice the presence of the debounce logic to avoid rate-limiting issues
+ * 
+ * @param {string} value 
+ */
+function validateWithAPI(value) {
+  //Assume it is the validation/resource endpoint
   var url = "https://httpbin.org/status/200";
   var options = {
     body: JSON.stringify({
-      param: newValue
+      param: value
     })
   };
   var p = new Promise(function (resolve, reject) {
-    client.request.post(url, options).then(
-      function (data) {
-        // Upon success
-        resolve();
-      },
-      function (error) {
-        // Upon failure - send an appropriate validation error message
-        reject("This Account ID does not exist. Please enter the right one");
-      }
-    );
+    // Do not hit the validation API immediately upon change
+    // Wait for 500ms and if the user hasn't typed anything during that time, make a call
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      client.request.post(url, options).then(
+        function (data) {
+          // Upon success, just resolve
+          resolve();
+        },
+        function (error) {
+          // Upon failure - send an appropriate validation error message
+          reject("This Account ID does not exist. Please enter the right one");
+        }
+      );
+    }, 500);
   });
-  return Promise.resolve();
+  return p;
 }
 /**
  * When the contact method changes, just display the options
@@ -56,5 +71,5 @@ function checkAccountID(newValue) {
 function contactMethodChanged() {
   //Let us get the selected options for contact methods
   const cm = utils.get("contact_methods");
-  console.log(cm);
+  console.info(cm);
 }
