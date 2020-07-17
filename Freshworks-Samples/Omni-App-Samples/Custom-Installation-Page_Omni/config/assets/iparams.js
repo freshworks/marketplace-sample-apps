@@ -1,14 +1,25 @@
 let client;
 
-$(document).ready(function () {
+function onDocumentReady() {
   app
     .initialized()
     .then(function (_client) {
-      window.client = _client;
-      let name = client.context.productName;
-      console.log(name);
+      client = _client;
+      productSpecificPage();
     })
-    .catch(function (err) {
-      console.error("Exception -", err);
+    .catch((err) => {
+      logError(err);
     });
-});
+}
+
+function productSpecificPage() {
+  let productName = client.context.product;
+  console.log(productName);
+  document.querySelector('')
+}
+
+function logError(err) {
+  console.log("Execption error -", err);
+}
+
+$(document).ready(onDocumentReady);
