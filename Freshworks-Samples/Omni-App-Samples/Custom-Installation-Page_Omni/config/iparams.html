@@ -10,7 +10,7 @@
     src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
   <link rel="stylesheet" type="text/css"
     href="https://static.freshdev.io/fdk/2.0/assets/freshworks.css">
-  <script src="./assets/iparams.js"></script>
+  <script defer src="./assets/iparams.js"></script>
   <link rel="stylesheet" href="./assets/styles.css">
   <script type="text/javascript">
     function getConfigs() {
@@ -28,7 +28,8 @@
 </head>
 
 <body>
-  <header>Omni - Custom Installation Page: <span> Freshsales</span> 🌍</header>
+  <header class="product-specific title">Omni - Custom Installation Page: <span>
+      Freshsales</span> 🌍</header>
   <section>
     <fieldset>
       <legend>Usual HTML Form Elements</legend>
@@ -49,15 +50,19 @@
         </label>
       </div>
     </fieldset>
-<br/>
+    <br />
     <fieldset>
-      <legend>Freshsales Specific Elements Implementation</legend>
-      <label for="domain">Field 1 - Domain of Freshsales
-        <input type="text" data-bind="product.domain" id="domain">
+      <legend class="product-specific subtitle">Freshsales Specific Elements
+        Implementation</legend>
+      <label for="domain" class="product-specific domain">Field 1 - Domain
+        <input type="text" placeholder="Domain will be data binded"
+          data-bind="product.domain" id="domain" name="domain">
       </label>
-      <label for="api_key">Field 2 - API Key of Freshsales<input type="text"
-          data-bind="product.api_key" id="api_key"></label>
+      <label for="api_key" class="product-specific apiKey">Field 2 - API Key
+        <input type="text" placeholder="API key will be data binded"
+          data-bind="product.api_key" id="api_key" name="api_key"></label>
     </fieldset>
 </body>
+
 
 </html>
