@@ -1,3 +1,3 @@
 # Play Along
 
-This repository contains all you need to get started on Freshworks Developer platform.
+We often host developer events, write blogs and tutorials. Here you will find code that we used.
