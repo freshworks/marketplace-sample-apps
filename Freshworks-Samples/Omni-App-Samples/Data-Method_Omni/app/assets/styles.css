@@ -1,0 +1,16 @@
+body {
+  width: 50vw;
+  height: 50vh;
+  margin: 5vh auto;
+  border: 1px solid grey;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+#result{
+  display: inline-block;
+  background-color: yellow;
+}
