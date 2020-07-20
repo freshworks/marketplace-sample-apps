@@ -1,7 +1,7 @@
 {
   "platform-version": "2.0",
   "product": {
-    "freshworks_crm": {
+    "freshsales": {
       "location": {
         "contact_entity_menu": {
           "url": "template.html",
@@ -9,7 +9,7 @@
         }
       }
     },
-    "freshsales": {
+    "freshworks_crm": {
       "location": {
         "contact_entity_menu": {
           "url": "template.html",
