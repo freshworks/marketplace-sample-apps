@@ -19,4 +19,4 @@ Features demonstrated | Notes
 
 ### Procedure to run the app:
 1. You can locally test your Omni App only one Product at a time. For example, if you want to test your app on Freshworks CRM, you will have to mention the `"freshworks_crm"` product attribute first in your `manifest.json` and vice versa.
-2. Open Deal Details page. In the bottom viewport you will see your app running.
+2. Open the relavant page in any of the product that Omni App supports(In this case Freshsales and Freshworks CRM). In the bottom viewport you will see your app running.
