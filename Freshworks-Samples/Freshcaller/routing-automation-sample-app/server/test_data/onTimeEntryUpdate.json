@@ -1,0 +1,36 @@
+{
+  "data": {
+    "time_entry": {
+      "id" : 2,
+      "billable" : true,
+      "note" : "Invoice Preparation",
+      "timer_running" : false,
+      "agent_id" : 1,
+      "ticket_id" : 20,
+      "time_spent" : "10:40",
+      "created_at" : "2015-08-25T07:31:55Z",
+      "updated_at" : "2015-08-25T07:31:55Z",
+      "start_time" : "2015-08-25T07:31:55Z",
+      "executed_at" : "2015-08-25T07:31:55Z",
+      "changes": {
+        "billable": [false, true],
+        "time_spent": [1200, 1500]
+      }
+    },
+    "actor": {
+      "id": 483,
+      "name": "Jason",
+      "email": "jason@freshdesk.com"
+    },
+    "agent": {
+      "id": 54,
+      "name": "Rachel",
+      "email": "rachel@freshdesk.com"
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id" : 13,
+  "domain" : "sample.freshdesk.com",
+  "event": "onTimeEntryUpdate",
+  "region": "US"
+}

@@ -1,0 +1,122 @@
+{
+  "validateUserPhoneNumber" : {
+   "display_name" : "validate user VIP users",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+      "input": {
+        "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ]
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+   "description": "Sends an OTP to user's registered email address"
+ },
+  "validateUserSingleDigit" : {
+   "display_name" : "validate user VIP users",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+      "input": {
+        "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ]
+    },
+   "description": "Sends an OTP to user's registered email address",
+   "response": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    }
+  }
+ },
+  "validateUserMultipleDigits" : {
+   "display_name" : "validate user VIP users",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+      "input": {
+        "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ]
+    },
+   "description": "Sends an OTP to user's registered email address",
+   "response": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    }
+  }
+ },
+  "validateUserSpeech" : {
+   "display_name" : "validate user VIP users",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+      "input": {
+        "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ]
+    },
+   "description": "Sends an OTP to user's registered email address",
+   "response": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    }
+  }
+ },
+  "respondOrderStatus" : {
+   "display_name" : "validate user VIP users",
+   "parameters" : {
+     "$schema": "http://json-schema.org/draft-04/schema#",
+     "type": "object",
+     "properties": {
+      "input": {
+        "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ]
+    },
+   "description": "Sends an OTP to user's registered email address",
+   "response": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    }
+  }
+ }
+}

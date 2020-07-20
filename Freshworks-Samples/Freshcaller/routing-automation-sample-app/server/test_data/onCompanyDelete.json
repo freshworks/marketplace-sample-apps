@@ -1,0 +1,18 @@
+{
+  "data": {
+    "company": {
+      "id" : 26782,
+      "name": "Acme Inc."
+    },
+    "actor":{
+      "id": 483,
+      "name": "Jason",
+      "email": "jason@freshdesk.com"
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id": 13,
+  "domain": "sample.freshdesk.com",
+  "event": "onCompanyDelete",
+  "region": "US"
+}

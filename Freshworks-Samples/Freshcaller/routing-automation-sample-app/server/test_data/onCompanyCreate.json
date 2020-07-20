@@ -1,0 +1,27 @@
+{
+  "data": {
+    "company": {
+      "id" : 26782,
+      "name": "Acme Inc.",
+      "description": "Fictional Company",
+      "domains": ["acmeinc.com"],
+      "note": "Sales division of Acme",
+      "created_at": "2018-10-24 06:10:46",
+      "updated_at": "2018-10-24 06:10:46",
+      "health_score": "Happy",
+      "account_tier": "Premium",
+      "renewal_date": "2020-12-31T00:00:00Z",
+      "industry": "Aerospace"
+    },
+    "actor":{
+      "id": 483,
+      "name": "Jason",
+      "email": "jason@freshdesk.com"
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id": 13,
+  "domain": "sample.freshdesk.com",
+  "event": "onCompanyCreate",
+  "region": "US"
+}

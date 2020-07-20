@@ -1,0 +1,18 @@
+{
+  "data": {
+    "time_entry": {
+      "id" : 2,
+      "ticket_id" : 20
+    },
+    "actor": {
+      "id": 483,
+      "name": "Jason",
+      "email": "jason@freshdesk.com"
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id" : 13,
+  "domain" : "sample.freshdesk.com",
+  "event": "onTimeEntryDelete",
+  "region": "US"
+}
