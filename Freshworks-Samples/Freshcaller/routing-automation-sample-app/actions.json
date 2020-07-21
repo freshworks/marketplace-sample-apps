@@ -1,6 +1,6 @@
 {
-  "validateUserPhoneNumber" : {
-   "display_name" : "validate user VIP users",
+  "validateVIPPhoneNumber" : {
+   "display_name" : "validate VIP users based on phone numbers",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",
