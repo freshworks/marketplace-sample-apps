@@ -24,7 +24,7 @@
    "description": "Sends an OTP to user's registered email address"
  },
   "validateUserSingleDigit" : {
-   "display_name" : "validate user VIP users",
+   "display_name" : "validate when a single digit input is given",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",
@@ -48,7 +48,7 @@
   }
  },
   "validateUserMultipleDigits" : {
-   "display_name" : "validate user VIP users",
+   "display_name" : "validate when a multiple digit input is given",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",
@@ -72,7 +72,7 @@
   }
  },
   "validateUserSpeech" : {
-   "display_name" : "validate user VIP users",
+   "display_name" : "validate when a users speech is transcripted and given as input",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",
@@ -96,7 +96,7 @@
   }
  },
   "respondOrderStatus" : {
-   "display_name" : "validate user VIP users",
+   "display_name" : "to send the message to be played as a dynmaic message in Freshcaller",
    "parameters" : {
      "$schema": "http://json-schema.org/draft-04/schema#",
      "type": "object",

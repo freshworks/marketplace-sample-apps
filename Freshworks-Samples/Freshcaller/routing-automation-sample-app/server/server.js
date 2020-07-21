@@ -1,6 +1,6 @@
 exports = {
   validateUserPhoneNumber: function (request) {    
-    let validVIPNumbers = ['+12105986561','+12036978361'],
+    let validVIPNumbers = ['+15684561239','+12587419632'],
     response = validVIPNumbers.includes(request.input) ? 'valid': 'invalid',
     data = {
       response,
