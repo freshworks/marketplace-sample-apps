@@ -4,14 +4,13 @@ function init() {
   app.initialized().then(
     function (_client) {
       client = _client;
-      client.events.on("app.activated", logInstallationParameters());
+      debugger;
+      client.events.on("app.activated", () => {
+        console.info("App is Activated");
+      });
     },
     (e) => errorLogger(e)
   );
-}
-
-function errorLogger(e) {
-  console.error("The follwoing Error occured -", error);
 }
 
 function logInstallationParameters() {
@@ -19,8 +18,12 @@ function logInstallationParameters() {
     (iparamsInfo) => {
       console.info(iparamsInfo);
     },
-    (error) => errorLogger(error)
+    (e) => errorLogger(e)
   );
+}
+
+function errorLogger(e) {
+  console.error("The follwoing Error occured -", error);
 }
 
 $(document).ready(init());
