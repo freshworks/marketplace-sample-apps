@@ -1,12 +1,19 @@
 exports = {
 
-  events: [
-    { event: 'onContactCreate', callback: 'onContactCreateHandler' }
-  ],
+  onLeadCreateHandler: function () {
+    console.log('Created a lead in \x1b[31mFreshsales\x1b[0m');
+  },
+  onContactCreateHandler: function () {
+    console.log('Created a contact in \x1b[36mFreshCRM\x1b[0m');
+  },
 
-  // args is a JSON block containing the payload information.
-  // args['iparam'] will contain the installation parameter values.
-  onContactCreateHandler: function(args) {
-    console.log(args);
+  onEventHandler: function () {
+    $db.get('externalValue').done(data => {
+      console.log(data);
+    });
+  },
+
+  onExternalEvent: function (args) {
+    $db.set('externalValue', args.data);
   }
 };

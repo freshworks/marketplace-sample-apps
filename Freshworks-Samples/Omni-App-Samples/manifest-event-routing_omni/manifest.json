@@ -1,9 +1,31 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.1",
   "product": {
-    "freshworks_crm": {
-    },
     "freshsales": {
+      "events": {
+        "onLeadCreate": {
+          "handler": "onLeadCreateHandler"
+        },
+        "onDealCreate": {
+          "handler": "onEventHandler"
+        },
+        "onExternalEvent": {
+          "handler": "onExternalEvent"
+        }
+      }
+    },
+    "freshworks_crm": {
+      "events": {
+        "onContactCreate": {
+          "handler": "onContactCreateHandler"
+        },
+        "onDealCreate": {
+          "handler": "onEventHandler"
+        },
+        "onExternalEvent": {
+          "handler": "onExternalEvent"
+        }
+      }
     }
   }
 }
