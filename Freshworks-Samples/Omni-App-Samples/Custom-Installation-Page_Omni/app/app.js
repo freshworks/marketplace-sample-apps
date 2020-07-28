@@ -10,8 +10,8 @@ function init() {
 }
 
 function logInstallationParameters() {
-  client.iparams.get().then((iparamsInfo) => {
-    console.info(iparamsInfo);
+  client.iparams.get().then(function getiparams(info) {
+    console.info(info);
   }, errorLogger(e));
 }
 
