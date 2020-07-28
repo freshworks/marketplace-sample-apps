@@ -1,28 +1,21 @@
-let client;
+var client;
 
 function init() {
-  app.initialized().then(
-    function (_client) {
-      client = _client;
-      debugger;
-      client.events.on("app.activated", () => {
-        console.info("App is Activated");
-      });
-    },
-    (e) => errorLogger(e)
-  );
+  app.initialized().then(function getClientObject(_client) {
+    client = _client;
+    client.events.on("app.activated", () => {
+      console.info("App is Activated");
+    });
+  }, errorLogger(e));
 }
 
 function logInstallationParameters() {
-  client.iparams.get().then(
-    (iparamsInfo) => {
-      console.info(iparamsInfo);
-    },
-    (e) => errorLogger(e)
-  );
+  client.iparams.get().then((iparamsInfo) => {
+    console.info(iparamsInfo);
+  }, errorLogger(e));
 }
 
-function errorLogger(e) {
+function errorLogger(error) {
   console.error("The follwoing Error occured -", error);
 }
 
