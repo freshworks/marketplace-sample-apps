@@ -10,7 +10,7 @@
     src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
   <link rel="stylesheet" type="text/css"
     href="https://static.freshdev.io/fdk/2.0/assets/freshworks.css">
-  <script defer src="./assets/iparams.js"></script>
+
   <link rel="stylesheet" href="./assets/styles.css">
 
 </head>
@@ -51,7 +51,7 @@
           data-bind="product.api_key" id="api_key" name="api_key"></label>
     </fieldset>
 </body>
-
+<script defer src="./assets/iparams.js"></script>
 <script type="text/javascript" content-type="text/javascript" async>
 
   /*
@@ -65,7 +65,7 @@
 
   /*
     Leaving the code inside getConfigs() function commented.
-  
+
     Local Testing using CLI:
     1. As soon as http://localhost:10001/custom_configs page is loaded. The fields will be populated as 'undefined' for first time.
     2. Once, paramenters are installed by app user clicking 'install' button, all the fields will populate the stored values. See: .fdk/localstore to find if your values are stored successfully.

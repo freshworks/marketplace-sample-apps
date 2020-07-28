@@ -1,7 +1,10 @@
 var client;
+var errorLogger = function (error) {
+  console.error("The following Error occured -", error);
+};
 
 function init() {
-  app.initialized().then(function getClientObject(_client) {
+  app.initialized().then(function getClient(_client) {
     client = _client;
     client.events.on("app.activated", function onActivate() {
       console.info("App is Activated");
@@ -10,13 +13,10 @@ function init() {
 }
 
 function logInstallationParameters() {
+  init();
   client.iparams.get().then(function getiparams(info) {
     console.info(info);
   }, errorLogger(e));
-}
-
-function errorLogger(error) {
-  console.error("The following Error occured -", error);
 }
 
 $(document).ready(init());
