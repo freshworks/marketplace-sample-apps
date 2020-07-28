@@ -17,7 +17,7 @@ Features demonstrated | Notes
 -------------------- | ------
  `iparams.html` |  `iparams.html` being able to render specific to the product. For example, render in Freshsales if app is being installed in Freshsales.
 `client.context.product`| Using  to get the name of the product in which app is being installed.
-Omni App's `manifest.json`| During locally testing your app using `fdk`, app can only run one one product at a time. That product is the one which comes first in the `product` attribute of `manifest.json`file. (👣 Although sounds weird, we will fix this in future releases!!)
+Omni App's `manifest.json`| During locally testing your app using `fdk`, the app can only run on one product at a time. That product is the one which comes first in the `product` attribute of `manifest.json`file. (👣 Although sounds weird, we will fix this in future releases!!)
 
 ### Prerequisites:
 1. Make sure you have a trial account of Freshsales and Freshworks CRM.
@@ -27,4 +27,3 @@ Omni App's `manifest.json`| During locally testing your app using `fdk`, app can
 ### Procedure to run the app:
 1. You can locally test your Omni App only one Product at a time. For example, if you want to test your app on Freshworks CRM, you will have to mention the `"freshworks_crm"` product attribute first in your `manifest.json` and vice versa.
 2. As soon as your start running the app locally, visit - https//localhost:10001/custom_configs to see custom installation page working.
-
