@@ -1,4 +1,5 @@
 var client;
+
 var errorLogger = function (error) {
   console.error("The following Error occured -", error);
 };

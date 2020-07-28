@@ -9,13 +9,13 @@ function onDocumentReady() {
     .then(function (_client) {
       client = _client;
       let productName =
-        String(client.context.product) == "freshsales"
+        String(client.context.product) == "freshsales" // This line tends to change. Pending on production changes.
           ? "Freshsales"
           : "Freshworks CRM";
       productSpecificPage(productName);
     })
-    .catch((err) => {
-      logError(err);
+    .catch(function logError(err) {
+      console.error("Some error occurred -", err);
     });
 }
 
@@ -24,10 +24,6 @@ function productSpecificPage(productName) {
   ${productName}</span > 🌍`;
   subTitleHTML.innerHTML = `${productName} Specific Elements
         Implementation`;
-}
-
-function logError(err) {
-  console.error("Execption error -", err);
 }
 
 $(document).ready(onDocumentReady);
