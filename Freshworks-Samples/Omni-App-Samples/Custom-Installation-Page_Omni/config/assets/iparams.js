@@ -27,7 +27,7 @@ function productSpecificPage(productName) {
 }
 
 function logError(err) {
-  console.log("Execption error -", err);
+  console.error("Execption error -", err);
 }
 
 $(document).ready(onDocumentReady);
