@@ -57,11 +57,14 @@
   /*
     Capturing all the HTML elements into javascript variables. This is cleanly populate or capture values within these HTML fields.
   */
-  let field1_datepickerHTML = document.getElementById('date-picker');
-  let field2_textinputHTML = document.getElementById('field2');
-  let dropdownHTML = document.getElementById('dropdown');
-  let domainHTML = document.getElementById('domain');
-  let api_keyHTML = document.getElementById('api_key');
+  let customPageFields = {
+    field1_datepickerHTML: document.getElementById('date-picker'),
+    field2_textinputHTML: document.getElementById('field2'),
+    dropdownHTML: document.getElementById('dropdown'),
+    domainHTML: document.getElementById('domain'),
+    api_keyHTML: document.getElementById('api_key')
+  };
+
 
   /*
     Leaving the code inside getConfigs() function commented.
@@ -71,19 +74,19 @@
     2. Once, paramenters are installed by app user clicking 'install' button, all the fields will populate the stored values. See: .fdk/localstore to find if your values are stored successfully.
   */
   function getConfigs(configs) {
-    field1_datepickerHTML.value = configs["field1"];
-    field2_textinputHTML.value = configs["field2"];
-    dropdownHTML.value = configs["field3_dropdown"];
-    domainHTML.value = configs["field_domain"]
-    api_keyHTML.value = configs["field_api_key"];
+    customPageFields.field1_datepickerHTML.value = configs["field1"];
+    customPageFields.field2_textinputHTML.value = configs["field2"];
+    customPageFields.dropdownHTML.value = configs["field3_dropdown"];
+    customPageFields.domainHTML.value = configs["field_domain"]
+    customPageFields.api_keyHTML.value = configs["field_api_key"];
   }
 
   function postConfigs() {
-    let field1 = field1_datepickerHTML.value;
-    let field2 = field2_textinputHTML.value;
-    let field3_dropdown = dropdownHTML.value;
-    let field_domain = domainHTML.value;
-    let field_api_key = api_keyHTML.value;
+    let field1 = customPageFields.field1_datepickerHTML.value;
+    let field2 = customPageFields.field2_textinputHTML.value;
+    let field3_dropdown = customPageFields.dropdownHTML.value;
+    let field_domain = customPageFields.domainHTML.value;
+    let field_api_key = customPageFields.api_keyHTML.value;
     return {
       __meta: {
         secure: ["field_api_key"]
@@ -93,7 +96,7 @@
 
   function validate() {
     let isValid = true;
-    let input = field1_datepickerHTML.value;
+    let input = customPageFields.field1_datepickerHTML.value;
     if (input == '') {
       isValid = false;
     }
