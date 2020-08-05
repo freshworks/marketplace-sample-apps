@@ -10,14 +10,14 @@ function init() {
     client.events.on("app.activated", function onActivate() {
       console.info("App is Activated");
     });
-  }, (e) => errorLogger(e));
+  }, errorLogger);
 }
 
 function logInstallationParameters() {
   init();
   client.iparams.get().then(function getiparams(info) {
     console.info(info);
-  }, (e) => errorLogger(e));
+  }, errorLogger);
 }
 
 $(document).ready(init());
