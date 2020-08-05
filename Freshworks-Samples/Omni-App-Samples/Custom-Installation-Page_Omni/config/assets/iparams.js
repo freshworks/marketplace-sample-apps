@@ -9,7 +9,7 @@ function onDocumentReady() {
     .then(function (_client) {
       client = _client;
       let productName =
-        String(client.context.product) == "freshsales" // This line tends to change. Pending on production changes.
+        String(client.context.productContext.name) === "freshsales" 
           ? "Freshsales"
           : "Freshworks CRM";
       productSpecificPage(productName);
