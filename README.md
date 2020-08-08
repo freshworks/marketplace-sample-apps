@@ -4,10 +4,7 @@ Sample Apps in this repository demonstrate features of our developer platform. A
 
 >The App development for any Freshworks product follows a common pattern. Which implies once an app built for one product will be similar to another with very few changes required.
 
-## Get Started
-1. [Quickstart](https://developers.freshdesk.com/v2/docs/quick-start/#create_your_first_app) buidling an app for any product as they follow a common pattern.
-2. See [these 7 steps introducing](https://freshhuddle.github.io/codelabs/fh0/index.html?index=..%2F..index#0) you freshworks developer platform.
-3. Bonus! [Unleash the power of serverless apps](https://freshhuddle.github.io/codelabs/fh3/index.html?index=..%2F..index#0).
+<button href="https://developers.freshworks.com/tutorials/" style="padding: 5px;"> Start Learning to build apps </button>
 
 ### Setting up environment
 1. Install NVM
