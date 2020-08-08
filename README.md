@@ -4,7 +4,7 @@ Sample Apps in this repository demonstrate features of our developer platform. A
 
 >The App development for any Freshworks product follows a common pattern. Which implies once an app built for one product will be similar to another with very few changes required.
 
-<button href="https://developers.freshworks.com/tutorials/" style="padding: 5px;"> Start Learning to build apps </button>
+### [Explore Tutorials](https://developers.freshworks.com/tutorials/)
 
 ### Setting up environment
 1. Install NVM
