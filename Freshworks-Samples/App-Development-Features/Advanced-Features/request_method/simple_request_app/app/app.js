@@ -19,8 +19,8 @@ $(document).ready(function () {
         var url = BASE_URL + method;
         var options = {
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         };
         req(method, url, options);
       });
@@ -36,11 +36,15 @@ $(document).ready(function () {
     function req(method, url, options) {
       client.request[method](url, options).then(
         function () {
-          displayStatus("success", "".concat(method.toUpperCase(), " request successful")
+          displayStatus(
+            "success",
+            "".concat(method.toUpperCase(), " request successful")
           );
         },
         function () {
-          displayStatus("danger", "".concat(method.toUpperCase(), " request failed")
+          displayStatus(
+            "danger",
+            "".concat(method.toUpperCase(), " request failed")
           );
         }
       );
@@ -49,7 +53,7 @@ $(document).ready(function () {
     function displayStatus(type, message) {
       client.interface.trigger("showNotify", {
         type: type,
-        message: message
+        message: message,
       });
     }
   })();
