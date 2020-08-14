@@ -10,27 +10,27 @@
  *
  *  */
 
-var client = null;
+var client = null
 
 var getIparams = () => {
   function setBgColour(payload) {
-    document.querySelector("body").style.color = payload.bgColour;
+    document.querySelector('body').style.color = payload.bgColour
   }
   function setBook(payload) {
     // TO D0: Need to append div element. Currently it replaces bg with txt.
     document.querySelector(
-      "#apptext"
-    ).textContent = `Your book is ${payload.book}`;
+      '#apptext',
+    ).textContent = `Your book is ${payload.book}`
   }
-  client.iparams.get("bgColour").then(setBgColour);
-  client.iparams.get("book").then(setBook);
-};
+  client.iparams.get('bgColour').then(setBgColour)
+  client.iparams.get('book').then(setBook)
+}
 
 var start = (app) => {
   app.initialized().then(function (_client) {
-    client = _client;
-    client.events.on("app.activated", getIparams());
-  });
-};
+    client = _client
+    client.events.on('app.activated', getIparams())
+  })
+}
 
-document.addEventListener("DOMContentLoaded", start(app));
+document.addEventListener('DOMContentLoaded', start(app))
