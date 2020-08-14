@@ -123,7 +123,6 @@ exports = {
 
       printLog(dataConstants.info, "Create Note in FD");
       var fsBaseURL = urlConstants.protocol + args.iparams.fs_subdomain + urlConstants.fs_domain_suffix;
-      var fdBaseURL = urlConstants.protocol + args.iparams.fd_subdomain + urlConstants.fd_domain_suffix;
       var ticketId = args.data.conversation.ticket_id;
       var getFsTktURL = fsBaseURL + urlConstants.ticket_url + ticketId;
       getRequestApi(getFsTktURL, args, "Fetch FS Ticket details")
@@ -138,24 +137,7 @@ exports = {
             var resultStr = tktSubject.match(regex)[1];
             var lastIndex = resultStr.lastIndexOf('-');
             var fdTktId = resultStr.substring(lastIndex + 1, resultStr.length - 1);
-            var fdTktAddPvtNoteURL = fdBaseURL + urlConstants.ticket_url + fdTktId + urlConstants.notes;
             var msg = `<div>${args.data.conversation.body}</div>`;
-            // var fdAddNoteOptions = {
-            //   headers: {
-            //     "Authorization": util.getFdAPIKey(args),
-            //     "ContentType": "application/json",
-            //   },
-            //   json: {
-            //     "body": msg
-            //   }
-            // };
-            // postRequestAPI(fdTktAddPvtNoteURL, fdAddNoteOptions, 'Note Creation')
-            //   .then(noteData => {
-            //     printLog(dataConstants.info, 'Private Note created successfully in Freshdesk', noteData);
-            //   })
-            //   .catch(e => {
-            //     printLog(dataConstants.error, 'Error in conversation create', e);
-            //   });
             fd.tickets.addNotes( parseInt(fdTktId), { body: msg} ).then(function (data) {
               console.log('Ticket notes successfull');
               console.log(data);
