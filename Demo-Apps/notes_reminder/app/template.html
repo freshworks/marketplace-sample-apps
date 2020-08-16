@@ -1,7 +1,5 @@
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link
@@ -12,16 +10,23 @@
   </head>
   <body>
     <div class="fw-widget-wrapper">
-      <textarea
-        class="form-control"
-        placeholder="Note here"
-        id="note"
-      ></textarea>
-      <div class="action-holder">
-        <span>
-          <button class="btn btn-primary" id="notify">Remind me</button>
-        </span>
-      </div>
+      <section class="main">
+        <p>Add notes to reminder yourself</p>
+        <textarea
+          class="form-control"
+          placeholder="Remind me listen to music every 30 minutes"
+          id="note"
+          cols="30"
+          rows="6"
+        ></textarea>
+        <div class="action-holder">
+          <span>
+            <button class="btn btn-primary" id="notify">Remind me</button>
+          </span>
+        </div>
+      </section>
     </div>
   </body>
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </html>
