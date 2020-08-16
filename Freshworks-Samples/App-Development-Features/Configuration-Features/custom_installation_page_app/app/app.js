@@ -16,7 +16,7 @@ const bookCoverElmnt = document.querySelector('#appCaption')
 
 var getIparams = () => {
   function setBgColour(payload) {
-    bodyElement.style.color = payload.bgColour
+    bodyElement.style.backgroundColor = payload.bgColour
   }
   function setBook(payload) {
     // TO D0: Need to append div element. Currently it replaces bg with txt.
