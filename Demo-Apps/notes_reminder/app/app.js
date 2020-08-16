@@ -1,73 +1,111 @@
-const REMINDER_INTERVAL = 6;
+const REMINDER_INTERVAL = 6
 
 function generateUniqueId() {
-  return Math.random().toString(36).substring(2);
+  return Math.random().toString(36).substring(2)
 }
 
 function checkForNotifications() {
-  client.db.get(`${userId}_notifications`).then(function(data) {
-
-    /**
+  client.db.get(`${userId}_notifications`).then(
+    function (data) {
+      /**
       For every note, create a notification
     */
-    data.notes.forEach(function(note) {
-      client.interface.trigger('showNotify', {
-        type: 'success',
-        title: 'Reminder',
-        message: note
-      });
-    });
+      data.notes.forEach(function (note) {
+        client.interface.trigger('showNotify', {
+          type: 'success',
+          title: 'Reminder',
+          message: note,
+        })
+      })
 
-    /**
+      /**
       Delete the key (cleanup)
     */
-    client.db.delete(`${userId}_notifications`);
-  }, function(err) {
-    console.error(err);
-  });
+      client.db.delete(`${userId}_notifications`)
+    },
+    function (err) {
+      console.error(err)
+    },
+  )
 }
 
 function createSchedule() {
-  const note = jQuery('#note').val();
-  const dateNow = new Date();
+  const note = jQuery('#note').val()
+  const dateNow = new Date()
 
-  dateNow.setMinutes(dateNow.getMinutes() + REMINDER_INTERVAL);
+  dateNow.setMinutes(dateNow.getMinutes() + REMINDER_INTERVAL)
 
-  client.request.invoke('createSchedule', {
-    scheduleName: generateUniqueId(),
-    scheduleAt: dateNow.toISOString(),
-    userId: userId,
-    note: note
-  }).then(function(data) {
-    console.log(data);
-  }, function(err) {
-    console.error(err);
-  });
+  client.request
+    .invoke('createSchedule', {
+      scheduleName: generateUniqueId(),
+      scheduleAt: dateNow.toISOString(),
+      userId: userId,
+      note: note,
+    })
+    .then(
+      function (data) {
+        console.log(data)
+      },
+      function (err) {
+        console.error(err)
+      },
+    )
 }
 
-$(document).ready(function() {
-  app.initialized().then(function(_client) {
-    window.client = _client;
+// $(document).ready(function () {
+//   app.initialized().then(function (_client) {
+//     window.client = _client
 
-    client.data.get('loggedInUser').then(function(user) {
-      /**
-        Store user Id in window object for futher use
-      */
-      window.userId = user.loggedInUser.id;
+//     client.data.get('loggedInUser').then(
+//       function (user) {
+//         /**
+//         Store user Id in window object for futher use
+//       */
+//         window.userId = user.loggedInUser.id
 
-      /**
-        Check for notifications
-      */
-      checkForNotifications();
-    }, function(err) {
-      console.error(err);
-    });
+//         /**
+//         Check for notifications
+//       */
+//         checkForNotifications()
+//       },
+//       function (err) {
+//         console.error(err)
+//       },
+//     )
 
-    client.events.on('app.activated', function() {
-      /**
-        Listen for 'Remind me' button
-      */
-      jQuery('#notify').click(createSchedule);
-    });
-  });
-});
+//     client.events.on('app.activated', function () {
+//       /**
+//         Listen for 'Remind me' button
+//       */
+//       jQuery('#notify').click(createSchedule)
+//     })
+//   })
+// })
+
+var client = null
+var appObject = {}
+
+var createSchedule = function () {
+  console.info('This is Scheduder 🐼')
+}
+
+var logError = function (err) {
+  console.error(`Train took the wrong route: ${err}`)
+}
+
+var start = function () {
+  const notifyElement = document.getElementById('notify')
+  debugger
+  app.initialized().then(function getClientObj(_client) {
+    client = _client
+    function waitForClick() {
+      notifyElement.addEventListener('click', createSchedule)
+    }
+    client.data.get('loggedInUser').then(function (user) {
+      appObject.userId = user.loggedInUser.id
+    }, logError)
+    client.events.on('app.activated', waitForClick)
+  })
+}
+
+document.addEventListener('DOMContentLoaded', start)
