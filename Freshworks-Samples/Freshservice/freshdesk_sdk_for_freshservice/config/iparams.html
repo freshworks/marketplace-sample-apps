@@ -1,0 +1,344 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshservice.css">
+    <style>
+        .input-section {
+            margin-top : 10px;
+        }
+
+        .domain-name-field {
+            width: 450px;
+        }
+
+        .api-key-field {
+            width: 438px;
+        }
+
+        .form-actions {
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-bottom: 30px;
+            float: right;
+        }
+        .field-tip {
+            color: grey;
+        }
+        .hide-element {
+            display: none;
+        }
+
+        .validation {
+            color: red;
+        }
+
+        #danger-message {
+            display: none;
+        }
+
+        #success-message {
+            display: none;
+        }
+
+        .mb-20 {
+            margin-bottom : 20px !important;
+        }
+
+        .ml-30 {
+            margin-left : 30px !important;  
+        }
+
+        .pt-10 {
+            padding-top: 10px;
+        }
+
+        .row {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        #sync_settings select {
+            width: 250px;
+        }
+
+        #sync_settings h6 {
+            font-size: 12px;
+            margin-bottom: 35px;
+            margin-top: 15px;
+        }
+
+        label {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        h4 {
+            font-weight: 400;
+        }
+
+        h5 {
+            padding-top: 10px;
+            font-weight: 600;
+        }
+
+        hr {
+            margin-top: 25px;
+            border-top: 1px solid #dadfe3;
+        }
+
+        .input-group-addon {
+            position: relative;
+            left: -25px;
+            line-height: 0.75;
+        }
+
+        #iparams_authenticate {
+            outline: none !important;
+            background-color: #02a468;
+            border: 1px #03a86b solid;
+        }
+
+        #auth_fields input[type=text]:focus +.input-group-addon {
+            border-color: #02b875;
+            outline: none !important;
+        }
+
+        .btn-dark-grey {
+            background: #24364a;
+            border: #24364a;
+        }
+
+        .btn-dark-grey:hover {
+            background: #24364a;
+            border: #24364a;
+            color: #fff;
+        }
+
+        select {
+            font-size: 12px;
+        }
+        
+    </style>
+</head>
+
+<body>
+     <div class="ml-30">
+        <div class="alert alert-danger" id="danger-message">
+        </div>
+        <div class="alert alert-success" id="success-message">
+        </div>
+        <div id="auth_fields">
+            <h4> Freshdesk - Freshservice Auth Settings </h4>
+            <h5>Freshdesk account details</h5>
+            <div class="input-section domain-name-field">
+                <label> Enter your Freshdesk Subdomain</label>
+                <div class="input-group">
+                    <input id="fd_subdomain" type="text">
+                    <span class="input-group-addon">.freshdesk.com</span>
+                </div>
+                <span class = "field-tip">
+                    <i class = "icon-question"></i>
+                        subdomain should be in the format subdomain.freshdesk.com
+                    </span>
+            </div>
+            <div class="input-section api-key-field">
+                <label> Enter your Freshdesk's admin API Key</label>
+                <input value="" id="fd_api_key" type="text">
+                <span class = "field-tip">
+                    <i class = "icon-question"></i>
+                        you can find the API key under profile settings
+                    </span>
+            </div>
+            <hr>
+            <h5>Freshservice account details</h5>
+            <div class="input-section domain-name-field">
+                <label> Enter your Freshservice Subdomain</label>
+                <div class="input-group">
+                    <input value="" id="fs_subdomain" type="text">
+                    <span class="input-group-addon">.freshservice.com</span>
+                </div>
+                <span class = "field-tip">
+                    <i class = "icon-question"></i>
+                        subdomain should be in the format subdomain.freshservice.com
+                    </span>
+            </div>
+            <div class="input-section api-key-field">
+                <label> Enter your Freshservice's admin API Key</label>
+                <input value="" id="fs_api_key" type="text">
+                <span class = "field-tip">
+                    <i class = "icon-question"></i>
+                        you can find the API key under profile settings
+                    </span>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-dark-grey" id="iparams_authenticate">Authenticate</button>
+            </div>
+        </div>
+        <div id="sync_settings" class="mb-20">
+            <h4>Sync Updates</h4>
+            <h6>When a corresponding Freshservice ticket is created for a Freshdesk ticket perform below actions</h6>
+            <div class="row mb-20 pt-10">
+                <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> When ticket status is updated in Freshservice</label>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <select id="fs_status_updated">
+                        <option value="add_private_note_in_fd">Add a Private Note in Freshdesk ticket</option>
+                        <option value="do_nothing">Do nothing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-20">
+                <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> When a note is added in Freshservice</label>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <select id="fs_note_added">
+                        <option value="add_private_note_in_fd">Add a Private Note in Freshdesk ticket</option>
+                        <option value="do_nothing">Do nothing</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var _this = this;
+    var authFormFields = ["fd_subdomain", "fd_api_key", "fs_subdomain", "fs_api_key"];
+    var syncFields = ["fs_status_updated", "fs_note_added"];
+    var isFdAuthenticated = false,
+        isFsAuthenticated = false,
+        syncSettigsDone = false;
+
+    jQuery("#sync_settings").hide();
+
+    function getConfigs(savedConfigs) {
+        if (savedConfigs) {
+            authFormFields.forEach(function(key) {
+                $(`#${key}`).val(savedConfigs[key]);
+            });
+
+            syncFields.forEach(function(key) {
+                $(`#${key}`).val(savedConfigs[key]);
+            });
+        }
+    }
+
+    function postConfigs() {
+        let config = {};
+        authFormFields.forEach(function(key) {
+            config[key] = $(`#${key}`).val()
+        });
+
+        syncFields.forEach(function(key) {
+            config[key] = $(`#${key}`).val()
+        });
+        return config;
+    }
+
+    function authFormValidation() {
+        let isValid = true;
+        authFormFields.forEach(function(field) {
+            if (!$(`#${field}`).val()) {
+                isValid = false;
+            }
+        });
+        return isValid;
+    }
+
+    function validate() {
+        let isValid = false;
+        if (isFsAuthenticated && isFdAuthenticated && syncSettigsDone) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    jQuery('#iparams_authenticate').on('click', function() {
+        $( "#iparams_authenticate" ).css('color', '#fff');
+        var isValid = _this.authFormValidation();
+        var fd_subdomain = $('#fd_subdomain').val();
+        var fd_api_key = $('#fd_api_key').val();
+
+        var fs_subdomain = $('#fs_subdomain').val();
+        var fs_api_key = $('#fs_api_key').val();
+
+        var fd_base_url = "https://" + fd_subdomain + ".freshdesk.com";
+        var fs_base_url = "https://" + fs_subdomain + ".freshservice.com";
+
+        if (isValid) {
+
+            var fsUrl = fs_base_url + '/api/v2/ticket_fields';
+            var fsHeaders = {
+                "Authorization": "Basic " + btoa(fs_api_key + ':x'),
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            };
+            var fsOptions = {
+                headers: fsHeaders
+            };
+
+            var fdUrl = fd_base_url + '/api/v2/ticket_fields';
+            var fdHeaders = {
+                "Authorization": "Basic " + btoa(fd_api_key + ':x'),
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            };
+            var fdOptions = {
+                headers: fdHeaders
+            };
+
+            $.when(
+                client.request.get(fsUrl, fsOptions).then(
+                    function(data) {
+                        isFsAuthenticated = true;
+                    },
+                    function(error) {
+                        showError('Could not verify api key. Please check domain name and API key for Freshservice.');
+                        isFsAuthenticated = false;
+                    }
+                ),
+
+                client.request.get(fdUrl, fdOptions).then(
+                    function(data) {
+                        isFdAuthenticated = true;
+                    },
+                    function(error) {
+                        showError('Could not verify api key. Please check domain name and API key for Freshdesk.');
+                        isFdAuthenticated = false;
+                    }
+                )
+
+            ).then(
+                function() {
+                    if (isFdAuthenticated && isFsAuthenticated) {
+                        _this.showSyncSettings();
+                    }
+                }
+            );
+
+        } else {
+            showError('Please fill the "Domain Name" and "API key" for freshdesk and freshservice');
+        }
+    });
+
+    function showSyncSettings() {
+        jQuery("#auth_fields").hide();
+        jQuery("#sync_settings").show();
+        syncSettigsDone = true;
+    }
+
+    function showError(msg) {
+        $('#danger-message').show();
+        $('#danger-message').html(msg);
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0;
+        setTimeout(function(param) {
+            $('#danger-message').hide();
+        }, 3000);
+    }
+
+    app.initialized().then(function(client) {
+        window.client = client;
+    });
+</script>
+
+</html>
