@@ -82,30 +82,57 @@ function createSchedule() {
 //   })
 // })
 
-var client = null
+var [client, noteElement, REMINDER_INTERVAL] = [null, null, 6]
 var appObject = {}
+
+var ready = (start) => {
+  if (document.readyState != 'loading') start()
+  else document.addEventListener('DOMContentLoaded', start)
+}
+
+var fwNotify = function(notificationType, messageContent){
+  client.interface.trigger("showNotify",{
+    type: notificationType,
+    message: messageContent
+  }).then((interfaceData)=>{console.info(`💁‍♂️ Notification created`)})
+  .catch((error)=>{console.error(error 💣)})
+  return;
+}
 
 var createSchedule = function () {
   console.info('This is Scheduder 🐼')
+  const currentTime = new Date()
+  currentTime.setMinutes(currentTime.getMinutes() + REMINDER_INTERVAL)
+  note = noteElement.value
+  const scheduleObject = {
+    scheduleName: generateUniqueId(),
+    scheduleAt: currentTime.toISOString(),
+    userId: appObject.userId,
+    note: note,
+  }
+  client.request
+    .invoke('createSchedule', scheduleObject)
+    .then(function fwNotify(data) {
+
+    }, logError)
 }
 
 var logError = function (err) {
-  console.error(`Train took the wrong route: ${err}`)
+  console.error(`Train took the wrong route 🚂: ${err}`)
 }
 
 var start = function () {
   const notifyElement = document.getElementById('notify')
-  debugger
+  noteElement = document.getElementById('note')
   app.initialized().then(function getClientObj(_client) {
     client = _client
-    function waitForClick() {
-      notifyElement.addEventListener('click', createSchedule)
-    }
-    client.data.get('loggedInUser').then(function (user) {
+    client.data.get('loggedInUser').then(function getData(user) {
       appObject.userId = user.loggedInUser.id
     }, logError)
-    client.events.on('app.activated', waitForClick)
+    client.events.on('app.activated', function waitForClick() {
+      notifyElement.addEventListener('click', createSchedule)
+    })
   })
 }
 
-document.addEventListener('DOMContentLoaded', start)
+ready(start)
