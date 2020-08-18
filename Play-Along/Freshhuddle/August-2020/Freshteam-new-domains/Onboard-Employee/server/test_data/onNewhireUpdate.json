@@ -1,0 +1,326 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": 15,
+  "domain": "sample.freshteam.com",
+  "event": "onNewHireUpdate",
+  "region": "US",
+  "data": {
+    "newhire": {
+      "id": 19,
+      "created_at": "2020-04-02 07:56:21 UTC",
+      "updated_at": "2020-04-02 07:56:21 UTC",
+      "deleted": false,
+      "eeo_veteran": null,
+      "eeo_ethnicity": null,
+      "eeo_disabled": null,
+      "eeo_job_category": null,
+      "eeo_company_code": null,
+      "hire_reason": null,
+      "id_card_details": null,
+      "workstation_number": null,
+      "secondary_business_email": null,
+      "work_numbers": null,
+      "nick_name": null,
+      "date_of_birth": null,
+      "marital_status": null,
+      "gender": null,
+      "blood_group": null,
+      "emergency_contacts": null,
+      "social_profiles": null,
+      "address": {
+      },
+      "phone_numbers": null,
+      "communication_address": {
+      },
+      "secondary_last_name": null,
+      "heriditary_last_name": null,
+      "legal_name": null,
+      "previous_name": null,
+      "previous_name_change_date": null,
+      "place_of_birth": null,
+      "im_address": null,
+      "country_of_birth": null,
+      "flsa_required": false,
+      "user_title_id": null,
+      "user_suffix_name_id": null,
+      "user_honorary_suffix_id": null,
+      "user_professional_suffix_id": null,
+      "user_academic_suffix_id": null,
+      "citizenship_status_id": null,
+      "designation": "Sample Job Posting",
+      "joining_date": "2020-04-30",
+      "internship_end_date": null,
+      "probation_start_date": null,
+      "probation_end_date": null,
+      "job_code": null,
+      "job_exempt": null,
+      "scheduled_weekly_hours": null,
+      "work_hours": null,
+      "start_time": null,
+      "end_time": null,
+      "branch_id": 1,
+      "team_id": null,
+      "business_unit_id": null,
+      "sub_department_id": null,
+      "department_id": null,
+      "reporting_to_id": null,
+      "hr_incharge_id": null,
+      "level_id": null,
+      "shift_id": null,
+      "user_function_id": null,
+      "cost_center_id": null,
+      "employment_end_date": null,
+      "retirement_eligibility_date": null,
+      "expected_retirement_date": null,
+      "actual_retirement_date": null,
+      "termination_date": null,
+      "termination_reason": null,
+      "notice_period": null,
+      "notice_start_date": null,
+      "notice_end_date": null,
+      "retirement_status_id": null,
+      "termination_category_id": null,
+      "custom_fields": {
+        "fwef_cf_str01": "custom_text_1",
+        "uiouoi_cf_str03": {
+          "id": 0,
+          "value": null
+        },
+        "tryt_cf_str02": null
+      },
+      "rehire_eligibility": null,
+      "rehire_status": null,
+      "previous_joining_date": null,
+      "previous_exit_date": null,
+      "original_hire_date": null,
+      "avatar_url": null,
+      "first_name": "Jamar",
+      "middle_name": null,
+      "last_name": "Kristal",
+      "employee_id": null,
+      "status": "initiated",
+      "official_email": "lawrence_nicolas@example.com",
+      "personal_email": "lawrence_nicolas@example.com",
+      "confirmed": false,
+      "account_admin": false,
+      "language": "en",
+      "time_zone": "US/Pacific",
+      "introduction": null,
+      "signature": null,
+      "user_category": "onboarding",
+      "employee_type": "full_time",
+      "hired_on": "2020-04-01 07:56:12 UTC",
+      "no_show": true,
+      "no_show_reason": "sample reason"
+    },
+    "associations": {
+      "branch": {
+        "id": 2,
+        "created_at": "2020-03-23 08:38:42 UTC",
+        "updated_at": "2020-03-23 08:38:42 UTC",
+        "deleted": false,
+        "name": "Branch office",
+        "state": null,
+        "city": "San Francisco",
+        "country_code": "US",
+        "zip": null,
+        "time_zone": "US/Pacific",
+        "currency": "USD",
+        "language": null,
+        "main_office": false,
+        "date_format": "MonthFirst"
+      },
+      "team": {
+        "id": 6,
+        "created_at": "2020-03-23 08:38:43 UTC",
+        "updated_at": "2020-03-23 08:38:43 UTC",
+        "deleted": false,
+        "name": "Field Sales"
+      },
+      "department": {
+        "id": 3,
+        "created_at": "2020-03-23 08:38:42 UTC",
+        "updated_at": "2020-03-23 08:38:42 UTC",
+        "deleted": false,
+        "name": "Administration"
+      },
+      "level": {
+        "id": 6,
+        "created_at": "2020-03-23 08:38:43 UTC",
+        "updated_at": "2020-03-23 08:38:43 UTC",
+        "deleted": false,
+        "name": "IC6"
+      },
+      "roles": [
+        {
+          "id": 8,
+          "created_at": "2020-03-23 08:38:42 UTC",
+          "updated_at": "2020-03-23 08:38:42 UTC",
+          "name": "Employee",
+          "description": "Can View limited set of information of other Employees, Request timeoff, View company job postings and Refer a candidate to an Organisation.",
+          "default": true
+        }
+      ],
+      "dependents": [
+
+      ],
+      "reportees": [
+
+      ],
+      "incharge_users": [
+
+      ],
+      "prev_employments": [
+
+      ],
+      "qualifications": [
+
+      ],
+      "bank_accounts": [
+        {
+          "id": 3,
+          "deleted": false,
+          "bank_name": "123Bank",
+          "name_as_per_account": "",
+          "branch_code": "123",
+          "account_number": "123000123"
+        }
+      ],
+      "compensation_details": [
+        {
+          "id": 9,
+          "deleted": false,
+          "current": true,
+          "effective_date": "2020-04-30",
+          "currency": "AWG",
+          "annual_amount": "123500.0",
+          "pay_rate_value": null,
+          "eligible_work_hours": null,
+          "other_components": null,
+          "variable_pay": null,
+          "variable_pay_details": null,
+          "variable_pay_amount": null,
+          "description": null,
+          "reason_id": null,
+          "pay_method_id": 16,
+          "pay_group_id": null,
+          "work_hour_rate_id": null,
+          "pay_rate_id": null,
+          "pay_schedule_id": 2,
+          "variable_pay_frequency_id": null,
+          "reason": null,
+          "pay_group": null,
+          "pay_method": {
+            "id": 16,
+            "value": "Direct Deposit"
+          },
+          "work_hour_rate": null,
+          "pay_rate": null,
+          "pay_schedule": {
+            "id": 2,
+            "name": "Semi Annually"
+          },
+          "variable_pay_frequency": null
+        },
+        {
+          "id": 10,
+          "deleted": false,
+          "current": true,
+          "effective_date": "2020-04-01",
+          "currency": "AWG",
+          "annual_amount": "123400.0",
+          "pay_rate_value": null,
+          "eligible_work_hours": null,
+          "other_components": null,
+          "variable_pay": null,
+          "variable_pay_details": null,
+          "variable_pay_amount": null,
+          "description": null,
+          "reason_id": null,
+          "pay_method_id": null,
+          "pay_group_id": null,
+          "work_hour_rate_id": null,
+          "pay_rate_id": null,
+          "pay_schedule_id": 2,
+          "variable_pay_frequency_id": null,
+          "reason": null,
+          "pay_group": null,
+          "pay_method": null,
+          "work_hour_rate": null,
+          "pay_rate": null,
+          "pay_schedule": {
+            "id": 2,
+            "name": "Semi Annually"
+          },
+          "variable_pay_frequency": null
+        }
+      ],
+      "bonuses": [
+
+      ],
+      "stocks": [
+
+      ],
+      "awards": [
+
+      ],
+      "certificates": [
+
+      ],
+      "honors": [
+
+      ],
+      "licenses": [
+
+      ],
+      "background_verification_details": [
+
+      ],
+      "visas": [
+
+      ],
+      "government_documents": [
+
+      ],
+      "additional_teams": [
+
+      ],
+      "additional_managers": [
+
+      ],
+      "additional_hr_managers": [
+
+      ],
+      "languages": [
+
+      ]
+    },
+    "actor": {
+      "id": 9,
+      "name": "Tyron Dr. Dena",
+      "email": "124498fannie.jones@example.org"
+    },
+    "changes": {
+      "model_changes": {
+        "status": [
+          "hired",
+          "initiated"
+        ],
+        "no_show": [
+          false,
+          true
+        ],
+        "no_show_reason": [
+          null,
+          "sample reason"
+        ],
+        "custom_fields": {
+          "fwef_cf_str01": [
+            "custom_text",
+            "custom_text_1"
+          ]
+        }
+      }
+    }
+  }
+}
