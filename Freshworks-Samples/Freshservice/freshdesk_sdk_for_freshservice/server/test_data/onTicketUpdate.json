@@ -6,7 +6,7 @@
   "event": "onTicketUpdate",
   "data": {
     "ticket": {
-      "subject": "[#FD-15] Support needed",
+      "subject": "[#FD-27] Support needed",
       "description": "<div>Some details on the issue ..</div>",
       "is_description_truncated": false,
       "description_text": "Some details on the issue ...",
