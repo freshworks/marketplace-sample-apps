@@ -11,6 +11,7 @@
     }
   },
   "dependencies": {
-    "btoa": "1.2.1"
+    "btoa": "1.2.1",
+    "@freshworks/freshdesk": "0.0.1-beta.2"
   }
 }

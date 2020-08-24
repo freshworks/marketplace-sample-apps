@@ -1,5 +1,5 @@
 const btoa = require('btoa');
-const Freshdesk = require('freshdesk-sdk');
+const Freshdesk = require('@freshworks/freshdesk');
 
 exports = {
   events: [],
