@@ -18,25 +18,6 @@
           "product": "freshdesk"
         }
     },
-    "freshsalesDomain": {
-      "display_name": "Domain Name",
-      "description": "Please enter your Sales domain name",
-      "type": "domain",
-      "type_attributes": {
-        "product": "freshsales"
-      },
-      "required": true
-    },
-    "freshsalesApiKey": {
-        "display_name": "API Key",
-        "description": "Please enter your Desk api key",
-        "type": "api_key",
-        "secure": true,
-        "required": true,
-        "type_attributes": {
-          "product": "freshsales"
-        }
-    },
     "freshserviceDomain": {
         "display_name": "Domain Name",
         "description": "Please enter your Freshservice domain name",
