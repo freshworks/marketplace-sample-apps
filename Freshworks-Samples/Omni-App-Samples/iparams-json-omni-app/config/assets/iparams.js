@@ -2,23 +2,16 @@ var runtimeProductName;
 var fsalesInstallationPage = function (utils) {
   //Changing Hint Text Based on Product
   utils.set('ApiKey', {hint: 'Enter APIKey of your Freshsales Account'});
-  utils.set('TextDomain', {
-    hint: 'Enter Full Domain of your Freshsales Account',
-  });
   //Changing Display Name Based on Product
   utils.set('ApiKey', {label: 'APIKey_Freshsales'});
-  utils.set('TextDomain', {label: 'FullDomain_Freshsales'});
   //To Hidden the field specific to FCMR
   utils.set('FieldToDisplayInFCRM', {visible: false});
 };
 var fcrmInstallationPage = function (utils) {
   utils.set('ApiKey', {hint: 'Enter APIKey of your FCRM Account'});
-  utils.set('TextDomain', {
-    hint: 'Enter Full Domain of your FCRM Account',
-  });
   //Changing Display Name Based on Product
   utils.set('ApiKey', {label: 'APIKey_FCRM'});
-  //To Hidden the field specific to Fslaes
+  //To Hide the field that is specific to Freshworks CRM
   utils.set('FieldToDisplayInFSales', {visible: false});
 };
 
