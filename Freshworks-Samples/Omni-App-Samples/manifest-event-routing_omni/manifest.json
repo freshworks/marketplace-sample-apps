@@ -7,10 +7,10 @@
           "handler": "onLeadCreateHandler"
         },
         "onDealCreate": {
-          "handler": "onEventHandler"
+          "handler": "coomonOnDealCreateHandler"
         },
         "onExternalEvent": {
-          "handler": "onExternalEvent"
+          "handler": "freshsalesOnExternalEvent"
         }
       }
     },
@@ -20,10 +20,10 @@
           "handler": "onContactCreateHandler"
         },
         "onDealCreate": {
-          "handler": "onEventHandler"
+          "handler": "commonOnDealCreateHandler"
         },
         "onExternalEvent": {
-          "handler": "onExternalEvent"
+          "handler": "fcrmOnExternalEventHandler"
         }
       }
     }
