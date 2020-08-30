@@ -1,17 +1,13 @@
 var runtimeProductName;
 var fsalesInstallationPage = function (utils) {
-  //Changing Hint Text Based on Product
   utils.set('ApiKey', {hint: 'Enter APIKey of your Freshsales Account'});
-  //Changing Display Name Based on Product
+  t;
   utils.set('ApiKey', {label: 'APIKey_Freshsales'});
-  //To Hidden the field specific to FCMR
   utils.set('FieldToDisplayInFCRM', {visible: false});
 };
 var fcrmInstallationPage = function (utils) {
   utils.set('ApiKey', {hint: 'Enter APIKey of your FCRM Account'});
-  //Changing Display Name Based on Product
   utils.set('ApiKey', {label: 'APIKey_FCRM'});
-  //To Hide the field that is specific to Freshworks CRM
   utils.set('FieldToDisplayInFSales', {visible: false});
 };
 
@@ -31,7 +27,7 @@ function onFormLoad() {
       } else if (runtimeProductName == 'freshworks_crm') {
         fcrmInstallationPage(utils);
       } else {
-        console.log('ERROR:Missing Expected product from client');
+        console.log('❗️:Missing Expected product from client');
       }
     },
     function onFailProductIdentification(error) {
