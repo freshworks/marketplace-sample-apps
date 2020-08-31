@@ -1,16 +1,25 @@
-body {
-  width: 50vw;
-  height: 50vh;
-  margin: 5vh auto;
-  border: 1px solid grey;
-  padding: 1em;
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+article {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+section {
+  width: 45%;
+  height: 35%;
 }
 
 h1 {
   font-size: 20px;
-}
-
-#result{
-  display: inline-block;
-  background-color: yellow;
 }
