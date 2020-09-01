@@ -28,4 +28,4 @@ function errorHandler(err) {
   console.error('Some unfortunate error occured -', err);
 }
 
-$(document).ready(init());
+$(document).ready(init);
