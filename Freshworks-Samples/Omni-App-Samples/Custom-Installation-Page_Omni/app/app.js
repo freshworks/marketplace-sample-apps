@@ -1,9 +1,9 @@
 var client;
 
 function errorLogger(error) {
-  console.error('The following Error occured.");
+  console.error('The following Error occured');
   console.error(error);
-};
+}
 
 function init() {
   app.initialized().then(function getClient(_client) {
