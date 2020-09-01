@@ -51,11 +51,9 @@
           data-bind="product.api_key" id="api_key" name="api_key"></label>
     </fieldset>
   </body>
+  
 <script type="text/javascript" content-type="text/javascript" async>
 
-  /*
-    Capturing all the HTML elements into javascript variables. This is cleanly populate or capture values within these HTML fields.
-  */
   let customPageFields = {
     field1_datepickerHTML: document.getElementById('date-picker'),
     field2_textinputHTML: document.getElementById('field2'),
@@ -64,14 +62,6 @@
     api_keyHTML: document.getElementById('api_key')
   };
 
-
-  /*
-    Leaving the code inside getConfigs() function commented.
-
-    Local Testing using CLI:
-    1. As soon as http://localhost:10001/custom_configs page is loaded. The fields will be populated as 'undefined' for first time.
-    2. Once, paramenters are installed by app user clicking 'install' button, all the fields will populate the stored values. See: .fdk/localstore to find if your values are stored successfully.
-  */
   function getConfigs(configs) {
     customPageFields.field1_datepickerHTML.value = configs["field1"];
     customPageFields.field2_textinputHTML.value = configs["field2"];
