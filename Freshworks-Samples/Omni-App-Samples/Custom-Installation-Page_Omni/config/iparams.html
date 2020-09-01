@@ -42,16 +42,13 @@
     <fieldset>
       <legend class="product-specific subtitle">Freshsales Specific Elements
         Implementation</legend>
-      <label for="domain" class="product-specific domain">Field 1 - Domain
-        <input type="text" placeholder="Domain will be data binded"
-          data-bind="product.domain" id="domain" name="domain">
-      </label>
+        <!-- No need to colled domain from the user. Get it via productContext object-->
       <label for="api_key" class="product-specific apiKey">Field 2 - API Key
         <input type="text" placeholder="API key will be data binded"
           data-bind="product.api_key" id="api_key" name="api_key"></label>
     </fieldset>
   </body>
-  
+
 <script type="text/javascript" content-type="text/javascript" async>
 
   let customPageFields = {
@@ -66,7 +63,6 @@
     customPageFields.field1_datepickerHTML.value = configs["field1"];
     customPageFields.field2_textinputHTML.value = configs["field2"];
     customPageFields.dropdownHTML.value = configs["field3_dropdown"];
-    customPageFields.domainHTML.value = configs["field_domain"]
     customPageFields.api_keyHTML.value = configs["field_api_key"];
   }
 
@@ -74,7 +70,6 @@
     let field1 = customPageFields.field1_datepickerHTML.value;
     let field2 = customPageFields.field2_textinputHTML.value;
     let field3_dropdown = customPageFields.dropdownHTML.value;
-    let field_domain = customPageFields.domainHTML.value;
     let field_api_key = customPageFields.api_keyHTML.value;
     return {
       __meta: {
