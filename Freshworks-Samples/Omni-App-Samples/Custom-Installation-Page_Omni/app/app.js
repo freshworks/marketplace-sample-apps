@@ -1,6 +1,6 @@
 var client;
 
-var errorLogger = function (error) {
+function errorLogger(error) {
   console.error('The following Error occured.");
   console.error(error);
 };
