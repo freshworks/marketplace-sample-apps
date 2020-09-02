@@ -1,0 +1,24 @@
+{
+  "ApiKey": {
+    "display_name": "ApiKey",
+    "description": "Please enter your ApiKey",
+    "type": "api_key",
+    "required": true,
+    "type_attributes": {
+      "product": "current"
+    },
+    "secure": true
+  },
+  "FieldToDisplayInFCRM": {
+    "display_name": "FieldToDisplayInFCRM",
+    "description": "Please enter your FieldToDisplayInFCRM",
+    "type": "text",
+    "required": true
+  },
+  "FieldToDisplayInFSales": {
+    "display_name": "FieldToDisplayInFSales",
+    "description": "Please enter your FieldToDisplayInFSales",
+    "type": "text",
+    "required": true
+  }
+}
