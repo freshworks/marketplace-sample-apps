@@ -1,0 +1,13 @@
+{
+  "apiKey": {
+    "display_name": "API Key",
+    "description": "Please enter your api_key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "current"
+    },
+    "events": [{"change": "APIKeyChange"}]
+  }
+}
