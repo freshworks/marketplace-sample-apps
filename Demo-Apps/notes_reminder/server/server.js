@@ -17,6 +17,7 @@ exports = {
   events: [{event: 'onScheduledEvent', callback: 'onScheduledEventHandler'}],
 
   onScheduledEventHandler: function (args) {
+    console.log('onScheduledEventHandler fired 🎇');
     var userId = args.data.userId;
     var note = args.data.note;
     /**
@@ -36,16 +37,25 @@ exports = {
   },
 
   createSchedule: function (scheduleObject) {
-    $schedule.create(scheduleObject).then(
-      function operationPerformed(data) {
-        console.error(data);
-        renderData(null);
-      },
-      function operationErr(err) {
-        renderData({
-          message: 'Schedule creation failed',
-        });
-      },
-    );
+    $schedule
+      .create({
+        name: String(scheduleObject.scheduleName),
+        data: {
+          userId: scheduleObject.userId,
+          note: String(scheduleObject.note),
+        },
+        schedule_at: scheduleObject.scheduleAt,
+      })
+      .then(
+        function operationPerformed(data) {
+          console.error(data);
+          renderData(null);
+        },
+        function operationErr(err) {
+          renderData({
+            message: 'Schedule creation failed',
+          });
+        },
+      );
   },
 };

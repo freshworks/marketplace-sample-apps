@@ -129,24 +129,31 @@ function createSchedule() {
   let currentTime = new Date();
   currentTime.setMinutes(currentTime.getMinutes() + REMINDER_INTERVAL);
   note = noteElement.value;
-  var scheduleObject = {
-    name: generateUniqueId(),
-    data: {
-      userId: appObject.userId,
-      note: note,
-    },
+  scheduleObject = {
+    scheduleName: generateUniqueId(),
+    userId: appObject.userId,
+    note: note,
     scheduleAt: currentTime.toISOString(),
   };
-  client.request.invoke('createSchedule', scheduleObject).then(function (data) {
-    console.info(`server method invoked ${data}`);
-  }, logError);
+  client.request
+    .invoke('createSchedule', scheduleObject)
+    .then(function onSuccessSMI(data) {
+      console.info(`server method invoked ${data}`);
+    }, logError);
 }
 
 function checkForNotifications() {
-  client.db.get(`${scheduleObject.data.userId}_notifications`).then(
+  client.db.get(`${scheduleObject.userId}_notifications`).then(
     function fetchFromeDB(data) {
-      console.info('Here is when app found when checking for notifications');
-      console.info(data);
+      data.notes.forEach(function getNote(note) {
+        client.interface.trigger('showNotify', {
+          type: 'success',
+          title: 'Reminder',
+          message: note,
+        });
+      });
+
+      client.db.delete(`${userId}_notifications`);
     },
     function (err) {
       console.error(`some error occurred: ${err}`);
@@ -156,5 +163,5 @@ function checkForNotifications() {
 
 function logError(err) {
   console.error(`Train took the wrong route 🚂:`);
-  console.error(err);
+  console.error;
 }
