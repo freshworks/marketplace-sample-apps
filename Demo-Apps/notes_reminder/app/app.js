@@ -29,28 +29,28 @@ function checkForNotifications() {
   )
 }
 
-function createSchedule() {
-  const note = jQuery('#note').val()
-  const dateNow = new Date()
+// function createSchedule() {
+//   const note = jQuery('#note').val()
+//   const dateNow = new Date()
 
-  dateNow.setMinutes(dateNow.getMinutes() + REMINDER_INTERVAL)
+//   dateNow.setMinutes(dateNow.getMinutes() + REMINDER_INTERVAL)
 
-  client.request
-    .invoke('createSchedule', {
-      scheduleName: generateUniqueId(),
-      scheduleAt: dateNow.toISOString(),
-      userId: userId,
-      note: note,
-    })
-    .then(
-      function (data) {
-        console.log(data)
-      },
-      function (err) {
-        console.error(err)
-      },
-    )
-}
+//   client.request
+//     .invoke('createSchedule', {
+//       scheduleName: generateUniqueId(),
+//       scheduleAt: dateNow.toISOString(),
+//       userId: userId,
+//       note: note,
+//     })
+//     .then(
+//       function (data) {
+//         console.log(data)
+//       },
+//       function (err) {
+//         console.error(err)
+//       },
+//     )
+// }
 
 // $(document).ready(function () {
 //   app.initialized().then(function (_client) {
@@ -85,43 +85,9 @@ function createSchedule() {
 var [client, noteElement, REMINDER_INTERVAL] = [null, null, 6]
 var appObject = {}
 
-var ready = (start) => {
-  if (document.readyState != 'loading') start()
-  else document.addEventListener('DOMContentLoaded', start)
-}
+ready(start)
 
-var fwNotify = function(notificationType, messageContent){
-  client.interface.trigger("showNotify",{
-    type: notificationType,
-    message: messageContent
-  }).then((interfaceData)=>{console.info(`💁‍♂️ Notification created`)})
-  .catch((error)=>{console.error(error 💣)})
-  return;
-}
-
-var createSchedule = function () {
-  console.info('This is Scheduder 🐼')
-  const currentTime = new Date()
-  currentTime.setMinutes(currentTime.getMinutes() + REMINDER_INTERVAL)
-  note = noteElement.value
-  const scheduleObject = {
-    scheduleName: generateUniqueId(),
-    scheduleAt: currentTime.toISOString(),
-    userId: appObject.userId,
-    note: note,
-  }
-  client.request
-    .invoke('createSchedule', scheduleObject)
-    .then(function fwNotify(data) {
-
-    }, logError)
-}
-
-var logError = function (err) {
-  console.error(`Train took the wrong route 🚂: ${err}`)
-}
-
-var start = function () {
+function start() {
   const notifyElement = document.getElementById('notify')
   noteElement = document.getElementById('note')
   app.initialized().then(function getClientObj(_client) {
@@ -135,4 +101,42 @@ var start = function () {
   })
 }
 
-ready(start)
+function ready(start) {
+  if (document.readyState != 'loading') start()
+  else document.addEventListener('DOMContentLoaded', start)
+}
+
+function fwNotify(notificationType, messageContent){
+  client.interface.trigger("showNotify",{
+    type: notificationType,
+    message: messageContent
+  }).then((interfaceData)=>{console.info(`💁‍♂️ Notification created`)})
+  .catch((error)=>{console.error(error 💣)})
+  return;
+}
+
+function createSchedule () {
+  let currentTime = new Date()
+  currentTime.setMinutes(currentTime.getMinutes() + REMINDER_INTERVAL)
+  note = noteElement.value
+  let scheduleObject = {
+    scheduleName: generateUniqueId(),
+    scheduleAt: currentTime.toISOString(),
+    userId: appObject.userId,
+    note: note,
+  }
+  client.request
+    .invoke('createSchedule', scheduleObject)
+    .then(function (data) {
+      console.info(`server method invoked ${data}`)
+    }, logError)
+}
+
+
+function logError(err) {
+  console.error(`Train took the wrong route 🚂: ${err}`)
+}
+
+
+
+
