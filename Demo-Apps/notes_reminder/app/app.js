@@ -1,33 +1,27 @@
-const REMINDER_INTERVAL = 6
+// function checkForNotifications() {
+//   client.db.get(`${userId}_notifications`).then(
+//     function (data) {
+//       /**
+//       For every note, create a notification
+//     */
+//       data.notes.forEach(function (note) {
+//         client.interface.trigger('showNotify', {
+//           type: 'success',
+//           title: 'Reminder',
+//           message: note,
+//         })
+//       })
 
-function generateUniqueId() {
-  return Math.random().toString(36).substring(2)
-}
-
-function checkForNotifications() {
-  client.db.get(`${userId}_notifications`).then(
-    function (data) {
-      /**
-      For every note, create a notification
-    */
-      data.notes.forEach(function (note) {
-        client.interface.trigger('showNotify', {
-          type: 'success',
-          title: 'Reminder',
-          message: note,
-        })
-      })
-
-      /**
-      Delete the key (cleanup)
-    */
-      client.db.delete(`${userId}_notifications`)
-    },
-    function (err) {
-      console.error(err)
-    },
-  )
-}
+//       /**
+//       Delete the key (cleanup)
+//     */
+//       client.db.delete(`${userId}_notifications`)
+//     },
+//     function (err) {
+//       console.error(err)
+//     },
+//   )
+// }
 
 // function createSchedule() {
 //   const note = jQuery('#note').val()
@@ -82,61 +76,85 @@ function checkForNotifications() {
 //   })
 // })
 
-var [client, noteElement, REMINDER_INTERVAL] = [null, null, 6]
-var appObject = {}
+var [client, noteElement, scheduleObject, REMINDER_INTERVAL] = [
+  null,
+  null,
+  null,
+  6,
+];
+var appObject = {};
 
-ready(start)
+ready(start);
 
 function start() {
-  const notifyElement = document.getElementById('notify')
-  noteElement = document.getElementById('note')
+  const notifyElement = document.getElementById('notify');
+  noteElement = document.getElementById('note');
   app.initialized().then(function getClientObj(_client) {
-    client = _client
+    client = _client;
     client.data.get('loggedInUser').then(function getData(user) {
-      appObject.userId = user.loggedInUser.id
-    }, logError)
+      appObject.userId = user.loggedInUser.id;
+    }, logError);
     client.events.on('app.activated', function waitForClick() {
-      notifyElement.addEventListener('click', createSchedule)
-    })
-  })
+      notifyElement.addEventListener('click', createSchedule);
+    });
+  });
 }
 
 function ready(start) {
-  if (document.readyState != 'loading') start()
-  else document.addEventListener('DOMContentLoaded', start)
+  if (document.readyState != 'loading') start();
+  else document.addEventListener('DOMContentLoaded', start);
 }
 
-function fwNotify(notificationType, messageContent){
-  client.interface.trigger("showNotify",{
-    type: notificationType,
-    message: messageContent
-  }).then((interfaceData)=>{console.info(`💁‍♂️ Notification created`)})
-  .catch((error)=>{console.error(error 💣)})
+function generateUniqueId() {
+  return Math.random().toString(36).substring(2);
+}
+
+function fwNotify(notificationType, messageContent) {
+  client.interface
+    .trigger('showNotify', {
+      type: notificationType,
+      message: messageContent,
+    })
+    .then((interfaceData) => {
+      console.info(`💁‍♂️ Notification created`);
+    })
+    .catch((error) => {
+      console.error(`error 💣`);
+    });
   return;
 }
 
-function createSchedule () {
-  let currentTime = new Date()
-  currentTime.setMinutes(currentTime.getMinutes() + REMINDER_INTERVAL)
-  note = noteElement.value
-  let scheduleObject = {
-    scheduleName: generateUniqueId(),
+function createSchedule() {
+  console.log('clickedd');
+  let currentTime = new Date();
+  currentTime.setMinutes(currentTime.getMinutes() + REMINDER_INTERVAL);
+  note = noteElement.value;
+  var scheduleObject = {
+    name: generateUniqueId(),
+    data: {
+      userId: appObject.userId,
+      note: note,
+    },
     scheduleAt: currentTime.toISOString(),
-    userId: appObject.userId,
-    note: note,
-  }
-  client.request
-    .invoke('createSchedule', scheduleObject)
-    .then(function (data) {
-      console.info(`server method invoked ${data}`)
-    }, logError)
+  };
+  client.request.invoke('createSchedule', scheduleObject).then(function (data) {
+    console.info(`server method invoked ${data}`);
+  }, logError);
 }
 
+function checkForNotifications() {
+  client.db.get(`${scheduleObject.data.userId}_notifications`).then(
+    function fetchFromeDB(data) {
+      console.info('Here is when app found when checking for notifications');
+      console.info(data);
+    },
+    function (err) {
+      console.error(`some error occurred: ${err}`);
+    },
+  );
+}
 
 function logError(err) {
-  console.error(`Train took the wrong route 🚂: ${err}`)
+  console.error(`Train took the wrong route 🚂:`);
+  console.error(err);
 }
-
-
-
-
