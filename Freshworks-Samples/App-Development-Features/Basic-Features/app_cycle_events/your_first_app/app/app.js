@@ -22,16 +22,15 @@ function renderContactName() {
     .catch(errorHandler);
 }
 
-function appLoading() {
-  console.info('There is an error in rendering the app!');
-}
-
 function errorHandler(err) {
   console.error(`App failed to initialize because...`);
   console.error(err);
 }
 
 function isDocumentReady() {
-  if (document.readyState != 'loading') appLoading();
-  else document.addEventListener('DOMContentLoaded', startAppRender);
+  if (document.readyState != 'loading') {
+    console.info('There is an error in rendering the app!');
+  } else {
+    document.addEventListener('DOMContentLoaded', startAppRender);
+  }
 }
