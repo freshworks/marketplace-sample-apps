@@ -3,8 +3,7 @@ var client;
 isDocumentReady();
 
 function startAppRender() {
-  app
-    .initialized()
+  app.initialized()
     .then(function loadContactData(_client) {
       client = _client;
       client.events.on('app.activated', renderContactName);
@@ -14,8 +13,7 @@ function startAppRender() {
 
 function renderContactName() {
   var textElement = document.getElementById('apptext');
-  client.data
-    .get('contact')
+  client.data.get('contact')
     .then(function getData(data) {
       textElement.innerHTML = `Ticket created by ${data.contact.name}`;
     })
