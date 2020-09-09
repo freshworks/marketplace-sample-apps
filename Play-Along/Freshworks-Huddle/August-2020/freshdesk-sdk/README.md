@@ -1,18 +1,30 @@
-## Your First App
+# Freshdesk SDK Demo App
 
-Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
+## Description
 
-### Folder structure explained
+This app showcases the Freshdesk SDK to make CRUD operation with Tickets module and Search Contact on Freshdesk.
 
-    .
-    ├── README.md                  This file
-    ├── app                        Contains the files that are required for the front end component of the app
-    │   ├── app.js                 JS to render the dynamic portions of the app
-    │   ├── icon.svg               Sidebar icon SVG file. Should have a resolution of 64x64px.
-    │   ├── freshdesk_logo.png     The Freshdesk logo that is displayed in the app
-    │   ├── style.css              Style sheet for the app
-    │   ├── template.html          Contains the HTML required for the app’s UI
-    ├── config                     Contains the installation parameters and OAuth configuration
-    │   ├── iparams.json           Contains the parameters that will be collected during installation
-    │   └── iparam_test_data.json  Contains sample Iparam values that will used during testing
-    └── manifest.json              Contains app meta data and configuration information
+Features demonstrated | Notes
+-------------------- | ------
+[Freshdesk SDK - Create Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#createticket) | To create a ticket using Freshdesk SDK
+[Freshdesk SDK - Get Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#getticket) | To get a ticket details using Freshdesk SDK
+[Freshdesk SDK - Update Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#updateticket) | To update a ticket properties using Freshdesk SDK
+[Freshdesk SDK - Delete Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#deleteticket) | To delete a ticket using Freshdesk SDK
+[Freshdesk SDK - Search Contact](https://developer.freshworks.com/freshdesk-sdk/docs/ContactsApi.html#searchcontacts) | To search contacts using Freshdesk SDK
+
+## Prerequisites
+
+1. Make sure you have a Freshdesk account created.
+2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+3. Install the [Freshdesk SDK NPM](https://www.npmjs.com/package/@freshworks/freshdesk) and [specify the dependency in the manifest.json file](https://developer.freshdesk.com/v2/docs/external-libraries/#npm_packages).
+
+## Procedure to run the app
+
+1. Run the app locally using the [`fdk run`](https://developer.freshdesk.com/v2/docs/quick-start/#test_your_app) command.
+2. Append `?dev=true` to the Freshworks product URL to see the changes.
+
+### Additional Comments
+
+Checkout the [Freshdesk SDK documentation](https://developer.freshworks.com/freshdesk-sdk) to see the other available methods to try them out and utilise them instead of approaching the Freshdesk API in the Freshworks apps.
+
+This app can be run from Glitch [here](https://glitch.com/~freshdesk-sdk-demo) by remixing and connecting it with your local system with [FWGL CLI](https://www.npmjs.com/package/fwgl) to see the app in action in your Freshdesk account similar to locally run application. :wink:

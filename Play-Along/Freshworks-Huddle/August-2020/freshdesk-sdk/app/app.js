@@ -6,7 +6,7 @@ function showNotification(type, message) {
         console.error('failed to show notification');
         console.error(error);
     });
-}
+};
 
 function createTicket() {
     console.log('create ticket clicked')
@@ -27,12 +27,12 @@ function createTicket() {
         console.log(JSON.stringify(error));
         showNotification('danger', 'Failed to create ticket.');
     });
-}
+};
 
 function updateTicket() {
     console.log('update ticket clicked')
     const properties = {
-        ticketId: 11,
+        ticketId: 12,
         priority: 2
     };
     client.request.invoke('updateTicket', properties).then(function (data) {
@@ -45,11 +45,11 @@ function updateTicket() {
         console.log(JSON.stringify(error));
         showNotification('danger', 'Failed to update ticket.');
     });
-}
+};
 
 function getTicket() {
     console.log('get ticket clicked')
-    const ticketId = 8;
+    const ticketId = 12;
     client.request.invoke('getTicket', { ticketId }).then(function (data) {
         console.log('Ticket fetch successfull');
         console.log(JSON.stringify(data));
@@ -60,11 +60,11 @@ function getTicket() {
         console.log(JSON.stringify(error));
         showNotification('danger', 'Failed to get ticket.');
     });
-}
+};
 
 function deleteTicket() {
     console.log('delete ticket clicked')
-    const ticketId = 8;
+    const ticketId = 12;
     client.request.invoke('deleteTicket', { ticketId }).then(function (data) {
         console.log('Ticket delete successfull');
         console.log(JSON.stringify(data));
@@ -75,7 +75,7 @@ function deleteTicket() {
         console.log(JSON.stringify(error));
         showNotification('danger', 'Failed to delete ticket.');
     });
-}
+};
 
 function searchContact() {
     console.log('search contact clicked')
@@ -89,9 +89,9 @@ function searchContact() {
         console.log(JSON.stringify(error));
         showNotification('danger', 'Failed to search contact.');
     });
-}
+};
 
-$(document).ready(function () {
+function onDocumentReady() {
     app.initialized()
         .then(function (_client) {
             window.client = _client;
@@ -100,4 +100,6 @@ $(document).ready(function () {
 
                 });
         });
-});
+};
+
+$(document).ready(onDocumentReady);
