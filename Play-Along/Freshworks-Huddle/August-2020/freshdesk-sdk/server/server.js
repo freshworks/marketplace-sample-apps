@@ -13,12 +13,12 @@ exports = {
       status: args.status
     };
     fd.tickets.createTicket(properties).then(function (data) {
-      console.log('Success: Ticket create successfull');
-      console.log(JSON.stringify(data));
+      console.info('Success: Ticket create successfull');
+      console.info(JSON.stringify(data));
       return renderData(null, data)
     }, function (error) {
-      console.log('Error: Ticket create error');
-      console.log(JSON.stringify(error));
+      console.error('Error: Ticket create error');
+      console.error(JSON.stringify(error));
       return renderData({ status: error.status, message: error.message });
     });
   },
@@ -29,12 +29,12 @@ exports = {
       priority: args.priority
     };
     fd.tickets.updateTicket(args.ticketId, properties).then(function (data) {
-      console.log('Success: Ticket update successfull');
-      console.log(JSON.stringify(data));
+      console.info('Success: Ticket update successfull');
+      console.info(JSON.stringify(data));
       return renderData(null, data)
     }, function (error) {
-      console.log('Error: Ticket update error');
-      console.log(JSON.stringify(error));
+      console.error('Error: Ticket update error');
+      console.error(JSON.stringify(error));
       return renderData({ status: error.status, message: error.message });
     });
   },
@@ -43,12 +43,12 @@ exports = {
     const fd = new Freshdesk({ domain: args.iparams.domain, api_key: args.iparams.api_key });
     const ticketId = 1;
     fd.tickets.getTicket(ticketId).then(function (data) {
-      console.log('Success: Ticket fetch successfull');
-      console.log(JSON.stringify(data));
+      console.info('Success: Ticket fetch successfull');
+      console.info(JSON.stringify(data));
       return renderData(null, data)
     }, function (error) {
-      console.log('Error: Ticket fetch error');
-      console.log(JSON.stringify(error));
+      console.error('Error: Ticket fetch error');
+      console.error(JSON.stringify(error));
       return renderData({ status: error.status, message: error.message });
     });
   },
@@ -56,12 +56,12 @@ exports = {
   deleteTicket: function (args) {
     const fd = new Freshdesk({ domain: args.iparams.domain, api_key: args.iparams.api_key });
     fd.tickets.deleteTicket(args.ticketId).then(function (data) {
-      console.log('Success: Ticket delete successfull');
-      console.log(JSON.stringify(data));
+      console.info('Success: Ticket delete successfull');
+      console.info(JSON.stringify(data));
       return renderData(null, data)
     }, function (error) {
-      console.log('Error: Ticket delete error');
-      console.log(JSON.stringify(error));
+      console.error('Error: Ticket delete error');
+      console.error(JSON.stringify(error));
       return renderData({ status: error.status, message: error.message });
     });
   },
@@ -70,12 +70,12 @@ exports = {
     const fd = new Freshdesk({ domain: args.iparams.domain, api_key: args.iparams.api_key });
     const query = `"email:'${args.query}'"`;
     fd.contacts.searchContacts({ query: query }).then(function (data) {
-      console.log('Success: Ticket delete successfull');
-      console.log(JSON.stringify(data));
+      console.info('Success: Ticket delete successfull');
+      console.info(JSON.stringify(data));
       return renderData(null, data)
     }, function (error) {
-      console.log('Error: Ticket delete error');
-      console.log(JSON.stringify(error));
+      console.error('Error: Ticket delete error');
+      console.error(JSON.stringify(error));
       return renderData({ status: error.status, message: error.message });
     });
   },
