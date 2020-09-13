@@ -1,6 +1,5 @@
 function queueMessage(userId, notes) {
-  $db
-    .set(`${userId}_notifications`, {
+  $db.set(`${userId}_notifications`, {
       notes: notes,
     })
     .then(
@@ -37,8 +36,7 @@ exports = {
   },
 
   createSchedule: function (scheduleObject) {
-    $schedule
-      .create({
+    $schedule.create({
         name: String(scheduleObject.scheduleName),
         data: {
           userId: scheduleObject.userId,
@@ -57,5 +55,5 @@ exports = {
           });
         },
       );
-  },
+  }
 };
