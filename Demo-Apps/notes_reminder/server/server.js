@@ -53,7 +53,7 @@ exports = {
           renderData({
             message: 'Schedule creation failed',
           });
-        },
+        }
       );
   }
 };
