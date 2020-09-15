@@ -4,7 +4,7 @@
     "freshchat": {
       "location": {
         "conversation_user_info": {
-          "url": "template.html",
+          "url": "index.html",
           "icon": "icon.svg"
         }
       }
