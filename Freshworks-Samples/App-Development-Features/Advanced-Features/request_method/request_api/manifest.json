@@ -4,13 +4,10 @@
     "freshdesk": {
       "location": {
         "ticket_sidebar": {
-          "url": "template.html",
+          "url": "requestAPISample_index.html",
           "icon": "icon.svg"
         }
       }
     }
-  },
-  "whitelisted-domains": [
-    "https://httpbin.org"
-  ]
+  }
 }
