@@ -1,6 +1,6 @@
-## Your First App
+## REST API Consumer
 
-Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
+This app is simple demostration of the autheticaton involved to consume REST APIs from Freshchat.
 
 ### Folder structure explained
 
