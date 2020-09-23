@@ -2,6 +2,7 @@
 The app's `open modal` button should open up a modal with additinal view port. How ever the event is not getting called.
 
 ## Expected Behavior
+App in ticket sidebar location should ideally open up a modal on button click event.
 
 
 ## Instructions for contributors
