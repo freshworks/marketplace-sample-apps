@@ -10,13 +10,13 @@ today! Here are the guidelines we'd like you to follow:
 * [Improving Documentation](#docs)
 * [Issue Submission Guidelines](#submit)
 * [Pull Request Submission Guidelines](#submit-pr)
+* [Hacktoberfest 2020](#hacktoberfest)
 
 ## <a name="requests"></a> Questions, Bugs, Features
 
 ### <a name="question"></a> Got a Question or Problem?
 
-Do not open issues for general support questions as we want to keep GitHub issues for bug reports
-and feature requests. You've got much better chances of getting your question answered on dedicated
+Do not open issues for general support questions as we want to keep GitHub issues for bug reports, feature requests and opensource contributions. You've got much better chances of getting your question answered on dedicated
 support platforms, the best being our dedicated [developer forum](https://community.developers.freshworks.com/).
 
 Freshworks Developer Community is a much better place to ask questions since:
@@ -82,5 +82,17 @@ with quickly:
 - Please test and send a GitHub pull request with a clear list of what you've done. It is recommended that you test the apps by [installing the FDK](https://developers.freshdesk.com/v2/docs/quick-start/) and [running them](https://developers.freshdesk.com/v2/docs/quick-start/#test_your_app) in the corresponding Freshworks product with coverage > 80%.
 - Pull Requests will be reviewed and suggestions(if any) will be provided as early as possible.
 - Once the suggestions(if any) are incorporated,changes will be merged.
+
+### <a name="hacktoberfest"></a> Hacktoberfest
+
+Assuming you might already know about Hacktoberfest and learning to build an entire app can be time consuming. We created some tasks as issues for you to simply gain some familiarity before you choose to invest your time.
+
+We have some of the code samples for the developer community who refer to on a regular basis. So we picked up some small tasks like refactoring and reorganising sample app codes for especially for beginners to make quick Pull requests(PRs).
+
+Try following up the tasks described in the issues. Those would be helpful.
+
+If you prefer bit more challenging tasks, look out for tags those don't have good first issue tag. We are hoping to help at least 100 developers make PRs to be one among first 10 PRs in their career this Hacktoberfest 2020.
+
+Try something different this Hacktoberfest. May be contributing to Freshworks App sample?
 
 **If you get help, help others. Good karma rulez!**
