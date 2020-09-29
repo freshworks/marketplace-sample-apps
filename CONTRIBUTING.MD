@@ -16,7 +16,9 @@ today! Here are the guidelines we'd like you to follow:
 
 ### <a name="question"></a> Got a Question or Problem?
 
-Do not open issues for general support questions as we want to keep GitHub issues for bug reports, feature requests and opensource contributions. You've got much better chances of getting your question answered on dedicated
+
+Do not open issues for general support questions as we want to keep GitHub issues for bug reports, feature requests and open-source contributions. You've got much better chances of getting your question answered on dedicated
+
 support platforms, the best being our dedicated [developer forum](https://community.developers.freshworks.com/).
 
 Freshworks Developer Community is a much better place to ask questions since:
@@ -91,7 +93,9 @@ We have some of the code samples for the developer community who refer to on a r
 
 Try following up the tasks described in the issues. Those would be helpful.
 
-If you prefer bit more challenging tasks, look out for tags those don't have good first issue tag. We are hoping to help at least 100 developers make PRs to be one among first 10 PRs in their career this Hacktoberfest 2020.
+
+If you prefer bit more challenging tasks, look out for tags those don't have "good first issue" tag. We are hoping to help at least 100 developers make PRs to be one among first 10 PRs in their career this Hacktoberfest 2020.
+
 
 Try something different this Hacktoberfest. May be contributing to Freshworks App sample?
 
