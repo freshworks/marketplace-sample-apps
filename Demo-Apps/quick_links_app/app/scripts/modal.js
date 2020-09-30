@@ -10,7 +10,7 @@ $(document).ready(function() {
       bookmarkData = context.data;
       var template = '<li data-ticket-id="${id}" class="row manage-bm-li">\
                         <div class="ticket-title">${subject}</div>\
-                        <div class="remove-ticket-bm"><a class="remove-bookmark"><img src="delete.svg" /></a></div>\
+                        <div class="remove-ticket-bm"><a class="remove-bookmark"><img src="../styles/images/delete.svg" /></a></div>\
                       </li>';
 
       $.tmpl( template, bookmarkData.tickets).appendTo('.manage-bm-ul');

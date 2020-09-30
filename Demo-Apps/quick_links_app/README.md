@@ -8,7 +8,7 @@ You can add a note and set a reminder so that app will remind your note after a 
 
 ## Screenshots
 
-<img src="./screenshots/App Face.png" height="300" width="300">
+<img src="./screenshots/app face.png" height="300" width="300">
 
 For other screenshots please refer to [screenshots](./screenshots/) folder
 
