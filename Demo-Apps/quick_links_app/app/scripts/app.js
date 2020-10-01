@@ -103,7 +103,7 @@ $(document).ready(function() {
     $('#manage_bookmarks').on('click', function() {
       client.interface.trigger("showModal", {
         title: "Manage Bookmarks",
-        template: "modal.html",
+        template: "views/modal.html",
         data: {
           tickets: tickets,
           userId: userId
