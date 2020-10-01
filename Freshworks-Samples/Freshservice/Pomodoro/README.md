@@ -10,9 +10,9 @@ The pomodoro app enables users to schedule work sessions based on the pomodoro t
 
 ### Screenshots
 
-<img src="./Screenshots/App Face.png" width="250">  
+<img src="./screenshots/app face.png" width="250">  
 
-for other screenshots please refer to the [Screenshots](./Screenshots/) folder
+for other screenshots please refer to the [Screenshots](./screenshots/) folder
 
 * * *
 
