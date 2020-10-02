@@ -69,23 +69,21 @@
       return true;
     }
 
-    function getBookFromAPI(callback) {
-      $.ajax({
-        url: API_LINK,
-        datatype: "jsonp",
-        success: function(books) {
-          books.forEach(function(book) {
-            $('#book').append(`<option>${book.name}</option>`);
-          });
-        }
+    function getBookFromAPI() {
+      client.request.get(API_LINK).then(function(books){
+        JSON.parse(books.response).forEach(function(book){
+          $('#book').append(`<option>${book.name}</option>`)
+        });
+      }).catch(function(error){
+        console.log("unable to fetch from api");
+        console.log(error)
       });
     }
 
 
-    $(document).ready(function() {
-      getBookFromAPI(function() {
-        app.initialized();
-      });
+    app.initialized().then(function(client){
+      window.client=client;
+      getBookFromAPI();
     });
 
   </script>
