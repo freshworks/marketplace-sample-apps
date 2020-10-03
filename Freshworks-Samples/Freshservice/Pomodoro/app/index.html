@@ -1,9 +1,17 @@
 <html>
   <head>
-    <scr#testDatat src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></scrstartStopButtont>
     <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-    <script src="app.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="./scripts/app.js"></script>
+    <!-- Crayons Kit -->
+    <script
+        type="module"
+        src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js">
+    </script>
+    <script
+        nomodule
+        src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -23,7 +31,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 text-center">
-            <button class="btn btn-light" id="startStopButton">start</button>
+            <fw-button color="primary" size="small" id="startStopButton"> Start </fw-button>
           </div>
         </div>
         <div style="height:10px;"></div>
@@ -37,16 +45,16 @@
         <div style="height:3px;"></div>
         <div class="row">
           <div class="col-6 text-center">
-            <button class="btn btn-light" id="showActivity">Show Activity</button>
+            <fw-button color="primary" size="small" id="showActivity"> Show Activity </fw-button>
           </div>
           <div class="col-6 text-center">
-            <button class="btn btn-light" id="clearActivity">Clear Activity</button>
+            <fw-button color="danger" size="small" id="clearActivity"> Clear Activity </fw-button>
           </div>
         </div>
         <div style="height:10px;"></div>
         <div class="row">
           <div class="col-12 text-center">
-            <button class="btn btn-light" id="testData">Test Data</button>
+            <fw-button color="secondary" size="small" id="testData"> Test Data </fw-button>
           </div>
         </div>
       </div>
