@@ -1,1 +1,9 @@
-{}
+{
+  "domain": {
+    "display_name": "Domain",
+    "description": "Please enter your domain",
+    "type": "url",
+    "required": true,
+    "secure":true
+  }
+}

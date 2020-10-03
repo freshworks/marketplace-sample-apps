@@ -1,4 +1,4 @@
-const BASE_URL = "https://httpbin.org/";
+const BASE_URL = `<%= iparam.domain %>`;
 const request_buttons = document.querySelectorAll(".request-btn");
 var client = null;
 
