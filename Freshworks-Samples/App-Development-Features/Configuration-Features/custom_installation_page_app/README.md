@@ -1,10 +1,24 @@
-## Custom Installation Page App
+# Custom Installation Page App
 
-  This app uses a custom installation page to get input from the user through a color picker form element. It also dynamically populates a drop down field by making an API call. These values are then used in the ticket details page to render the drop down field value in the selected background color.
+### Description:
 
-  ![](screenshots/appView.png)
+_This app uses a custom installation page to get input from the user through a color picker form element. It also dynamically populates a drop down field by making an API call. These values are then used in the ticket details page to render the drop down field value in the selected background color._
 
-  This app demonstrates the following features
-  1. Using the custom installation page to display additional form element types
-  2. Using the custom installation page to dynamically populate a form field through an API call
-  3. Performing validation when using a custom installation page
+### Screenshots:
+
+ ![](screenshots/appView.png)
+
+Features demonstrated | Notes
+-------------------- | ------
+ _requesting data from API_ | _Makes use of client.request_
+ _Installation feature_ | _Custom config page for setting up_
+
+### Prerequisites:
+1. Make sure you have a trial *Freshdesk* account created
+2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
+
+
+### Procedure to run the app:
+1. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
+2. Append `?dev=true` to the Freshworks product URL to see the changes
+3. go to [`custom_config`](http://localhost:10001/custom_configs) page to change the settings of the app.
