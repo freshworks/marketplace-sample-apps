@@ -5,7 +5,7 @@
       "location": {
         "ticket_background": {
           "url": "template.html",
-          "icon": "icon.svg"
+          "icon": "styles/images/icon.svg"
         }
       }
     }
