@@ -10,8 +10,8 @@ _This app uses a custom installation page to get input from the user through a c
 
 Features demonstrated | Notes
 -------------------- | ------
- _requesting data from API_ | _Makes use of client.request_
- _Installation feature_ | _Custom config page for setting up_
+ _Request Api_ | _It is uses client.request to fetch data from API_
+ _Custom installation page_ | _Custom config page for setting up and installing the app_
 
 ### Prerequisites:
 1. Make sure you have a trial *Freshdesk* account created
