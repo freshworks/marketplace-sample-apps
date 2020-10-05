@@ -1,0 +1,10 @@
+{
+  "platform-version": "2.0",
+  "dependencies": {
+    "axios": "0.19.2",
+    "@freshworks-jaya/marketplace-models": "0.1.5"
+  },
+  "product": {
+    "freshchat": {}
+  }
+}
