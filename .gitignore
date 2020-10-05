@@ -4,3 +4,4 @@
 **/.report.json
 **/.vscode/**
 **/node_modules/**
+.idea

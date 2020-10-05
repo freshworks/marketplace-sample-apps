@@ -1,5 +1,5 @@
 .logo {
-  background: url('freshservice_logo.png');
+  background: url('./images/freshservice_logo.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

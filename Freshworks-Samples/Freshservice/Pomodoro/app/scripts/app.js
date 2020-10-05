@@ -1,12 +1,16 @@
-const client = null;
-const user_id = null;
+let client = null;
+let user_id = null;
 let sessionState = false;
 let t1 = null,
   t2 = null,
   t3 = null,
   t4 = null;
 let endTime = null;
-$(document).ready(function() {
+
+// Start the App initialization based on the document load status
+isDocumentReady();
+
+function startAppRender() {
   checkTimer();
   app.initialized().then(function(_client) {
     client = _client;
@@ -30,7 +34,7 @@ $(document).ready(function() {
   /**
    * a click event handler to start and stop pomodoro sessions
    */
-  $("#startStopButton").click(function() {
+  document.querySelector("#startStopButton").addEventListener("click", (event) => {
     if (!sessionState) {
       makeSMICall("startPomodoro").then(
         () => {
@@ -53,7 +57,7 @@ $(document).ready(function() {
    * a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
    * refer mod.js for flow continuation
    */
-  $("#showActivity").click(function() {
+  document.querySelector("#showActivity").addEventListener("click", () => {
     let hs = [];
     let td = null;
     client.db.get(user_id).then(
@@ -64,8 +68,8 @@ $(document).ready(function() {
         });
 
         client.interface.trigger("showModal", {
-          title: "sample modal",
-          template: "./modal/mod.html",
+          title: "Pomodoro Activity",
+          template: "./views/mod.html",
           data: { totalDays: td, history: hs }
         });
       },
@@ -79,7 +83,7 @@ $(document).ready(function() {
   /**
    * a click event handler to clear all of the user's activity and schedules using clearActivity server.js method
    */
-  $("#clearActivity").click(function() {
+  document.querySelector("#clearActivity").addEventListener("click", () => {
     makeSMICall("clearActivity").then(
       () => notifyUser("success", "cleared all activity!"),
       () => notifyUser("error", "couldn't clear activity")
@@ -89,7 +93,7 @@ $(document).ready(function() {
   /**
    * a click event handler to populate user data randomly using generateTestData server.js method
    */
-  $("#testData").click(function() {
+  document.querySelector("#testData").addEventListener("click", () => {
     makeSMICall("generateTestData").then(
       () => notifyUser("success", "Test data populated successfully!"),
       () => notifyUser("error", "couldn't populate test data")
@@ -99,8 +103,8 @@ $(document).ready(function() {
   /**
    * registering an event to save timer if the pages was unloaded during session
    */
-  $(window).on("beforeunload", saveTimer);
-});
+  window.addEventListener("beforeunload", saveTimer);
+}
 
 /**
  * a helper function to triggers notifications
@@ -115,13 +119,13 @@ function notifyUser(notificationType, notificationMessage) {
 }
 
 function startText() {
-  $("#sessionText").text("Click me to start focus mode!!!");
-  $("#startStopButton").html("start");
+    document.getElementById("sessionText").innerText = "Click me to start focus mode!!!";
+    document.getElementById("startStopButton").innerText = "Start";
 }
 
 function stopText() {
-  $("#sessionText").text("Click me to stop focus mode!!!");
-  $("#startStopButton").html("stop");
+    document.getElementById("sessionText").innerText = "Click me to stop focus mode!!!";
+    document.getElementById("startStopButton").innerText = "Stop";
 }
 
 /**
@@ -225,7 +229,7 @@ function countdown() {
   let current = endTime - new Date();
   let minutes = Math.floor((current % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((current % (1000 * 60)) / 1000);
-  $("#timer").text(`${minutes} min  :  ${seconds} sec`);
+  document.getElementById("timer").innerText = `${minutes} min  :  ${seconds} sec`;
 }
 
 /**
@@ -267,7 +271,19 @@ function checkTimer() {
  */
 function stopTimer() {
   endTime = null;
-  $("#timer").empty();
+  document.getElementById("timer").innerHTML = "";
   clearInterval(t4);
   localStorage.removeItem("timerStorage");
+}
+
+/**
+ * A function used to check if the document has been loaded
+ */
+function isDocumentReady() {
+    if (document.readyState != 'loading') {
+        console.info('Scripts are deferred or loading async');
+        startAppRender();
+    } else {
+        document.addEventListener('DOMContentLoaded', startAppRender);
+    }
 }
