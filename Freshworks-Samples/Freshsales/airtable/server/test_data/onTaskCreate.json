@@ -1,0 +1,87 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onTaskCreate",
+  "region": "US",
+  "version": "2.0",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "task": {
+      "id": 117596,
+      "status": "Open",
+      "due_date": "2019-09-10T11:00:00Z",
+      "title": "sample task",
+      "description": "task on september 10",
+      "is_deleted": false,
+      "completed_date": null,
+      "created_at": "2019-09-24T09:29:07Z",
+      "updated_at": "2019-09-24T09:29:07Z",
+      "task_type_id": 1,
+      "owner_id": 1,
+      "creator_id": 1,
+      "updater_id": null,
+      "outcome_id": 12,
+      "targetable_id": 1012472,
+      "targetable_type": "Lead"
+    },
+    "associations": {
+      "owner": {
+        "id": 1,
+        "name": "Sales Agent",
+        "type": "user",
+        "email": "prakash.thiyagarajan@freshworks.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null,
+        "time_zone": "Central Time (US & Canada)",
+        "created_at": "2019-07-18T08:16:46Z",
+        "updated_at": "2019-07-31T09:24:53Z",
+        "deal_pipeline_id": 1,
+        "job_title": null
+      },
+      "task_type": {
+        "name": "Follow up",
+        "position": 1,
+        "sales_activity_type_id": 4
+      },
+      "task_users": [
+        {
+          "_association_id": 169174,
+          "user_id": 37
+        },
+        {
+          "_association_id": 169175,
+          "user_id": 1
+        }
+      ],
+      "outcome": {
+        "id": 12,
+        "name": "Left message",
+        "position": 2
+      },
+      "updater": null,
+      "targetable": {
+        "id": 1012472,
+        "_model": "Lead"
+      },
+      "creator": {
+        "id": 1,
+        "name": "Sales Agent",
+        "type": "user",
+        "email": "prakash.thiyagarajan@freshworks.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null,
+        "time_zone": "Central Time (US & Canada)",
+        "created_at": "2019-07-18T08:16:46Z",
+        "updated_at": "2019-07-31T09:24:53Z",
+        "deal_pipeline_id": 1,
+        "job_title": null
+      }
+    }
+  }
+}
