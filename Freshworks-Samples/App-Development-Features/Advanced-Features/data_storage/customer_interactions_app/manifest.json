@@ -5,7 +5,7 @@
       "location": {
         "ticket_sidebar": {
           "url": "template.html",
-          "icon": "icon.svg"
+          "icon": "/styles/images/icon.svg"
         }
       }
     }
