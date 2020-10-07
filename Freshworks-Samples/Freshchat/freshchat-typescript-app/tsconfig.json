@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+      "outDir": "./server",
+      "allowJs": true,
+      "target": "ES2017",
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "strictBindCallApply": true,
+      "strictFunctionTypes": true,
+      "module": "commonjs",
+      "moduleResolution": "node"
+  },
+  
+  "files": [
+      "./server/src/server.ts",
+      "./server/src/interfaces/EventPayload.ts",
+      "./server/src/interfaces/Marketplace.ts",
+  ]
+}

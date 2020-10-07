@@ -1,0 +1,8 @@
+{
+  "webhookUrl": {
+    "display_name": "Webhook URL",
+    "description": "POST method will be called on the Webhook URL configured here for all the Product Events.",
+    "type": "text",
+    "required": true
+  }
+}

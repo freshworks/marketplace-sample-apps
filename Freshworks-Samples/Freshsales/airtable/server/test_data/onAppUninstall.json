@@ -1,0 +1,11 @@
+{
+  "timestamp": 1496400354326,
+  "account_id" : "13",
+  "domain" : "https://sample.freshsales.io",
+  "event": "onAppUninstall",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}

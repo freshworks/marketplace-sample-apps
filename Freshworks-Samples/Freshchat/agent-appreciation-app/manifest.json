@@ -1,11 +1,11 @@
 {
   "platform-version": "2.0",
   "product": {
-    "freshdesk": {
+    "freshchat": {
       "location": {
-        "ticket_sidebar": {
+        "conversation_background": {
           "url": "index.html",
-          "icon": "icon.svg"
+          "icon": "styles/images/icon.svg"
         }
       }
     }

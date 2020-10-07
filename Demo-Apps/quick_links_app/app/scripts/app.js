@@ -59,7 +59,7 @@ $(document).ready(function() {
   //Displays the updated the list in the UI
   function displayBookmarks() {
     $('.bookmarks-ul').html('');
-    var template = '<li class="bookmarks-li"><a href="https://${domainName}/a/tickets/${id}" target="_top" class="bookmark-link">${subject}</a></li>';
+    var template = '<li class="bookmarks-li"><a href="https://${domainName}/a/tickets/${id}" target="_blank" class="bookmark-link">${subject}</a></li>';
     tickets.forEach(function(val){
       val.domainName = domainName;
       $.tmpl( template, val).appendTo('.bookmarks-ul');

@@ -1,0 +1,23 @@
+{
+  "account_id": "12345",
+  "event": "onExternalEvent",
+  "region": "US",
+  "timestamp": 1500351361762,
+  "domain": "sample.freshsales.io",
+  "options": "freshsales.onExternalEvent",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "timestamp": 1500456400209,
+    "event": "user_created",
+    "user": {
+      "id": "557058:d2254582",
+      "email": "xyz@xyz.com"
+    }
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}

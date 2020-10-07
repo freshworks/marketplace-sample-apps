@@ -19,10 +19,6 @@ section{
   margin: .5rem .5rem;
 }
 
-.request-btn {
-  outline: none;
-  width: 80px;
-}
 
 .request-status {
   color: grey;
