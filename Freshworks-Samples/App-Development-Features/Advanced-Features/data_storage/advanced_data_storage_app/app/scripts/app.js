@@ -6,8 +6,8 @@
 function openFindAliasModal() {
     client.interface.trigger('showModal', {
         title: 'Find Alias',
-        template: 'find_alias.html'
-    }).catch(function (error) {
+        template: './templates/find_alias.html'
+    }).catch( (error) => {
         console.error('unable to open find alias modal');
         console.error(error);
     });
@@ -19,9 +19,9 @@ function openFindAliasModal() {
 function openCreateAliasModal() {
     client.interface.trigger('showModal', {
         title: 'Add new Alias',
-        template: 'create_alias.html',
+        template: './templates/create_alias.html',
         data: {}
-    }).catch(function (error) {
+    }).catch( (error) => {
         console.error('unable to open create alias modal');
         console.error(error);
     });
@@ -38,7 +38,7 @@ function showNotify(type, message) {
     client.interface.trigger('showNotify', {
         type: type,
         message: message
-    }).catch(function (error) {
+    }).catch( (error) => {
         console.error('unable to show notifications with parameters');
         console.error(type, message);
         console.error(error);

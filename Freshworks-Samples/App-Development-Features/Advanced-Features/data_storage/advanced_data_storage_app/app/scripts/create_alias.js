@@ -60,7 +60,7 @@ function constructOptions(ttl, override) {
  */
 function createAlias(key, value, ttl) {
   client.db.set(key, { url: value, updates: 0 }, constructOptions(ttl, false))
-    .then(function (data) {
+    .then( () => {
       showNotify('success', 'Successfully created the alias');
     }, function (error) {
       const httpStatusCodeForError = 400;
@@ -95,10 +95,10 @@ function addNewAlias() {
   createAlias(key, value, ttl);
 }
 
-$(document).ready(function () {
-  app.initialized().then(function (_client) {
+$(document).ready( () => {
+  app.initialized().then( (_client) => {
     window.client = _client;
-  }).catch(function (error) {
+  }).catch( (error) => {
     console.error('Failed to initialize the create_alias modal with error');
     console.error(error);
   });
