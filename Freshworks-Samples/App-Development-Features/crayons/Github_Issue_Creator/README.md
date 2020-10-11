@@ -1,4 +1,4 @@
-## Your First App
+# Your First App
 
 Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
 This training app enables a simple integration between Freshdesk and Github. You can create a ticket from Freshdesk and view it.
