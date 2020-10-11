@@ -5,7 +5,6 @@ app.initialized()
       function () {
         ReactDOM.render(<div>
           <Todolist />
-          <Todo />
         </div>
           , document.getElementById('mydiv'))
       });
@@ -21,9 +20,9 @@ class Todolist extends React.Component {
       todos: []
     };
     this.handleChecked = this.handleChecked.bind(this);
+    this.getList = this.getList.bind(this);
     this.getList()
   }
-
 
   /**
    * Get list of Todo's on load
@@ -70,12 +69,13 @@ class Todolist extends React.Component {
         {
           todos.map((todo, index) =>
             <div key={index}>
-              <input checked={todo.state} type="checkbox" id={todo.index} onChange={this.handleChecked} name={todo.index} value={index} />
-              <label for={todo.index}>{todo.todo}</label>
+              <label htmlFor={todo.index}>
+                <input checked={todo.state} type="checkbox" id={todo.index} onChange={this.handleChecked} name={todo.index} value={index} />  {todo.todo}
+              </label>
             </div>
           )
         }
-
+        <Todo updateList={this.getList} />
       </div>
     );
   }
@@ -88,13 +88,17 @@ class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = { todo: '', state: false };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateList = this.updateList.bind(this);
   }
 
   handleChange(event) {
     this.setState({ todo: event.target.value, state: false });
+  }
+
+  updateList = () => {
+    this.props.updateList()
   }
 
   /**
@@ -102,18 +106,21 @@ class Todo extends React.Component {
    * @param {object} event 
    */
   handleSubmit(event) {
-    this.updateTodos(this.state)
+    this.updateTodos(this.state, this.updateList)
+    this.setState({ todo: '', state: false });
     event.preventDefault();
   }
 
   /**
    * Update the status of todo 
    * @param {Object} todo current todo object
+   * @param {Function} updateList update the view list
    */
-  updateTodos(todo) {
+  updateTodos(todo, updateList) {
     client.db.update("todos", "append", { "todos": [todo] }).then(
       function (data) {
         console.log('Successfully written Todos', data)
+        updateList();
       },
       function (error) {
         console.error('Unable to write Todos into the data storage', error)
