@@ -22,7 +22,7 @@ $(document).ready(function () {
 function openModal() {
 		client.interface.trigger("showModal", {
 			title: "Github Issue Details",
-			template: "./modal/modal.html",
+			template: "./views/modal.html",
 		});
 }
 
