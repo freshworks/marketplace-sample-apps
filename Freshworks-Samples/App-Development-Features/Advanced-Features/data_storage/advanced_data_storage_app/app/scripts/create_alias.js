@@ -14,8 +14,8 @@ function alertParent(payload, args) {
       api: 'interface',
       action: 'trigger',
       method: 'showConfirm',
-      payload,
-      args
+      payload: payload,
+      args: args
     }
   });
 }
@@ -35,7 +35,7 @@ function showNotify(type, message) {
       api: 'interface',
       action: 'trigger',
       method: 'showNotify',
-      payload: { type, message }
+      payload: { type: type, message: message }
     }
   });
 }
@@ -60,10 +60,10 @@ function constructOptions(ttl, override) {
  */
 function createAlias(key, value, ttl) {
   client.db.set(key, { url: value, updates: 0 }, constructOptions(ttl, false))
-    .then( () => {
+    .then(function () {
       showNotify('success', 'Successfully created the alias');
     }, function (error) {
-      const httpStatusCodeForError = 400;
+      var httpStatusCodeForError = 400;
 
       if (error.status === httpStatusCodeForError && error.message === 'The setIf conditional request failed') {
         alertParent({
@@ -72,8 +72,8 @@ function createAlias(key, value, ttl) {
           saveLabel: 'Override',
           cancelLabel: 'No'
         }, {
-            key,
-            value
+            key: key,
+            value: value
           });
 
       } else {
@@ -88,17 +88,17 @@ function createAlias(key, value, ttl) {
  * adds new alias based on the alias and link from the input fields
  */
 function addNewAlias() {
-  const key = document.getElementById('inputAlias').value;
-  const value = document.getElementById('inputLink').value;
-  const ttl = 86400;
+  var key = document.getElementById('inputAlias').value;
+  var value = document.getElementById('inputLink').value;
+  var ttl = 86400;
 
   createAlias(key, value, ttl);
 }
 
-$(document).ready( () => {
-  app.initialized().then( (_client) => {
+$(document).ready(function () {
+  app.initialized().then(function (_client) {
     window.client = _client;
-  }).catch( (error) => {
+  }).catch(function (error) {
     console.error('Failed to initialize the create_alias modal with error');
     console.error(error);
   });
