@@ -1,0 +1,167 @@
+{
+  "data": {
+    "users": [
+      {
+        "id": 1,
+        "display_name": "Sales Agent",
+        "email": "someone@somewhere.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null
+      }
+    ],
+    "lead_sources": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "Web",
+        "position": 1
+      }
+    ],
+    "deal_pipelines": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "Default Pipeline",
+        "position": 1,
+        "is_default": true
+      }
+    ],
+    "deal_stages": [
+      {
+        "partial": true,
+        "id": 3,
+        "name": "Under review",
+        "position": 3,
+        "forecast_type": "Open",
+        "updated_at": "2017-12-19T18:23:02+05:30",
+        "deal_pipeline_id": 1,
+        "choice_type": 2
+      }
+    ],
+    "deal_types": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "New Business",
+        "position": 1
+      }
+    ],
+    "deal_reasons": [],
+    "deal_payment_statuses": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "Offline",
+        "position": 1
+      }
+    ],
+    "campaigns": [
+      {
+        "partial": true,
+        "id": 4,
+        "name": "mail",
+        "position": 4
+      }
+    ],
+    "deal_products": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "Freshsales",
+        "position": 1
+      }
+    ],
+    "territories": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "test",
+        "position": 1
+      }
+    ],
+    "sales_accounts": [
+      {
+        "partial": true,
+        "id": 1089,
+        "name": "asdfgj",
+        "avatar": null,
+        "website": null
+      }
+    ],
+    "deal": {
+      "id": 18,
+      "name": "Product Deal",
+      "amount": "1230.0",
+      "expected_close": "2018-01-30",
+      "closed_date": null,
+      "stage_updated_time": "2018-01-10T22:24:19+05:30",
+      "custom_field": {
+        "cf_xt": "this is a dummy deal",
+        "cf_area": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "cf_nu": 6757,
+        "cf_drop": "Swiss",
+        "cf_check": true,
+        "cf_radio": "2",
+        "cf_date": "2018-01-23T00:00:00+05:30",
+        "cf_multi": "coke;fanta;sprite"
+      },
+      "probability": 77,
+      "updated_at": "2018-01-10T22:24:19+05:30",
+      "created_at": "2018-01-10T22:23:18+05:30",
+      "deal_pipeline_id": 1,
+      "age": 0,
+      "links": {
+        "conversations": "/deals/18/conversations/all?include=email_conversation_recipients%2Ctargetable%2Cphone_number%2Cphone_caller%2Cnote%2Cuser\\u0026per_page=3",
+        "document_associations": "/deals/18/document_associations",
+        "notes": "/deals/18/notes?include=creater",
+        "tasks": "/deals/18/tasks?include=creater,owner,updater,targetable,users",
+        "appointments": "/deals/18/appointments?include=creater,owner,updater,targetable,appointment_attendees"
+      },
+      "recent_note": null,
+      "owner_id": 1,
+      "creater_id": 1,
+      "updater_id": 1,
+      "lead_source_id": 1,
+      "deal_stage_id": 3,
+      "deal_type_id": 1,
+      "deal_reason_id": null,
+      "deal_payment_status_id": 1,
+      "campaign_id": 4,
+      "deal_product_id": 1,
+      "territory_id": 1,
+      "sales_account_id": 1089,
+      "changes": {
+        "deal_stage_id": [
+          2,
+          3
+        ],
+        "amount": [
+          "0.0",
+          "1230.0"
+        ],
+        "deal_payment_status_id": [
+          2,
+          1
+        ],
+        "stage_updated_time": [
+          "2018-01-10T22:23:18+05:30",
+          "2018-01-10T22:24:19+05:30"
+        ],
+        "updated_at": [
+          "2018-01-10T22:23:18+05:30",
+          "2018-01-10T22:24:19+05:30"
+        ]
+      }
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id" : "13",
+  "domain" : "sample.freshsales.io",
+  "event": "onDealUpdate",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}
