@@ -28,7 +28,7 @@ function checkForNotifications() {
 }
 
 function createSchedule() {
-  const note = jQuery('#note').val();
+  const note = document.getElementById('note').val();
   const dateNow = new Date();
 
   dateNow.setMinutes(dateNow.getMinutes() + REMINDER_INTERVAL);
@@ -45,7 +45,7 @@ function createSchedule() {
   });
 }
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function(event) {
   app.initialized().then(function(_client) {
     window.client = _client;
 
@@ -67,7 +67,7 @@ $(document).ready(function() {
       /**
         Listen for 'Remind me' button
       */
-      jQuery('#notify').click(createSchedule);
+      document.getElementById('notify').click(createSchedule);
     });
-  });
-});
+  });s
+})
