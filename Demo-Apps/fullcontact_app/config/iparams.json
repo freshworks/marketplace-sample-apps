@@ -1,0 +1,10 @@
+{
+  "apiKey": {
+    "display_name": "FullContact API",
+    "description": "Please enter FullContact API key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  }
+}
+
