@@ -41,12 +41,10 @@ a:focus {
     margin: 40px 0;
 }
 
-
 a[aria-expanded="true"] {
     color: #fff;
     background: #4d4d4d;
 }
-
 
 a[data-toggle="collapse"] {
     position: relative;
@@ -76,7 +74,6 @@ a.article:hover {
     transition: all 0.3s;
     border: solid 1px #dadfe3;
 }
-
 
 #renderOutput ul {
     list-style: none;
@@ -203,4 +200,12 @@ span.select2-selection {
 
 .navigation-menu li:last-child {
     border-radius: 0 2px 2px 0;
+}
+
+.btn {
+    height: 30px !important;
+}
+
+.filter-option-inner-inner:focus {
+    border: 0px !important;
 }

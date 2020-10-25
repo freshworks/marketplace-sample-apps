@@ -1,97 +1,115 @@
-!(function($) {
-    var clientAPP = null,
-        targetContainer = "#renderOutput ul",
-        $li,
-        $label,
-        arrayModules = ["associatedTasks", "recentChildTickets", "requesterAssets", "ticketAssets"];//this array is used to check if the data api returns an array of objects
-    initModal = function(_client) {
-        clientAPP = _client;
-        initHandlers();
-    };
+var clientAPP = null,
+    targetContainer = "#renderOutput ul",
+    li,
+    label,
+    arrayModules = ["associatedTasks", "recentChildTickets", "requesterAssets", "ticketAssets"]; //this array is used to check if the data api returns an array of objects
+const initModal = function(_client) {
+    clientAPP = _client;
+    initHandlers();
+};
 
-    /**
-     * This function takes in a data and formats it according to its data type for displaying
-     * @param _v - the data to be formatted 
-     */
-    flattenToString = function(_v) {
-        var swapVariable = "";
-        if (typeof _v == "string") {
-            _v = _v.trim();
-        } else if (Array.isArray(_v)) {
-            _v = _v.join(",");
-        } else if (typeof _v == "object") {
-            swapVariable += "<div class='nested'>" + JSON.stringify(_v) + "</div>";
-            _v = swapVariable;
-        }
-        if (_v == null || _v == "") {
-            _v = "-";
-        }
-        return _v;
-    };
-    
-    /**
-     * This method gets the corresponding name of the data to be retrieved whenever the navigation button from the dropdown is clicked
-     * It retrieves the data using Data API, formats it using another function and then displays it
-     * @param {string} module - name of the object to be retrieved 
-     */
-    getData = function(module) {
-        var $targetContainer = $(targetContainer),
-            _data;
-        $(targetContainer).empty();
-        clientAPP.data.get(module)
-            .then(function(data) {
-                _data = data[module];
-                if ($.inArray(module, arrayModules) > -1 && _data.length)
-                    _data = _data[0];
-                if (_data) {
-                    $.each(_data, function(_k, _v) {
+/**
+ * This function takes in a data and formats it according to its data type for displaying
+ * @param _v - the data to be formatted 
+ */
+const flattenToString = function(_v) {
+    var swapVariable = "";
+    if (typeof _v === "string") {
+        _v = _v.trim();
+    } else if (Array.isArray(_v)) {
+        _v = _v.join(",");
+    } else if (typeof _v === "object") {
+        swapVariable += "<div class='nested'>" + JSON.stringify(_v) + "</div>";
+        _v = swapVariable;
+    }
+    if (_v === null || _v === "") {
+        _v = "-";
+    }
+    return _v;
+};
 
-                        $label = $("<label>");
-                        $label.html(_k).addClass("info");
-                        $value = $("<label>");
-                        $value.html(flattenToString(_v)).addClass("value");
-                        $li = $("<li class='clearfix'>");
-                        $li.append($label).append($value);
-                        $targetContainer.append($li);
-                    });
+/**
+ * This method gets the corresponding name of the data to be retrieved whenever the navigation button from the dropdown is clicked
+ * It retrieves the data using Data API, formats it using another function and then displays it
+ * @param {string} module - name of the object to be retrieved 
+ */
+const getData = function() {
+    let module = document.getElementById('codeDemo').value;
+    targetContainer = document.querySelector('#renderOutput ul');
+    let _data = '';
+    while (targetContainer.firstChild) targetContainer.removeChild(targetContainer.firstChild)
+    clientAPP.data.get(module)
+        .then(function(data) {
+            _data = data[module];
+            // if (document.getElementById('codeDemo').querySelector("option[value='" + module + "']") === document.getElementById('codeDemo').lastElementChild || document.getElementById('codeDemo').querySelector("option[value='" + module + "']") === document.getElementById('codeDemo').firstElementChild) {
+            //     console.log(document.getElementById('codeDemo').querySelector("option[value='" + module + "']"));
+            // }
+            if (arrayModules.indexOf(module) > -1 && _data.length)
+                _data = _data[0];
+            if (_data) {
+                for (let key in _data) {
+                    label = document.createElement('label');
+                    label.innerHTML = key;
+                    label.className = 'info'
+                    let value = document.createElement('label');
+                    value.innerHTML = flattenToString(_data[key]);
+                    value.className = 'value';
+                    li = document.createElement("LI")
+                    li.className = 'clearfix';
+                    li.appendChild(label);
+                    li.appendChild(value);
+                    targetContainer.appendChild(li);
                 }
+            }
 
-            })
-            .catch(function(e) {
-                console.log('Exception - ', e);
-            });
-    };
-
-    /**
-     * This function handles the dropdown and pagination and populates the table (output) with coreesponding data.
-     */
-    initHandlers = function() {
-        var targetDirection,
-            currentValue,
-            nextValue;
-
-        $("select").select2({
-            minimumResultsForSearch: 30
+        })
+        .catch(function(e) {
+            console.log('Exception - ', e);
         });
+};
 
-        $(document).on("change", "#codeDemo", function() {
-            getData($(this).val());
+/**
+ * This function handles the dropdown and pagination and populates the table (output) with coreesponding data.
+ */
+
+
+const initHandlers = function() {
+
+    document.getElementById("codeDemo").addEventListener("change", getData);
+    document.getElementById("codeDemo").dispatchEvent(new Event('change'));
+    let navigationLinks = document.querySelectorAll(".navigation-menu  li > a");
+    navigationLinks.forEach(tab => {
+        tab.addEventListener("click", function() {
+            handleNavigation(this);
         });
+    })
+};
 
-        $("#codeDemo").trigger("change");
 
-        $(".navigation-menu a").on("click", function() {
-            currentValue = $("#codeDemo").val();
-            targetDirection = $(this).data("target");
-            nextValue = $("#codeDemo").find("option[value='" + currentValue + "']")[targetDirection]().val();
-            $("#codeDemo").val(nextValue).trigger("change");
-            $(".navigation-menu a").removeClass("disabled");
-            if ($("#codeDemo").find("option[value='" + nextValue + "']").is(':last-child') || $("#codeDemo").find("option[value='" + nextValue + "']").is(':first-child'))
-                $(this).addClass("disabled");
-        });
-    };
+function handleNavigation(eventData) {
+    var targetDirection,
+        currentValue,
+        nextValue;
+    currentValue = document.getElementById('codeDemo').value;
+    targetDirection = (eventData).getAttribute('data-target');
+    nextValue = getNextValue(currentValue, targetDirection);
+    document.getElementById("codeDemo").value = nextValue;
+    document.getElementById("codeDemo").dispatchEvent(new Event('change'));
+    $(".navigation-menu a").removeClass("disabled");
+    if (document.getElementById('codeDemo').querySelector("option[value='" + nextValue + "']") === document.getElementById('codeDemo').lastElementChild || document.getElementById('codeDemo').querySelector("option[value='" + nextValue + "']") === document.getElementById('codeDemo').firstElementChild)
+        eventData.className = "disabled";
 
-    $(document).ready(function() {
-        app.initialized().then(initModal);
-    });
-})(window.jQuery);
+}
+
+function getNextValue(currentValue, targetDirection) {
+    if (targetDirection === 'next') {
+        return document.getElementById('codeDemo').querySelector("option[value='" + currentValue + "']").nextElementSibling.value
+    } else {
+        return document.getElementById('codeDemo').querySelector("option[value='" + currentValue + "']").previousElementSibling.value
+    }
+}
+
+
+(function() {
+    app.initialized().then(initModal);
+})();
