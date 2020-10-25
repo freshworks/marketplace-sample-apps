@@ -14,7 +14,7 @@ let initDemoApp = function() {
                 console.log("App Loaded");
             },
             function(error) {
-                console.log(error);
+                console.error(error,'Error while loading modal');
             }
         );
 };
