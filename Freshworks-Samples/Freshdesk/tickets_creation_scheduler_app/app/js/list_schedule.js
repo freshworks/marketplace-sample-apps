@@ -30,9 +30,19 @@ function removeScheduleFromList(scheduleName, callback) {
 
 function addListeners() {
 
+  q('body').addEventListener('click', function (event) {
+    const targetElement = event.target;
+    if (targetElement.matches('.edit-logo')) {
+      editScheduled(targetElement);
+    }
+    if (targetElement.matches('.delete-logo')) {
+      deleteSchedule(targetElement);
+    }
+  });
+
   // Listener to edit a schedule
-  jQuery('body').on('click', '.edit-logo', function() {
-    var scheduleName = jQuery(this).parents('.schedule-li').data('scheduleName');
+  function editScheduled(element) {
+    var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     // With the scheduleName,
     fetchSchedule(scheduleName, function(err, data) {
@@ -46,11 +56,11 @@ function addListeners() {
         }
       });
     });
-  });
+  }
 
   // Listener to delete a schedule
-  jQuery('body').on('click', '.delete-logo', function() {
-    var scheduleName = jQuery(this).parents('.schedule-li').data('scheduleName');
+  function deleteSchedule(element) {
+    var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     deleteSchedule(scheduleName, function(err, data) {
       if (err) {
@@ -60,7 +70,7 @@ function addListeners() {
         sendNotification('success', 'Schedule deleted');
       });
     });
-  });
+  }
 }
 
 function getListOfSchedules(userId, callback) {
@@ -73,26 +83,28 @@ function getListOfSchedules(userId, callback) {
 
 function renderListOfSchedules() {
   getListOfSchedules(loggedInUserId, function(schedules) {
+    const schedulesList = q('.schedules-ul');
     if (Object.keys(schedules.list).length > 0) {
-      jQuery('.schedules-ul').html('');
-      for (var scheduleName in schedules.list) {
-        jQuery('.schedules-ul').append(`
+      const lis = schedules.list
+        .map(scheduleName => `
           <li data-schedule-name="${scheduleName}" class="row schedule-li">
             <a class="schedule-title">${schedules.list[scheduleName]}</a>
               <div>
                 <a class="action-icon"><img class="edit-logo"/></a>
                 <a class="action-icon"><img class="delete-logo"/></a>
               </div>
-          </li>`);
-      }
+          </li>`.trim()
+        )
+        .join('');
+      schedulesList.innerHTML = lis;
     }
     else {
-      jQuery('.schedules-ul').html('No schedules found.');
+      schedulesList.innerHTML = 'No schedules found.';
     }
   });
 }
 
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function() {
   addListeners();
   app.initialized().then(function(_client) {
     window.client = _client;
