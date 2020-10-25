@@ -1,0 +1,178 @@
+{
+  "data": {
+    "custom_module": {
+      "name": {
+        "label": "Name",
+        "type": "text",
+        "value": "Robert Downey"
+      },
+      "owner_id": {
+        "label": "Owner",
+        "type": "auto_complete",
+        "value": {
+          "id": 1,
+          "model": "user"
+        }
+      },
+      "import_id": null,
+      "is_deleted": false,
+      "status": 1,
+      "creator_id": {
+        "label": "Created by",
+        "type": "auto_complete",
+        "value": {
+          "id": 5,
+          "model": "user"
+        }
+      },
+      "created_at": {
+        "label": "Created at",
+        "type": "date_time",
+        "value": "2019-03-14T18:35:23+05:30"
+      },
+      "updater_id": {
+        "label": "Updated by",
+        "type": "auto_complete",
+        "value": {
+          "id": 5,
+          "model": "user"
+        }
+      },
+      "updated_at": {
+        "label": "Updated at",
+        "type": "date_time",
+        "value": "2019-03-14T18:35:23+05:30"
+      },
+      "custom_fields": [
+        {
+          "name": "cf_height",
+          "label": "Height",
+          "type": "decimal",
+          "value": 5.1,
+          "column": "cf_decimal01"
+        },
+        {
+          "name": "cf_description",
+          "label": "Description",
+          "type": "paragraph",
+          "value": "Good Engineer who can build superhuman things.",
+          "column": "cf_text01"
+        },
+        {
+          "name": "cf_fictional_character_name",
+          "label": "Fictional character name",
+          "type": "dropdown",
+          "value": null,
+          "column": "cf_str02",
+          "choice_id": "190314101822239882"
+        },
+        {
+          "name": "cf_nature_of_character",
+          "label": "Nature of character",
+          "type": "radio",
+          "value": "Sarcastic",
+          "column": "cf_str03"
+        },
+        {
+          "name": "cf_series_part_of",
+          "label": "Series part of",
+          "type": "multi_select_dropdown",
+          "value": "The Avengers;Avengers: Age of Ultron;Avengers: Infinity War;Avengers: Endgame",
+          "column": "cf_text02"
+        },
+        {
+          "name": "cf_lead_convert_carry_forward_date_time",
+          "label": "Date on which character was revealed",
+          "type": "date_time",
+          "value": "1963-03-01T00:00:00+05:30",
+          "column": "cf_datetime01"
+        },
+        {
+          "name": "cf_is_part_of_shield",
+          "label": "Is part of S.H.I.E.L.D",
+          "type": "checkbox",
+          "value": false,
+          "column": "cf_boolean01"
+        },
+        {
+          "name": "cf_best_friend",
+          "label": "Best friend",
+          "type": "auto_complete",
+          "value": {
+            "id": 10,
+            "model": "cm_avengers"
+          },
+          "column": "cf_bigint01"
+        },
+        {
+          "name": "cf_details_about_power",
+          "label": "Details about power",
+          "type": "text",
+          "value": "No powers",
+          "column": "cf_str01"
+        }
+      ],
+      "module_name": "cm_avenger"
+    },
+    "associations": {
+      "owner": {
+        "id": 1,
+        "name": "Stan Lee",
+        "type": "user",
+        "email": "stan.lee@marvel.com",
+        "is_active": false,
+        "work_number": "+919999999999",
+        "mobile_number": null,
+        "time_zone": "Hawaii",
+        "created_at": "2019-03-12T19:14:26+05:30",
+        "updated_at": "2019-03-12T19:15:34+05:30",
+        "deal_pipeline_id": 1,
+        "job_title": "Writer"
+      },
+      "updater": {
+        "id": 5,
+        "name": "Samuel L. Jackson",
+        "type": "user",
+        "email": "sam.jackson@marvel.com",
+        "is_active": true,
+        "work_number": "+919999999998",
+        "mobile_number": null,
+        "time_zone": "Arizona",
+        "created_at": "2019-03-12T19:14:26+05:30",
+        "updated_at": "2019-03-12T19:15:34+05:30",
+        "deal_pipeline_id": 1,
+        "job_title": "General of S.H.I.E.L.D"
+      },
+      "creator": {
+        "id": 5,
+        "name": "Samuel L. Jackson",
+        "type": "user",
+        "email": "sam.jackson@marvel.com",
+        "is_active": true,
+        "work_number": "+919999999998",
+        "mobile_number": null,
+        "time_zone": "Arizona",
+        "created_at": "2019-03-12T19:14:26+05:30",
+        "updated_at": "2019-03-12T19:15:34+05:30",
+        "deal_pipeline_id": 1,
+        "job_title": "General of S.H.I.E.L.D"
+      },
+      "cm_avengers": [
+        {
+          "id": 10,
+          "name": "Chris Evans"
+        }
+      ]
+    }
+  },
+  "version": "1.0",
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onCustomModuleCreate",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}
