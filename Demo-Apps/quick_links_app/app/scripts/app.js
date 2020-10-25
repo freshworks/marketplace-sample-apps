@@ -1,7 +1,7 @@
 'use strict';
 
-$(document).ready(function() {
-  var ticketId = '', userId = '', tickets = [], currentTicketObj = {}, domainName = '';
+document.addEventListener("DOMContentLoaded", function(){
+  let ticketId = '', userId = '', tickets = [], currentTicketObj = {}, domainName = '';
 
   function renderApp() {
     return Promise.all([client.data.get('loggedInUser'), client.data.get('ticket'), client.data.get('domainName')]);
@@ -24,8 +24,8 @@ $(document).ready(function() {
 
   // Picks specific keys from the object
   function pickKeysFromObj(ticketObj) {
-    var arr = ['id', 'subject', 'description_text'];
-    var trimmedObj = {};
+    let arr = ['id', 'subject', 'description_text'];
+    let trimmedObj = {};
     arr.forEach(function(val){
       trimmedObj[val] = ticketObj[val];
     });
@@ -35,21 +35,21 @@ $(document).ready(function() {
   // Updates the tickets array
   function changeBookmarks(type, ticketObj) {
     return getBookmarks().then(function(result) {
-      var index = (result.tickets || []).map(function(val){ return val.id;}).indexOf(ticketObj.id);
-      if(type == 'add') {
+      let index = (result.tickets || []).map(function(ticket){ return ticket.id;}).indexOf(ticketObj.id);
+      if(type === 'add') {
         if(index < 0) {
           tickets.push(pickKeysFromObj(currentTicketObj));
           setBookmarks();
         }
       }
-      else if (type == 'remove') {
+      else if (type === 'remove') {
         if(index > -1) {
           tickets.splice(index , 1);
           setBookmarks();
         }
       }
     }, function(error) {
-      if(error.status == 404 && type == 'add') {
+      if(error.status === 404 && type === 'add') {
         tickets = [ pickKeysFromObj(currentTicketObj) ];
         setBookmarks();
       }
@@ -58,28 +58,36 @@ $(document).ready(function() {
 
   //Displays the updated the list in the UI
   function displayBookmarks() {
-    $('.bookmarks-ul').html('');
-    var template = '<li class="bookmarks-li"><a href="https://${domainName}/a/tickets/${id}" target="_blank" class="bookmark-link">${subject}</a></li>';
+    let bookmark = document.getElementsByClassName('bookmarks-ul')[0];
+    bookmark.innerHTML = '';
+
+    function setTemplate ({id, domainName, subject}){
+      return `<li class="bookmarks-li"><a href="https://${domainName}/a/tickets/${id}" target="_blank" class="bookmark-link">${subject}</a></li>`;
+    }
+
     tickets.forEach(function(val){
       val.domainName = domainName;
-      $.tmpl( template, val).appendTo('.bookmarks-ul');
+      bookmark.innerHTML += setTemplate(val);
     });
 
-    if(tickets.find(function(val){ return val.id == ticketId;})){
-      $('#add_to_bookmarks').prop('disabled', true);
+    if(tickets.find(function(val){ return val.id === ticketId;})){
+      document.getElementById('add_to_bookmarks').disabled = true;
     }
     else{
-      $('#add_to_bookmarks').prop('disabled', false);
+      document.getElementById('add_to_bookmarks').disabled = false;
     }
 
-    $('.bookmarks-li').each(function(index, el){
-      $clamp(el, {clamp: 2});
-    });
-  }  
+    let bookmarksList = document.getElementsByClassName('bookmarks-li');
+    if(bookmarksList > 0){
+      bookmarksList.forEach(function(index, el){
+        $clamp(el, {clamp: 2});
+      });
+    }
+  }
 
   app.initialized().then(function(client) {
     window.client = client;
-    
+
     renderApp().then(function(value){
       userId = value[0].loggedInUser.id;
       ticketId = value[1].ticket.id;
@@ -93,14 +101,14 @@ $(document).ready(function() {
         });
       }
     });
-    
-    $('#add_to_bookmarks').on('click', function() {
+
+    document.getElementById('add_to_bookmarks').addEventListener('click', function() {
       if(userId && ticketId) {
         changeBookmarks('add', currentTicketObj);
       }
     });
-    
-    $('#manage_bookmarks').on('click', function() {
+
+    document.getElementById('manage_bookmarks').addEventListener('click', function() {
       client.interface.trigger("showModal", {
         title: "Manage Bookmarks",
         template: "views/modal.html",
@@ -110,11 +118,12 @@ $(document).ready(function() {
         }
       });
     });
-    
+
     client.instance.receive(
       function(event)  {
-        var data = event.helper.getData();
-        if(data.message.type == 'removeTicket') {
+        let data = event.helper.getData();
+        console.log('msg type', data.message.type)
+        if(data.message.type === 'removeTicket') {
           changeBookmarks('remove', { id: data.message.ticketId });
         }
       }
