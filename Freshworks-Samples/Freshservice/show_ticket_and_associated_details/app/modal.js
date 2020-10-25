@@ -63,7 +63,7 @@ const getData = function() {
 
         })
         .catch(function(e) {
-            console.log('Exception - ', e);
+            console.error('Error while fetching data from client', e);
         });
 };
 
