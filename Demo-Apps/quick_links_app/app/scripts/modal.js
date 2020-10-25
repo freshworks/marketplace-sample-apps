@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementsByClassName('manage-bm-ul')[0].innerHTML += setTemplate(ticket);
           })
 
-          document.getElementsByClassName('remove-bookmark').forEach(function (el){
+          document.getElementsByClassName('remove-bookmark').forEach(function (el) {
             el.addEventListener('click', function () {
               let parent = getParent(this, 'manage-bm-li');
               let ticketId = parseInt(parent.dataset.ticketId);
@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
               client.instance.send({
                 message: {type: 'removeTicket', ticketId: ticketId}
               });
-              console.log(client);
             })
           });
 
