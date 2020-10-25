@@ -41,9 +41,8 @@ const getData = function() {
     clientAPP.data.get(module)
         .then(function(data) {
             _data = data[module];
-            // if (document.getElementById('codeDemo').querySelector("option[value='" + module + "']") === document.getElementById('codeDemo').lastElementChild || document.getElementById('codeDemo').querySelector("option[value='" + module + "']") === document.getElementById('codeDemo').firstElementChild) {
-            //     console.log(document.getElementById('codeDemo').querySelector("option[value='" + module + "']"));
-            // }
+
+            toggleNavigation(module)
             if (arrayModules.indexOf(module) > -1 && _data.length)
                 _data = _data[0];
             if (_data) {
@@ -72,6 +71,22 @@ const getData = function() {
  * This function handles the dropdown and pagination and populates the table (output) with coreesponding data.
  */
 
+function toggleNavigation(module) {
+    if (document.getElementById('codeDemo').querySelector("option[value='" + module + "']") === document.getElementById('codeDemo').lastElementChild) {
+        let nextNav = document.querySelectorAll('.navigation-menu')[0];
+        nextNav.firstElementChild.nextElementSibling.firstElementChild.className = 'disabled';
+    } else {
+        let nextNav = document.querySelectorAll('.navigation-menu')[0];
+        nextNav.firstElementChild.nextElementSibling.firstElementChild.classList.remove('disabled');
+    }
+    if (document.getElementById('codeDemo').querySelector("option[value='" + module + "']") === document.getElementById('codeDemo').firstElementChild) {
+        let prevNav = document.querySelectorAll('.navigation-menu')[0];
+        prevNav.firstElementChild.firstElementChild.className = 'disabled';
+    } else {
+        let prevNav = document.querySelectorAll('.navigation-menu')[0];
+        prevNav.firstElementChild.firstElementChild.classList.remove('disabled');
+    }
+}
 
 const initHandlers = function() {
 
@@ -95,9 +110,9 @@ function handleNavigation(eventData) {
     nextValue = getNextValue(currentValue, targetDirection);
     document.getElementById("codeDemo").value = nextValue;
     document.getElementById("codeDemo").dispatchEvent(new Event('change'));
-    $(".navigation-menu a").removeClass("disabled");
-    if (document.getElementById('codeDemo').querySelector("option[value='" + nextValue + "']") === document.getElementById('codeDemo').lastElementChild || document.getElementById('codeDemo').querySelector("option[value='" + nextValue + "']") === document.getElementById('codeDemo').firstElementChild)
+    if (document.getElementById('codeDemo').querySelector("option[value='" + nextValue + "']") === document.getElementById('codeDemo').lastElementChild || document.getElementById('codeDemo').querySelector("option[value='" + nextValue + "']") === document.getElementById('codeDemo').firstElementChild) {
         eventData.className = "disabled";
+    }
 
 }
 
