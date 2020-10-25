@@ -2,7 +2,7 @@
  * ticket detail page. On clicking the app icon, the Start Timer form will be
  * shown.
  */
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
 
  /**
  * Initialize channel

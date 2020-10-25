@@ -1,8 +1,8 @@
-$(document).ready( function() {
-  jQuery('#startTimer').attr('disabled', false);
-  jQuery('.alert').hide();
-  jQuery('.spinner').show();
-  jQuery('#fields').hide();
+document.addEventListener('DOMContentLoaded', function() {
+  q('#startTimer').disabled = false;
+  hide(q('.alert'));
+  show(q('.spinner'));
+  hide(q('#fields'));
 
   app.initialized().then(function(_client) {
     window._client = _client;
@@ -18,18 +18,17 @@ $(document).ready( function() {
     .then(function(data) {
       if (data.status === 200) {
         var agentList = JSON.parse(data.response);
-        for(var agent in agentList) {
-          jQuery('#agent').append(
-          jQuery('<option/>')
-          .attr('value', agentList[agent].id)
-          .text(agentList[agent].contact.name));
-        }
-        jQuery('.spinner').hide();
-        jQuery('#fields').show();
+        const agent = q('#agent');
+        const options = agentList
+          .map(agent => `<option value="${agentList[agent].id}">${agentList[agent].contact.name}</option>`)
+          .join('');
+        agent.innerHTML += options;
+        hide(q('.spinner'));
+        show(q('#fields'));
       }
     }, function(error) {
-      jQuery('.spinner').hide();
-      jQuery('.alert-danger').show();
+      hide(q('.spinner'));
+      show(q('.alert-danger'));
     });
   });
 });
@@ -39,10 +38,22 @@ $(document).ready( function() {
  */
 
 function addTimer() {
-  var agent = jQuery('#agent').val();
-  var billable = jQuery('#billable').is(':checked');
-  var note = jQuery('#note').val();
+  var agent = q('#agent').value;
+  var billable = q('#billable').checked;
+  var note = q('#note').value;
   _client.instance.send({ message: { agent, billable, note } });
-  jQuery('.alert-success').show();
-  jQuery('#startTimer').attr('disabled', true);
+  show(q('.alert-success'));
+  q('#startTimer').disabled = true;
+}
+
+function q(selector) {
+  return document.querySelector(selector);
+}
+
+function hide(element) {
+  element.style.display = 'none';
+}
+
+function show(element) {
+  element.style.display = '';
 }
