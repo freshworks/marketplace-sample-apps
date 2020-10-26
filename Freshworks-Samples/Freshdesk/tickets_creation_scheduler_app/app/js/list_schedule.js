@@ -33,15 +33,15 @@ function addListeners() {
   q('body').addEventListener('click', function (event) {
     const targetElement = event.target;
     if (targetElement.matches('.edit-logo')) {
-      editScheduled(targetElement);
+      editHandler(targetElement);
     }
     if (targetElement.matches('.delete-logo')) {
-      deleteSchedule(targetElement);
+      deleteHandler(targetElement);
     }
   });
 
   // Listener to edit a schedule
-  function editScheduled(element) {
+  function editHandler(element) {
     var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     // With the scheduleName,
@@ -59,7 +59,7 @@ function addListeners() {
   }
 
   // Listener to delete a schedule
-  function deleteSchedule(element) {
+  function deleteHandler(element) {
     var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     deleteSchedule(scheduleName, function(err, data) {
