@@ -29,10 +29,19 @@ function removeScheduleFromList(scheduleName, callback) {
 }
 
 function addListeners() {
+  q('body').addEventListener('click', function (event) {
+    const targetElement = event.target;
+    if (targetElement.matches('.edit-logo')) {
+      editHandler(targetElement);
+    }
+    if (targetElement.matches('.delete-logo')) {
+      deleteHandler(targetElement);
+    }
+  });
 
   // Listener to edit a schedule
-  jQuery('body').on('click', '.edit-logo', function() {
-    var scheduleName = jQuery(this).parents('.schedule-li').data('scheduleName');
+  function editHandler(element) {
+    var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     // With the scheduleName,
     fetchSchedule(scheduleName, function(err, data) {
@@ -46,11 +55,11 @@ function addListeners() {
         }
       });
     });
-  });
+  }
 
   // Listener to delete a schedule
-  jQuery('body').on('click', '.delete-logo', function() {
-    var scheduleName = jQuery(this).parents('.schedule-li').data('scheduleName');
+  function deleteHandler(element) {
+    var scheduleName = element.parentElement.closest('.schedule-li').dataset.scheduleName;
 
     deleteSchedule(scheduleName, function(err, data) {
       if (err) {
@@ -60,7 +69,7 @@ function addListeners() {
         sendNotification('success', 'Schedule deleted');
       });
     });
-  });
+  }
 }
 
 function getListOfSchedules(userId, callback) {
@@ -92,7 +101,7 @@ function renderListOfSchedules() {
   });
 }
 
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function() {
   addListeners();
   app.initialized().then(function(_client) {
     window.client = _client;
