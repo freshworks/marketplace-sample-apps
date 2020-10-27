@@ -80,3 +80,4 @@
         app.initialized().then(initModal);
     });
 })();
+
