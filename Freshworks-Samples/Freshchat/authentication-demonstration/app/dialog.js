@@ -3,7 +3,7 @@
  * @param {*} agents 
  */
 let showAgents = (agents) => {
-    let table = document.getElementsByTagName('table')[0].innerHTML;
+    let table = document.getElementsByTagName('tbody')[0].innerHTML;
     agents.forEach(function (item) {
         let groups = "";
         item['groups'].forEach(function (grp) {
