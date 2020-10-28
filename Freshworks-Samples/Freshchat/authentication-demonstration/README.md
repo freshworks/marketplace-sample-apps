@@ -1,4 +1,4 @@
-##  Sample code to demonstrate Authentication 
+##  Sample App to demonstrate Authentication 
 This is sample app to demonstrate Freshchat authentication. It authenticates the user and displays the list of all agents configured by the business that uses Freshchat.
 
 ### Prerequisites
