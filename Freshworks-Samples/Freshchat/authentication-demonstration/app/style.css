@@ -1,0 +1,47 @@
+.logo {
+  background: url('freshchat_logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  margin-top: 25px;
+}
+#listagents-btn{
+  width: 120px;
+  display:block;
+  border-radius: 4px;
+  background-color: #002d85 !important;
+  color: #ffffff !important;
+  border:none;
+  margin:5px auto;
+  padding:6px 0px;
+  border-color: transparent #002d85 transparent transparent;
+}
+#error{
+  display:block;
+  margin: 5px auto;
+  text-align: center;
+  padding: 8px 0px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+tr th {
+  background-color:#002d85 !important;
+  color: #ffffff !important;
+  padding: 8px;
+}
+tr th:nth-child(1){
+  border-top-left-radius: 4px;
+}
+tr th:nth-child(4){
+  border-top-right-radius: 4px;
+}
+td {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(odd) {
+  background-color: #e9e7fb;
+}
