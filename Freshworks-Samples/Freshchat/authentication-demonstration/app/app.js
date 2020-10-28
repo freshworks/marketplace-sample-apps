@@ -34,7 +34,6 @@ let listAllAgents = (data) => {
  * @param {*} error
  */
 let showError = (error) => {
-    console.error(error);
     let reponse = JSON.parse(error.response);
     //Notify the agent/user that something went wrong while fetching the data.
     client.interface.trigger("showNotify", {
