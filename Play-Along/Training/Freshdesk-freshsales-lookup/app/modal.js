@@ -1,26 +1,26 @@
 $(document).ready(function () {
-	app.initialized().then(
-		function (_client) {
-			window.client = _client;
-			getLead();
-		},
-		function (error) {
-			console.log("error", error);
-			notify(
-				"info",
-				"Unable to Display Lead Details, kindly refresh the page "
-			);
-		}
-	);
+  app.initialized().then(
+    function (_client) {
+      window.client = _client;
+      getLead();
+    },
+    function (error) {
+      console.log("error", error);
+      notify(
+        "info",
+        "Unable to Display Lead Details, kindly refresh the page "
+      );
+    }
+  );
 });
 
 /**
  * Fuction to get the lead details using instance API
  */
 function getLead() {
-	client.instance.context().then(function (context) {
-		renderTable(context.data.lead);
-	});
+  client.instance.context().then(function (context) {
+    renderTable(context.data.lead);
+  });
 }
 
 /**
@@ -28,23 +28,23 @@ function getLead() {
  * @param {Object} lead 
  */
 async function renderTable(lead) {
-	let tableContent = `<table class="table">
+  let tableContent = `<table class="table">
                           <thead>
                           </thead>
                           <tbody>
                             <tr>
                               <td>Name</td>
                               <td>${lead.first_name} ${
-		lead.last_name ? lead.last_name : ""
-	}</td>
+    lead.last_name ? lead.last_name : ""
+  }</td>
                             </tr>
                             <tr>
                               <td> Job Title </td>
                               <td> ${
-																lead.job_title
-																	? lead.job_title
-																	: "Job Title Not Updated"
-															} </td>
+                                lead.job_title
+                                  ? lead.job_title
+                                  : "Job Title Not Updated"
+                              } </td>
                             </tr>
                             <tr>
                               <td>Email</td>
@@ -53,18 +53,18 @@ async function renderTable(lead) {
                             <tr>
                               <td>Work Phone Number</td>
                               <td>${
-																lead.work_phone_number
-																	? lead.work_phone_number
-																	: "Work Phone Number Not Available"
-															}</td>
+                                lead.work_phone_number
+                                  ? lead.work_phone_number
+                                  : "Work Phone Number Not Available"
+                              }</td>
                             </tr>
                             <tr>
                               <td>Mobile Phone Number</td>
                               <td>${
-																lead.mobile_phone_number
-																	? lead.mobile_phone_number
-																	: "Mobile Phone Number Not Available"
-															}</td>
+                                lead.mobile_phone_number
+                                  ? lead.mobile_phone_number
+                                  : "Mobile Phone Number Not Available"
+                              }</td>
                             </tr>
                             <tr>
                               <td> Lead Quality</td>
@@ -74,26 +74,26 @@ async function renderTable(lead) {
                       </table>`;
 
   // Check if the lead is already in the data storage                      
-	let inDataStorage = await checkData(lead.id);
+  let inDataStorage = await checkData(lead.id);
 
   // Conditonally display the button or messgae based on inDataStorage's value
-	if (inDataStorage.status === 404) {
-		tableContent += ` <fw-button color="primary" onclick="saveLead()"> Save the lead </fw-button>`;
-	} else {
-		tableContent += `<h3> This Lead already exist in the data storage</h3>`;
-	}
+  if (inDataStorage.status === 404) {
+    tableContent += ` <fw-button color="primary" onclick="saveLead()"> Save the lead </fw-button>`;
+  } else {
+    tableContent += `<h3> This Lead already exist in the data storage</h3>`;
+  }
 
   // Append the rendered table to the html 
-	document.getElementById("agentDetails").innerHTML = tableContent;
+  document.getElementById("agentDetails").innerHTML = tableContent;
 }
 
 /**
  * Function to save the lead in the data storage based on user input
  */
 function saveLead() {
-	client.instance.context().then(function (context) {
-		saveDataInDB(context.data.lead);
-	});
+  client.instance.context().then(function (context) {
+    saveDataInDB(context.data.lead);
+  });
 }
 
 /**
@@ -101,16 +101,16 @@ function saveLead() {
  * @param {Object} lead 
  */
 function saveDataInDB(lead) {
-	client.db.set(lead.id.toString(), { lead }, { setIf: "not_exist" }).then(
-		function (data) {
-			notify("info", "Saved the lead in Data Storage");
-			console.log("Saved the lead in Data Storage", data);
-		},
-		function (error) {
-			notify("info", "Unable to save data in Data Storage");
-			console.error("Unable to save data in Data Storage", error);
-		}
-	);
+  client.db.set(lead.id.toString(), { lead }, { setIf: "not_exist" }).then(
+    function (data) {
+      notify("info", "Saved the lead in Data Storage");
+      console.log("Saved the lead in Data Storage", data);
+    },
+    function (error) {
+      notify("info", "Unable to save data in Data Storage");
+      console.error("Unable to save data in Data Storage", error);
+    }
+  );
 }
 
 /**
@@ -118,14 +118,14 @@ function saveDataInDB(lead) {
  * @param {String} leadId 
  */
 function checkData(leadId) {
-	return client.db.get(leadId.toString()).then(
-		function (data) {
-			return data;
-		},
-		function (error) {
-			return error;
-		}
-	);
+  return client.db.get(leadId.toString()).then(
+    function (data) {
+      return data;
+    },
+    function (error) {
+      return error;
+    }
+  );
 }
 
 /**
@@ -134,8 +134,8 @@ function checkData(leadId) {
  * @param {String} message Message for the notification
  */
 function notify(status, message) {
-	client.interface.trigger("showNotify", {
-		type: status,
-		message: message,
-	});
+  client.interface.trigger("showNotify", {
+    type: status,
+    message: message,
+  });
 }
