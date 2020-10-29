@@ -1,6 +1,6 @@
-/**
+/*
  * shows all the Agents in the UI
- * @param {*} agents 
+ * @param {Object} agents 
  */
 let showAgents = (agents) => {
     let table = document.getElementsByTagName('tbody')[0].innerHTML;
@@ -32,6 +32,6 @@ app.initialized()
                 type: "danger",
                 message: "Error occured while retriving data"
             });
-            console.log(error);
+            console.error(error);
         });
     });

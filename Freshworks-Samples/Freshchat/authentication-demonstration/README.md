@@ -1,5 +1,5 @@
 ##  Sample App to demonstrate Authentication 
-This is sample app to demonstrate Freshchat authentication. It authenticates the user and displays the list of all agents configured by the business that uses Freshchat.
+This is a sample app to demonstrate Freshchat authentication. It authenticates the user and displays the list of all agents configured by the business that uses Freshchat.
 
 ### Prerequisites
    1. Make sure you have a Freshchat account and ensure that it is activated.
@@ -28,5 +28,4 @@ This is sample app to demonstrate Freshchat authentication. It authenticates the
     │   ├── dialog.html            Contains the HTML required for dialog box.
     ├── config                     Contains the installation parameters.
     │   ├── iparams.json           Contains the parameters that will be collected during installation.
-    │   └── iparam_test_data.json  Contains sample Iparam values that will used during testing.
     └── manifest.json              Contains app meta data and configuration information.

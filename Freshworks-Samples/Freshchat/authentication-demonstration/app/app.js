@@ -1,13 +1,13 @@
 /*
  * Sample code to demonstrate Authentication for Freshchat
  * 
- * This is sample app to demonstrate Freshchat authentication. It authenticates the user and displays the 
+ * This is a sample app to demonstrate Freshchat authentication. It authenticates the user and displays the 
  * list of all agents configured by the business that uses Freshchat.
  */
 
-/**
+/*
  * Opens and sends the data to Agents dialog once the show all agents button is clicked.
- * @param {*} data 
+ * @param {Object} data 
  */
 let showDialog = (data) => {
     client.interface.trigger("showDialog", {
@@ -15,14 +15,15 @@ let showDialog = (data) => {
         template: "dialog.html",
         data: data
     }).then(function (data) {
-
+        console.info(data);
     }).catch(function (error) {
+        console.error(error);
     });
 }
 
-/**
+/*
  * Register the click handler to list all agents
- * @param {*} data
+ * @param {Object} data
  */
 let listAllAgents = (data) => {
     let listAgentsBtn = document.getElementById('listagents-btn');
@@ -31,7 +32,7 @@ let listAllAgents = (data) => {
 
 /* 
  * Shows error message to user/agent
- * @param {*} error
+ *  @param {Object} error
  */
 let showError = (error) => {
     let reponse = JSON.parse(error.response);
@@ -64,21 +65,21 @@ app.initialized()
                         listAllAgents(response);
                     }).catch((error) => {
                         //on failure 
+                        console.error(error);
                         showError(error);
                     });
                 //shows currently logged-in agent.
                 client.data.get('loggedInAgent')
                     .then(function (data) {
-                        $('#apptext').text("Agent logged in is " + data.loggedInAgent.email);
+                        document.getElementById('apptext').innerHTML ="Agent logged in is " + data.loggedInAgent.email;
                     })
-                    .catch(function (e) {
+                    .catch(function (error) {
                         // Logs and Notifies the user/agent that something went wrong while retrieving logged-in agent
                         client.interface.trigger("showNotify", {
                             type: "danger",
                             message: "Unable to retrieve logged-in agent details"
                         });
-                        console.log('Exception - ', e);
+                        console.error('Unable to retrieve logged-in agent details - ', error);
                     });
             });
     });
-
