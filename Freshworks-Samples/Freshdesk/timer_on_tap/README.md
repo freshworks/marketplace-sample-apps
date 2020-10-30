@@ -26,7 +26,7 @@ _[ Special instructions for realizing the value out of this app]_
 
 ### Screenshots:
 
-![](screenshots/fullShot.png)
+![](screenshots/fullshot.png)
 
 ###### Protip
 - Interface APIs are not accessible in the Modal. So, the data has to be passed from the modal to the parent location which then starts the timer.

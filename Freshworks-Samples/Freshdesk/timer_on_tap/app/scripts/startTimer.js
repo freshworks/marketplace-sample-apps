@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
 
-    console.log(url)
     _client.request.get(url, options)
     .then(function(data) {
       if (data.status === 200) {
