@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var agentList = JSON.parse(data.response);
         const agent = q('#agent');
         const options = agentList
-          .map(agent => `<option value="${agentList[agent].id}">${agentList[agent].contact.name}</option>`)
+          .map(agent => `<option value="${agent.id}">${agent.contact.name}</option>`)
           .join('');
         agent.innerHTML += options;
         hide(q('.spinner'));

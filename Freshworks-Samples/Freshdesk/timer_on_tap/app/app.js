@@ -4,21 +4,21 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
 
- /**
- * Initialize channel
- * @param {string} _client - A string param
- */
+  /**
+  * Initialize channel
+  * @param {object} _client - Object containing all the client details
+  */
   app.initialized().then(function (_client) {
     var client = _client;
 
     client.events.on('app.activated', function () {
-/**
-* Opens modal to collect params to start timer Interface API
-*/
+      /**
+      * Opens modal to collect params to start timer Interface API
+      */
       client.interface.trigger('showModal', {
         title: 'Start timer',
         template: 'startTimer.html'
-      }).then(null, function (error) {
+      }).then(null, function () {
         client.interface.trigger('showNotify', {
           type: 'error',
           message: 'Some error has occured in \'Start timer app\'.'
@@ -35,15 +35,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
     });
-  }, 
+  },
     /**
      * This throws an error notification
      * @param {string} error -The string error message
-     */                     
+     */
     function (error) {
-    client.interface.trigger('showNotify', {
-      type: 'error',
-      message: 'Some error has occured in \'Start timer app\'.'
+      client.interface.trigger('showNotify', {
+        type: 'error',
+        message: `Some error ${error} has occured in \'Start timer app\'.`
+      });
     });
-  });
 });

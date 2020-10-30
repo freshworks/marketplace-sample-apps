@@ -15,11 +15,11 @@ Interface API | To start the timer
 1. Make sure you have a trial Freshdesk account created
 2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
 
-_[From point 3, add some of the important prerequisites which are specific to this app]_
+_[From point 2, add some of the important prerequisites which are specific to this app]_
 
 ### Procedure to run the app:
-1. Fill the `iparam_test_data.json` before running the app locally.
-2. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
+1. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
+2. Fill the domain and API key in http://localhost:10001/custom_configs
 3. Append `?dev=true` to the Freshworks product URL to see the changes
 
 _[ Special instructions for realizing the value out of this app]_
