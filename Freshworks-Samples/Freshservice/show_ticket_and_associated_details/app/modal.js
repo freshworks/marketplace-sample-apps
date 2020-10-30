@@ -1,4 +1,4 @@
-!(function($) {
+!(function() {
     var clientAPP = null,
         targetContainer = "#renderOutput ul",
         $li,
@@ -35,25 +35,24 @@
      * @param {string} module - name of the object to be retrieved 
      */
     getData = function(module) {
-        var $targetContainer = $(targetContainer),
+        var $targetContainer = document.getElementById('renderOutput').getElementsByTagName('ul'),
             _data;
-        $(targetContainer).empty();
+        document.getElementById('renderOutput').getElementsByTagName('ul').empty();
         clientAPP.data.get(module)
             .then(function(data) {
                 _data = data[module];
-                if ($.inArray(module, arrayModules) > -1 && _data.length)
+                if (arrayModules.indexOf(module) > -1 && _data.length)
                     _data = _data[0];
                 if (_data) {
-                    $.each(_data, function(_k, _v) {
-
-                        $label = $("<label>");
+                    _data.forEach(function(_k, _v){
+                        $label = document.getElementsByTagName('label');
                         $label.html(_k).addClass("info");
-                        $value = $("<label>");
+                        $value = document.getElementsByTagName('label');
                         $value.html(flattenToString(_v)).addClass("value");
-                        $li = $("<li class='clearfix'>");
+                        $li = document.getElementsByClassName('clearfix');
                         $li.append($label).append($value);
                         $targetContainer.append($li);
-                    });
+                    }) 
                 }
 
             })
@@ -70,28 +69,34 @@
             currentValue,
             nextValue;
 
-        $("select").select2({
+        document.getElementsByName('select').select2({
             minimumResultsForSearch: 30
         });
 
-        $(document).on("change", "#codeDemo", function() {
-            getData($(this).val());
-        });
+        document.addEventListener('change', function(event) {
+            event.preventDefault();
+            if (event.target.id === 'codeDemo') {
+                getData(this.event.val());
+            }
+        })
 
-        $("#codeDemo").trigger("change");
+        document.getElementById('codeDemo').trigger('change');
 
-        $(".navigation-menu a").on("click", function() {
-            currentValue = $("#codeDemo").val();
-            targetDirection = $(this).data("target");
-            nextValue = $("#codeDemo").find("option[value='" + currentValue + "']")[targetDirection]().val();
-            $("#codeDemo").val(nextValue).trigger("change");
-            $(".navigation-menu a").removeClass("disabled");
-            if ($("#codeDemo").find("option[value='" + nextValue + "']").is(':last-child') || $("#codeDemo").find("option[value='" + nextValue + "']").is(':first-child'))
-                $(this).addClass("disabled");
-        });
+        document.getElementsByClassName('navigation-menu').addEventListener('click', function(event) {
+            event.preventDefault();
+            currentValue = document.getElementById('codeDemo').val();
+            targetDirection = this.event.data('target');
+            nextValue = document.getElementById('codeDemo').find("option[value='" + currentValue + "']")[targetDirection]().val();
+            document.getElementById('codeDemo').val(nextValue).trigger('change');
+            this.removeClass('disabled');
+            if ( document.getElementById('codeDemo').find("option[value='" + nextValue + "']").is(':last-child') ||
+                document.getElementById('codeDemo').find("option[value='" + nextValue + "']").is(':first-child')) {
+                    this.addClass('disabled');
+                }
+        })
     };
 
-    $(document).ready(function() {
-        app.initialized().then(initModal);
-    });
-})(window.jQuery);
+    document.addEventListener('DOMContentLoaded', function(event) {
+        app.initialized().then(initAPP);
+    })
+});

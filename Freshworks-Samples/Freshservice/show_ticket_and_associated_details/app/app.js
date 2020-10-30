@@ -1,4 +1,4 @@
-!(function($) {
+!(function() {
     var clientAPP = null;
     initAPP = function(_client) {
         clientAPP = _client;
@@ -20,9 +20,14 @@
             );
     };
     initHandlers = function() {
-        $(document).on("click", "#startDemo", initDemoApp);
+        document.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (event.target.id === 'startDemo') {
+                initDemoApp();
+            }
+        })
     };
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function(event) {
         app.initialized().then(initAPP);
-    });
-})(window.jQuery);
+    })
+});
