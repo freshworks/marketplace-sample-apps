@@ -1,8 +1,16 @@
-
-p{
-	text-align: center;
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.table{
-  font-size: 12px;
+p {
+  text-align: center;
+}
+
+section {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
