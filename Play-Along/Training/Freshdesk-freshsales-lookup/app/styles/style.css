@@ -12,5 +12,9 @@ p {
 }
 
 section {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: sans-serif;
+}
+
+table:hover {
+  cursor: context-menu;
 }

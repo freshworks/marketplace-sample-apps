@@ -1,24 +1,22 @@
-$(document).ready(function() {
-  app.initialized().then(
-    function(_client) {
+document.onreadystatechange = function() {
+  if (document.readyState === 'interactive') renderApp();
+
+  function renderApp() {
+    var onInit = app.initialized();
+    onInit.then(getClient).catch(handleErr);
+
+    function getClient(_client) {
       window.client = _client;
       getLead();
-    },
-    function(error) {
-      console.log('error', error);
-      notify(
-        'info',
-        'Unable to Display Lead Details, kindly refresh the page '
-      );
     }
-  );
-});
+  }
+};
 
 /**
  * Fuction to get the lead details using instance API
  */
 function getLead() {
-  client.instance.context().then(function(context) {
+  client.instance.context().then(context => {
     renderTable(context.data.lead);
   });
 }
@@ -27,48 +25,45 @@ function getLead() {
  * function to render the lead to html table output
  * @param {Object} lead
  */
+
 async function renderTable(lead) {
-  let tableContent = `<table class="table">
-                          <thead>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Name</td>
-                              <td>${lead.first_name} ${lead.last_name
-    ? lead.last_name
-    : ''}</td>
-                            </tr>
-                            <tr>
-                              <td> Job Title </td>
-                              <td> ${lead.job_title
-                                ? lead.job_title
-                                : 'Job Title Not Updated'} </td>
-                            </tr>
-                            <tr>
-                              <td>Email</td>
-                              <td>${lead.email}</td>
-                            </tr>
-                            <tr>
-                              <td>Work Phone Number</td>
-                              <td>${lead.work_phone_number
-                                ? lead.work_phone_number
-                                : 'Work Phone Number Not Available'}</td>
-                            </tr>
-                            <tr>
-                              <td>Mobile Phone Number</td>
-                              <td>${lead.mobile_phone_number
-                                ? lead.mobile_phone_number
-                                : 'Mobile Phone Number Not Available'}</td>
-                            </tr>
-                            <tr>
-                              <td> Lead Quality</td>
-                              <td> ${lead.lead_quality} </td>
-                            </tr>
-                          </tbody>
-                      </table>`;
+  let tableContent = `
+  <table class="table">
+  <thead>
+  </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>${lead.first_name} ${lead.last_name ? lead.last_name : ''}</td>
+      </tr>
+      <tr>
+        <td> Job Title </td>
+        <td> ${lead.job_title ? lead.job_title : 'Job Title Not Updated'} </td>
+      </tr>
+    <tr>
+       <td>Email</td>
+      <td>${lead.email}</td>
+     </tr>
+     <tr>
+       <td>Work Phone Number</td>
+       <td>${lead.work_phone_number
+         ? lead.work_phone_number
+         : 'Work Phone Number Not Available'}</td>
+    </tr>
+    <tr>
+      <td>Mobile Phone Number</td>
+      <td>${lead.mobile_phone_number
+        ? lead.mobile_phone_number
+        : 'Mobile Phone Number Not Available'}</td>
+    </tr>
+    <tr>
+       <td> Lead Quality</td>
+       <td> ${lead.lead_quality} </td>
+    </tr>
+  </tbody></table>`;
 
   // Check if the lead is already in the data storage
-  let inDataStorage = await checkData(lead.id);
+  let inDataStorage = await isInDataStore(lead.id);
 
   // Conditonally display the button or messgae based on inDataStorage's value
   if (inDataStorage.status === 404) {
@@ -111,12 +106,12 @@ function saveDataInDB(lead) {
  * Helper function to check the data storage if the lead is already available
  * @param {String} leadId
  */
-function checkData(leadId) {
+function isInDataStore(leadId) {
   return client.db.get(leadId.toString()).then(
-    function(data) {
+    data => {
       return data;
     },
-    function(error) {
+    error => {
       return error;
     }
   );
@@ -132,4 +127,9 @@ function notify(status, message) {
     type: status,
     message: message
   });
+}
+
+function handleErr(error) {
+  console.log('error', error);
+  notify('info', 'Unable to Display Lead Details, kindly refresh the page ');
 }

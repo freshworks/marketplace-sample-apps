@@ -107,6 +107,6 @@ function notify(status, message) {
 }
 
 function handleErr(err) {
-  console.log('Error', error);
+  console.log('Error', err);
   notify('info', 'Unable to Open to App');
 }
