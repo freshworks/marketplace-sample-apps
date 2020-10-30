@@ -1,9 +1,7 @@
 /**
  * This self-invoking anonymous function to initialize the application.
- *
- * @param {object} $ "window.jQuery" object is passed into the function.
  */
-!(function ($) {
+!(function () {
   var clientAPP = null;
 
   /**
@@ -45,7 +43,7 @@
     clientAPP.interface.trigger("hideElement", { id: "type" });
     clientAPP.data.get("loggedInUser").then(
       function (data) {
-        if ($.inArray(requiredGroupId, data.loggedInUser.group_ids) > -1) {
+        if (data.loggedInUser.group_ids.findIndex(groupId => groupId === requiredGroupId) > -1) {
           clientAPP.interface.trigger("hideElement", { id: "urgency" }); //hides the urgency field of ticket properties
           clientAPP.interface.trigger("hideElement", { id: "impact" }); //hides the impact field of ticket properties
         }
@@ -71,7 +69,7 @@
     });
   };
 
-  $(document).ready(function () {
+  document.addEventListener('DOMContentLoaded', function () {
     app.initialized().then(initAPP);
   });
-})(window.jQuery);
+})();

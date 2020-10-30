@@ -4,7 +4,7 @@
  * finds the link from the data storage based on the alias from the input field
  */
 function findAlias() {
-  const key = document.getElementById('inputAlias').value;
+  var key = document.getElementById('inputAlias').value;
   $('#linkContainer').css('display', 'none');
   client.db.get(key)
     .then(function (data) {
@@ -31,7 +31,7 @@ function showNotify(type, message) {
       api: 'interface',
       action: 'trigger',
       method: 'showNotify',
-      payload: { type, message }
+      payload: { type: type, message: message }
     }
   });
 }

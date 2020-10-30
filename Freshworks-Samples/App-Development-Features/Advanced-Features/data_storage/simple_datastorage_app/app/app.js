@@ -6,17 +6,21 @@
 
 let noteKey;
 
-$(document).ready(() => {
+function q(selector, context = document) {
+  return context.querySelector(selector);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
   (function () {
     app.initialized(_client).then(() => {
       window.client = _client;
       client.events.on('app.activated', () => {
         fetchInfo(() => {
           displayNote();
-          $("#note-save").click(() => {
+          q("#note-save").addEventListener('click', () => {
             savenote();
           });
-          $("#note-delete").click(() => {
+          q("#note-delete").addEventListener('click', () => {
             deletenote();
           });
         });
@@ -38,8 +42,8 @@ $(document).ready(() => {
     }
 
     function savenote() {
-      jQuery("#note-save").click(() => {
-        var noteData = jQuery("#note").val();
+      q("#note-save").addEventListener('click', () => {
+        var noteData = q("#note").value;
         if (noteData == '') {
           notify('warning', 'Note is empty');
           return;
@@ -55,7 +59,7 @@ $(document).ready(() => {
     function deletenote() {
       client.db.delete(noteKey)
         .then(function () {
-          jQuery("#note").val('');
+          q("#note").value = '';
           notify('success', 'Note has been deleted');
         }, function () {
           notify('danger', 'Error deleting the note');
@@ -64,7 +68,7 @@ $(document).ready(() => {
 
     function displayNote() {
       client.db.get(noteKey).then((data) => {
-        $("#note").val(data.note);
+        q("#note").value = data.note;
       });
     }
 

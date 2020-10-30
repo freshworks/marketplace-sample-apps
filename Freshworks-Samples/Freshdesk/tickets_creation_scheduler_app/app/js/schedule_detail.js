@@ -4,34 +4,34 @@ const FIELDS_TO_VALIDATE = ['subject', 'description', 'contact', 'scheduleAt'];
 
 function getFieldValues() {
   return {
-    subject: jQuery('#ticket-subject').val(),
-    description: jQuery('#ticket-description').val(),
-    contact: jQuery('#ticket-contact').val(),
-    status: Number(jQuery('#ticket-status').val()),
-    priority: Number(jQuery('#ticket-priority').val()),
-    scheduleAt: jQuery('#schedule-time').val()
+    subject: q('#ticket-subject').value,
+    description: q('#ticket-description').value,
+    contact: q('#ticket-contact').value,
+    status: Number(q('#ticket-status').value),
+    priority: Number(q('#ticket-priority').value),
+    scheduleAt: q('#schedule-time').value
   };
 }
 
 function validateFields() {
-  jQuery('.validation-message').html('');
+  q('.validation-message').innerHTML = '';
   var scheduleData = getFieldValues();
   var isValid = true;
 
   for (var field of FIELDS_TO_VALIDATE) {
     if (!scheduleData[field]) {
-      jQuery(`#${field}-error`).html('Please fill this required field');
+      q(`#${field}-error`).innerHTML = 'Please fill this required field';
       isValid = false;
     }
   }
 
   if ((new Date(scheduleData.scheduleAt) - new Date(Date.now())) / 1000 / 60 < 10) {
-    jQuery('#scheduleAt-error').html('Schedule time must be at least 10 minutes in future');
+    q('#scheduleAt-error').innerHTML = 'Schedule time must be at least 10 minutes in future';
     isValid = false;
   }
 
   if (scheduleData['contact'] && !validEmail(scheduleData['contact'])) {
-    jQuery('#contact-error').html('Please enter a valid email');
+    q('#contact-error').innerHTML = 'Please enter a valid email';
     isValid = false;
   }
   return isValid;
@@ -63,7 +63,7 @@ function addScheduleToList(schedule, callback) {
 }
 
 function addListeners() {
-  jQuery('#create-schedule').click(function() {
+  q('#create-schedule').addEventListener('click', function() {
 
     // Validate the values provided in the schedule creation form
     if (validateFields()) {
@@ -100,7 +100,7 @@ function addListeners() {
     }
   });
 
-  jQuery('#update-schedule').click(function() {
+  q('#update-schedule').addEventListener('click', function() {
 
     // Validate the values provided in the schedule creation form
     if (validateFields()) {
@@ -136,18 +136,18 @@ function addListeners() {
 }
 
 function populateData(scheduleData) {
-  jQuery('#ticket-subject').val(scheduleData.data.subject);
-  jQuery('#ticket-description').val(scheduleData.data.description);
-  jQuery('#ticket-contact').val(scheduleData.data.contact);
-  jQuery('#ticket-status').val(scheduleData.data.status);
-  jQuery('#ticket-priority').val(scheduleData.data.priority);
-  jQuery('#schedule-time').val(scheduleData.data.scheduleAt);
+  q('#ticket-subject').value = scheduleData.data.subject;
+  q('#ticket-description').value = scheduleData.data.description;
+  q('#ticket-contact').value = scheduleData.data.contact;
+  q('#ticket-status').value = scheduleData.data.status;
+  q('#ticket-priority').value = scheduleData.data.priority;
+  q('#schedule-time').value = scheduleData.data.scheduleAt;
 
   // Persist the uuid of populated schedule (to be used while updating)
   window.currentUuid = scheduleData.data.scheduleName;
 }
 
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function() {
   addListeners();
   app.initialized().then(function(_client) {
     window.client = _client;
@@ -158,11 +158,11 @@ $(document).ready( function() {
 
     client.instance.context().then(function(context){
       if (context.data.newSchedule) {
-        jQuery("#create-schedule").removeClass('hidden');
+        q("#create-schedule").classList.remove('hidden');
       }
       else {
         populateData(context.data.scheduleData);
-        jQuery("#update-schedule").removeClass('hidden');
+        q("#update-schedule").classList.remove('hidden');
       }
     });
   });

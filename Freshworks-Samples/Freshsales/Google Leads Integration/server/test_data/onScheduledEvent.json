@@ -1,0 +1,16 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": "12345",
+  "domain": "sample.freshsales.io",
+  "event": "onScheduledEvent",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "sample_data1": "sample value1",
+    "sample_data2": "sample value2",
+    "sample_data3": 3
+  }
+}
