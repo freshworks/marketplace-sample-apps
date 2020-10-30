@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hide(q('.spinner'));
         show(q('#fields'));
       }
-    }, function(error) {
+    }, function() {
       hide(q('.spinner'));
       show(q('.alert-danger'));
     });
