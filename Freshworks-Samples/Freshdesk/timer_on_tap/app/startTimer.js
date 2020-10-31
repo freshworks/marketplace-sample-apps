@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+  console.log("Dom completed");
   q('#startTimer').disabled = false;
-  hide(q('.alert'));
+  hide(qAll('.alert'));
   show(q('.spinner'));
   hide(q('#fields'));
 
@@ -16,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     _client.request.get(url, options)
     .then(function(data) {
+      console.log("Client request got");
+      console.log(data);
       if (data.status === 200) {
         var agentList = JSON.parse(data.response);
         const agent = q('#agent');
@@ -26,7 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
         hide(q('.spinner'));
         show(q('#fields'));
       }
+      else {
+        console.log(`${error} in client request`);
+        hide(q('.spinner'));
+        show(q('.alert-danger'));
+      }
     }, function(error) {
+      console.log(`${error} in client request`);
       hide(q('.spinner'));
       show(q('.alert-danger'));
     });
@@ -46,12 +55,23 @@ function addTimer() {
   q('#startTimer').disabled = true;
 }
 
+function qAll(selector) {
+  return document.querySelectorAll(selector);
+}
+
 function q(selector) {
   return document.querySelector(selector);
 }
 
 function hide(element) {
-  element.style.display = 'none';
+  if(element instanceof NodeList) {
+    element.forEach(e => { 
+      e.style.display = 'none';
+    });
+  }
+  else {
+    element.style.display = 'none';
+  }
 }
 
 function show(element) {
