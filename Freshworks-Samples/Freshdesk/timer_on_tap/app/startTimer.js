@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   q('#startTimer').disabled = false;
-  hide(q('.alert'));
+  hide(qAll('.alert'));
   show(q('.spinner'));
   hide(q('#fields'));
 
@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
         hide(q('.spinner'));
         show(q('#fields'));
       }
+      else {
+        hide(q('.spinner'));
+        show(q('.alert-danger'));
+      }
     }, function() {
       hide(q('.spinner'));
       show(q('.alert-danger'));
@@ -46,12 +50,23 @@ function addTimer() {
   q('#startTimer').disabled = true;
 }
 
+function qAll(selector) {
+  return document.querySelectorAll(selector);
+}
+
 function q(selector) {
   return document.querySelector(selector);
 }
 
 function hide(element) {
-  element.style.display = 'none';
+  if(element instanceof NodeList) {
+    element.forEach(e => { 
+      e.style.display = 'none';
+    });
+  }
+  else {
+    element.style.display = 'none';
+  }
 }
 
 function show(element) {
