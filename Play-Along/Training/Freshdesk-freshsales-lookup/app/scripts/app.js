@@ -9,12 +9,12 @@ document.onreadystatechange = function() {
 
   function renderApp() {
     var onInit = app.initialized();
-    onInit.then(getClient).catch(handleErr);
-
-    function getClient(_client) {
-      window.client = _client;
-      client.events.on('app.activated', getLeads, handleErr);
-    }
+    onInit
+      .then(function getClient(_client) {
+        window.client = _client;
+        client.events.on('app.activated', getLeads, handleErr);
+      })
+      .catch(handleErr);
   }
 };
 
@@ -32,8 +32,6 @@ function getLeads() {
     listOfViews = JSON.parse(data.response).filters;
     allLeadsView = listOfViews.filter(view => view.name === 'All Leads');
     viewLeads(allLeadsView[0].id);
-    //displayLeadDetails(data.response);
-    //showNotification('success', 'Leads info retrieved successfully');
   }
 }
 
@@ -45,12 +43,12 @@ function viewLeads(viewId) {
   var url = `<%= (iparam.freshsales_subdomain) %>/api/leads/view/${viewId}`;
   var leadDetails = client.request.get(url, options);
 
-  leadDetails.then(renderLeadDetails).catch(handleErr);
-
-  function renderLeadDetails(data) {
-    let leads = JSON.parse(data.response).leads;
-    renderTable(leads);
-  }
+  leadDetails
+    .then(function renderLeadDetails(data) {
+      let leads = JSON.parse(data.response).leads;
+      renderTable(leads);
+    })
+    .catch(handleErr);
 }
 
 /**
@@ -106,7 +104,7 @@ function notify(status, message) {
   });
 }
 
-function handleErr(err) {
-  console.log('Error', err);
-  notify('info', 'Unable to Open to App');
+function handleErr(err, message = 'Something went Wrong') {
+  console.log(message, err);
+  notify('info', message);
 }
