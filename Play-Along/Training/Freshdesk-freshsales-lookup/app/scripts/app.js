@@ -25,14 +25,14 @@ function getLeads() {
   const URL = '<%= (iparam.freshsales_subdomain) %>/api/leads/filters';
 
   var leads = client.request.get(URL, options);
-  leads.then(showLeadsList).catch(handleErr);
-
-  function showLeadsList(data) {
-    let listOfViews, allLeadsView;
-    listOfViews = JSON.parse(data.response).filters;
-    allLeadsView = listOfViews.filter(view => view.name === 'All Leads');
-    viewLeads(allLeadsView[0].id);
-  }
+  leads
+    .then(function showLeadsList(data) {
+      let listOfViews, allLeadsView;
+      listOfViews = JSON.parse(data.response).filters;
+      allLeadsView = listOfViews.filter(view => view.name === 'All Leads');
+      viewLeads(allLeadsView[0].id);
+    })
+    .catch(handleErr);
 }
 
 /**
@@ -76,7 +76,7 @@ function renderTable(table) {
  * @param {String} id ID of the agent to be viewed
  */
 function openModal(id) {
-  var url = `<%= (iparam.freshsales_subdomain) %>/api/leads/${id}`;
+  const url = `<%= (iparam.freshsales_subdomain) %>/api/leads/${id}`;
   client.request
     .get(url, options)
     .then(function(data) {

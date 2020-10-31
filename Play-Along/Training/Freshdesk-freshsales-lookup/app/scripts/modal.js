@@ -3,12 +3,12 @@ document.onreadystatechange = function() {
 
   function renderApp() {
     var onInit = app.initialized();
-    onInit.then(getClient).catch(handleErr);
-
-    function getClient(_client) {
-      window.client = _client;
-      getLead();
-    }
+    onInit
+      .then(function getClient(_client) {
+        window.client = _client;
+        getLead();
+      })
+      .catch(handleErr);
   }
 };
 
@@ -16,7 +16,7 @@ document.onreadystatechange = function() {
  * Fuction to get the lead details using instance API
  */
 function getLead() {
-  client.instance.context().then(context => {
+  client.instance.context().then(function(context) {
     renderTable(context.data.lead);
   });
 }
@@ -93,7 +93,7 @@ function saveDataInDB(lead) {
   client.db.set(lead.id.toString(), { lead }, { setIf: 'not_exist' }).then(
     function(data) {
       notify('info', 'Saved the lead in Data Storage');
-      console.log('Saved the lead in Data Storage', data);
+      console.info('Saved the lead in Data Storage', data);
     },
     function(error) {
       notify('info', 'Unable to save data in Data Storage');
@@ -108,10 +108,10 @@ function saveDataInDB(lead) {
  */
 function isInDataStore(leadId) {
   return client.db.get(leadId.toString()).then(
-    data => {
+    function(data) {
       return data;
     },
-    error => {
+    function(error) {
       return error;
     }
   );
@@ -129,7 +129,10 @@ function notify(status, message) {
   });
 }
 
-function handleErr(error) {
-  console.log('error', error);
+function handleErr(
+  error,
+  message = 'Something went wrong & this is what we know:'
+) {
+  console.log(message, error);
   notify('info', 'Unable to Display Lead Details, kindly refresh the page ');
 }
