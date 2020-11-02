@@ -14,19 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
         "Authorization": "Basic <%= encode(iparam.freshdesk_key + ':x') %>"
       }
     };
+
     _client.request.get(url, options)
     .then(function(data) {
       if (data.status === 200) {
         var agentList = JSON.parse(data.response);
         const agent = q('#agent');
         const options = agentList
-          .map(agent => `<option value="${agentList[agent].id}">${agentList[agent].contact.name}</option>`)
+          .map(agent => `<option value="${agent.id}">${agent.contact.name}</option>`)
           .join('');
         agent.innerHTML += options;
         hide(q('.spinner'));
         show(q('#fields'));
       }
-    }, function(error) {
+    }, function() {
       hide(q('.spinner'));
       show(q('.alert-danger'));
     });
