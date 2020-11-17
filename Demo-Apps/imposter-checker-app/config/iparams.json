@@ -1,0 +1,16 @@
+{
+  "apiKey": {
+    "display_name": "TypingDNA API key",
+    "description": "Please enter the API Key from TypingDNA API key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "apiSecret": {
+    "display_name": "TypingDNA API Secret",
+    "description": "Please enter Client Secret",
+    "type": "text",
+    "required": true,
+    "secure": true
+  }
+}

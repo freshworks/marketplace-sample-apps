@@ -1,0 +1,42 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+.background {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-rows: 0.8fr 1fr 3fr;
+  font-size: 1.4rem;
+	font-family: Helvetica;
+}
+
+blockquote{
+	font-family: cursive;
+}
+
+
+fw-toggle {
+	align-self: flex-end;
+}
+
+.what{
+	grid-column: 2/3
+}
+
+.toggles{
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	grid-column: 2/3;
+	grid-row: 2/3;
+}
+
+.setup{
+	grid-column: 2/3
+}
