@@ -9,15 +9,6 @@ It is an web app that runs on a ticketing tool called [Freshdesk](https://freshd
 ![Alt](/screenshots/improved%20ux%20-%20page%202.png)
 [See the Screenshot](https://ibb.co/YN5KBB0)
 
-**What does Demo doesn't cover?**
-1. I plan on improving UX ([Improved now](/screenshots/))
-2. Refactor the code to be more readable (Done)
-3. All other updates post October 10, 2020. (Done as planned)
-
-I intend to implement them until the Oct 31, 2020. To abide by this you can check the commits made via [my Github Repository](https://github.com/Saif-Shines/imposter-checker-app). I will keep pushing them :-)
-
-I guess the best way to describe this project is with the criteria that that holds.
-
 ## Impact & Innovation
 Before I thought of building an Freshworks App, I intended to build a chrome extension because it felt a lot of users can use the app. Among those most of uses would be happy with Authentication & Security measures which already exists. Brining secure-ness to those general users didn't felt like they would pay for a product and buy.
 
@@ -36,9 +27,6 @@ So this app is impactful because,
 2. It gives the user power to decide and add additional security check for particular feature inside a (any) product. This app adds additional check for Ticket Reply, Property change(in demo), deleting and closing the ticket.
 3. If the user claims that some imposter has used the feature or may be replied an email; It can be always assess from confidence attribute sent from TypingDNA API.
 
-**Limitations**
-The app's user base would be limited to [businesses who use Freshworks products](https://getlatka.com/companies/freshworks#:~:text=Freshworks%20has%20150K%20customers.)
-
 ## UX
 
 - App places itself inside the product in such a way that it is easily accessible to the user.
@@ -55,9 +43,3 @@ The app's user base would be limited to [businesses who use Freshworks products]
 - App uses Browsers localstorage for session level storage and Freshworks' [data store](https://developers.freshdesk.com/v2/docs/data-storage/) for persistence on avoiding manipulating stored patterns.
 - Elements are laid out using CSS Flexbox.
 - The Frontend components of the app makes call to Backend after capturing patterns with [TypingDNA class](https://api.typingdna.com/#api-capture-class) is made possible by [Server Method Invocation](https://developers.freshdesk.com/v2/docs/server-method-invocation/)
-
-## Final Thoughts
-
-Well, this is my first non-student level Hackathon that I've participated it. Without a team has been pretty much hard hectic as well. Over all, I enjoyed participating it and I do see a lot of potential that TypingDNA has.
-
-Thanks to Adrian form TypingDNA Slack community in trying out and helping with Technical queries.
