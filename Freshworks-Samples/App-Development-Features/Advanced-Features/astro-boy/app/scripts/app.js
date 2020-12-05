@@ -3,12 +3,12 @@ var client;
 document.onreadystatechange = function() {
   if (document.readyState === 'interactive') renderApp();
 
-  function renderApp() {
-    var onInit = app.initialized();
+  async function renderApp() {
+    var onInit = await app.initialized();
 
-    onInit.then(getClient).catch(handleErr);
-
-    function getClient(_client) {
+    //onInit.then(getClient).catch(handleErr);
+    onInit();
+    function onInit(_client) {
       client = _client;
       client.events.on('app.activated', onAppActivate);
     }
