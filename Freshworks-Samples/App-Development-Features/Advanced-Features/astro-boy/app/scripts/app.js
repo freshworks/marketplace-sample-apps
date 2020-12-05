@@ -8,6 +8,7 @@ document.onreadystatechange = function() {
 
     //onInit.then(getClient).catch(handleErr);
     onInit();
+    
     function onInit(_client) {
       client = _client;
       client.events.on('app.activated', onAppActivate);
