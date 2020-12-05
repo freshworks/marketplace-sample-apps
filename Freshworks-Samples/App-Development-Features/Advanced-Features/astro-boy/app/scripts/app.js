@@ -16,13 +16,7 @@ document.onreadystatechange = function() {
 };
 
 function onAppActivate() {
-  var textElement = document.getElementById('apptext');
-  var getContact = client.data.get('contact');
-  getContact.then(showContact).catch(handleErr);
-
-  function showContact(payload) {
-    textElement.innerHTML = `Ticket created by ${payload.contact.name}`;
-  }
+  
 }
 
 function handleErr(err) {
