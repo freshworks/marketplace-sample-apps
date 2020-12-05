@@ -1,4 +1,6 @@
-# Freshworks Sample Apps
+# Freshworks Sample Apps 
+
+<img align="right" height=100 vspace=20 src='.github/assets/laptop.svg'>
 
 Sample Apps in this repository demonstrate features of our developer platform. Any app that you build will be run as part of the in-product experience. Join us in crafting those experiences.
 
