@@ -20,4 +20,4 @@ The App development for any Freshworks product follows a common pattern. <mark> 
 </dl>
 
 
-<img align="center" vspace=20 width=150 src=".github/assets/freshworks_developers_logo.png">
+<img align="right" vspace=20 width=150 src=".github/assets/freshworks_developers_logo.png">
