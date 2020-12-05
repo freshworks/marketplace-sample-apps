@@ -2,7 +2,7 @@ var [client, noteElement, scheduleObject, REMINDER_INTERVAL] = [
   null,
   null,
   null,
-  6,
+  6
 ];
 var appObject = {};
 
@@ -35,17 +35,16 @@ function fwNotify(notificationType, messageContent) {
   client.interface
     .trigger('showNotify', {
       type: notificationType,
-      message: messageContent,
+      message: messageContent
     })
-    .then((interfaceData) => {
+    .then(interfaceData => {
       console.info(`💁‍♂️ Notification created`);
     })
-    .catch((error) => {
+    .catch(error => {
       console.error(`error 💣`);
     });
   return;
 }
-
 function createSchedule() {
   console.log('clickedd');
   let currentTime = new Date();
@@ -55,7 +54,7 @@ function createSchedule() {
     scheduleName: generateUniqueId(),
     userId: appObject.userId,
     note: note,
-    scheduleAt: currentTime.toISOString(),
+    scheduleAt: currentTime.toISOString()
   };
   client.request
     .invoke('createSchedule', scheduleObject)
@@ -63,7 +62,6 @@ function createSchedule() {
       console.info(`server method invoked ${data}`);
     }, logError);
 }
-
 function checkForNotifications() {
   client.db.get(`${scheduleObject.userId}_notifications`).then(
     function fetchFromeDB(data) {
@@ -71,18 +69,16 @@ function checkForNotifications() {
         client.interface.trigger('showNotify', {
           type: 'success',
           title: 'Reminder',
-          message: note,
+          message: note
         });
       });
-
       client.db.delete(`${userId}_notifications`);
     },
-    function (err) {
+    function(err) {
       console.error(`some error occurred: ${err}`);
-    },
+    }
   );
 }
-
 function logError(err) {
   console.error(`Train took the wrong route 🚂:`);
   console.error;
