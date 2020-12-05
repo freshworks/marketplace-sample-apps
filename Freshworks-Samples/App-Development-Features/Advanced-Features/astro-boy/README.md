@@ -1,6 +1,7 @@
-## Your First App
+## Astro boy
 
-This app displays the name of the requester of a freshdesk ticket in the ticket_sidebar placeholder
+Astroboy is simply a codename chosen for this app that demonstrates following features.
+
 
 ### Files and Folders
     .
