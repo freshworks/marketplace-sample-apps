@@ -1,10 +1,10 @@
-# Freshworks Sample Apps 
+# Freshworks Sample Apps
 
 <img align="right" height=100 vspace=20 src='.github/assets/laptop.svg'>
 
 Sample Apps in this repository demonstrate features of our developer platform. Any app that you build will be run as part of the in-product experience. Join us in crafting those experiences.
 
->The App development for any Freshworks product follows a common pattern. Which implies once an app built for one product will be similar to another with very few changes required.
+The App development for any Freshworks product follows a common pattern. Which implies once an app built for one product will be similar to another with very few changes required.
 
 ## Get Started
 1. [Quickstart](https://developers.freshdesk.com/v2/docs/quick-start/#create_your_first_app) buidling an app for any product as they follow a common pattern.
