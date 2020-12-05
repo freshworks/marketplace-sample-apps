@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script
+    src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+
+  <script type="module"
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js">
+    </script>
+  <script nomodule
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js">
+    </script>
+
+</head>
+
+<body>
+  <div class="fw-widget-wrapper">
+    <fw-button onClick="createTicket()"> Create Ticket </fw-button>
+    <br><br>
+    <fw-button onClick="updateTicket()"> Update Ticket </fw-button>
+    <br><br>
+    <fw-button onClick="getTicket()"> Get Ticket </fw-button>
+    <br><br>
+    <fw-button onClick="deleteTicket()"> Delete Ticket </fw-button>
+    <br><br>
+    <fw-input id="contactEmail" label="Contact Email"
+      placeholder="Enter the contact email to search" state="normal"
+      clear-input>
+    </fw-input>
+    <fw-button onClick="searchContact()"> Search Contact </fw-button>
+  </div>
+</body>
+
+</html>

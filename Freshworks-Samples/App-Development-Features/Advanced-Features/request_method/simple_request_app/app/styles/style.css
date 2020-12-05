@@ -1,0 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+section{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request{
+  flex: 0 0 25%;
+  margin: .5rem .5rem;
+}
+
+
+.request-status {
+  color: grey;
+  margin-left: 15px;
+} 

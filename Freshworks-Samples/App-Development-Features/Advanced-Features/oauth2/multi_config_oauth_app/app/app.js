@@ -1,4 +1,4 @@
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function() {
     app.initialized()
         .then(function(_client) {
           var client = _client;
@@ -15,7 +15,7 @@ $(document).ready( function() {
                 var response = JSON.parse(data.response)['value'];
                 var html = '';
                 if (response.length == 0) {
-                  jQuery('#lfiles').find('#lfiles').append("<div class='alert alert-warning'>No files in your OneDrive.</div>");
+                  q('#lfiles').innerHTML += "<div class='alert alert-warning'>No files in your OneDrive.</div>";
                 }
                 else {
                   response.map(function(resp) {
@@ -27,11 +27,15 @@ $(document).ready( function() {
                     }
                     html += '<div class="onedrive-content">'+resp['name']+'</div></div><br style="clear:both;"/>';
                   });
-                  jQuery('#lfiles').append(html);
+                  q('#lfiles').innerHTML += html;
                 }
               }, function() {
-                jQuery('#lfiles').append("<div class='alert alert-danger'>Error displaying files</div>");
+                q('#lfiles').innerHTML += "<div class='alert alert-danger'>Error displaying files</div>";
               });
         });
     });
 });
+
+function q(selector) {
+  return document.querySelector(selector);
+}

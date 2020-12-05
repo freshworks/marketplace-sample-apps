@@ -1,0 +1,73 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onAppointmentCreate",
+  "region": "US",
+  "version": "2.0",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "appointment": {
+      "id": 120540,
+      "targetable_id": 1012473,
+      "targetable_type": "Lead",
+      "title": "Sample appointment",
+      "description": "Appointment from sept 10 to sept 12",
+      "from_date": "2019-09-10T11:00:00Z",
+      "end_date": "2019-09-12T11:00:00Z",
+      "time_zone": "Central Time (US & Canada)",
+      "creator_id": 1,
+      "updater_id": null,
+      "created_at": "2019-09-23T10:19:15Z",
+      "updated_at": "2019-09-23T10:19:15Z",
+      "latitude": null,
+      "longitude": null,
+      "location": "India",
+      "is_deleted": false,
+      "checkedin_at": null,
+      "is_allday": false,
+      "outcome_id": 7
+    },
+    "associations": {
+      "outcome": {
+        "id": 7,
+        "name": "Left message",
+        "position": 2
+      },
+      "updater": null,
+      "targetable": {
+        "id": 1012473,
+        "_model": "Lead"
+      },
+      "appointment_attendees": [
+        {
+          "_association_id": 145674,
+          "id": 1,
+          "_model": "FdMultitenant::User"
+        },
+        {
+          "_association_id": 145675,
+          "id": 37,
+          "_model": "FdMultitenant::User"
+        }
+      ],
+      "creator": {
+        "id": 1,
+        "name": "Sales Agent",
+        "type": "user",
+        "email": "prakash.thiyagarajan@freshworks.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null,
+        "time_zone": "Central Time (US & Canada)",
+        "created_at": "2019-07-18T08:16:46Z",
+        "updated_at": "2019-07-31T09:24:53Z",
+        "deal_pipeline_id": 1,
+        "job_title": null
+      }
+    }
+  }
+}

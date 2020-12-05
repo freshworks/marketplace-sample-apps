@@ -1,0 +1,21 @@
+{
+    "domain": {
+        "display_name": "Domain",
+        "description": "Please enter your Domain",
+        "type": "domain",
+        "required": true,
+        "type_attributes": {
+            "product": "freshsales"
+        }
+    },
+    "token": {
+        "display_name": "token",
+        "description": "Please enter your token",
+        "type": "api_key",
+        "required": true,
+        "type_attributes": {
+            "product": "freshsales"
+        },
+        "secure": true
+    }
+}

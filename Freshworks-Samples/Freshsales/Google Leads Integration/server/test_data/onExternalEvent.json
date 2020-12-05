@@ -1,0 +1,46 @@
+{
+  "account_id": "12345",
+  "event": "onExternalEvent",
+  "region": "US",
+  "timestamp": 1500351361762,
+  "domain": "sample.freshsales.io",
+  "options": "freshsales.onExternalEvent",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "lead_id": "CKbai8W4xN4CFcoFrwkdyHEByw",
+    "campaign_id": 123456,
+    "gcl_id": "CKbai8W4xN4CFcoFrwkdyHEByw",
+    "user_column_data": [
+      {
+        "column_name": "Full Name",
+        "string_value": "John",
+        "column_id": "FULL_NAME"
+      },
+      {
+        "column_name": "User Email",
+        "string_value": "abc@xyz.com",
+        "column_id": "EMAIL"
+      },
+      {
+        "column_name": "User Phone",
+        "string_value": "+11234567890",
+        "column_id": "PHONE_NUMBER"
+      },
+      {
+        "column_name": "Postal Code",
+        "string_value": "94043",
+        "column_id": "POSTAL_CODE"
+      }
+    ],
+    "api_version": "1.0",
+    "form_id": 1234,
+    "Google_key": "xfdgdgsgfchgvhgfchg",
+    "is_test": true
+  },
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}

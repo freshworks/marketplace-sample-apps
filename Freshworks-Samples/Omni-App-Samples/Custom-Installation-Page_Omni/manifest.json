@@ -1,0 +1,21 @@
+{
+  "platform-version": "2.1",
+  "product": {
+    "freshsales": {
+      "location": {
+        "contact_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    },
+    "freshworks_crm": {
+      "location": {
+        "contact_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    }
+  }
+}

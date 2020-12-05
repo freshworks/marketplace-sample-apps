@@ -14,18 +14,18 @@ function openListSchedulesModal() {
 }
 
 function addListeners() {
-  jQuery('#create-schedule').click(function() {
+  q('#create-schedule').addEventListener('click', function() {
     openScheduleDetailModal('Create Schedule', {
       newSchedule: true
     });
   });
 
-  jQuery('#list-schedules').click(function() {
+  q('#list-schedules').addEventListener('click', function() {
     openListSchedulesModal();
   });
 }
 
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function() {
   addListeners();
 
   app.initialized().then(function(_client) {

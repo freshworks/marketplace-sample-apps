@@ -1,0 +1,38 @@
+{
+  "platform-version": "2.1",
+  "product": {
+    "freshworks_crm": {
+      "location": {
+        "deal_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        },
+        "sales_account_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    },
+    "freshsales": {
+      "location": {
+        "left_nav_chat": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        },
+        "left_nav_cti": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        },
+        "deal_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        },
+        "sales_account_entity_menu": {
+          "url": "template.html",
+          "icon": "icon.svg"
+        }
+      }
+    }
+  },
+  "whitelisted-domains": ["https://www.freshsales.io"]
+}

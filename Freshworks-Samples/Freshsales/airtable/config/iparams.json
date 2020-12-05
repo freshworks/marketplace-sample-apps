@@ -1,0 +1,30 @@
+{
+  "baseId": {
+    "display_name": "baseId",
+    "description": "Please enter your baseId",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "apiKey": {
+    "display_name": "apiKey",
+    "description": "Please enter your apiKey",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "freshsalesapikey": {
+    "display_name": "Freshsales ApiKey",
+    "description": "Please enter your freshsales apiKey",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "freshsalesdomain": {
+    "display_name": "Domain name",
+    "description": "Please enter your freshsales domain name",
+    "type": "text",
+    "required": true
+  }
+
+}

@@ -57,8 +57,8 @@ function getTicketContact() {
 
 function displayInfo(title, data) {
   if (data) {
-    jQuery('#contact-info')
-    .append('<div class="fw-content-list">\
+    document.getElementById('contact-info')
+    .appendChild('<div class="fw-content-list">\
               <div class="muted">' +
                 title +
               '</div>\
@@ -69,7 +69,7 @@ function displayInfo(title, data) {
   }
 }
 
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function(event) {
   async.waterfall([
     function(callback) {
       app.initialized()
@@ -104,7 +104,7 @@ $(document).ready( function() {
         });
       }
       else {
-        jQuery('#contact-info').append('<div class="fw-content-list"><div class="muted">Contact not found</div></div>');
+        document.getElementById('contact-info').appendChild('<div class="fw-content-list"><div class="muted">Contact not found</div></div>');
       }
     },
 
@@ -112,7 +112,7 @@ $(document).ready( function() {
       for (var contactKey in CONTACT_INFO_MAPPING) {
         displayInfo(CONTACT_INFO_MAPPING[contactKey], crmContactInformation.contact[contactKey]);
       }
-      jQuery('#contact-info').append('<div class="fw-divider"></div>');
+      document.getElementById('contact-info').appendChild('<div class="fw-divider"></div>');
       for (var contactKey in WORK_INFO_MAPPING) {
         displayInfo(WORK_INFO_MAPPING[contactKey], crmContactInformation.contact[contactKey]);
       }

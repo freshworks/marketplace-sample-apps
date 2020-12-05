@@ -1,0 +1,160 @@
+{
+  "data": {
+    "users": [
+      {
+        "id": 1,
+        "display_name": "Sales Agent",
+        "email": "someone@somewhere.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null
+      }
+    ],
+    "lead_stages": [
+      {
+        "partial": true,
+        "id": 2,
+        "name": "Contacted",
+        "position": 2
+      }
+    ],
+    "lead_source": [
+      {
+        "partial": true,
+        "id": 3,
+        "name": "Email",
+        "position": 3
+      }
+    ],
+    "territories": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "test",
+        "position": 1
+      }
+    ],
+    "lead_reasons": [],
+    "campaigns": [
+      {
+        "partial": true,
+        "id": 3,
+        "name": "sales",
+        "position": 3
+      }
+    ],
+    "lead": {
+      "id": 32,
+      "job_title": "CEO",
+      "department": "Sales",
+      "email": "freshsales@gmail.com",
+      "work_number": "1234512345",
+      "mobile_number": "5432154321",
+      "address": "RR Constructions",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "zipcode": "600096",
+      "country": "India",
+      "time_zone": "Alaska",
+      "do_not_disturb": true,
+      "display_name": "James Sampleton",
+      "avatar": null,
+      "keyword": "Bulk",
+      "medium": "Blog",
+      "last_seen": null,
+      "last_contacted": null,
+      "lead_score": 0,
+      "lead_quality": "Cold",
+      "stage_updated_time": "2018-01-11T03:07:32+05:30",
+      "first_name": "James",
+      "last_name": "Sampleton",
+      "company": {
+        "id": 32,
+        "name": "Freshworks",
+        "address": "Sp infocity",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "zipcode": "600096",
+        "country": "India",
+        "number_of_employees": 1001,
+        "annual_revenue": 10000000,
+        "website": "www.freshworks.com",
+        "phone": "1212121212",
+        "industry_type_id": 49,
+        "industry_type": {
+          "partial": true,
+          "id": 49,
+          "name": "Other",
+          "position": 49
+        },
+        "business_type_id": 3,
+        "business_type": {
+          "partial": true,
+          "id": 3,
+          "name": "Customer",
+          "position": 3
+        }
+      },
+      "deal": {
+        "id": 32,
+        "name": "Freshdesk",
+        "amount": "19999.0",
+        "expected_close": "2018-01-09",
+        "deal_product_id": 2,
+        "deal_product": {
+          "partial": true,
+          "id": 2,
+          "name": "Freshdesk",
+          "position": 2
+        }
+      },
+      "links": {
+        "conversations": "/leads/32/conversations/all?include=email_conversation_recipients%2Ctargetable%2Cphone_number%2Cphone_caller%2Cnote%2Cuser\\u0026per_page=3",
+        "timeline_feeds": "/leads/32/timeline_feeds",
+        "document_associations": "/leads/32/document_associations",
+        "notes": "/leads/32/notes?include=creater",
+        "tasks": "/leads/32/tasks?include=creater,owner,updater,targetable,users",
+        "appointments": "/leads/32/appointments?include=creater,owner,updater,targetable,appointment_attendees"
+      },
+      "custom_field": {
+        "cf_text": "text field value",
+        "cf_text_area": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
+        "cf_number": 234,
+        "cf_dropdown": "Fiesta",
+        "cf_checkbox": true,
+        "cf_radio": "Interested",
+        "cf_date": "2018-01-23T00:00:00+05:30",
+        "cf_multiselect": "Gun;AK47"
+      },
+      "created_at": "2018-01-11T03:07:32+05:30",
+      "updated_at": "2018-01-11T03:07:32+05:30",
+      "last_contacted_sales_activity_mode": null,
+      "has_authority": true,
+      "email_status": null,
+      "last_contacted_mode": null,
+      "recent_note": null,
+      "last_contacted_via_chat": null,
+      "last_contacted_via_sales_activity": null,
+      "facebook": "https://www.facebook.com/test123",
+      "twitter": "https://twitter.com/test123",
+      "linkedin": "https://www.linkedin.com/in/test123/",
+      "owner_id": 1,
+      "lead_stage_id": 2,
+      "lead_source_id": 3,
+      "updater_id": null,
+      "territory_id": 1,
+      "lead_reason_id": null,
+      "campaign_id": 3,
+      "creater_id": 1
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onLeadCreate",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}

@@ -1,7 +1,7 @@
 /**
  * @module modal
  */
-!(function($) {
+!(function() {
     var clientAPP = null,
         targetContainer = "#renderOutput ul",
         $li,
@@ -48,21 +48,26 @@
      * @memberof module:modal
      */
     getData = function() {
-        var $targetContainer = $(targetContainer);
-        $(targetContainer).empty();
+        var $targetContainer = document.querySelector(targetContainer);
+        while($targetContainer.firstChild) $targetContainer.removeChild($targetContainer.firstChild)
         clientAPP.data.get("recentChildTickets")
             .then(function(data) {
-                console.log("Data", data);
                 if (data["recentChildTickets"].length) {
-                    $.each(data["recentChildTickets"][0], function(_k, _v) {
-                        $label = $("<label>");
-                        $label.html(_k).addClass("info");
-                        $value = $("<label>");
-                        $value.html(flattenToString(_v)).addClass("value");
-                        $li = $("<li class='clearfix'>");
-                        $li.append($label).append($value);
-                        $targetContainer.append($li);
-                    });
+                    var latestChildTicket =  data["recentChildTickets"][0];
+                    for( const property in latestChildTicket) {
+                        var value = latestChildTicket[property];
+                        $label = document.createElement("label");
+                        $label.innerHTML =  property;
+                        $label.classList.add("info");
+                        $value = document.createElement("label");
+                        $value.innerHTML = flattenToString(value);
+                        $value.classList.add("value");
+                        $li = document.createElement("li");
+                        $li.classList.add('clearfix');
+                        $li.appendChild($label);
+                        $li.appendChild($value);
+                        $targetContainer.appendChild($li);
+                    };
                 }
 
             })
@@ -71,7 +76,8 @@
             });
     };
 
-    $(document).ready(function() {
+  document.addEventListener("DOMContentLoaded", function() {
         app.initialized().then(initModal);
     });
-})(window.jQuery);
+})();
+

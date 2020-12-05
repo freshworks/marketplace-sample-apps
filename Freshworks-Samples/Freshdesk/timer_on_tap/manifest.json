@@ -4,8 +4,8 @@
     "freshdesk": {
       "location": {
         "ticket_top_navigation": {
-          "url": "template.html",
-          "icon": "icon.svg"
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
         }
       }
     }

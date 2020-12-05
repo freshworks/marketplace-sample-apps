@@ -5,3 +5,7 @@
   height: 25px;
   margin-top: 25px;
 }
+
+input[type='checkbox'] {
+  vertical-align: bottom;
+}
