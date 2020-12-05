@@ -5,11 +5,11 @@
       "location": {
         "ticket_sidebar": {
           "url": "index.html",
-          "icon": "styles/images/icon.svg"
+          "icon": "styles/images/helicopter.svg"
         },
         "full_page_app": {
           "url": "index.html",
-          "icon": "styles/images/icon.svg"
+          "icon": "styles/images/aeroplane.svg"
         }
       },
       "events": {
