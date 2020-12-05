@@ -1,0 +1,10 @@
+{
+  "client_id": "\"s\"",
+  "client_secret": "\"s\"",
+  "authorize_url": "\"s\"",
+  "token_url": "\"s\"",
+  "token_type": "agent",
+  "options": {
+    "scope": "read"
+  }
+}
