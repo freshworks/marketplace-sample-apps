@@ -18,3 +18,6 @@ The App development for any Freshworks product follows a common pattern. <mark> 
   <dt>Blog 💼</dt>
   <dd>Stay updated by checking out our <a href="https://medium.com/freshworks-developer-blog">blog</a></dd>
 </dl>
+
+
+<img align="center" vspace=20 width=150 src=".github/assets/freshworks_developers_logo.png">
