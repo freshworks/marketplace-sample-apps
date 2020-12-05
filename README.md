@@ -4,21 +4,18 @@
 
 Sample Apps in this repository demonstrate features of our developer platform. Any app that you build will be run as part of the in-product experience. Join us in crafting those experiences.
 
-The App development for any Freshworks product follows a common pattern. Which implies once an app built for one product will be similar to another with very few changes required.
+The App development for any Freshworks product follows a common pattern. <mark> Which implies once an app built for one product will be similar to another with very few changes required</mark>.
+
+<dl>
+  <dt>Prerequisites </dt>
+  <dd>You need to have Freshworks CLI installed. See <a href="https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234/2"> instructions</a> to install it </dd>
+</dl>
 
 ## Get Started
 1. [Quickstart](https://developers.freshdesk.com/v2/docs/quick-start/#create_your_first_app) buidling an app for any product as they follow a common pattern.
 2. See [these 7 steps introducing](https://freshhuddle.github.io/codelabs/fh0/index.html?index=..%2F..index#0) you freshworks developer platform.
 3. Bonus! [Unleash the power of serverless apps](https://freshhuddle.github.io/codelabs/fh3/index.html?index=..%2F..index#0).
 
-### Setting up environment
-1. Install NVM
-   - Instructions [for Mac](https://github.com/creationix/nvm#installation-and-update)
-   - For Windows:
-     - [Download](https://github.com/coreybutler/nvm-windows/releases)
-     - Extract the installer from _nvm-setup.zip_ listed under Assets.
-2. [Install Node 10.18.1](https://developers.freshdesk.com/v2/docs/quick-start/#install_nvm)
-3. Install [command line tool - FDK](https://developers.freshdesk.com/v2/docs/quick-start/#install_the_cli)
 
 ### Overall references
 Products| App SDK | API | Description
