@@ -7,27 +7,14 @@ Sample Apps in this repository demonstrate features of our developer platform. A
 The App development for any Freshworks product follows a common pattern. <mark> Which implies once an app built for one product will be similar to another with very few changes required</mark>.
 
 <dl>
-  <dt>Prerequisites </dt>
+  <dt>Prerequisites ℹ️</dt>
   <dd>You need to have Freshworks CLI installed. See <a href="https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234/2"> instructions</a> to install it </dd>
+  <dt>References 📒</dt>
+  <dd>Freshworks developer platform currently powers 6 major products. See the <a href="https://developers.freshworks.com/documentation">documentation</a> to learn more SDK and APIs.<dd>
+  <dt>Tutorials 👩‍🏫</dt>
+  <dd>Learn building apps! See <a href="https://developers.freshworks.com/tutorials/"> tutorials</a> on various platform capabilities you can leverage.</dd>
+  <dt>Community 🏡 </dt>
+  <dd><a href="https://community.developers.freshworks.com/">Join our forum</a> where developers across ask and get help from fellow developers.</dd>
+  <dt>Blog 💼</dt>
+  <dd>Stay updated by checking out our <a href="https://medium.com/freshworks-developer-blog">blog</a></dd>
 </dl>
-
-## Get Started
-1. [Quickstart](https://developers.freshdesk.com/v2/docs/quick-start/#create_your_first_app) buidling an app for any product as they follow a common pattern.
-2. See [these 7 steps introducing](https://freshhuddle.github.io/codelabs/fh0/index.html?index=..%2F..index#0) you freshworks developer platform.
-3. Bonus! [Unleash the power of serverless apps](https://freshhuddle.github.io/codelabs/fh3/index.html?index=..%2F..index#0).
-
-
-### Overall references
-Products| App SDK | API | Description
----------|---------|-----|-----------|
- [Freshdesk](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshworks-Samples/Freshdesk) | [Documentation](https://developers.freshdesk.com/) | [Reference](https://developers.freshdesk.com/api/)| Customer Support Software
- [Freshservice](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshworks-Samples/Freshservice) | [Documentation](https://developers.freshservice.com/) | [Reference](http://api.freshservice.com/v2/) | IT service management software
- [Freshchat](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshworks-Samples/Freshchat) | [App Quickstart](https://developers.freshchat.com/v2/docs/quick-start/) | [Web SDK](https://developers.freshchat.com/web-sdk/) | Customer messaging software
- [Freshsales](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshworks-Samples/Freshsales) | [Documentation](https://developers.freshsales.io/docs/quick-start/) | [Reference](https://www.freshsales.io/api/) | Sales CRM software
- Freshcaller | [Documentation](https://developers.freshcaller.com/docs/quick-start/) | [Reference](https://developers.freshcaller.com/api/) | Call center software
- [Freshteam](https://github.com/freshdesk/marketplace-sample-apps/tree/master/Freshworks-Samples/Freshteam) | [Documentation](https://developers.freshteam.com/docs/quick-start/) | [Reference](https://developers.freshteam.com/api/) | Smart HR software
-
-### ✍️ Resources
-- [Developer Platform Blog](https://medium.com/freshworks-developer-blog)
-- [Freshworks Developer Forum](https://community.developers.freshworks.com/)
-- [Code Review Guidelines](https://developers.freshdesk.com/v2/docs/code-review-guidelines/)
