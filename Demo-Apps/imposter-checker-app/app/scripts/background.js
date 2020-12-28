@@ -13,10 +13,8 @@ async function handleLocalStorage(key) {
   if (isKeyVal == 'true' || isKeyVal == null) {
     console.log('setting item to false');
     await client.db.set(String(key), 'false', { setIf: 'not_exist' });
-    // localStorage.setItem(String(key), 'false');
   } else {
     await client.db.set(String(key), 'true');
-    // localStorage.setItem(String(key), 'true');
   }
 }
 
