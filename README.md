@@ -19,5 +19,11 @@ The App development for any Freshworks product follows a common pattern. <mark> 
   <dd>Stay updated by checking out our <a href="https://medium.com/freshworks-developer-blog">blog</a></dd>
 </dl>
 
+👮‍♂️ [CODE OF CONDUCT](./.github/CODE_OF_CONDUCT.MD)
+
+🍟 [CONTRIBUTION GUIDE](./.github/CONTRIBUTING.MD)
+
+🕵️‍♂️ [LICENSE](./.github/LICENSE)
+
 
 <img align="right" vspace=20 width=150 src=".github/assets/freshworks_developers_logo.png">
