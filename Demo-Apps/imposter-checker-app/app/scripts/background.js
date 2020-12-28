@@ -8,12 +8,15 @@ function addListener(classname, handler) {
   document.querySelector(String(classname)).addEventListener('fwChange', handler);
 }
 
-function handleLocalStorage(key) {
-  if (localStorage.getItem(String(key)) == 'true' || localStorage.getItem(String(key)) == null) {
+async function handleLocalStorage(key) {
+  let isKeyVal = await client.db.get(String(key));
+  if (isKeyVal == 'true' || isKeyVal == null) {
     console.log('setting item to false');
-    localStorage.setItem(String(key), 'false');
+    await client.db.set(String(key), 'false', { setIf: 'not_exist' });
+    // localStorage.setItem(String(key), 'false');
   } else {
-    localStorage.setItem(String(key), 'true');
+    await client.db.set(String(key), 'true');
+    // localStorage.setItem(String(key), 'true');
   }
 }
 
@@ -44,10 +47,10 @@ document.onreadystatechange = function() {
 
     onInit.then(getClientObj);
 
-    function getClientObj(_client) {
+    async function getClientObj(_client) {
       var secondQuote;
       client = _client;
-      secondQuote = localStorage.getItem('secondQuote');
+      secondQuote = await client.db.get('secondQuote');
       quoteTwoBtn.innerText = secondQuote;
       saveSettings.addEventListener('click', saveSecondPattern);
 
