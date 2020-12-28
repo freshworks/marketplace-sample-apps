@@ -40,10 +40,7 @@ function startApp() {
   function openModal() {
     var modal = { title: 'Secure Session', template: 'views/background.html' };
     storePattern();
-    client.interface
-      .trigger('showModal', modal)
-      .then(logger)
-      .catch(errorHandler);
+    client.interface.trigger('showModal', modal).then(logger).catch(errorHandler);
   }
 
   function storePattern() {
@@ -62,10 +59,7 @@ function startApp() {
     checkPattern();
 
     function checkPattern() {
-      var [typ1, typ2] = [
-        localStorage.getItem('firstPattern'),
-        localStorage.getItem('secondPattern')
-      ];
+      var [typ1, typ2] = [localStorage.getItem('firstPattern'), localStorage.getItem('secondPattern')];
 
       var patterns = { tp1: String(typ1), tp2: String(typ2) };
 

@@ -1,7 +1,4 @@
-var [apiKey, apiSecret] = [
-  '7f4692a27293d3ad31e3bef477726198',
-  '5fb3d3b43922cf2d12df613b6411d470'
-];
+var [apiKey, apiSecret] = ['7f4692a27293d3ad31e3bef477726198', '5fb3d3b43922cf2d12df613b6411d470'];
 
 var superagent = require('superagent');
 var handleErr = console.error;

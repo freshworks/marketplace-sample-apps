@@ -5,16 +5,11 @@ var errorHandler = console.error;
 var logger = console.log;
 
 function addListener(classname, handler) {
-  document
-    .querySelector(String(classname))
-    .addEventListener('fwChange', handler);
+  document.querySelector(String(classname)).addEventListener('fwChange', handler);
 }
 
 function handleLocalStorage(key) {
-  if (
-    localStorage.getItem(String(key)) == 'true' ||
-    localStorage.getItem(String(key)) == null
-  ) {
+  if (localStorage.getItem(String(key)) == 'true' || localStorage.getItem(String(key)) == null) {
     console.log('setting item to false');
     localStorage.setItem(String(key), 'false');
   } else {
@@ -42,7 +37,7 @@ document.onreadystatechange = function() {
   if (document.readyState == 'complete') startAppRender();
 
   function startAppRender() {
-    logger('app started rendering..')
+    logger('app started rendering..');
     var onInit = app.initialized();
     var quoteTwoBtn = document.querySelector('.quote-two');
     var saveSettings = document.querySelector('.saveSettings');
