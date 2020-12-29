@@ -4,10 +4,9 @@
 
 It is an web app that runs on [Freshdesk](https://freshdesk.com/). Any employee that is expected to solve tickets can use this app to keep their session imposter free. Did you forget logging out? Is your session still active? No worries :-)
 
-### Demo
-![Alt](https://i.ibb.co/4FbDRR1/image.png)
-![Alt](/screenshots/improved%20ux%20-%20page%202.png)
-[See the Screenshot](https://ibb.co/YN5KBB0)
+### Screenshots
+![Imposter detected](./screenshots/imposter-detected-notification.png)
+![Alt](./screenshots/improved-ux-page-2.png)
 
 ## Impact & Innovation
 - For a sales rep. Every Sale in important.
