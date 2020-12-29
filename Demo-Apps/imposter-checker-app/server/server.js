@@ -1,13 +1,23 @@
-var [apiKey, apiSecret] = ['7f4692a27293d3ad31e3bef477726198', '5fb3d3b43922cf2d12df613b6411d470'];
-
 var superagent = require('superagent');
 var handleErr = console.error;
+var apiKey, apiSecret;
+console.log(apiKey, apiSecret)
+
+exports = {
+  getQuote,
+  doesMatch,
+  events: [{ event: 'onAppInstall', callback: 'retrive_apiKey_secret' }],
+  retrive_apiKey_secret: function(payload) {
+    var { apiSecret, apiKey } = payload.iparams;
+    renderData();
+  }
+};
 
 function sendtoFrontend(data) {
   renderData(null, data.text);
 }
 
-function getQuote() {
+function getQuote(apiKey, apiSecret) {
   var quote = superagent
     .get('https://api.typingdna.com/quote')
     .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -17,7 +27,7 @@ function getQuote() {
   quote.then(sendtoFrontend, handleErr);
 }
 
-function doesMatch(patterns) {
+function doesMatch(patterns, apiKey, apiSecret) {
   delete patterns.iparams;
   delete patterns.isInstall;
   console.log(patterns);
@@ -29,8 +39,3 @@ function doesMatch(patterns) {
     .send(patterns);
   matchLevel.then(sendtoFrontend, handleErr);
 }
-
-exports = {
-  getQuote,
-  doesMatch
-};
