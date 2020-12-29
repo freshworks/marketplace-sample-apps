@@ -1,23 +1,22 @@
 var superagent = require('superagent');
 var handleErr = console.error;
-var apiKey, apiSecret;
-console.log(apiKey, apiSecret)
+var [apiKey, apiSecret] = [`<API KEY>`,`<SECRET>`]
 
 exports = {
   getQuote,
-  doesMatch,
-  events: [{ event: 'onAppInstall', callback: 'retrive_apiKey_secret' }],
-  retrive_apiKey_secret: function(payload) {
-    var { apiSecret, apiKey } = payload.iparams;
-    renderData();
-  }
+  doesMatch
 };
 
 function sendtoFrontend(data) {
   renderData(null, data.text);
 }
 
-function getQuote(apiKey, apiSecret) {
+/**
+ * To avoid hardcoding API key, collect the API key and Secret information from iparams.json
+ * They are accessible inside $request instead of superagent
+ */
+
+function getQuote() {
   var quote = superagent
     .get('https://api.typingdna.com/quote')
     .set('Content-Type', 'application/x-www-form-urlencoded')
