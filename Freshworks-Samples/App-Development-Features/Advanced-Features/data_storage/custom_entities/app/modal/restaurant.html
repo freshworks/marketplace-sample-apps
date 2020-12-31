@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <!-- Stylesheets -->
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+</head>
+
+<body>
+
+  <div class="container">
+    <fw-input label="Name" id="name" placeholder="Enter the name of the restaurant" maxlength="64" required
+      state="normal" clear-input></fw-input>
+
+    <fw-input label="Short code" id="short_code"
+      placeholder="Enter the restaurant short code (Ex. BELG for Belgian Waffle Cafe)" maxlength="4" required
+      state="normal" clear-input></fw-input>
+
+    <fw-input label="Description" id="description"
+      placeholder="Enter a description that tells more about what they serve" maxlength="80" required state="normal"
+      clear-input></fw-input>
+
+    <fw-input label="Image URL" id="photo_url" placeholder="Enter an image link. The image should be of 1:1 ratio"
+      required state="normal" clear-input></fw-input>
+
+    <fw-input label="Location" id="location_pin" placeholder="Enter a Google Maps link for the restaurant location"
+      required state="normal" clear-input></fw-input>
+
+    <fw-button onclick="createRestaurant()"> Create </fw-button>
+
+    <fw-toast id="type_toast"></fw-toast>
+
+  </div>
+
+  <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script type="module" src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.js"></script>
+
+  <script>
+    /**
+     * Obtain reference to the 'restaurants' entity
+     **/
+    document.addEventListener('DOMContentLoaded', function () {
+      app.initialized().then(function (client) {
+        window.client = client;
+        var entity = client.db.entity({
+          version: 'v1'
+        });
+        window.restaurant = entity.get("restaurants");
+        client.instance.resize({ height: "425px" });
+      });
+    });
+    /**
+     * Create a restaurant 
+     **/
+    function createRestaurant() {
+      var newRestaurant = {
+        name: getValueOf("name"),
+        short_code: getValueOf("short_code"),
+        description: getValueOf("description"),
+        photo_url: getValueOf("photo_url"),
+        location_pin: getValueOf("location_pin"),
+        status: "1"
+      }
+      // Field Validations
+      var emptyFields = !Object.values(newRestaurant).every(function (i) { return i.length; });
+      if (emptyFields) {
+        document.querySelector('#type_toast').trigger({ type: 'error', content: 'Check if all fields are filled' });
+        return;
+      }
+      // Create the restaurant
+      restaurant.create(newRestaurant)
+        .then(function (data) {
+          // Close the instance and show success popup. Repopulate the entries in the list
+          client.instance.send({
+            message: {
+              action: "notification",
+              type: "success",
+              message: "Restaurant added successfully!"
+            }
+          });
+          client.instance.close();
+        })
+        .catch(function (error) {
+          // Show the error alone 
+          document.querySelector('#type_toast').trigger({ type: 'error', content: 'Something went wrong. Creation failed with the following error "' + error.message + '". Refer  to console for further details' });
+          console.error(error);
+        })
+    }
+
+    /**
+     * Get value of an element based on its id
+     **/
+    function getValueOf(id) {
+      return document.getElementById(id).value;
+    }
+  </script>
+</body>
+
+</html>
