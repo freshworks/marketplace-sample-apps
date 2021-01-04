@@ -3,14 +3,14 @@ var interceptEventCallback = function (event)
 {
   // Use event.helper.getData() to get the event detail.
   var data = event.helper.getData();
-  console.log(event.type, data); 
+  console.log(event.type, data);
   //Sample output: ticket.propertyUpdate { changedAttributes: { status: { old:1, new:2 } } }
 
-  // open a confirm dialog 
+  // open a confirm dialog
   client.interface.trigger('showConfirm', {
-    title: 'Intercept Event', 
-    message: 'Do you want to proceed?', 
-    saveLabel: 'Yes', 
+    title: 'Intercept Event',
+    message: 'Do you want to proceed?',
+    saveLabel: 'Yes',
     cancelLabel: 'No'
   }).then(function(data) {
     if(data.message === 'Yes') {
@@ -23,7 +23,7 @@ var interceptEventCallback = function (event)
       event.helper.fail('Some parameters are missing.');
      }
   }, function(error) {
-    event.helper.fail('Error in showConfirm');
+    event.helper.fail(`Error in showConfirm ${error.message}`);
   });
 };
 
