@@ -1,4 +1,4 @@
-var needle = loadDependency('needle');
+var needle = require('needle');
 
 needle.defaults({
   json: true,
