@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
       Promise.all(STATUS_CODES.map((status) => {
         const url = `https://${domainName}/api/v2/search/tickets?query="status:${status}"`;
         return client.request.get(url, options);
-      })).then((responses) => { console.log('responses'); console.log(responses); render(responses); })
+      })).then((responses) => { render(responses); })
         .catch((err) => {
           showError('API request(s) failed.');
           console.error('API request(s) failed.', err);
@@ -70,8 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
       /** Convert JSON String into Javascript Object */
       const data = responses.map(r => JSON.parse(r.response));
       const max = Math.max(...data.map(d => d.total));
-      console.log('data')
-      console.log(data)
 
       data.forEach((res, i) => {
         const statusBar = document.getElementsByClassName('status-bar');
