@@ -68,7 +68,7 @@ var propertiesUpdatedCallback = function propertiesUpdatedCallback(event) {
   }
 };
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function (client) {
     window.client = client;
     client.events.on("app.activated", function () {

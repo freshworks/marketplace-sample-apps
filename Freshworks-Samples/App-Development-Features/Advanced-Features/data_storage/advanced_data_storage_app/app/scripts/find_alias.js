@@ -5,12 +5,12 @@
  */
 function findAlias() {
   var key = document.getElementById('inputAlias').value;
-  $('#linkContainer').css('display', 'none');
+  document.getElementById("linkContainer").style.display = 'none';
   client.db.get(key)
     .then(function (data) {
-      $('#linkContainer').css('display', 'block');
-      $('#link').text(data.url);
-      $('#updates').text(data.updates);
+      document.getElementById("linkContainer").style.display = 'block';
+      document.getElementById("link").textContent = data.url;
+      document.getElementById("updates").textContent = data.updates;
     }, function (error) {
       console.error('Error: failed to fetch alias');
       console.error(error);
@@ -36,13 +36,12 @@ function showNotify(type, message) {
   });
 }
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function (_client) {
     window.client = _client;
   }).catch(function (error) {
     console.error('Failed to initialize the find_alias modal with error');
     console.error(error);
   });
-
-  $('#btnResolveAlias').click(findAlias);
+  document.getElementById('btnResolveAlias').addEventListener('click', findAlias);
 });

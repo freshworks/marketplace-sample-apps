@@ -95,13 +95,12 @@ function addNewAlias() {
   createAlias(key, value, ttl);
 }
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function (_client) {
     window.client = _client;
   }).catch(function (error) {
     console.error('Failed to initialize the create_alias modal with error');
     console.error(error);
   });
-
-  $('#btnCreateAlias').click(addNewAlias);
+  document.getElementById('btnCreateAlias').addEventListener('click', addNewAlias);
 });

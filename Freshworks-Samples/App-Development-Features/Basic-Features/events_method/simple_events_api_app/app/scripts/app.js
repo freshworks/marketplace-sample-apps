@@ -5,9 +5,7 @@
  * details page, this app displays a success notification.
  */
 
-$(document).ready(function () {
-  init();
-});
+document.addEventListener("DOMContentLoaded", init);
 
 var showNotification = function () {
   const notifyReply = function () {
