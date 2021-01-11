@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function addTimer() {
   var agent = q('#agent').value;
-  var billable = q('#billable').checked;
+  var billable = q('#billable').getAttribute('checked');
   var note = q('#note').value;
   _client.instance.send({ message: { agent, billable, note } });
   show(q('.alert-success'));

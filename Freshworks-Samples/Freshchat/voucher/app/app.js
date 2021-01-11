@@ -1,10 +1,10 @@
 /**
  * Voucher sample app for Freshchat
- * 
- * This app can be invoked from the conversation message editor area. It is available as a 'voucher' icon below the editor. 
+ *
+ * This app can be invoked from the conversation message editor area. It is available as a 'voucher' icon below the editor.
  * Shows the voucher list from an API which can be directly added to the editor area
  */
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(onAppInitializedCallback)
     .catch(function (error) {
@@ -15,7 +15,7 @@ $(document).ready(function () {
 });
 /**
  * Open the voucher dialog once the icon is clicked.
- * @param {*} _client 
+ * @param {*} _client
  */
 function onAppInitializedCallback(_client) {
   window.client = _client;
@@ -35,8 +35,8 @@ function onAppInitializedCallback(_client) {
 
 /**
  * Shows notification to the agent
- * @param {string} type 
- * @param {string} message 
+ * @param {string} type
+ * @param {string} message
  */
 function showNotification(type, message) {
   client.interface.trigger("showNotify", {

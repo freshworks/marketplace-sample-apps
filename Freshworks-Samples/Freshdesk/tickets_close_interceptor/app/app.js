@@ -6,7 +6,7 @@
  * error message.
  */
 
-$(document).ready(appInitialized);
+document.addEventListener("DOMContentLoaded", appInitialized);
 
 function appInitialized() {
     app.initialized().then(client => {

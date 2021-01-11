@@ -21,4 +21,4 @@ function logInstallationParameters() {
   }, errorLogger);
 }
 
-$(document).ready(init);
+document.addEventListener("DOMContentLoaded", init);

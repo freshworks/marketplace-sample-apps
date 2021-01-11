@@ -31,4 +31,4 @@ function errorHandler(err) {
   console.error("Some unfortunate error occured -", err);
 }
 
-$(document).ready(init());
+document.addEventListener("DOMContentLoaded", init);

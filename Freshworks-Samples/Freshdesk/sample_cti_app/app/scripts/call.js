@@ -48,7 +48,7 @@ function callApi(phoneNumber) {
  * @param {String} phoneNumber - phone number to make call
  **/
 function callNumber(phoneNumber) {
-  $('#output').val(phoneNumber)
+  document.getElementById('output').value = phoneNumber;
   callApi(phoneNumber);
 };
 
@@ -81,12 +81,12 @@ function clickToCallEvent(event) {
  * Clears the call state and redirect to dialpad page
  **/
 function endIncompleteCall() {
-  $('#callNotes').val("");
+  document.getElementById('callNotes').value = '';
   activeCallSid = null;
   callTicket = null;
-  $('#onCallScreen').hide();
-  $('#callSummaryScreen').hide();
-  $('#dialpad').show();
+  document.getElementById('onCallScreen').style.display = 'none';
+  document.getElementById('callSummaryScreen').style.display = 'none';
+  document.getElementById('dialpad').style.display = 'block';
 }
 
 /**
