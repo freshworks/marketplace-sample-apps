@@ -36,7 +36,16 @@ function getEntity(entityName) {
   var entity = client.db.entity({
     version: 'v1'
   });
-  return entity.get(entityName);
+  var entityRef = entity.get(entityName);
+  entityRef.schema()
+    .then(function (schema) {
+      return entityRef;
+    })
+    .catch(function (error) {
+      notify("danger", `Error occurred while obtaining reference to '${entityName}' entity`);
+      console.error(error);
+      return null;
+    })
 }
 
 /**
