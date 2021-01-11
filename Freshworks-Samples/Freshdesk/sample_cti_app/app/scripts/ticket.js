@@ -19,7 +19,7 @@ function createTicketWithCallNotes(callEnded) {
           },
           json: ticketDetails,
           method: "POST"
-        }).then((ticketData) => {      // .
+        }).then((ticketData) => {
           console.info('Successfully created ticket in Freshdesk');
           showNotify('success', 'Successfully created a ticket.');
           if (callEnded) {
