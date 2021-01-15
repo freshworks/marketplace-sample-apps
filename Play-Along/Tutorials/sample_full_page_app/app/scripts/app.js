@@ -65,6 +65,12 @@ $(document).ready( () => {
             console.error('API request(s) failed.', err);
           });
     }
+    /**
+     *  @function - converts the Json string to Javascript object 
+     *  and renders it in the form of bar  graph
+     * 
+     * @param - string, responses 
+     */
 
     function render(responses) {
       /** Convert JSON String into Javascript Object */
