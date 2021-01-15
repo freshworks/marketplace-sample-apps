@@ -10,6 +10,10 @@
         "full_page_app": {
           "url": "index.html",
           "icon": "styles/images/aeroplane.svg"
+        },
+        "cti_global_sidebar":{
+          "url":"index.html",
+          "icon":"styles/images/aeroplane.svg"
         }
       },
       "events": {
