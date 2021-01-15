@@ -11,9 +11,64 @@
           "url": "index.html",
           "icon": "styles/images/aeroplane.svg"
         },
-        "cti_global_sidebar":{
-          "url":"index.html",
-          "icon":"styles/images/aeroplane.svg"
+        "cti_global_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "ticket_requester_info": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "ticket_top_navigation": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "ticket_attachment": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "ticket_conversation_editor": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "ticket_background": {
+          "url": "index.html"
+        },
+        "time_entry_background": {
+          "url": "index.html"
+        },
+        "contact_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "contact_background": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "contact_list_background": {
+          "url": "index.html"
+        },
+        "company_background": {
+          "url": "index.html"
+        },
+        "company_list_background": {
+          "url": "index.html"
+        },
+        "new_ticket_requester_info": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "new_ticket_background": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "new_email_requester_info": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
+        },
+        "new_email_background": {
+          "url": "index.html",
+          "icon": "styles/images/aeroplane.svg"
         }
       },
       "events": {
