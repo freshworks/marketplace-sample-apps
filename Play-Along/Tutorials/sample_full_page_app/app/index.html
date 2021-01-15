@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+  </head>
+
+  <body>
+    <!--  This is used to implement styles which 
+      are applicable to all elements of the app.-->
+    <div class="fw-widget-wrapper"></div>
+
+      <div id="domain">Domain: <div class="label">-</div></div>
+
+      <div id="chart">
+
+        <div class="status" data-index="0">
+          <div class="status-label">
+            <div class="status-value">-</div>
+            <span>Open</span>
+          </div>
+          <div class="status-bar"></div>
+        </div>
+        
+        <div class="status" data-index="1">
+          <div class="status-label">
+            <div class="status-value">-</div>
+            <span>Pending</span>
+          </div>
+          <div class="status-bar"></div>
+        </div>
+        
+        <div class="status" data-index="2">
+          <div class="status-label">
+            <div class="status-value">-</div>
+            <span>Resolved</span>
+          </div>
+          <div class="status-bar"></div>
+        </div>
+        
+        <div class="status" data-index="3">
+          <div class="status-label">
+            <div class="status-value">-</div>
+            <span>Closed</span>
+          </div>
+          <div class="status-bar"></div>
+        </div>
+        
+      </div>
+
+      <div id="ticket-list"></div>
+    </div>
+  </body>
+
+</html>
