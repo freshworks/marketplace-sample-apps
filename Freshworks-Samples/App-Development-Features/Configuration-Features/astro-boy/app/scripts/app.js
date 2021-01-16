@@ -1,17 +1,19 @@
 var client;
+var handleErr = console.error;
 // All Free - https://api.publicapis.org/entries
 // Free API - https://official-joke-api.appspot.com/random_joke
 document.onreadystatechange = function () {
   if (document.readyState === 'interactive') renderApp();
-
   async function renderApp() {
-    client = await app.initialized();
-    client.events.on('app.activated', onAppActivate);
+    try {
+      client = await app.initialized();
+      client.events.on('app.activated', onAppActivate);
+    } catch (error) {
+      return handleErr('error details', error);
+    }
   }
 };
 
-function onAppActivate() {}
-
-function handleErr(err) {
-  console.error(`Error occured. Details:`, err);
+function onAppActivate() {
+  
 }
