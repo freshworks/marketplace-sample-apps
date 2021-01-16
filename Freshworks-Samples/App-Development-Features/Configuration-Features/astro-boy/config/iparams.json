@@ -1,6 +1,6 @@
 {
   "hero": {
-    "display_name": "Guess Ben's Full Name",
+    "display_name": "Guess Ben's Last Name",
     "description": "You can answer this!",
     "type": "text",
     "required": true,
@@ -28,7 +28,7 @@
     ],
     "default_value": "Grey Matter",
     "required": false,
-    "description": "Omnitrix is fully charged. Select a alien transformation",
+    "description": "Omnitrix is fully charged. Select a alien transformation"
   },
   "age": {
     "display_name": "What is Ben's Age?",
