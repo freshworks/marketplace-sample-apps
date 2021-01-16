@@ -1,7 +1,8 @@
-## Ben Ten
-> 
+## config app for fdesk
 
-Astroboy is simply a codename chosen for this app that demonstrates following features.
+> This app has sample code to help you know the available app locations and usage of installation parameters in `iparams.json` version.
+
+
 
 <ol>
  <li>App Manifest</li>
