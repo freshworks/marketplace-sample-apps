@@ -28,7 +28,7 @@
     ],
     "default_value": "Grey Matter",
     "required": false,
-    "description": "Omnitrix is fully charged. Select a alien transformation"
+    "description": "Omnitrix is fully charged. Select a alien transformation",
   },
   "age": {
     "display_name": "What is Ben's Age?",
@@ -46,6 +46,7 @@
     "display_name": "Who created omnitrix",
     "description": "Tip: Google it",
     "secure": true,
-    "type": "text"
+    "type": "text",
+    "events": [{ "change": "checkSignature" }]
   }
 }
