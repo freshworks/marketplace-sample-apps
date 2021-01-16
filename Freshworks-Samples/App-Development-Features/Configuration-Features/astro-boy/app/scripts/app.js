@@ -15,6 +15,9 @@ document.onreadystatechange = function () {
 };
 
 async function onAppActivate() {
+  let [questionElement, answerElement] = [document.querySelector('.question'), document.querySelector('.answer')];
   var { response } = await client.request.get('https://official-joke-api.appspot.com/random_joke');
-  console.log(response);
+  var joke = JSON.parse(response);
+  questionElement.innerText = joke.setup;
+  answerElement.innerText = joke.punchline;
 }
