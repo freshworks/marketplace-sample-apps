@@ -1,1 +1,51 @@
-{}
+{
+  "hero": {
+    "display_name": "Guess Ben's Full Name",
+    "description": "You can answer this!",
+    "type": "text",
+    "required": true,
+    "visible": true,
+    "secure": false,
+    "regex": {
+      "alphanumeric": "/^[a-zA-Z0-9]*$/",
+      "alphanumeric-error": "I get confused if spaces are used"
+    }
+  },
+  "omnitrix": {
+    "display_name": "Select a transformation",
+    "type": "dropdown",
+    "options": [
+      "Cannonbolt",
+      "Heatblast",
+      "Four Arms",
+      "Grey Matter",
+      "Jetray",
+      "Humungousaur",
+      "Slapback",
+      "Goop",
+      "Way Big",
+      "Diamond Head"
+    ],
+    "default_value": "Grey Matter",
+    "required": false,
+    "description": "Omnitrix is fully charged. Select a alien transformation"
+  },
+  "age": {
+    "display_name": "What is Ben's Age?",
+    "type": "number"
+  },
+  "creatorDomain": {
+    "display_name": "Who is the creator of Ben 10 series",
+    "type": "domain",
+    "description": "It's Ducan",
+    "type_attributes": {
+      "product": "freshdesk"
+    }
+  },
+  "signature": {
+    "display_name": "Who created omnitrix",
+    "description": "Tip: Google it",
+    "secure": true,
+    "type": "text"
+  }
+}
