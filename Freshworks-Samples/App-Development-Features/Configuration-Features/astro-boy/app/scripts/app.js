@@ -14,6 +14,7 @@ document.onreadystatechange = function () {
   }
 };
 
-function onAppActivate() {
-  
+async function onAppActivate() {
+  var { response } = await client.request.get('https://official-joke-api.appspot.com/random_joke');
+  console.log(response);
 }
