@@ -8,9 +8,11 @@ html {
   box-sizing: inherit;
 }
 
-.fw-widget-wrapper {
+main {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
