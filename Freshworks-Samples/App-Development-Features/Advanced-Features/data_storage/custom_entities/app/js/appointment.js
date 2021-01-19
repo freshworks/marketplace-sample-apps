@@ -164,15 +164,9 @@
       return
     }
     getRestaurantDetails()
-      .then(function (data) {
-        return createTicketForAppointment(data);
-      })
-      .then(function (data) {
-        return createAppointmentRecord(data);
-      })
-      .then(function (data) {
-        return updateRestaurantRecord(data)
-      })
+      .then(createTicketForAppointment)
+      .then(createAppointmentRecord)
+      .then(updateRestaurantRecord)
       .catch(function (error) {
         document.querySelector('#type_toast').trigger({
           type: 'error',
