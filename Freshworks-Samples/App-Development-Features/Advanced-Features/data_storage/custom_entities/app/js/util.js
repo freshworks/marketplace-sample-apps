@@ -1,9 +1,7 @@
 /**
  * Enum for Catalog Status
- * @readonly
- * @enum {object}
  */
-const catalogStatusEnum = {
+const CATALOG_STATUS = {
   "1": {
     status: "Open",
     color: "blue"

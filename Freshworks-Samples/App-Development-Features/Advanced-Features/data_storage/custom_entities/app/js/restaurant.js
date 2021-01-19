@@ -1,3 +1,6 @@
+const catalogStatus = {
+  OPEN: "1"
+}
 /**
  * Obtain reference to the 'restaurants' entity
  **/
@@ -23,7 +26,7 @@ function createRestaurant() {
     description: getValueOf("description"),
     photo_url: getValueOf("photo_url"),
     location_pin: getValueOf("location_pin"),
-    status: "1"
+    status: catalogStatus.OPEN
   }
   // Field Validations
   var emptyFields = !Object.values(newRestaurant).every(function (field) {

@@ -1,7 +1,5 @@
 /**
  * Enum for Catalog Status.
- * @readonly
- * @enum {string}
  */
 const TICKET_STATUS = {
   pending: "3",

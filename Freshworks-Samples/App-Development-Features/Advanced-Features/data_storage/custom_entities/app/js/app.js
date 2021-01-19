@@ -103,7 +103,7 @@ function generateRestaurantList(records) {
                 <b> ${restaurant.display_id}</b>
                 <p>${restaurant.data.description} ...</p>
                 <a href="#">
-                    <fw-label value="${ catalogStatusEnum[restaurant.data.status].status }" color="${ catalogStatusEnum[restaurant.data.status].color }"></fw-label>
+                    <fw-label value="${ CATALOG_STATUS[restaurant.data.status].status }" color="${ CATALOG_STATUS[restaurant.data.status].color }"></fw-label>
                     <fw-button size="mini" style="display:${ restaurant.data.status == '1' ? 'inline': 'none' }" color="secondary" onclick='deleteRestaurant("${restaurant.display_id}","${ escape(restaurant.data.name) }")'> Delete </fw-button>
                 </a>
               </div>
@@ -126,12 +126,12 @@ function filterRestaurants() {
     getAllRestaurants;
   // Check if short code has a value
   if (short_code.length)
-    queryObj = Object.assign({}, queryObj, {
+    queryObj = Object.assign(queryObj, {
       short_code
     })
   // Check if a status value is selected
   if (status != "0")
-    queryObj = Object.assign({}, queryObj, {
+    queryObj = Object.assign(queryObj, {
       status
     })
   // Query object is a simple key value pair if its just one field to filter upon
