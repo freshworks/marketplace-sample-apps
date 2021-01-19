@@ -23,12 +23,9 @@ function handleInstanceInteractions() {
   client.instance.receive(
     function (event) {
       var data = event.helper.getData();
-      switch (data.message.action) {
-        case "notification": {
-          notify(data.message.type, data.message.message);
-          updateView();
-          break;
-        }
+      if (data.message.action == "notification") {
+        notify(data.message.type, data.message.message);
+        updateView();
       }
     }
   );
