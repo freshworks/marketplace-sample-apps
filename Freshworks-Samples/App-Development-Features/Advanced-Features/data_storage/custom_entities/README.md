@@ -21,4 +21,3 @@ Custom Entities       | Uses it to create domain-specific custom objects & recor
 2. Fill the iparams using http://localhost:10001/custom_configs
 3. Append `?dev=true` to the Freshdesk product URL to see the changes. The will appear as a calendar icon in the sidebar
 4. You create restaurants by clicking on the `+` button and schedule appointments by clicking on a particular time-slot in the calendar
-
