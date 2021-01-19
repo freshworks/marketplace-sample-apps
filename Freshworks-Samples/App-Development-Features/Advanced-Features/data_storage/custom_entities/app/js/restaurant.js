@@ -30,31 +30,19 @@ function createRestaurant() {
     return field.length;
   });
   if (emptyFields) {
-    document.querySelector('#type_toast').trigger({
-      type: 'error',
-      content: 'Check if all fields are filled'
-    });
+    notify(`error`, `Check if all fields are filled`);
     return;
   }
   // Create the restaurant
   restaurant.create(newRestaurant)
     .then(function (data) {
       // Close the instance and show success popup. Repopulate the entries in the list
-      client.instance.send({
-        message: {
-          action: "notification",
-          type: "success",
-          message: "Restaurant added successfully!"
-        }
-      });
+      notify(`success`, `Restaurant added successfully!`);
       client.instance.close();
     })
     .catch(function (error) {
       // Show the error alone 
-      document.querySelector('#type_toast').trigger({
-        type: 'error',
-        content: 'Something went wrong. Creation failed with the following error "' + error.message + '". Refer  to console for further details'
-      });
+      notify(`error`, `Something went wrong. Record creation failed with the following error :"${error.message}". Refer  to console for further details`)
       console.error(error);
     })
 }
@@ -64,4 +52,19 @@ function createRestaurant() {
  **/
 function getValueOf(id) {
   return document.getElementById(id).value;
+}
+
+/**
+ * Displays a notification
+ * @param {string} type Type of notification
+ * @param {string} message The message to display in the notification
+ */
+function notify(type, message) {
+  client.instance.send({
+    message: {
+      action: "notification",
+      type,
+      message
+    }
+  });
 }

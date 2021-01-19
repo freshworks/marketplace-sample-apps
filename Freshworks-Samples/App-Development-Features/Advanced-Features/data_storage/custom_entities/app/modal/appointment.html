@@ -20,15 +20,18 @@
 
   <div class="container">
     <fw-input label="Restaurant ID" id="id" placeholder="Enter the ID of the restaurant. Ex: resta-2" maxlength="64"
-      required state="normal" clear-input></fw-input>
+      required state="normal" clear-input>
+    </fw-input>
+
     <span>
       <span class="label">at</span>
       <fw-datepicker id="date" value="2020-11-23" date-format="YYYY-MM-DD"></fw-datepicker>
       <fw-timepicker id="time" value="09:00" interval=60 hour-format="hh:mm"></fw-timepicker>
     </span>
+
     <fw-textarea cols=64 rows=10 label="Notes" id="notes" required> </fw-textarea>
+
     <fw-button onclick="createAppointment()"> Create </fw-button>
-    <fw-toast id="type_toast"></fw-toast>
   </div>
 
   <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>

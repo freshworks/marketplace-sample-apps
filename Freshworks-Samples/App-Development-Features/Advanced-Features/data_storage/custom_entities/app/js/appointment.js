@@ -40,10 +40,7 @@
           });
         })
         .catch(function (error) {
-          document.querySelector('#type_toast').trigger({
-            type: 'error',
-            content: 'Ticket creation step failed!'
-          });
+          notify(`error`, `Ticket creation step failed!`);
           console.error(error);
         })
     });
@@ -72,11 +69,8 @@
           resolve(data);
         })
         .catch(function (error) {
-          // Show the error alone 
-          document.querySelector('#type_toast').trigger({
-            type: 'error',
-            content: 'Something went wrong. Record creation failed with the following error "' + error.message + '". Refer  to console for further details'
-          });
+          // Show the error alone
+          notify(`error`, `Something went wrong. Record creation failed with the following error :"${error.message}". Refer  to console for further details`)
           console.error(error);
           reject(error);
         })
@@ -100,10 +94,7 @@
           resolve(data);
         })
         .catch(function (error) {
-          document.querySelector('#type_toast').trigger({
-            type: 'error',
-            content: 'Updation of restaurant record failed'
-          });
+          notify(`error`, `Updating restaurant record failed`);
           reject(error);
         });
     });
@@ -157,10 +148,7 @@
       booked_slot: parseInt(getValueOf("time").split(":")[0])
     }
     if (newAppointment.restaurant_id.length < 1 && newAppointment.notes < 1) {
-      document.querySelector('#type_toast').trigger({
-        type: 'error',
-        content: 'Check if the fields are properly filled'
-      });
+      notify(`error`, `Check if the fields are properly filled`);
       return
     }
     getRestaurantDetails()
@@ -168,10 +156,7 @@
       .then(createAppointmentRecord)
       .then(updateRestaurantRecord)
       .catch(function (error) {
-        document.querySelector('#type_toast').trigger({
-          type: 'error',
-          content: 'Something went wrong while creating an appointment'
-        });
+        notify(`error`, 'Something went wrong while creating an appointment');
         console.error(error);
       });
   }
@@ -182,4 +167,19 @@
    */
   function getValueOf(id) {
     return document.getElementById(id).value;
+  }
+
+  /**
+   * Displays a notification
+   * @param {string} type Type of notification
+   * @param {string} message The message to display in the notification
+   */
+  function notify(type, message) {
+    client.instance.send({
+      message: {
+        action: "notification",
+        type,
+        message
+      }
+    });
   }
