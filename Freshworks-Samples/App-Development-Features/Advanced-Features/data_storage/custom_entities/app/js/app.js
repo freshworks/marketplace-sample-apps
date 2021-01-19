@@ -103,7 +103,7 @@ function generateRestaurantList(records) {
                 <b> ${restaurant.display_id}</b>
                 <p>${restaurant.data.description} ...</p>
                 <a href="#">
-                    <fw-label value="${ catalogStatus(restaurant.data.status).status }" color="${ catalogStatus(restaurant.data.status).color }"></fw-label>
+                    <fw-label value="${ catalogStatusEnum[restaurant.data.status].status }" color="${ catalogStatusEnum[restaurant.data.status].color }"></fw-label>
                     <fw-button size="mini" style="display:${ restaurant.data.status == '1' ? 'inline': 'none' }" color="secondary" onclick='deleteRestaurant("${restaurant.display_id}","${ escape(restaurant.data.name) }")'> Delete </fw-button>
                 </a>
               </div>

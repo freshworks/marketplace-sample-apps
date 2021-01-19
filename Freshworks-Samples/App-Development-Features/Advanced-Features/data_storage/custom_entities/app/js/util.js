@@ -1,4 +1,24 @@
 /**
+ * Enum for Catalog Status
+ * @readonly
+ * @enum {object}
+ */
+const catalogStatusEnum = {
+  "1": {
+    status: "Open",
+    color: "blue"
+  },
+  "2": {
+    status: "In Progress",
+    color: "yellow"
+  },
+  "3": {
+    status: "Cataloged",
+    color: "green"
+  }
+}
+
+/**
  * The modal or dialog can communicate with the parent to send out notifications or perform other tasks 
  */
 function handleInstanceInteractions() {
@@ -31,27 +51,6 @@ function hashCode(str) {
     colour += ('00' + value.toString(16)).substr(-2);
   }
   return colour;
-}
-
-/**
- * Returns the text and color code associated with a catalog status code. Formatter function
- * @param {string} code Represents the status of cataloging for a particular restaurant. For simplicity sake, 1 -> Open, 2 -> In Progress, 3 -> Complete
- */
-function catalogStatus(code) {
-  switch (code) {
-    case "1":
-      return {
-        status: "Open", color: "blue"
-      };
-    case "2":
-      return {
-        status: "In Progress", color: "yellow"
-      };
-    case "3":
-      return {
-        status: "Cataloged", color: "green"
-      };
-  }
 }
 
 /**

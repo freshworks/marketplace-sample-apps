@@ -63,7 +63,7 @@ function showNewAppointmentModal(date) {
 function createCalendarEventObj(appointment, domain) {
   return {
     id: appointment.display_id,
-    title: appointment.data.restaurant_info + " - " + appointment.data.notes,
+    title: `(${appointment.display_id}) - ${appointment.data.restaurant_info} - ${appointment.data.notes}`,
     start: new Date(Date.parse(appointment.data.appointment_date)).toISOString().split(".")[0],
     backgroundColor: hashCode(appointment.data.restaurant_info),
     extendedProps: {
