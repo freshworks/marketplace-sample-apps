@@ -62,7 +62,7 @@
         status: "1"
       }
       // Field Validations
-      var emptyFields = !Object.values(newRestaurant).every(function (i) { return i.length; });
+      var emptyFields = !Object.values(newRestaurant).every(function (field) { return field.length; });
       if (emptyFields) {
         document.querySelector('#type_toast').trigger({ type: 'error', content: 'Check if all fields are filled' });
         return;

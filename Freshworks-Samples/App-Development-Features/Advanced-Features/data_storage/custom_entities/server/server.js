@@ -20,8 +20,8 @@ exports = {
           ticket_id
         }
       });
-      appointmentRecords.then((i) => {
-        restaurants.get(i.records[0].data.restaurant_id).then((d) => {
+      appointmentRecords.then((appointment) => {
+        restaurants.get(appointment.records[0].data.restaurant_id).then((d) => {
           console.log("Restaurant with matching ticket id ", d.record.data);
           let uObj = d.record.data;
           uObj.status = "3";

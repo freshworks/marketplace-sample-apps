@@ -57,16 +57,17 @@ function showNewAppointmentModal(date) {
 
 /**
  * Creates a new calendar event object that the FullCalendar library expects
- * @param {object} i - Appointment custom object record with account information
+ * @param {object} appointment - Appointment data
+ * @param {string} domain - The FD account domain name from the iparams data 
  */
-function createCalendarEventObj(i) {
+function createCalendarEventObj(appointment, domain) {
   return {
-    id: i.appointment.display_id,
-    title: i.appointment.data.restaurant_info + " - " + i.appointment.data.notes,
-    start: new Date(Date.parse(i.appointment.data.appointment_date)).toISOString().split(".")[0],
-    backgroundColor: hashCode(i.appointment.data.restaurant_info),
+    id: appointment.display_id,
+    title: appointment.data.restaurant_info + " - " + appointment.data.notes,
+    start: new Date(Date.parse(appointment.data.appointment_date)).toISOString().split(".")[0],
+    backgroundColor: hashCode(appointment.data.restaurant_info),
     extendedProps: {
-      ticketUrl: i.domain + "/a/tickets/" + i.appointment.data.ticket_id
+      ticketUrl: domain + "/a/tickets/" + appointment.data.ticket_id
     }
   }
 }

@@ -71,10 +71,7 @@ function loadAppointments(callback) {
     client.iparams.get().then(function (iparam) {
       appointment.getAll().then(function (data) {
         var events = data.records.map(function (appointment) {
-          return createCalendarEventObj({
-            appointment,
-            domain: iparam.domain
-          });
+          return createCalendarEventObj(appointment, iparam.domain);
         });
         callback(events);
       }).catch(function (error) {
@@ -95,19 +92,19 @@ function loadAppointments(callback) {
  * @param {array} records - List of records
  */
 function generateRestaurantList(records) {
-  return records.map(function (i) {
+  return records.map(function (restaurant) {
     return `<li class="list-group-item">
             <div class="row">
               <div class="col-sm-3">
-                <img src='${i.data.photo_url ? i.data.photo_url: "https://i.imgur.com/ZyONF7N.png" }' style='min-width: 100px;' width="100px" height="100px" />
+                <img src='${restaurant.data.photo_url ? restaurant.data.photo_url: "https://i.imgur.com/ZyONF7N.png" }' style='min-width: 100px;' width="100px" height="100px" />
               </div>
               <div class="col-sm-6 ml-2" style='min-width: 350px;' >
-                <h4>${i.data.name}</h4>
-                <b> ${i.display_id}</b>
-                <p>${i.data.description} ...</p>
+                <h4>${restaurant.data.name}</h4>
+                <b> ${restaurant.display_id}</b>
+                <p>${restaurant.data.description} ...</p>
                 <a href="#">
-                    <fw-label value="${ catalogStatus(i.data.status).status }" color="${ catalogStatus(i.data.status).color }"></fw-label>
-                    <fw-button size="mini" style="display:${ i.data.status == '1' ? 'inline': 'none' }" color="secondary" onclick='deleteRestaurant("${i.display_id}","${ escape(i.data.name) }")'> Delete </fw-button>
+                    <fw-label value="${ catalogStatus(restaurant.data.status).status }" color="${ catalogStatus(restaurant.data.status).color }"></fw-label>
+                    <fw-button size="mini" style="display:${ restaurant.data.status == '1' ? 'inline': 'none' }" color="secondary" onclick='deleteRestaurant("${restaurant.display_id}","${ escape(restaurant.data.name) }")'> Delete </fw-button>
                 </a>
               </div>
               <div class="col-sm-3">
