@@ -7,10 +7,17 @@ document.addEventListener('DOMContentLoaded', function () {
   initializeCalendar();
   app.initialized().then(function (client) {
     window.client = client;
-    window.restaurant = getEntity("restaurants");
-    window.appointment = getEntity("appointments");
+    Promise.all([getEntity("restaurants"), getEntity("appointments")])
+      .then(function (entities) {
+        window.restaurant = entities[0];
+        window.appointment = entities[1];
+        updateView();
+      })
+      .catch(function (error) {
+        notify("danger", "Something went wrong while obtaining reference to `restaurants` & `appointments` entity. Check the console for details.");
+        console.error(error);
+      });
     handleInstanceInteractions();
-    updateView();
   });
 });
 
@@ -23,7 +30,7 @@ function showNewRestaurantModal() {
       template: "./modal/restaurant.html"
     })
     .catch(function (error) {
-      notify("danger", "Something went wrong while opening the restaurant modal")
+      notify("danger", "Something went wrong while opening the restaurant modal");
       console.error(error);
     });
 }
@@ -33,19 +40,23 @@ function showNewRestaurantModal() {
  * @param {string} entityName 
  */
 function getEntity(entityName) {
-  var entity = client.db.entity({
-    version: 'v1'
+  return new Promise(function (resolve, reject) {
+    var entity = client.db.entity({
+      version: 'v1'
+    });
+    var entityRef = entity.get(entityName);
+    entityRef.schema()
+      .then(function (schema) {
+        console.info("Entity exists with the following schema");
+        console.info(schema);
+        resolve(entityRef);
+      })
+      .catch(function (error) {
+        notify("danger", `Error occurred while obtaining reference to '${entityName}' entity`);
+        console.error(error);
+        reject(entityRef);
+      })
   });
-  var entityRef = entity.get(entityName);
-  entityRef.schema()
-    .then(function (schema) {
-      return entityRef;
-    })
-    .catch(function (error) {
-      notify("danger", `Error occurred while obtaining reference to '${entityName}' entity`);
-      console.error(error);
-      return null;
-    })
 }
 
 /**
@@ -55,8 +66,7 @@ function loadRestaurants() {
   restaurant.getAll()
     .then(function (data) {
       $("#restaurant_list").html(generateRestaurantList(data.records));
-    })
-    .catch(function (error) {
+    }, function (error) {
       notify("danger", "Something went wrong while loading the restaurants");
       console.error(error);
     })

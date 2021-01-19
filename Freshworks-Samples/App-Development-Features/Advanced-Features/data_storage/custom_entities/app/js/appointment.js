@@ -52,8 +52,9 @@ function createTicketForAppointment(restaurant) {
         });
       })
       .catch(function (error) {
-        notify(`error`, `Ticket creation step failed!`);
+        notify(`danger`, `Ticket creation step failed!`);
         console.error(error);
+        reject(error);
       })
   });
 }
@@ -68,7 +69,7 @@ function createAppointmentRecord(data) {
     newAppointment.restaurant_info = data.restaurant.name;
     // Field Validations
     appointment.create(newAppointment)
-      .then(function (resp) {
+      .then(function () {
         // Close the instance and show success popup. Repopulate the entries in the list
         client.instance.send({
           message: {
@@ -82,7 +83,7 @@ function createAppointmentRecord(data) {
       })
       .catch(function (error) {
         // Show the error alone
-        notify(`error`, `Something went wrong. Record creation failed with the following error :"${error.message}". Refer  to console for further details`)
+        notify(`danger`, `Something went wrong. Record creation failed with the following error :"${error.message}". Refer  to console for further details`)
         console.error(error);
         reject(error);
       })
@@ -102,11 +103,11 @@ function updateRestaurantRecord(data) {
         location_pin: data.restaurant.location_pin,
         status: CATALOG_STATUS.in_progress
       })
-      .then(function (resp) {
+      .then(function () {
         resolve(data);
       })
       .catch(function (error) {
-        notify(`error`, `Updating restaurant record failed`);
+        notify(`danger`, `Updating restaurant record failed`);
         reject(error);
       });
   });
@@ -160,7 +161,7 @@ function createAppointment() {
     booked_slot: parseInt(getValueOf("time").split(":")[0])
   }
   if (newAppointment.restaurant_id.length < 1 && newAppointment.notes < 1) {
-    notify(`error`, `Check if the fields are properly filled`);
+    notify(`danger`, `Check if the fields are properly filled`);
     return
   }
   getRestaurantDetails()
@@ -168,7 +169,7 @@ function createAppointment() {
     .then(createAppointmentRecord)
     .then(updateRestaurantRecord)
     .catch(function (error) {
-      notify(`error`, 'Something went wrong while creating an appointment');
+      notify(`danger`, 'Something went wrong while creating an appointment');
       console.error(error);
     });
 }

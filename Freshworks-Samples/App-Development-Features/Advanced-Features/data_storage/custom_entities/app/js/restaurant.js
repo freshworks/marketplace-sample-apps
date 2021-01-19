@@ -33,19 +33,19 @@ function createRestaurant() {
     return field.length;
   });
   if (emptyFields) {
-    notify(`error`, `Check if all fields are filled`);
+    notify(`danger`, `Check if all fields are filled`);
     return;
   }
   // Create the restaurant
   restaurant.create(newRestaurant)
-    .then(function (data) {
+    .then(function () {
       // Close the instance and show success popup. Repopulate the entries in the list
       notify(`success`, `Restaurant added successfully!`);
       client.instance.close();
     })
     .catch(function (error) {
       // Show the error alone 
-      notify(`error`, `Something went wrong. Record creation failed with the following error :"${error.message}". Refer  to console for further details`)
+      notify(`danger`, `Something went wrong. Record creation failed with the following error :"${error.message}". Refer  to console for further details`)
       console.error(error);
     })
 }

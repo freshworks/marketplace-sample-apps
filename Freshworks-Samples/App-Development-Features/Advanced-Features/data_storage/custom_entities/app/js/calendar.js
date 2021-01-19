@@ -9,6 +9,7 @@ function initializeCalendar() {
     expandRows: true,
     height: '100%',
     selectable: true,
+    eventBorderColor: '#000',
     businessHours: {
       startTime: '06:00',
       endTime: '19:00',
