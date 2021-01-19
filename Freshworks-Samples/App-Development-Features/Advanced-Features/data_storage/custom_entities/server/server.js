@@ -1,13 +1,24 @@
+/**
+ * Enum for Catalog Status.
+ * @readonly
+ * @enum {string}
+ */
+const TICKET_STATUS = {
+  pending: "3",
+  closed: "5"
+};
+
+// Listen to `onTicketUpdate` event. 
 exports = {
   events: [{
     event: 'onTicketUpdate',
     callback: 'onTicketUpdateHandler'
-  }, ],
+  }],
   onTicketUpdateHandler: function (args) {
     console.log("OnTicketUpdate handler fired.");
     let ticket = args.data.ticket;
     console.log("Check if ticket is closed. Ticket status : ", ticket.status);
-    if (ticket.status == "5") {
+    if (ticket.status == TICKET_STATUS.closed) {
       console.log("Ticket has been closed. Updating the respective restaurant record based on the ticket ID filter");
       let ticket_id = ticket.id;
       let entity = $db.entity({
@@ -21,14 +32,14 @@ exports = {
         }
       });
       appointmentRecords.then((appointment) => {
-        restaurants.get(appointment.records[0].data.restaurant_id).then((d) => {
-          console.log("Restaurant with matching ticket id ", d.record.data);
-          let uObj = d.record.data;
-          uObj.status = "3";
-          restaurants.update(d.record.display_id, uObj)
-            .then((r) => {
+        restaurants.get(appointment.records[0].data.restaurant_id).then((restaurant) => {
+          console.log("Restaurant with matching ticket id ", restaurant.record.data);
+          let updatedObj = restaurant.record.data;
+          updatedObj.status = TICKET_STATUS.pending;
+          restaurants.update(restaurant.record.display_id, updatedObj)
+            .then((updatedRecord) => {
               console.log("Update success");
-              console.log(r);
+              console.log(updatedRecord);
             }, (err) => {
               console.error("Update failed!");
               console.error(err);
