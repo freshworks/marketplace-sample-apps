@@ -5,7 +5,7 @@
  * the parent location.
  */
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function (_client) {
     var client = _client;
     client.instance.context().then(function (context) {
@@ -16,8 +16,8 @@ $(document).ready(function () {
       * }"
       * */
 
-      $('#name').val(context.data.name);
-      $('#email').val(context.data.email);
+      document.getElementById("name").value = context.data.name;
+      document.getElementById("email").value = context.data.email;
     });
   });
 });

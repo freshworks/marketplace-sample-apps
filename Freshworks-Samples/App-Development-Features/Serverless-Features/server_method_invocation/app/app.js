@@ -1,10 +1,10 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function () {
 
   app.initialized().then(function(client) {
     window.client = client;
     client.events.on('app.activated', function() {
 
-      jQuery("#smi").click(function() {
+      document.getElementById("smi").addEventListener("click", function() {
         client.request.invoke('makeRequest', {}).then(function(data) {
           console.log('Invocation Success..!!');
           console.log(data);

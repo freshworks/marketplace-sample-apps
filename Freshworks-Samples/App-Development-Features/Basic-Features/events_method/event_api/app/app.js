@@ -31,7 +31,7 @@ function eventCbk(event) {
   console.log('event - ',event.type, event.helper.getData());
 }
 
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(function(_client) {
       window.client = _client;

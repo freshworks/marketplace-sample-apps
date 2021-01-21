@@ -1,4 +1,4 @@
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize client
   app.initialized().then(function(client) {
     client.events.on('app.activated', function() {

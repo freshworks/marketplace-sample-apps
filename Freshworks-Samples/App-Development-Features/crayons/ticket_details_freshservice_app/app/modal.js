@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   const arrayModules = ["associatedTasks", "recentChildTickets", "requesterAssets", "ticketAssets"];//this array is used to check if the data api returns an array of objects
   app.initialized()
     .then(
@@ -14,11 +14,14 @@ $(document).ready(function () {
   * Function binds all events
   */
   function eventListener() {
+    const codeDemoElement = document.getElementById('codeDemo');
 
-    getData($('#codeDemo').val());
+    getData(codeDemoElement.value);
 
-    $("#codeDemo").change(function () {
-      getData($('#codeDemo').val());
+    codeDemoElement.addEventListener('fwChange', function (e) {
+      console.log('change event triggered')
+      console.log(e.target.value);
+      getData(codeDemoElement.value);
     });
   }
 
@@ -44,25 +47,30 @@ $(document).ready(function () {
 
   /**
   * Function to append data into HTML
-  * @param {String} data flattened string 
+  * @param {String} data flattened string
   */
   function displayInHtml(data) {
 
     if (isEmpty(data)) {
-      $('#renderOutput').empty();
-      $('#renderOutput').append("<p> No Content / Unable to Show content </p>");
-      $('#renderOutput').addClass('error');
+      var renderOutputElement = document.getElementById('renderOutput');
+      while (renderOutputElement.firstChild) {
+        renderOutputElement.removeChild(renderOutputElement.firstChild);
+      }
+      document.getElementById('renderOutput').insertAdjacentHTML('beforeend', '<p> No Content / Unable to Show content </p>');
+      document.getElementById('renderOutput').classList.remove('error');
     }
     else {
-
-      $('#renderOutput').removeClass('error').empty();
-      let ul = '<ul id="items"> </ul>';
-      $('#renderOutput').append(ul);
+      var renderOutputElement = document.getElementById('renderOutput');
+      while (renderOutputElement.firstChild) {
+        renderOutputElement.removeChild(renderOutputElement.firstChild);
+      }
+      document.getElementById('renderOutput').classList.remove('error');
+      document.getElementById('renderOutput').insertAdjacentHTML('beforeend', '<ul id="items"> </ul>');
 
       for (const [dataKey, dataValue] of Object.entries(data)) {
         let html = "";
         html += `<ul id="items"> <li class="clearfix"><label class="info">${dataKey}</label><label class="value">${convertToString(dataValue)}</label></li></ul>`;
-        $('#items').append(html);
+        document.getElementById('items').insertAdjacentHTML('beforeend', html);
       }
 
     }
@@ -94,7 +102,7 @@ $(document).ready(function () {
 
   /**
    *  Helper function to check whether an object is empty
-   * @param {Object} obj 
+   * @param {Object} obj
    */
   function isEmpty(obj) {
     for (let prop in obj) {

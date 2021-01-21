@@ -1,6 +1,6 @@
 /**
  * Show modal to schedule a note
- * 
+ *
  */
 function showScheduleNoteModal() {
   client.interface.trigger('showModal', {
@@ -11,26 +11,26 @@ function showScheduleNoteModal() {
 }
 
 /**
- * Show a notification toast 
- * 
+ * Show a notification toast
+ *
  * @param {object} payload - contains type & message
  */
 function notify(payload) {
   client.interface.trigger('showNotify', payload);
 }
 
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function(client) {
     window.client = client;
 
     client.events.on('app.activated', function() {
       showScheduleNoteModal();
     });
-    
+
     /**
      * Handler to receive events from modal instance to perform actions on
-     * client. 
-     * 
+     * client.
+     *
      * @param {object} event - Instance Event
      */
     client.instance.receive(function(event) {

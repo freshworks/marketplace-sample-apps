@@ -1,14 +1,13 @@
   <html>
   <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
-  <script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>
    <script>
     window.frsh_init().then(function(client){
       // sample code for DataApi
       client.data.get('ticket')
-      .then( 
+      .then(
         function(data) {
           console.log('Child:DataApi', data);
-        }, 
+        },
         function(error) {
           console.log('Child:DataApi', error);
         }

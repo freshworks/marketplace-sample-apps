@@ -98,7 +98,7 @@ function addEventListeners() {
     });
 }
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
     app.initialized().then(function (_client) {
         window.client = _client;
         client.events.on('app.activated',
