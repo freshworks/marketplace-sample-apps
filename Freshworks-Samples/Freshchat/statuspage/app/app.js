@@ -1,10 +1,10 @@
 /**
  * Statuspage sample app for Freshchat
  * Shows the component-level status of the Statuspage that we intend to monitor from Freshchat
- * 
- * Note: Assigning client object to window.client or to a global variable is only allowed in the front-end. Using the same approach in the serverless apps is discouraged.  
+ *
+ * Note: Assigning client object to window.client or to a global variable is only allowed in the front-end. Using the same approach in the serverless apps is discouraged.
  */
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(onAppInitializedCallback, function (error) {
     //Log and notify initialization error
     console.error(error);
@@ -14,7 +14,7 @@ $(document).ready(function () {
 /**
  * Prepare the Stauspage API URL, request headers using templating -  'status_page_api_key' is a secure iparam &  'status_page_host' is a normal iparam
  * Poll Statuspage based on 'status_page_poll_frequency' and get the component status
- * @param {Object} _client 
+ * @param {Object} _client
  */
 function onAppInitializedCallback(_client) {
   window.client = _client;
@@ -35,9 +35,9 @@ function onAppInitializedCallback(_client) {
 }
 
 /**
- * Poll statuspage every 'n' seconds using Request API - 
- * @param {string} url 
- * @param {Object} options 
+ * Poll statuspage every 'n' seconds using Request API -
+ * @param {string} url
+ * @param {Object} options
  */
 function checkStatus(url, options) {
   client.request.get(url, options)
@@ -62,14 +62,13 @@ function checkStatus(url, options) {
  * @param {Object} apiResponse - The JSON response from the status page APIs
  */
 function displayStatus(apiResponse) {
-  //try..catch.. is used to handle synchronous errors. 
+  //try..catch.. is used to handle synchronous errors.
   try {
     var responseData = JSON.parse(apiResponse);
-    var template = $('#status_template').html();
+    var template = document.getElementById('status_template').innerHTML;
     var templateScript = Handlebars.compile(template);
     var context = responseData;
-    var html = templateScript(context);
-    $("#status_info").html(html);
+    document.getElementById('status_info').innerHTML = templateScript(context);
   } catch (e) {
     //Log and Notify the user if there's an error
     console.error(e);
@@ -79,8 +78,8 @@ function displayStatus(apiResponse) {
 
 /**
  * Shows notification to the agent
- * @param {string} type 
- * @param {string} message 
+ * @param {string} type
+ * @param {string} message
  */
 function showNotification(type, message) {
   client.interface.trigger("showNotify", {

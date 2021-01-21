@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(function (_client) {
       window.client = _client;
@@ -6,11 +6,11 @@ $(document).ready(function () {
         function () {
           cachedResponse();
         },
-        function (error){
-          console.log('Error',error);
-          notify('info','Unable to Open to App')
+        function (error) {
+          console.log('Error', error);
+          notify('info', 'Unable to Open to App')
         }
-        );
+      );
     });
 });
 
@@ -40,7 +40,7 @@ function cachedResponse() {
     })
     .catch(function (error) {
       console.error("error", error);
-      notify('error', 'Error while attempting to show issue, kindly refresh the page ');      
+      notify('error', 'Error while attempting to show issue, kindly refresh the page ');
     });
 }
 
@@ -58,7 +58,7 @@ function openModal(id) {
 }
 
 /**
- * Function to Genreate ad Render table data 
+ * Function to Genreate ad Render table data
  * @param {Array} table Data to be rendered in the table
  */
 function renderTable(table) {
@@ -70,13 +70,12 @@ function renderTable(table) {
   for (tableItem of table) {
     tableContent += `<tr id=${tableItem.id} onclick="openModal(this.id)"><td>${tableItem.id}</td><td>${tableItem.first_name} ${tableItem.last_name ? tableItem.last_name : ''}</td></tr>`
   }
-  var html = `${tableContainer}${tableHead}${tableBody}${tableContent}</tbody></table>`;
-  $('#table').append(html);
+  document.getElementById('table').insertAdjacentHTML('beforeend', `${tableContainer}${tableHead}${tableBody}${tableContent}</tbody></table>`);
 
 }
 
 /**
- * 
+ *
  * @param {String} status Staus of the Notififcation
  * @param {String} message Message for the notification
  */

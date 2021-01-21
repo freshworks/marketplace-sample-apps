@@ -2,10 +2,10 @@
  * Mailchimp Sample App for Freshchat
  * When the 'email' for a user is added/updated, you can directly add them to Mailchimp from Freshchat
  * For further details, refer README
- * 
- * Note: Assigning client object to window.client or to a global variable is only allowed in the front-end. Using the same approach in the serverless apps is discouraged.  
+ *
+ * Note: Assigning client object to window.client or to a global variable is only allowed in the front-end. Using the same approach in the serverless apps is discouraged.
  */
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(function (_client) {
       window.client = _client;
@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 /**
  * Handles the onSaveEmailClick event - which is triggered when a new email is added or when the existing email is updated
- * @param {*} event 
+ * @param {*} event
  */
 function onSaveEmailClickHandler(event) {
   //Get the email ID
@@ -45,7 +45,7 @@ function onSaveEmailClickHandler(event) {
 
 /**
  * Creates a mailchimp subscriber with the given email and the current user details
- * @param {*} email 
+ * @param {*} email
  */
 function createMailchimpSubscriber(email) {
   //Get the current user details. Use Function.prototype.bind() to pass paramters to the success callback fn.
@@ -60,8 +60,8 @@ function createMailchimpSubscriber(email) {
 
 /**
  * Prepare the request body and headers for the Mailchimp API call
- * @param {*} email 
- * @param {*} data 
+ * @param {*} email
+ * @param {*} data
  */
 function prepareMailchimpCall(email, data) {
   //Prepare the body for Mailchimp API call
@@ -84,8 +84,8 @@ function prepareMailchimpCall(email, data) {
 
 /**
  * Calls mailchimp REST API. Makes use of iparams to construct the request URL
- * @param {*} requestHeaders 
- * @param {*} requestBody 
+ * @param {*} requestHeaders
+ * @param {*} requestBody
  */
 function callMailchimpAPI(requestHeaders, requestBody) {
   //Options paramter for mailchimp API call
@@ -103,7 +103,7 @@ function callMailchimpAPI(requestHeaders, requestBody) {
 
 /**
  * Handles the success callback of Mailchimp API call
- * @param {*} data 
+ * @param {*} data
  */
 function handleSubscriberCreation(data) {
   if (data.status === 200) {
@@ -118,8 +118,8 @@ function handleSubscriberCreation(data) {
 
 /**
  * Shows notification to the agent
- * @param {string} type 
- * @param {string} message 
+ * @param {string} type
+ * @param {string} message
  */
 function showNotification(type, message) {
   client.interface.trigger("showNotify", {

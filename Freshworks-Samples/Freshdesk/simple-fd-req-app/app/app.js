@@ -1,5 +1,5 @@
 /***
- * This app is to demonstrate how to use our request model 
+ * This app is to demonstrate how to use our request model
  * to leverage Freshdesk public API.
  * ISSUE ID : https://github.com/freshdesk/marketplace-sample-apps/issues/56
  * This app will basically detect the logged in user and tells about all the tickets
@@ -15,7 +15,7 @@ function openModal() {
     })
 }
 
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
     app.initialized()
         .then(function(_client) {
           var client = _client;
@@ -29,4 +29,3 @@ $(document).ready( function() {
         });
     });
 });
-

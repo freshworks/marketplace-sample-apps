@@ -9,7 +9,7 @@ function onDocumentReady() {
     .then(function (_client) {
       client = _client;
       let productName =
-        String(client.context.productContext.name) === "freshsales" 
+        String(client.context.productContext.name) === "freshsales"
           ? "Freshsales"
           : "Freshworks CRM";
       productSpecificPage(productName);
@@ -26,4 +26,4 @@ function productSpecificPage(productName) {
         Implementation`;
 }
 
-$(document).ready(onDocumentReady);
+document.addEventListener("DOMContentLoaded", onDocumentReady);
