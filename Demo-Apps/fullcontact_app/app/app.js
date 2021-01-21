@@ -1,21 +1,23 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function (_client) {
     window.client = _client;
     client.events.on('app.activated', function () {
-      $("#disp_profile").hide();
-      $("#submit").on("fwClick", getPerson);
+      document.getElementById('disp_profile').style.display = 'none';
+      document.getElementById('submit').addEventListener('fwClick', getPerson);
       dispProfiles();
     });
-  }, function(err) {
+  }, function (err) {
     console.error(err);
   });
 });
-  
-let obj = { "isDbPresent" : false, "profileId" : null }
+
+let obj = { "isDbPresent": false, "profileId": null }
 
 /* On submit click. Fetch the contact's information from Enrich API */
 function getPerson() {
-  let fullName = $("#full_name").val(), email = $("#email").val(), phone_number = $("#phone_number").val();
+  let fullName = document.getElementById('full_name').value;
+  let email = document.getElementById('email').value;
+  let phone_number = document.getElementById('phone_number').value;
   fetchContactDetails(fullName, email, phone_number).then(function (payload) {
     obj.isDbPresent ? updateProfile(fullName, email, phone_number) : saveProfile(fullName, email, phone_number);
     displayModal(payload);
@@ -50,10 +52,10 @@ function updateProfile(fullName, email, phone_number) {
 }
 
 /* Remove last contact's information */
-function removeProfile (id) {
-  client.db.update("profiles","remove", [id]).then(function(data) {
+function removeProfile(id) {
+  client.db.update("profiles", "remove", [id]).then(function (data) {
     console.info(data);
-  }, function(error) {
+  }, function (error) {
     console.error(error);
   });
 }
@@ -65,26 +67,26 @@ function dispProfiles() {
     obj.profileId = getLastId(dbData);
     let keysArr = Object.keys(dbData).reverse()
     keysArr.forEach(element => {
-      let html = `<div class="lookup">
+      document.getElementById('disp_profile').insertAdjacentHTML('beforeend',
+        `<div class="lookup">
         <label>Full Name</label>
         <p>${dbData[element].fullName}</p>
         <label>Email Address</label>
         <p>${dbData[element].email}</p>
         <label>Phone Number</label>
         <p>${dbData[element].phone_number}</p>
-      </div>`
-    $("#disp_profile").append(html);
+      </div>`);
     });
-    $("#disp_profile").show();
+    document.getElementById('disp_profile').style.display = 'block';
   }, function (error) {
     console.error("Error from Db : ", error);
   });
 }
 
 /* Find the last contact information */
-function getLastId (dbData) {
+function getLastId(dbData) {
   let keys = Object.keys(dbData);
-  if(keys.length >= 5) {
+  if (keys.length >= 5) {
     return keys[0];
   } else {
     /* Number of profiles looked up are less than 5. */
@@ -133,5 +135,3 @@ function displayModal(payload) {
 function displayNotification(type, message) {
   client.interface.trigger('showNotify', { type: type, message: message });
 }
-
-

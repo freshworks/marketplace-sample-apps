@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(function (_client) {
       window.client = _client;
@@ -37,13 +37,12 @@ function getIssue(ticketID, callback) {
       //404 - Indicates that the record is not found in the data storage
       if (error.status === 404) {
         console.error("No issue found for ticket", error);
-        var html = '';
-        html = `<div class="alert alert-warning" role="alert">
-                  <img src="https://media.tenor.com/images/a48310348e788561dc238b6db1451264/tenor.gif" width="120px"/>
-                  <hr>
-                  Seems like there's no issue associated with this ticket. Please created one using 'Create Issue' button
-                </div>`;
-        $('#modal').append(html);
+        document.getElementById('modal').insertAdjacentHTML('beforeend',
+          `<div class="alert alert-warning" role="alert">
+            <img src="https://media.tenor.com/images/a48310348e788561dc238b6db1451264/tenor.gif" width="120px"/>
+            <hr>
+            Seems like there's no issue associated with this ticket. Please created one using 'Create Issue' button
+          </div>`);
       }
     })
 }
@@ -64,9 +63,8 @@ function fetchIssue(issueID) {
     .then(function (data) {
       try {
         data = JSON.parse(data.response);
-        var html = '';
-        html = `<h3> Issue title : ${data.title} </h3><p>Description : ${data.body}</p> <p> Issue Number : ${data.number}</p> <p>Issue ID ; ${data.id}</p><p> Issue Status : ${data.state}</p>`;
-        $('#modal').append(html);
+        document.getElementById('modal').insertAdjacentHTML('beforeend',
+          `<h3> Issue title: ${data.title} </h3><p>Description: ${data.body}</p> <p> Issue Number: ${data.number}</p> <p>Issue ID: ${data.id}</p><p> Issue Status: ${data.state}</p>`);
       } catch (error) {
         console.error("Error while attempting to show issue", error);
       }

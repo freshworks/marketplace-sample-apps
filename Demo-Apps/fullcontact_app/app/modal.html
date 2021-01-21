@@ -1,11 +1,14 @@
 <html>
 
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshchat.css">
-  <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
+  <script
+    src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://static.freshdev.io/fdk/2.0/assets/freshchat.css">
+  <script type="module"
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
+  <script nomodule
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
 </head>
 
 <style>
@@ -23,6 +26,7 @@
     position: relative;
     font-weight: 400;
   }
+
 </style>
 
 <body>
@@ -30,20 +34,23 @@
 </body>
 
 <script>
-  $(document).ready(function () {
+  document.addEventListener("DOMContentLoaded", function () {
     app.initialized().then(function (_client) {
       window.client = _client;
       client.instance.context().then(function (context) {
         let contactDetails = context.data;
-        let labelObj = { "fullName" : "Full Name", "gender" : "Gender", "location" : "Location", "title" : "Title", "organization" : "Organization", "bio" : "Bio"}
+        let labelObj = { "fullName": "Full Name", "gender": "Gender", "location": "Location", "title": "Title", "organization": "Organization", "bio": "Bio" }
         Object.keys(labelObj).forEach(element => {
-          let html = `<div>
+          console.log(contactDetails)
+          console.log(contactDetails[element]);
+          console.log(element);
+          document.querySelector('.container').insertAdjacentHTML('beforeend',
+            `<div>
             <label>${labelObj[element]}</label>
             <p>${contactDetails[element]}</p>
-          </div>`
-          $(".container").append(html);
+          </div>`);
         });
-      },function (error) {
+      }, function (error) {
         console.error(error);
       });
     });
@@ -51,4 +58,3 @@
 </script>
 
 </html>
-

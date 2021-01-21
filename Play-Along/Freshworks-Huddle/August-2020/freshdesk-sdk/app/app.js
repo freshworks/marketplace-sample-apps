@@ -70,7 +70,7 @@ function deleteTicket() {
 };
 
 function searchContact() {
-    client.request.invoke('searchContact', { query: $("#contactEmail").val() }).then(function (data) {
+    client.request.invoke('searchContact', { query: document.getElementById('contactEmail').value }).then(function (data) {
         console.info('Contact search successfull');
         console.info(JSON.stringify(data));
         showNotification('success', `Contact search successful! Search results: ${data.response.data.total}`);
@@ -92,4 +92,4 @@ function onDocumentReady() {
         });
 };
 
-$(document).ready(onDocumentReady);
+document.addEventListener("DOMContentLoaded", onDocumentReady);

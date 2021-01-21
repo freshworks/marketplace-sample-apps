@@ -1,5 +1,5 @@
 function getExperience(experience) {
-    if(experience === 'senior_level') {
+    if (experience === 'senior_level') {
         return 'Senior Level';
     }
 }
@@ -32,20 +32,20 @@ function getJobPost(data) {
     `
 }
 
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
     app.initialized()
-        .then(function(_client) {
-          var client = _client;
-          client.events.on('app.activated',
-            function() {
-                client.data.get('jobPosting')
-                    .then(function(data) {
-                        console.log('JOB DETAILS DATA: ', data)
-                        $('#apptext').html(getJobPost(data))
-                    })
-                    .catch(function(e) {
-                        console.error('something happened unexpectedly', JSON.stringify(e));
-                    });
+        .then(function (_client) {
+            var client = _client;
+            client.events.on('app.activated',
+                function () {
+                    client.data.get('jobPosting')
+                        .then(function (data) {
+                            console.log('JOB DETAILS DATA: ', data);
+                            document.getElementById('apptext').innerHTML = getJobPost(data);
+                        })
+                        .catch(function (e) {
+                            console.error('something happened unexpectedly', JSON.stringify(e));
+                        });
+                });
         });
-    });
 });
