@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <!-- Stylesheets -->
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css'>
+  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row" style="height: 100%;">
+      <div class="col-sm-5">
+        <div class="row">
+          <h1 class="ml-4">
+            <!-- App title -->
+            Filter
+          </h1>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <!-- Restaurant Code filter -->
+            <fw-input label="Restaurant Code" id="short_code_in" icon-left="search"
+              state-text="Ex: BELG for Belgian Waffle Co." clear-input>
+            </fw-input>
+          </div>
+          <div class="col-sm-4">
+            <!-- Also filter by the cataloguing stage -->
+            <fw-select label="Catalog Status" id="catalog_in" value="0"
+              state-text="Represents the stage of the cataloging process">
+              <fw-select-option value="0">All</fw-select-option>
+              <fw-select-option value="1">Open</fw-select-option>
+              <fw-select-option value="2">In progress</fw-select-option>
+              <fw-select-option value="3">Cataloged</fw-select-option>
+            </fw-select>
+          </div>
+          <div class="col-sm-3 mt-2 d-flex">
+            <fw-button color="secondary" onclick="filterRestaurants()" class="button ml-auto ">
+              <fw-icon name="filter"></fw-icon> Filter
+            </fw-button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h3>
+              <!-- App title -->
+              Restaurants
+            </h3>
+          </div>
+          <div class="col-sm-4">
+
+          </div>
+          <div class="col-sm-3 d-flex">
+            <fw-button size="icon" onclick="showNewRestaurantModal()" class="button ml-auto" color="secondary"
+              title="Add a new Restaurant">
+              <fw-icon name="new"></fw-icon>
+            </fw-button>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <!-- List all restaurants -->
+          <ul id="restaurant_list" class="list-group list-group-flush">
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div id='calendar' class="mt-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Javascript libraries  -->
+  <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script type="module" src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.js"></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js'></script>
+  <script src="./js/util.js"></script>
+  <script src="./js/calendar.js"></script>
+  <script src="./js/app.js"></script>
+
+</body>
+
+</html>
