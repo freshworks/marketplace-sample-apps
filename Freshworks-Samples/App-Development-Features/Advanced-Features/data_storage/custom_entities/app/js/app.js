@@ -65,7 +65,7 @@ function getEntity(entityName) {
 function loadRestaurants() {
   restaurant.getAll()
     .then(function (data) {
-      $("#restaurant_list").html(generateRestaurantList(data.records));
+      document.getElementById("restaurant_list").innerHTML = generateRestaurantList(data.records);
     }, function (error) {
       notify("danger", "Something went wrong while loading the restaurants");
       console.error(error);
@@ -168,7 +168,7 @@ function filterRestaurants() {
     getAllRestaurants = restaurant.getAll(qs)
   }
   getAllRestaurants.then(function (data) {
-    $("#restaurant_list").html(generateRestaurantList(data.records));
+    document.getElementById("restaurant_list").innerHTML = generateRestaurantList(data.records);
   });
 }
 
