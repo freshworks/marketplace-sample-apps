@@ -1,6 +1,4 @@
-var client;
-
-document.onreadystatechange = function() {
+document.onreadystatechange = function () {
   if (document.readyState === 'interactive') renderApp();
 
   function renderApp() {
@@ -9,7 +7,7 @@ document.onreadystatechange = function() {
     onInit.then(getClient).catch(handleErr);
 
     function getClient(_client) {
-      client = _client;
+      window.client = _client;
       client.events.on('app.activated', onAppActivate);
     }
   }
