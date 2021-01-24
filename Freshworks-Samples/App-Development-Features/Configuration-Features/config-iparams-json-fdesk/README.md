@@ -1,20 +1,4 @@
-## config app for fdesk
-
-> This app has sample code to help you know the available app locations and usage of installation parameters in `iparams.json` version.
-
-<ol>
- <li>App Manifest</li>
- <li>App Locations</li>
- <li>Configuration Page</li>
-</ol>
-
-### Pending
-
-1. Write README.md page as centered to the standard copy
-2. Add screenshots running both is production and local
-3. Signify secure installation parameters would be explicitly demonstrated in in another sample app.
-
-# config app for freshdesk
+# Config app for freshdesk
 
 ### Description:
 
@@ -22,27 +6,38 @@
 
 ### Screenshots:
 
-_[Screenshots that are not too big/small. Gifs are best. Let's just stick to 3 screenshots at the max]_
+![config page in local development](./screenshots/1.png)
 
-| Features demonstrated | Notes                     |
-| --------------------- | ------------------------- |
-| _Feature Name_        | _How the app is using it_ |
+| Features demonstrated | Notes                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
+| App manifest          | `manifest.json` tells the platform to create necessary tech infra for you app to run |
+| App locations         | there are about 10+ placeholders where app can run. all of them are demonstrated     |
 
 ### Prerequisites:
 
-1. Make sure you have a trial [FreshworksProduct] account created
-2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
-
-_[From point 3, add some of the important prerequisites which are specific to this app]_
+1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
+2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
 
 ### Procedure to run the app:
 
-1. Fill the `iparam_test_data.json` before running the app locally.
-2. Run the app locally using the [`fdk run`](https://developers.freshchat.com/v2/docs/freshworks-cli/#run) command
-3. Append `?dev=true` to the Freshworks product URL to see the changes
+```sh
+# Run the app
+> fdk run
+# app runs on localhost:10001 and sample config page is rendered on /custom_configs
+```
 
-_[ Special instructions for realizing the value out of this app]_
+### Additional Comments (if any)
 
-###### Additional Comments (if any)
+Freshworks CLI currently doesn't support ES6 javascript considering lots of businesses not using latest browser versions. This app uses ES6 so following lint error is seen.
 
--
+```sh
+❯ fdk validate
+Validation failed due to the following issue(s):
+[ERROR] app/scripts/app.js::7: Parsing error: Unexpected token function
+
+> fdk pack
+# this validates first. hence .zip file is not generated
+```
+
+✅ Feedback to support Async/Await is received. Please [upvote](https://community.developers.freshworks.com/t/async-await-not-supported-in-fdk/150/3) to get it prioritised.
