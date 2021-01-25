@@ -14,8 +14,7 @@ function whenInteractive() {
     client.request
       .get(JOKE_ENDPOINT)
       .then(function (data) {
-        response = JSON.parse(data.response);
-        writeJoke(response);
+        writeJoke(JSON.parse(data.response));
       })
       .catch(console.error);
 
