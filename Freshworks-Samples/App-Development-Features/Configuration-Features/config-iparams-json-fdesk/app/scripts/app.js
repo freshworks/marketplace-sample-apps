@@ -1,23 +1,27 @@
-var client;
-var handleErr = console.error;
-// All Free - https://api.publicapis.org/entries
-// Free API - https://official-joke-api.appspot.com/random_joke
-document.onreadystatechange = function () {
-  if (document.readyState === 'interactive') renderApp();
-  async function renderApp() {
-    try {
-      client = await app.initialized();
-      client.events.on('app.activated', onAppActivate);
-    } catch (error) {
-      return handleErr('error details', error);
+const JOKE_ENDPOINT = 'https://official-joke-api.appspot.com/random_joke';
+
+document.onreadystatechange = whenInteractive;
+
+function whenInteractive() {
+  if (document.readyState === 'interactive') {
+    return app.initialized().then(renderJoke).catch(console.error);
+  }
+  function renderJoke(data) {
+    let client = data;
+    let response;
+
+    client.events.on('app.activated', writeJoke);
+    client.request
+      .get(JOKE_ENDPOINT)
+      .then(function (data) {
+        response = JSON.parse(data.response);
+        writeJoke(response);
+      })
+      .catch(console.error);
+
+    function writeJoke(joke = response) {
+      document.querySelector('.question').textContent = joke.setup;
+      document.querySelector('.answer').textContent = joke.punchline;
     }
   }
-};
-
-async function onAppActivate() {
-  let [questionElement, answerElement] = [document.querySelector('.question'), document.querySelector('.answer')];
-  var { response } = await client.request.get('https://official-joke-api.appspot.com/random_joke');
-  var joke = JSON.parse(response);
-  questionElement.innerText = joke.setup;
-  answerElement.innerText = joke.punchline;
 }
