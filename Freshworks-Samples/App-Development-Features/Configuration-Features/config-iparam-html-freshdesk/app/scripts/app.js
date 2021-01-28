@@ -1,3 +1,6 @@
+const JOKE_ENDPOINT = 'https://official-joke-api.appspot.com/random_joke';
+
+
 document.onreadystatechange = function () {
   if (document.readyState === 'interactive') renderApp();
 

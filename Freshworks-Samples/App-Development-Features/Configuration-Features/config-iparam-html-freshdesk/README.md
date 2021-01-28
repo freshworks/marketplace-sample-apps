@@ -1,20 +1,45 @@
-## Your First App
+# Config app for freshdesk (ft. iparams.html)
 
-This app displays the name of the requester of a freshdesk ticket in the ticket_sidebar placeholder
+### Description:
 
-### Files and Folders
-    .
-    ├── README.md                 A file for your future self and developer friends to learn about app
-    ├── app                       A folder to place all assets required for frontend components
-    │   ├── index.html            A landing page for the user to use the app
-    │   ├── scripts               JavaScript to place files frontend components business logic
-    │   │   └── app.js
-    │   └── styles                A folder to place all the styles for app
-    │       ├── images
-    │       │   └── icon.svg
-    │       └── style.css
-    ├── config                    A folder to place all the configuration files
-    │   └── iparams.json
-    └── manifest.json             A JSON file holding meta data for app to run on platform
+`iparams.json` is a easy way for freshworks developers to implement the configuration code by writing as less source-code as possible. See `config/` and get started using it in your apps!
 
-Explore [more of app sample codes](https://github.com/freshworks/marketplace-sample-apps) on the Freshworks github respository.
+### Screenshots:
+
+![config page in local development](./screenshots/1.png)
+
+| Features demonstrated | Notes                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
+| App manifest          | `manifest.json` tells the platform to create necessary tech infra for you app to run |
+
+
+### Prerequisites:
+
+1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
+2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
+
+### Procedure to run the app:
+
+```sh
+# Run the app
+> fdk run
+# app runs on localhost:10001 and sample config page is rendered on /custom_configs
+```
+
+### Additional Comments (if any)
+
+Freshworks CLI currently doesn't support ES6 javascript considering lots of businesses not using latest browser versions. This app uses ES6 so following lint error is seen.
+
+```sh
+❯ fdk validate
+Validation failed due to the following issue(s):
+[ERROR] app/scripts/app.js::7: Parsing error: Unexpected token function
+
+> fdk pack
+# this validates first. hence .zip file is not generated
+```
+
+✅ Feedback to support Async/Await is received. Please [upvote](https://community.developers.freshworks.com/t/async-await-not-supported-in-fdk/150/3) to get it prioritised.
+
+This app uses placeholders for which DOM may not be present. For example, `ticket_background`, `new_email_background`, `new_ticket_background`
