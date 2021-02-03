@@ -1,5 +1,5 @@
 {
-  "platform-version": "2.1",
+  "platform-version": "2.0",
   "product": {
     "freshdesk": {
       "location": {
@@ -8,27 +8,27 @@
           "icon": "styles/images/helicopter.svg"
         },
         "full_page_app": {
-          "url": "index.html",
+          "url": "views/global_sidebar/fullpage.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "cti_global_sidebar": {
-          "url": "index.html",
+          "url": "views/global_sidebar/cti_global_sidebar.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "ticket_requester_info": {
-          "url": "index.html",
+          "url": "views/new_ticket_page/new_ticket_requester_info.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "ticket_top_navigation": {
-          "url": "index.html",
+          "url": "views/ticket_details_page/ticket_top_navigation.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "ticket_attachment": {
-          "url": "index.html",
+          "url": "views/ticket_details_page/ticket_attachment.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "ticket_conversation_editor": {
-          "url": "index.html",
+          "url": "views/ticket_details_page/ticket_conversation_editor.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "ticket_background": {
@@ -55,7 +55,7 @@
           "url": "views/company_list_page/company_list_background.html"
         },
         "new_ticket_requester_info": {
-          "url": "index.html",
+          "url": "views/new_ticket_page/new_ticket_requester_info.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "new_ticket_background": {
@@ -63,7 +63,7 @@
           "icon": "styles/images/aeroplane.svg"
         },
         "new_email_requester_info": {
-          "url": "index.html",
+          "url": "views/new_email_page/new_email_requester_info.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "new_email_background": {
