@@ -32,10 +32,10 @@
           "icon": "styles/images/aeroplane.svg"
         },
         "ticket_background": {
-          "url": "index.html"
+          "url": "views/ticket_details_page/ticket_background.html"
         },
         "time_entry_background": {
-          "url": "index.html"
+          "url": "views/ticket_details_page/time_entry_background.html"
         },
         "contact_sidebar": {
           "url": "index.html",
