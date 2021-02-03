@@ -1,4 +1,5 @@
 # Config app for freshdesk
+> Using iparams.json
 
 ### Description:
 
