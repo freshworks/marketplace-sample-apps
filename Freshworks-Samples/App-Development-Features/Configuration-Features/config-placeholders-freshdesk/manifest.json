@@ -38,7 +38,7 @@
           "url": "views/ticket_details_page/time_entry_background.html"
         },
         "contact_sidebar": {
-          "url": "index.html",
+          "url": "views/contact_details_page/contact_sidebar.html",
           "icon": "styles/images/aeroplane.svg"
         },
         "contact_background": {
