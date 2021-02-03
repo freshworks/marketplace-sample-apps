@@ -1,0 +1,13 @@
+{
+  "platform-version": "2.1",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      }
+    }
+  }
+}
