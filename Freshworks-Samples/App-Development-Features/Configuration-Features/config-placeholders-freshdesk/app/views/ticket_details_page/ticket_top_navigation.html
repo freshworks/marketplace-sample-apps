@@ -7,7 +7,10 @@
     <main>
       <section>
         <picture>
-          <img src="http://placeholder.pics/svg/200/D6FFAA-7CFFD8/5728FF-B3B3B3/ticket_top_navigation" alt="ticket sidebar" />
+          <img
+            src="http://placeholder.pics/svg/200/D6FFAA-7CFFD8/5728FF-B3B3B3/ticket_top_navigation"
+            alt="ticket top navigation"
+          />
         </picture>
       </section>
     </main>
@@ -23,6 +26,7 @@
 
     function getClientAPI(_client) {
       let client = _client;
+      // JS thread of exection invokes callback passed to on. 'app.activated' everytime freshdesk user clicks on the icon
       client.events.on('app.activated', function log() {
         return console.log(`ticket_top_navigation: app is activated 🥁`);
       });
