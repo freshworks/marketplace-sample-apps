@@ -5,11 +5,6 @@
       "location": {
         "ticket_background": {
           "url": "index.html"
-        },
-        "events": {
-          "onTicketCreate": {
-            "handler": "sendRequest"
-          }
         }
       }
     }
