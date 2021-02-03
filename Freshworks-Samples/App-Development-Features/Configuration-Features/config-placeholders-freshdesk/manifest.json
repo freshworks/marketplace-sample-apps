@@ -4,7 +4,7 @@
     "freshdesk": {
       "location": {
         "ticket_sidebar": {
-          "url": "index.html",
+          "url": "views/ticket_details_page/ticket_sidebar.html",
           "icon": "styles/images/helicopter.svg"
         },
         "full_page_app": {
