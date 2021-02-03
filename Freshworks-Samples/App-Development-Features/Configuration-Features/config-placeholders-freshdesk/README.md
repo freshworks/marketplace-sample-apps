@@ -44,7 +44,8 @@ App on Freshworks developer platform can be located in different placeholders. S
 ```sh
 # Run the app
 > fdk run
-# app runs on localhost:10001 and sample config page is rendered on /custom_configs
+# You will need to append ?dev=true in the URL on every page.
+# see browser console for a log from relavant app placeholder
 ```
 
 ### Additional Comments (if any)
