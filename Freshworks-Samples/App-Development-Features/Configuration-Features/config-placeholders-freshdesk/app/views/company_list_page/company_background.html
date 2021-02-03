@@ -1,11 +1,15 @@
 <html>
   <head>
     <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-  </head>
+ </head>
 
   <body>
     <main>
-      <p>app doesn't have ui</p>
+      <section>
+        <picture
+          ><img src="http://placeholder.pics/svg/200/D6FFAA-7CFFD8/5728FF-B3B3B3/ticket_sidebar" alt="ticket sidebar" />
+        </picture>
+      </section>
     </main>
   </body>
   <script>
@@ -20,7 +24,7 @@
     function getClientAPI(_client) {
       let client = _client;
       client.events.on('app.activated', function log() {
-        return console.log(`company_background placeholder: app is activated 🥁`);
+        return console.log(`app is activated 🥁`);
       });
     }
   </script>
