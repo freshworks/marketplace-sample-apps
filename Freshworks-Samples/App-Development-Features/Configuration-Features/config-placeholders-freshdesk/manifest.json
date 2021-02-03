@@ -70,11 +70,6 @@
           "url": "views/new_email_page/new_email_background.html",
           "icon": "styles/images/aeroplane.svg"
         }
-      },
-      "events": {
-        "onTicketCreate": {
-          "handler": "sendRequest"
-        }
       }
     }
   }
