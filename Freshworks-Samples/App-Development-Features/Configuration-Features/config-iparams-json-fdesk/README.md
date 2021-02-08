@@ -1,4 +1,5 @@
 # Config app for freshdesk
+
 > Using iparams.json
 
 ### Description:
@@ -21,6 +22,7 @@ This app also demonstrates making secure API calls without exposing API key from
 
 1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
 2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
+3. Get an free API key from [The Cat API](https://thecatapi.com/), if you want check secure iparams in action.
 
 ### Procedure to run the app:
 
@@ -47,9 +49,9 @@ Validation failed due to the following issue(s):
 
 ℹThis app uses placeholders for which DOM may not be present. For example, `ticket_background`, `new_email_background`, `new_ticket_background`
 
+ℹThe following code snippet describes a function `checkSignature` that gets triggered as soon as user enters an text in `signature` iparam in `iparams.json`. Caveat here is if you use interpolated string `` ` `` instead of `'` the installation will fail with error 'Validation failed.' and highlights `signature` field.
 
-ℹThe following code snippet describes a function `checkSignature` that gets triggered as soon as user enters an text in `signature` iparam in `iparams.json`. Caveat here is if you use interpolated string ``` ` ``` instead of `'` the installation will fail with error 'Validation failed.' and highlights `signature` field.
-``` js
+```js
 // iparams.js
 function checkSignature(sign) {
   return sign.toLowerCase() == 'azmuth' ? 'Correct Signature' : 'Wrong Signature';
