@@ -1,7 +1,7 @@
-const APIKEY = '2586e690-54ce-43e1-a934-692cbe5c6a97';
 const URL = 'https://api.thecatapi.com/v1/images/search';
 
 document.onreadystatechange = whenInteractive;
+document.querySelector('.getBtn').onclick = makeAPIcall;
 
 function whenInteractive() {
   if (document.readyState === 'interactive') {
@@ -18,14 +18,15 @@ function getClientAPI(_client) {
 function makeAPIcall() {
   var options = {
     headers: {
-      'x-api-key': APIKEY
+      'x-api-key': `<%= iparam.api_key %>` // substitution happens by platform
     }
   };
 
   client.request
     .get(URL, options)
-    .then(function (data) {
-      console.log(data);
+    .then(function ({ response }) {
+      let imageURL = JSON.parse(response)[0].url;
+      document.querySelector('.catpicture').src = imageURL;
     })
     .catch(console.error);
 }

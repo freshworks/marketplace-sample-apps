@@ -1,0 +1,14 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+main {
+  display: flex;
+  flex-flow: column wrap;
+}
