@@ -10,8 +10,11 @@ This app also demonstrates making secure API calls without exposing API key from
 
 ### Screenshots:
 
+#### In Local Development
 ![config page in local development](./screenshots/1.png)
 
+#### In Production
+![config page in production](./screenshots/2.png)
 | Features demonstrated | Notes                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------ |
 | _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
