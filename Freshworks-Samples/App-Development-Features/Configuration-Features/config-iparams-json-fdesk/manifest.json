@@ -3,8 +3,9 @@
   "product": {
     "freshdesk": {
       "location": {
-        "ticket_background": {
-          "url": "index.html"
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "images/helicopter.svg"
         }
       }
     }

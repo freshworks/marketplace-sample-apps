@@ -11,6 +11,12 @@
       "alphanumeric-error": "I get confused if spaces are used"
     }
   },
+  "api_key": {
+    "display_name": "thecatapi.com apikey",
+    "description": "this sample uses apikey from docs.thecatapi.com to render cat photo in ticket_sidebar",
+    "secure": true,
+    "type": "text"
+  },
   "omnitrix": {
     "display_name": "Select a transformation",
     "type": "dropdown",
