@@ -44,3 +44,12 @@ Validation failed due to the following issue(s):
 ✅ Feedback to support Async/Await is received. Please [upvote](https://community.developers.freshworks.com/t/async-await-not-supported-in-fdk/150/3) to get it prioritised.
 
 This app uses placeholders for which DOM may not be present. For example, `ticket_background`, `new_email_background`, `new_ticket_background`
+
+
+The following code snippet describes a function `checkSignature` that gets triggered as soon as user enters an text in `signature` iparam in `iparams.json`. Caveat here is if you use interpolated string ``` ` ``` instead of `'` the installation will fail with error 'Validation failed.' and highlights `signature` field.
+``` js
+// iparams.js
+function checkSignature(sign) {
+  return sign.toLowerCase() == 'azmuth' ? 'Correct Signature' : 'Wrong Signature';
+}
+```

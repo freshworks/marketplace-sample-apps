@@ -7,15 +7,16 @@
     "visible": true,
     "secure": false,
     "regex": {
-      "alphanumeric": "/^[a-zA-Z0-9]*$/",
-      "alphanumeric-error": "I get confused if spaces are used"
+      "alphanumeric": "^[a-zA-Z0-9_]*$",
+      "alphanumeric-error": "Name validation failed"
     }
   },
   "api_key": {
     "display_name": "thecatapi.com apikey",
     "description": "this sample uses apikey from docs.thecatapi.com to render cat photo in ticket_sidebar",
     "secure": true,
-    "type": "text"
+    "type": "text",
+    "required": true
   },
   "omnitrix": {
     "display_name": "Select a transformation",
@@ -41,9 +42,9 @@
     "type": "number"
   },
   "creatorDomain": {
-    "display_name": "Who is the creator of Ben 10 series",
+    "display_name": "Who is creator of Ben 10 cartoon series",
     "type": "domain",
-    "description": "It's Ducan",
+    "description": "devrel",
     "type_attributes": {
       "product": "freshdesk"
     }
@@ -51,8 +52,11 @@
   "signature": {
     "display_name": "Who created omnitrix",
     "description": "Tip: Google it",
-    "secure": true,
     "type": "text",
-    "events": [{ "change": "checkSignature" }]
+    "events": [
+      {
+        "change": "checkSignature"
+      }
+    ]
   }
 }
