@@ -6,6 +6,10 @@
         "ticket_sidebar": {
           "url": "index.html",
           "icon": "images/helicopter.svg"
+        },
+        "full_page_app": {
+          "url": "test.html",
+          "icon": "images/helicopter.svg"
         }
       }
     }

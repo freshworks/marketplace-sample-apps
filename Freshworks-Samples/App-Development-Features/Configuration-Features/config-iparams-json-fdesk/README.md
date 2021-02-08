@@ -5,6 +5,8 @@
 
 `iparams.json` is a easy way for freshworks developers to implement the configuration code by writing as less source-code as possible. See `config/` and get started using it in your apps!
 
+This app also demonstrates making secure API calls without exposing API key from the frontend.
+
 ### Screenshots:
 
 ![config page in local development](./screenshots/1.png)
