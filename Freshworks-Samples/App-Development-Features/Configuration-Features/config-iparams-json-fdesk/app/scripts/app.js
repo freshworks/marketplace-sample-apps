@@ -1,5 +1,4 @@
 document.onreadystatechange = whenInteractive;
-document.querySelector('.getBtn').onclick = makeAPIcall;
 
 function whenInteractive() {
   if (document.readyState === 'interactive') {
@@ -17,15 +16,15 @@ function makeAPIcall() {
   const URL = 'https://<%= iparam.creatorDomain %>.freshdesk.com/api/v2/contacts';
   var options = {
     headers: {
-      'Authorization': `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform
+      Authorization: `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform
       'Content-Type': 'application/json'
     }
   };
 
-  console.log('url', URL, 'optoins', options);
   client.request
     .get(URL, options)
     .then(function ({ response }) {
+      document.querySelector('pre').textContent(response);
       console.log(response);
     })
     .catch(console.error);

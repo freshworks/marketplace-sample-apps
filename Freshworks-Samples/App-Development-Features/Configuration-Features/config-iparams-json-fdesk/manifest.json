@@ -3,7 +3,7 @@
   "product": {
     "freshdesk": {
       "location": {
-        "ticket_sidebar": {
+        "ticket_conversation_editor": {
           "url": "index.html",
           "icon": "images/helicopter.svg"
         }
