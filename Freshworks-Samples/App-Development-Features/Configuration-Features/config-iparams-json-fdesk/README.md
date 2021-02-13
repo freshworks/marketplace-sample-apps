@@ -10,10 +10,13 @@ This app also demonstrates making secure API calls without exposing API key from
 
 ### Screenshots:
 
-#### In Local Development
+### In Local Development
 ![config page in local development](./screenshots/1.png)
 
-#### In Production
+#### Secure iparams.json getting contacts data
+![make secure api calls and get api data](./screenshots/v3.png)
+
+### In Production
 ![config page in production](./screenshots/2.png)
 | Features demonstrated | Notes                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------ |
@@ -25,7 +28,7 @@ This app also demonstrates making secure API calls without exposing API key from
 
 1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
 2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
-3. Get an free API key from [The Cat API](https://thecatapi.com/), if you want check secure iparams in action.
+3. Get [Freshdesk API key](https://support.freshdesk.com/support/solutions/articles/215517). After you install the app, you'd notice contacts are being rendered in `ticket_conversation_editor` placeholder.
 
 ### Procedure to run the app:
 
