@@ -24,8 +24,11 @@ function makeAPIcall() {
   client.request
     .get(URL, options)
     .then(function ({ response }) {
-      document.querySelector('pre').textContent(response);
-      console.log(response);
+      let contacts = JSON.parse(response);
+      document.body.insertAdjacentHTML('beforebegin', '<h2>Listing contacts</h2>');
+      contacts.forEach(function renderContact({ name }) {
+        return document.body.insertAdjacentHTML('afterbegin', `${name}<br>`);
+      });
     })
     .catch(console.error);
 }
