@@ -1,5 +1,3 @@
-const URL = 'https://api.thecatapi.com/v1/images/search';
-
 document.onreadystatechange = whenInteractive;
 document.querySelector('.getBtn').onclick = makeAPIcall;
 
@@ -16,17 +14,19 @@ function getClientAPI(_client) {
 }
 
 function makeAPIcall() {
+  const URL = 'https://<%= iparam.creatorDomain %>.freshdesk.com/api/v2/contacts';
   var options = {
     headers: {
-      'x-api-key': `<%= iparam.api_key %>` // substitution happens by platform
+      'Authorization': `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform
+      'Content-Type': 'application/json'
     }
   };
 
+  console.log('url', URL, 'optoins', options);
   client.request
     .get(URL, options)
     .then(function ({ response }) {
-      let imageURL = JSON.parse(response)[0].url;
-      document.querySelector('.catpicture').src = imageURL;
+      console.log(response);
     })
     .catch(console.error);
 }

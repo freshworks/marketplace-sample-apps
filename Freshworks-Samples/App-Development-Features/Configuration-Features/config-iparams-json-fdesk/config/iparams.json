@@ -12,8 +12,8 @@
     }
   },
   "api_key": {
-    "display_name": "thecatapi.com apikey",
-    "description": "this sample uses apikey from docs.thecatapi.com to render cat photo in ticket_sidebar",
+    "display_name": "Freshdesk apikey",
+    "description": "freshdesk API requires app calls to include API keys in all of their requests",
     "secure": true,
     "type": "text",
     "required": true
