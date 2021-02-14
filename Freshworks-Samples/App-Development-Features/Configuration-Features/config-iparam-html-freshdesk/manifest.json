@@ -1,11 +1,11 @@
 {
-  "platform-version": "2.1",
+  "platform-version": "2.0",
   "product": {
     "freshdesk": {
-      "location": {},
-      "events": {
-        "onTicketCreate": {
-          "handler": "sendRequest"
+      "location": {
+        "ticket_conversation_editor": {
+          "url": "index.html",
+          "icon": "images/helicopter.svg"
         }
       }
     }
