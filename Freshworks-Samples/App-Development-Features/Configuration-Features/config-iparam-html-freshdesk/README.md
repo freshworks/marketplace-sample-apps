@@ -13,7 +13,6 @@
 | _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
 | App manifest          | `manifest.json` tells the platform to create necessary tech infra for you app to run |
 
-
 ### Prerequisites:
 
 1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
