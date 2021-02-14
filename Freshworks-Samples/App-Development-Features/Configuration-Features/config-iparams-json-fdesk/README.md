@@ -1,14 +1,23 @@
 # Config app for freshdesk
+
 > Using iparams.json
 
 ### Description:
 
 `iparams.json` is a easy way for freshworks developers to implement the configuration code by writing as less source-code as possible. See `config/` and get started using it in your apps!
 
+This app also demonstrates making secure API calls without exposing API key from the frontend.
+
 ### Screenshots:
 
+### In Local Development
 ![config page in local development](./screenshots/1.png)
 
+#### Secure iparams.json getting contacts data
+![make secure api calls and get api data](./screenshots/v3.png)
+
+### In Production
+![config page in production](./screenshots/2.png)
 | Features demonstrated | Notes                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------ |
 | _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
@@ -19,6 +28,7 @@
 
 1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
 2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
+3. Get [Freshdesk API key](https://support.freshdesk.com/support/solutions/articles/215517). After you install the app, you'd notice contacts are being rendered in `ticket_conversation_editor` placeholder.
 
 ### Procedure to run the app:
 
@@ -43,4 +53,15 @@ Validation failed due to the following issue(s):
 
 ✅ Feedback to support Async/Await is received. Please [upvote](https://community.developers.freshworks.com/t/async-await-not-supported-in-fdk/150/3) to get it prioritised.
 
-This app uses placeholders for which DOM may not be present. For example, `ticket_background`, `new_email_background`, `new_ticket_background`
+ℹThis app uses placeholders for which DOM may not be present. For example, `ticket_background`, `new_email_background`, `new_ticket_background`
+
+ℹThe following code snippet describes a function `checkSignature` that gets triggered as soon as user enters an text in `signature` iparam in `iparams.json`. Caveat here is if you use interpolated string `` ` `` instead of `'` the installation will fail with error 'Validation failed.' and highlights `signature` field.
+
+```js
+// iparams.js
+function checkSignature(sign) {
+  return sign.toLowerCase() == 'azmuth' ? 'Correct Signature' : 'Wrong Signature';
+}
+```
+
+ℹ For the regex validation `iparams.json` should mention the value to be `^[a-zA-Z0-9_]*$` instead of `/^[a-zA-Z0-9_]*$/g`

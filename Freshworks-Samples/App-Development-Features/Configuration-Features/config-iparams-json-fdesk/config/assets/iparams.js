@@ -11,6 +11,5 @@ document.onreadystatechange = function () {
 };
 
 function checkSignature(sign) {
-  var alienName = utils.get('omnitrix');
-  return sign.toLowerCase() == 'azmuth' ? `Transformed into ${alienName}` : `Wrong signature`;
+  return sign.toLowerCase() == 'azmuth' ? 'afsd' : 'Wrong signature';
 }
