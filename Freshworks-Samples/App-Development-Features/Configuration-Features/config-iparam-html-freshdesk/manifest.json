@@ -3,9 +3,9 @@
   "product": {
     "freshdesk": {
       "location": {
-        "ticket_conversation_editor": {
+        "full_page_app": {
           "url": "index.html",
-          "icon": "images/helicopter.svg"
+          "icon": "images/aeroplane.svg"
         }
       }
     }
