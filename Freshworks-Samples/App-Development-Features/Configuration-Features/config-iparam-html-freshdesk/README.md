@@ -1,8 +1,8 @@
-# Config app for freshdesk (ft. iparams.html)
+# Configuration page for freshdesk (ft. iparams.html)
 
 ### Description:
 
-`iparams.json` is a easy way for freshworks developers to implement the configuration code by writing as less source-code as possible. See `config/` and get started using it in your apps!
+`iparams.html` allows you to write html, css and js code to build configuration page as per your needs of the app. See `config/` and get started using it in your apps!
 
 ### Screenshots:
 
@@ -28,17 +28,4 @@
 
 ### Additional Comments (if any)
 
-Freshworks CLI currently doesn't support ES6 javascript considering lots of businesses not using latest browser versions. This app uses ES6 so following lint error is seen.
 
-```sh
-❯ fdk validate
-Validation failed due to the following issue(s):
-[ERROR] app/scripts/app.js::7: Parsing error: Unexpected token function
-
-> fdk pack
-# this validates first. hence .zip file is not generated
-```
-
-✅ Feedback to support Async/Await is received. Please [upvote](https://community.developers.freshworks.com/t/async-await-not-supported-in-fdk/150/3) to get it prioritised.
-
-This app uses placeholders for which DOM may not be present. For example, `ticket_background`, `new_email_background`, `new_ticket_background`
