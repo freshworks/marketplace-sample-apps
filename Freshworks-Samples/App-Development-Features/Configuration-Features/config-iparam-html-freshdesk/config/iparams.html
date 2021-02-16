@@ -11,29 +11,54 @@
   <body>
     <h3>
       Configuration page built using
-      <pre>iparams.html</pre>
+      <code>iparams.html</code>
     </h3>
-    <fw-input label="Guess Ben's Last Name" icon-right="contact" placeholder="Try to google search" autocomplete='on'></fw-input>
-    <fw-input
-      label="Freshdesk API Key"
-      icon-right="magic-wand"
-      placeholder="Freshdesk Portal > Profile > Copy API Key"
-      required='true'
-    ></fw-input>
-    <fw-dropdown-button label="Select a Transformation">
-      <div slot="dropdown-options">
-        <option id="1" value="Cannonbolt">Cannonbolt</option>
-        <option id="2" value="Heatblast">Heatblast</option>
-        <option id="3" value="Four Arms">Four Arms</option>
-        <option id="4" value="Grey matter">Grey matter</option>
-        <option id="5" value="Jetray">Jetray</option>
-        <option id="6" value="Humungousaur">Humungousaur</option>
-        <option id="7" value="Slapback">Slapback</option>
-        <option id="8" value="Goop">Goop</option>
-        <option id="9" value="Way Big">Way Big</option>
-        <option id="10" value="Diamond Head">Diamond Head</option>
-      </div>
-    </fw-dropdown-button>
-    <fw-input></fw-input>
+    <main class="container">
+      <fw-input
+        label="Guess Ben's Last Name"
+        icon-right="contact"
+        placeholder="Try to google search"
+        autocomplete="on"
+        maxlength="25"
+      ></fw-input>
+
+      <fw-input
+        label="Freshdesk API Key"
+        icon-right="magic-wand"
+        placeholder="Freshdesk Portal > Profile > Copy API Key"
+        required="true"
+        minlength="5"
+        size="30"
+      ></fw-input>
+
+      <fw-label value="Alien transformation" color="grey" class="item"></fw-label><br />
+      <fw-dropdown-button label="Select a Transformation">
+        <div slot="dropdown-options">
+          <option id="1" value="Cannonbolt">Cannonbolt</option>
+          <option id="2" value="Heatblast">Heatblast</option>
+          <option id="3" value="Four Arms">Four Arms</option>
+          <option id="4" value="Grey matter">Grey matter</option>
+          <option id="5" value="Jetray">Jetray</option>
+          <option id="6" value="Humungousaur">Humungousaur</option>
+          <option id="7" value="Slapback">Slapback</option>
+          <option id="8" value="Goop">Goop</option>
+          <option id="9" value="Way Big">Way Big</option>
+          <option id="10" value="Diamond Head">Diamond Head</option>
+        </div>
+      </fw-dropdown-button>
+      <br /><br />
+      <fw-label value="Pick a range" color="grey"></fw-label>
+      <fw-datepicker placeholder="range" mode="range"></fw-datepicker>
+
+      <fw-input required="true" type="text" icon-left="items" label="Subdomain" size="30"></fw-input>
+    </main>
+
+    <script>
+      function postConfigs(params) {}
+
+      function getConfigs(params) {}
+
+      function validate(params) {}
+    </script>
   </body>
 </html>

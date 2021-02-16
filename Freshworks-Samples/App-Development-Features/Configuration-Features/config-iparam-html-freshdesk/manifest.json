@@ -5,7 +5,7 @@
       "location": {
         "full_page_app": {
           "url": "index.html",
-          "icon": "images/aeroplane.svg"
+          "icon": "styles/images/aeroplane.svg"
         }
       }
     }
