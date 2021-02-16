@@ -6,8 +6,6 @@
 
 ### Screenshots:
 
-![config page in local development](./screenshots/1.png)
-
 | Features demonstrated | Notes                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------ |
 | _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
@@ -27,5 +25,3 @@
 ```
 
 ### Additional Comments (if any)
-
-
