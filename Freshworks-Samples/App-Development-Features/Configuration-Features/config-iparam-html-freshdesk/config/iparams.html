@@ -6,20 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
     <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/iparams.css" />
   </head>
   <body>
+    <main>
     <h3>
       Configuration page built using
       <code>iparams.html</code>
     </h3>
-    <main class="container">
+      <section class="side"></section>
       <fw-input
         label="Guess Ben's Last Name"
         icon-right="contact"
         placeholder="Try to google search"
         autocomplete="on"
         maxlength="25"
+        class="text-field"
       ></fw-input>
 
       <fw-input
@@ -29,28 +31,32 @@
         required="true"
         minlength="5"
         size="30"
+        class="secure-field"
       ></fw-input>
 
-      <fw-label value="Alien transformation" color="grey" class="item"></fw-label><br />
-      <fw-dropdown-button label="Select a Transformation">
-        <div slot="dropdown-options">
-          <option id="1" value="Cannonbolt">Cannonbolt</option>
-          <option id="2" value="Heatblast">Heatblast</option>
-          <option id="3" value="Four Arms">Four Arms</option>
-          <option id="4" value="Grey matter">Grey matter</option>
-          <option id="5" value="Jetray">Jetray</option>
-          <option id="6" value="Humungousaur">Humungousaur</option>
-          <option id="7" value="Slapback">Slapback</option>
-          <option id="8" value="Goop">Goop</option>
-          <option id="9" value="Way Big">Way Big</option>
-          <option id="10" value="Diamond Head">Diamond Head</option>
-        </div>
-      </fw-dropdown-button>
-      <br /><br />
-      <fw-label value="Pick a range" color="grey"></fw-label>
-      <fw-datepicker placeholder="range" mode="range"></fw-datepicker>
+      <section class="select-alien">
+        <fw-label value="Alien transformation" color="grey"></fw-label><br />
+        <fw-dropdown-button label="Select a Transformation">
+          <div slot="dropdown-options">
+            <option id="1" value="Cannonbolt">Cannonbolt</option>
+            <option id="2" value="Heatblast">Heatblast</option>
+            <option id="3" value="Four Arms">Four Arms</option>
+            <option id="4" value="Grey matter">Grey matter</option>
+            <option id="5" value="Jetray">Jetray</option>
+            <option id="6" value="Humungousaur">Humungousaur</option>
+            <option id="7" value="Slapback">Slapback</option>
+            <option id="8" value="Goop">Goop</option>
+            <option id="9" value="Way Big">Way Big</option>
+            <option id="10" value="Diamond Head">Diamond Head</option>
+          </div>
+        </fw-dropdown-button>
+      </section>
 
-      <fw-input required="true" type="text" icon-left="items" label="Subdomain" size="30"></fw-input>
+      <section class="date-domain">
+        <fw-label value="Pick a range" color="grey"></fw-label>
+        <fw-datepicker placeholder="range" mode="range"></fw-datepicker>
+        <fw-input required="true" type="text" icon-left="items" label="Subdomain" size="30"></fw-input>
+      </section>
     </main>
 
     <script>

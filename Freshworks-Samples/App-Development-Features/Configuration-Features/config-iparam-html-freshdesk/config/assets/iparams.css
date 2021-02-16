@@ -8,13 +8,36 @@ html {
   box-sizing: inherit;
 }
 
-.container {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  height: 20px;
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 3rem;
+  row-gap: 1rem;
+  justify-items: stretch;
+  align-items: center;
 }
 
-fw-input {
-  flex: 0 0 30%;
+h3 {
+  grid-area: 1 / 1 / 1 / 4;
+}
+
+.text-field {
+  grid-row: auto;
+  grid-column: 1 / 2;
+}
+
+.secure-filed {
+  grid-row: auto;
+  grid-column: 3 / 4;
+}
+
+.select-alien {
+  grid-row: auto;
+  grid-column: 1 / 4;
+}
+
+.date-domain {
+  grid-column: 1/3;
+  grid-row: auto;
 }
