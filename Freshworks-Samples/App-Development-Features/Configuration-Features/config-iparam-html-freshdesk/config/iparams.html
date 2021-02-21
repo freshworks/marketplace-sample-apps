@@ -33,27 +33,32 @@
         class="secure-field"
       ></fw-input>
 
-      <section class="select-alien">
-        <fw-dropdown-button label="Select a Transformation">
-          <div slot="dropdown-options">
-            <option id="1" value="Cannonbolt">Cannonbolt</option>
-            <option id="2" value="Heatblast">Heatblast</option>
-            <option id="3" value="Four Arms">Four Arms</option>
-            <option id="4" value="Grey matter">Grey matter</option>
-            <option id="5" value="Jetray">Jetray</option>
-            <option id="6" value="Humungousaur">Humungousaur</option>
-            <option id="7" value="Slapback">Slapback</option>
-            <option id="8" value="Goop">Goop</option>
-            <option id="9" value="Way Big">Way Big</option>
-            <option id="10" value="Diamond Head">Diamond Head</option>
-          </div>
-        </fw-dropdown-button>
-      </section>
+      <fw-dropdown-button label="Select a Transformation" class="select-alien">
+        <div slot="dropdown-options">
+          <option id="1" value="Cannonbolt">Cannonbolt</option>
+          <option id="2" value="Heatblast">Heatblast</option>
+          <option id="3" value="Four Arms">Four Arms</option>
+          <option id="4" value="Grey matter">Grey matter</option>
+          <option id="5" value="Jetray">Jetray</option>
+          <option id="6" value="Humungousaur">Humungousaur</option>
+          <option id="7" value="Slapback">Slapback</option>
+          <option id="8" value="Goop">Goop</option>
+          <option id="9" value="Way Big">Way Big</option>
+          <option id="10" value="Diamond Head">Diamond Head</option>
+        </div>
+      </fw-dropdown-button>
 
       <section class="date-domain">
         <fw-label value="Date picker demo" color="grey"></fw-label>
-        <fw-datepicker placeholder="range" mode="range"></fw-datepicker>
-        <fw-input required="true" type="text" icon-left="items" label="Subdomain" size="30"></fw-input>
+        <fw-datepicker placeholder="range" mode="single date" class="datepicker"></fw-datepicker>
+        <fw-input
+          required="true"
+          type="text"
+          icon-left="items"
+          label="domain"
+          size="30"
+          placeholder="subdomain.freshdesk.com"
+        ></fw-input>
       </section>
     </main>
 
@@ -64,5 +69,6 @@
 
       function validate(params) {}
     </script>
+    <script src="./assets/iparams.js"></script>
   </body>
 </html>
