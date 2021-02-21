@@ -58,17 +58,37 @@
           label="domain"
           size="30"
           placeholder="subdomain.freshdesk.com"
+          class="domain"
         ></fw-input>
       </section>
     </main>
 
+    <script src="./assets/iparams.js"></script>
     <script>
-      function postConfigs(params) {}
+      function postConfigs() {
+        let selectedVal = document.querySelector('.select-alien').value;
+        let apiKey = document.querySelector('.secure-field').value;
+        let selectedDate = document.querySelector('.datepicker').value;
+        let domain = document.querySelector('.domain').value;
+        let nameField = document.querySelector('.text-field').value;
+        console.log(selectedVal, apiKey, selectedDate, domain, nameField);
+        return {
+          __meta: {
+            secure: ['apiKey']
+          },
+          apiKey,
+          transformation: selectedVal,
+          domain,
+          name: nameField,
+          selectedDate
+        };
+      }
 
       function getConfigs(params) {}
 
-      function validate(params) {}
+      function validate(params) {
+        return true;
+      }
     </script>
-    <script src="./assets/iparams.js"></script>
   </body>
 </html>
