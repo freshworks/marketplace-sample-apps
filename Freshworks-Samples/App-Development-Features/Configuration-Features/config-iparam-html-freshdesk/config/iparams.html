@@ -85,9 +85,24 @@
         };
       }
 
-      function getConfigs(params) {}
+      function getConfigs(configs) {}
 
-      function validate(params) {
+      function validate() {
+        const URL = `https://devrel.freshdesk.com/api/v2/tickets`;
+        const options = {
+          headers: {
+            Authorization: `Basic <%= encode(${apiKey}) %>`, // substitution happens by platform
+            'Content-Type': 'application/json'
+          }
+        };
+
+        client.request
+          .get(URL, options)
+          .then(function ({ response }) {
+            console.log(response);
+          })
+          .catch(console.error);
+
         return true;
       }
     </script>

@@ -5,8 +5,8 @@ document.onreadystatechange = function () {
   if (document.readyState === 'interactive') renderApp();
   async function renderApp() {
     try {
-      client = await app.initialized();
-      console.log(client);
+      var client = await app.initialized();
+      window.client = client;
     } catch (error) {
       return console.error(error);
     }
@@ -16,5 +16,3 @@ document.onreadystatechange = function () {
 dropdown.addEventListener('fwOptionClick', function updLablOfDrpdwn() {
   return dropdown.setAttribute('label', dropdown.value);
 });
-
-
