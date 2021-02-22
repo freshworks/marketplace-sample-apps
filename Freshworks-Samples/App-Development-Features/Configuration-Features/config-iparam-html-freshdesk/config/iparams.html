@@ -66,44 +66,46 @@
 
     <script src="./assets/iparams.js"></script>
     <script>
+      let selectedVal = document.querySelector('.select-alien');
+      let apiKey = document.querySelector('.secure-field');
+      let selectedDate = document.querySelector('.datepicker');
+      let domain = document.querySelector('.domain');
+      let nameField = document.querySelector('.text-field');
       function postConfigs() {
-        let selectedVal = document.querySelector('.select-alien').value;
-        let apiKey = document.querySelector('.secure-field').value;
-        let selectedDate = document.querySelector('.datepicker').value;
-        let domain = document.querySelector('.domain').value;
-        let nameField = document.querySelector('.text-field').value;
-        console.log(selectedVal, apiKey, selectedDate, domain, nameField);
         return {
           __meta: {
             secure: ['apiKey']
           },
-          apiKey,
-          transformation: selectedVal,
-          domain,
-          name: nameField,
-          selectedDate
+          api_key: apiKey.value,
+          transformation: selectedVal.value,
+          domain_url: domain.value,
+          name: nameField.value,
+          date: selectedDate.value
         };
       }
 
-      function getConfigs(configs) {}
+      function getConfigs(configs) {
+        console.log(configs);
+        return;
+      }
 
       function validate() {
-        const URL = `https://devrel.freshdesk.com/api/v2/tickets`;
-        const options = {
+        var URL = `https://asdf.freshdesk.com/api/v2/tickets`;
+        var options = {
           headers: {
-            Authorization: `Basic <%= encode(${apiKey}) %>`, // substitution happens by platform
+            Authorization: 'Basic asdf:x',
             'Content-Type': 'application/json'
           }
         };
 
         client.request
           .get(URL, options)
-          .then(function ({ response }) {
-            console.log(response);
+          .then(function ({ status }) {
+            if (status == 200) return true;
           })
           .catch(console.error);
 
-        return true;
+        return false;
       }
     </script>
   </body>
