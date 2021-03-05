@@ -8,11 +8,11 @@ Data Methods allow your app to access information on a given Freshdesk page. In 
 
 ### Screenshots:
 
-### Displaying Requester Data
+#### Displaying Contact Data
 
 ![config page in local development](./screenshots/data%20methods%20-%20fullpage.png)
 
-#### Displaying Contact Data
+### Displaying Requester Data
 
 ![make secure api calls and get api data](./screenshots/data%20methods%20-%20sidebar.png)
 
