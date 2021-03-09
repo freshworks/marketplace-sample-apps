@@ -1,1 +1,15 @@
-{}
+{
+ "freshdesk_api_key": {
+   "display_name": "Freshdesk API Key",
+   "description": "Please enter your Freshdesk API key. You can find it in the profile section page.",
+   "type": "text",
+   "required": true,
+   "secure": true
+ },
+ "freshdesk_subdomain": {
+   "display_name": "Freshdesk Sub-domain",
+   "description": "Please enter your Freshdesk sub-domain. It's in the URL, the name which appears before (.freshdesk.com) in the URL. For ex: In `xyz.freshdesk.com`, `xyz` is the subdomain",
+   "type": "text",
+   "required": true
+ }
+}
