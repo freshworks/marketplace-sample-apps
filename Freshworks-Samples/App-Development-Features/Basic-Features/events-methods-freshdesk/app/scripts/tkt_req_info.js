@@ -39,7 +39,7 @@ function eventsInTktDetailsPage() {
   };
 
   clickEvents.forEach(function register(click) {
-    client.events.on(click, function writeToDOM(event) {
+    client.events.on(click, function (event) {
       spotlight.insertAdjacentHTML('afterend', `<fw-label value="${click}" color="green"></fw-label>`);
     });
   });
