@@ -5,23 +5,24 @@
 You can observe events that occur in the Freshdesk UI and register a callback with events methods.
 client.events.on("<argument>", callback[,options]) - takes in a callback which will be invoked when desired event occured.
 Events method can observe 3 types of events
+
 1. Click Events
 2. Change Events
 3. Intercept Events
-
 
 ### Screenshots:
 
 #### Click Events
 
-![config page in local development](./screenshots/events%20method%20-%20phone%20number%20on%20click.png)
+![config page in local development](./screenshots/1.png)
 
 ### Intercept Events
 
-![make secure api calls and get api data](./screenshots/events%20methods%20-%20intercept.png)
+![make secure api calls and get api data](./screenshots/2.png)
 
 ### Change Events
-![](./screenshots/events%20methods%20-%20changes%20events.png)
+
+![](./screenshots/3.png)
 
 ### Prerequisites:
 
