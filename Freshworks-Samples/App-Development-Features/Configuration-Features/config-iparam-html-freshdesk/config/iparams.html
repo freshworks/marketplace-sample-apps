@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-    <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
     <link rel="stylesheet" href="./assets/iparams.css" />
   </head>
   <body>
@@ -85,28 +83,34 @@
       }
 
       function getConfigs(configs) {
-        console.log(configs);
+        let { api_key, transformation, domain_url, name, date } = configs;
+        selectedVal.value = transformation;
+        apiKey.value = api_key;
+        selectedDate.value = date;
+        domain.value = domain_url;
+        nameField.value = name;
         return;
       }
 
-      function validate() {
-        var URL = `https://asdf.freshdesk.com/api/v2/tickets`;
+      async function validate() {
+        var URL = `https://${domain.value}/api/v2/tickets`;
+        var base64Encoded = btoa(apiKey.value);
         var options = {
           headers: {
-            Authorization: 'Basic asdf:x',
+            Authorization: `Basic ${base64Encoded}`,
             'Content-Type': 'application/json'
           }
         };
-
-        client.request
-          .get(URL, options)
-          .then(function ({ status }) {
-            if (status == 200) return true;
-          })
-          .catch(console.error);
-
-        return false;
+        try {
+          let { status } = await client.request.get(URL, options);
+          if (status == 200) return true;
+        } catch (error) {
+          console.error(error);
+          return false;
+        }
       }
     </script>
+    <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
   </body>
 </html>
