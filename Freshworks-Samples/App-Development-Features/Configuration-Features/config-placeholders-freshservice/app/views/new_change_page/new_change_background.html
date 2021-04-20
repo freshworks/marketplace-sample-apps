@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <p>app doesn't have ui</p>
+    </main>
+  </body>
+  <script>
+    document.onreadystatechange = whenInteractive;
+
+    function whenInteractive() {
+      if (document.readyState === 'interactive') {
+        return app.initialized().then(getClientAPI).catch(console.error);
+      }
+    }
+
+    function getClientAPI(_client) {
+      let client = _client;
+      client.events.on('app.activated', function log() {
+        return console.log(`new change background location: app is activated 🥁`);
+      });
+    }
+  </script>
+</html>
