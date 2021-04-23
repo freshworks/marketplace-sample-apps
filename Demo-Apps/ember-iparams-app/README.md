@@ -21,12 +21,12 @@ Any changes you make to the Ember app's source files files will automatically tr
 
 ### Project folder structure explained
 
-.
-├── README.md           This file.
-├── jsconfig.json       For better VSCode experience.
-├── lerna.json          Lerna configuration for task orchestration.
-├── package.json        
-├── packages
-│   ├── app             Marketplace app package.
-│   └── iparams-ember   Ember app source files.
-└── yarn.lock
+    .
+    ├── README.md           This file.
+    ├── jsconfig.json       For better VSCode experience.
+    ├── lerna.json          Lerna configuration for task orchestration.
+    ├── package.json        
+    ├── packages
+    │   ├── app             Marketplace app package.
+    │   └── iparams-ember   Ember app source files.
+    └── yarn.lock
