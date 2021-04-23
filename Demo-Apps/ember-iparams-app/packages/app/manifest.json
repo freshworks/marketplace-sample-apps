@@ -1,0 +1,12 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshchat": {
+      "location": {
+        "conversation_background": {
+          "url": "template.html"
+        }
+      }
+    }
+  }
+}

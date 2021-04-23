@@ -1,0 +1,18 @@
+{
+  "name": "ember-iparams-app",
+  "version": "0.0.1",
+  "author": "Arun Rajkumar <arun.rajkumar@freshworks.com>",
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna run clean --parallel",
+    "lint": "lerna run lint --parallel",
+    "build": "lerna run build --parallel",
+    "watch": "lerna run watch --parallel",
+    "bundle": "lerna run --scope app bundle",
+    "prodbuild": "yarn clean && yarn lint && yarn build && yarn bundle"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

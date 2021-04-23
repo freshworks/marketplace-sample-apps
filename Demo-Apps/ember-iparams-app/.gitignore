@@ -1,0 +1,8 @@
+.DS_Store
+.report.json
+node_modules/
+dist/
+.cache/
+**/.report.json
+**/coverage
+

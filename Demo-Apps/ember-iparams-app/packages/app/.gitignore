@@ -1,0 +1,4 @@
+config/assets/
+src/iparams/
+*.zip
+**/.fdk/*

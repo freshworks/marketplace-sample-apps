@@ -1,0 +1,80 @@
+#jaya-app-loader.hide-loader{
+  display: none;
+}
+
+.init-center {
+  position: absolute;
+  margin: auto;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  height: 75px;
+}
+
+.circular {
+  animation: checkbox-rotate 2s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.preloader {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.preloader .gravity-loader {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 14px;
+  left: 14px;
+}
+
+.preloader .gravity-loader ::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.path {
+  stroke-dasharray: 150, 200;
+  stroke-dashoffset: -20;
+  stroke-width: 6px;
+  stroke: #0053bf;
+  animation: gravity-dash 1s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@keyframes checkbox-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gravity-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}

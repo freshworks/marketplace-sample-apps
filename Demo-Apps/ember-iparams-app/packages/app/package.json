@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "license": "MIT",
+  "scripts": {
+    "clean:config": "rimraf ./config/assets",
+    "clean:src": "rimraf ./src/iparams",
+    "clean:coverage": "rimraf ./coverage ./.report.json",
+    "clean": "npm-run-all clean:*",
+    "bundle": "fdk validate && fdk pack",
+    "watch": "fdk run"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": ">= 10.*"
+  }
+}
