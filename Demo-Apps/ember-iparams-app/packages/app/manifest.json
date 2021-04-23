@@ -3,8 +3,9 @@
   "product": {
     "freshchat": {
       "location": {
-        "conversation_background": {
-          "url": "template.html"
+        "conversation_user_info": {
+          "url": "template.html",
+          "icon": "icon.svg"
         }
       }
     }
