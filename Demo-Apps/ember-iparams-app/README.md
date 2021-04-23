@@ -3,6 +3,14 @@
 This sample app demonstrates the use of Ember inside the custom iparams page.
 It takes the Freshchat Host & Domain as inputs and validates them by making an API call to fetch agents.
 
+### Screenshots
+
+#### Ember app loaded as custom iparams
+![Ember app loaded as custom iparams](https://user-images.githubusercontent.com/12369543/115837420-3340b500-a436-11eb-96ef-a4cdd10d2b47.png)
+
+#### On successful verification of Freshchat host and token
+![On successful verification of Freshchat host and token](https://user-images.githubusercontent.com/12369543/115837805-9b8f9680-a436-11eb-9e24-0b16b287eb4f.png) 
+
 ### Prerequisites
 
 1. Make sure you have a Freshchat account created.
