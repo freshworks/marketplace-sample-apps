@@ -16,7 +16,7 @@ export default class RequestServiceService extends Service {
     } = {}
   ) {
     let headers = {
-        Authorization: `Bearer ${window.configs.account.token}`,
+        Authorization: `Bearer ${window.configs.token}`,
         'Content-Type': 'application/json',
       },
       headerOptions = {
@@ -25,7 +25,7 @@ export default class RequestServiceService extends Service {
     return new Promise((resolve, reject) => {
       window.client.request
         .get(
-          `${window.configs.account.host}/v2/${modelName}?items_per_page=${itemPerPage}&page=${page}`,
+          `${window.configs.host}/v2/${modelName}?items_per_page=${itemPerPage}&page=${page}`,
           headerOptions
         )
         .then(

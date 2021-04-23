@@ -34,35 +34,28 @@ export default class AppSettingComponent extends Component {
   initializeIntegration() {
     if (!window.configs) {
       window.configs = {
-        account: {
-          token: '',
-          host: '',
-        },
+        token: '',
+        host: '',
       };
     }
 
-    if (
-      window.configs &&
-      window.configs.account &&
-      window.configs.account.token &&
-      window.configs.account.host
-    ) {
-      this.integrationDomain = window.configs.account.host;
-      this.integrationToken = window.configs.account.token;
+    if (window.configs?.token && window.configs?.host) {
+      this.integrationDomain = window.configs.host;
+      this.integrationToken = window.configs.token;
       this.isIntegrationVerified = true;
       this.isIntegrationVerifyClicked = true;
       window.configs.isSettingsVerified = true;
     } else {
-      this.integrationDomain = window.configs.account.host || '';
-      this.integrationToken = window.configs.account.token || '';
+      this.integrationDomain = window.configs.host || '';
+      this.integrationToken = window.configs.token || '';
     }
   }
 
   @action
   verifyIntegration() {
     return new RSVP.Promise((resolve) => {
-      window.configs.account.token = this.integrationToken;
-      window.configs.account.host = this.integrationDomain;
+      window.configs.token = this.integrationToken;
+      window.configs.host = this.integrationDomain;
       this.requestService
         .getRequestV2('agents', {
           itemPerPage: 10,
@@ -74,8 +67,8 @@ export default class AppSettingComponent extends Component {
             if (data) {
               this.isIntegrationVerified = true;
               this.isIntegrationVerifyClicked = true;
-              window.configs.account.token = this.integrationToken;
-              window.configs.account.host = this.integrationDomain;
+              window.configs.token = this.integrationToken;
+              window.configs.host = this.integrationDomain;
 
               this.canRouteToRules();
 
@@ -86,8 +79,8 @@ export default class AppSettingComponent extends Component {
             this.isIntegrationVerified = false;
             this.isIntegrationVerifyClicked = true;
             window.configs.isSettingsVerified = false;
-            window.configs.account.token = '';
-            window.configs.account.host = '';
+            window.configs.token = '';
+            window.configs.host = '';
             resolve();
           }
         );
