@@ -19,6 +19,7 @@ export default class ApplicationRoute extends Route {
     this.hideAppLoader();
   }
   hideAppLoader() {
-    document.getElementById('jaya-app-loader').classList.add('hide-loader');
+    const appLoaderElement = document.getElementById('jaya-app-loader');
+    appLoaderElement && appLoaderElement.classList.add('hide-loader');
   }
 }
