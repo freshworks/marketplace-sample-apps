@@ -25,7 +25,7 @@ Run the following commands:
 - `yarn prodbuild` will perform the build and bundle tasks, which will eventually create the app's bundle in the `packages/app/dist` folder.
 - `yarn watch` will build Ember in development mode and will run `fdk run` so that the app can be served locally.
 
-Any changes you make to the Ember app's source files files will automatically trigger an Ember build and will be served locally when you run `yarn watch`.
+Any changes you make to the Ember app's source files will automatically trigger an Ember build and will be served locally when you run `yarn watch`.
 
 ### Project folder structure explained
 
