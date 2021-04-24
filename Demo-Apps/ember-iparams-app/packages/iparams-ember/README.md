@@ -1,6 +1,6 @@
-# jaya
+# iparams-ember
 
-This README outlines the details of collaborating on this Ember application.
+This is an Ember app that runs on the custom iparams page of a marketplace app.
 
 ## Prerequisites
 
