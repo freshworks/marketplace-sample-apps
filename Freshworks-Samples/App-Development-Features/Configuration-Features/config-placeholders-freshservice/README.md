@@ -2,7 +2,7 @@
 
 ## Description:
 
-App on Freshworks developer platform can be located in different placeholders. Some of them render with UI, without UI or simply serverless. This app contains the sample code that is all available for apps those run on browser in-product experience.
+App on Freshworks developer platform can be located in different placeholders. Some of them render with UI, without UI or simply serverless. This app contains the sample code that demonstrates the various placeholders allowed by Freshservice.
 
 ## Screenshots:
 
