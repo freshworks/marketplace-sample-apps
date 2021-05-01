@@ -1,5 +1,21 @@
 const JOKE_ENDPOINT = 'https://official-joke-api.appspot.com/random_joke';
 
+function getJoke() {
+  client.request.get(JOKE_ENDPOINT).then(
+    function (data) {
+      let setup = JSON.parse(data.response).setup;
+      punchline = JSON.parse(data.response).punchline;
+      document.getElementById('setup').innerHTML = `<fw-label value="Question:" color="red"></fw-label> ${setup}`;
+    }), function(error) {
+      console.log(error )
+    }
+}
+
+function addListner() {
+  document.getElementById('punchline_btn').addEventListener('click', function() {
+    document.getElementById('punchline').innerHTML = `<fw-label value="${punchline}" color="green"></fw-label>`
+  })
+}
 
 document.onreadystatechange = function () {
   if (document.readyState === 'interactive') renderApp();
@@ -24,6 +40,8 @@ function onAppActivate() {
   function showContact(payload) {
     textElement.innerHTML = `Ticket created by ${payload.contact.name}`;
   }
+  getJoke();
+  addListner();
 }
 
 function handleErr(err) {
