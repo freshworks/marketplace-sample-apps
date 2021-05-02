@@ -1,10 +1,10 @@
 ## App Setup and External Events (ft. Freshdesk)
 
-This sample code demonstrates how webhooks can be handled on Freshworks Developer Platform on top of External Events.
+This sample code demonstrates how webhooks can be handled on the Freshworks Developer Platform on top of External Events.
 
 ### Description
 
-Observing External Events happening outside of your app will enable your app to act by registering a handler JS function. This Handler will be invoked every time a desired event is observed in 3rd party systems
+Observing External Events happening outside of your app will enable your app to act by registering a handler JS function. This Handler will be invoked every time the desired event is observed in 3rd party systems
 
 ### Screenshots
 
@@ -24,6 +24,7 @@ Observing External Events happening outside of your app will enable your app to 
 ### Prerequisites
 1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
 2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
+3. App uses pipedream's [event sources features](https://pipedream.com/docs/event-sources/#how-do-event-sources-work) to mock an endpoint to respond with `{"success":"true"}` response. See `thirdPartyEndpoint` in `server.js`.
 
 ### Procedure to run the app:
 
