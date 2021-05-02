@@ -1,13 +1,13 @@
 function queueMessage(userId, notes) {
   $db
     .set(`${userId}_notifications`, {
-      notes: notes
+      notes: notes,
     })
     .then(
-      function() {
+      function () {
         console.log("Queued note to notify");
       },
-      function(err) {
+      function (err) {
         console.log("Error while pushing note to notify");
       }
     );
@@ -16,18 +16,19 @@ function queueMessage(userId, notes) {
 exports = {
   events: [{ event: "onScheduledEvent", callback: "onScheduledEventHandler" }],
 
-  onScheduledEventHandler: function(args) {
-    const userId = args.data.userId;
-    const note = args.data.note;
+  onScheduledEventHandler: function (args) {
+    console.log("onScheduledEventHandler fired 🎇");
+    var userId = args.data.userId;
+    var note = args.data.note;
     /**
       Push the note to the list of existing notes
     */
     $db.get(`${userId}_notifications`).then(
-      function(data) {
+      function (data) {
         data.notes.push(note);
         queueMessage(userId, data.notes);
       },
-      function(err) {
+      function (err) {
         if (err.status === 404) {
           queueMessage(userId, [args.data.note]);
         }
@@ -35,23 +36,24 @@ exports = {
     );
   },
 
-  createSchedule: function(args) {
+  createSchedule: function (scheduleObject) {
     $schedule
       .create({
-        name: args.scheduleName,
+        name: String(scheduleObject.scheduleName),
         data: {
-          userId: args.userId,
-          note: args.note
+          userId: scheduleObject.userId,
+          note: String(scheduleObject.note),
         },
-        schedule_at: args.scheduleAt
+        schedule_at: scheduleObject.scheduleAt,
       })
       .then(
-        function(data) {
+        function operationPerformed(data) {
+          console.error(data);
           renderData(null);
         },
-        function(err) {
+        function operationErr(err) {
           renderData({
-            message: "Schedule creation failed"
+            message: "Schedule creation failed",
           });
         }
       );
