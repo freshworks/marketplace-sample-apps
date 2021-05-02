@@ -11,5 +11,5 @@ document.onreadystatechange = function () {
 };
 
 function checkSignature(sign) {
-  return sign.toLowerCase() == 'azmuth' ? 'afsd' : 'Wrong signature';
+  return sign.toLowerCase() == 'azmuth' ? '' : 'Wrong Signature';
 }

@@ -60,7 +60,7 @@ Validation failed due to the following issue(s):
 ```js
 // iparams.js
 function checkSignature(sign) {
-  return sign.toLowerCase() == 'azmuth' ? 'Correct Signature' : 'Wrong Signature';
+  return sign.toLowerCase() == 'azmuth' ? '' : 'Wrong Signature';
 }
 ```
 
