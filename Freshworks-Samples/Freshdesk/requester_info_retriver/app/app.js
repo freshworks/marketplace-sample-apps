@@ -55,21 +55,32 @@ function getTicketContact() {
   });
 }
 
+function appendToContactInfo(html) {
+  const contactInfo = document.querySelector('#contact-info');
+  contactInfo.appendChild(elementFromHtml(html));
+}
+
+function elementFromHtml(html) {
+  const fragment = document.createElement('div');
+  fragment.innerHTML = html;
+  return fragment.firstElementChild;
+}
+
 function displayInfo(title, data) {
   if (data) {
-    jQuery('#contact-info')
-    .append('<div class="fw-content-list">\
-              <div class="muted">' +
-                title +
-              '</div>\
-              <div>' +
-                data +
-              '</div>\
-            </div>');
+    appendToContactInfo(`<div class="fw-content-list">
+        <div class="muted">
+          ${title}
+        </div>
+        <div>
+          ${data}
+        </div>
+      </div>`
+    );
   }
 }
 
-$(document).ready( function() {
+document.addEventListener('DOMContentLoaded', function() {
   async.waterfall([
     function(callback) {
       app.initialized()
@@ -104,7 +115,7 @@ $(document).ready( function() {
         });
       }
       else {
-        jQuery('#contact-info').append('<div class="fw-content-list"><div class="muted">Contact not found</div></div>');
+        appendToContactInfo('<div class="fw-content-list"><div class="muted">Contact not found</div></div>');
       }
     },
 
@@ -112,7 +123,7 @@ $(document).ready( function() {
       for (var contactKey in CONTACT_INFO_MAPPING) {
         displayInfo(CONTACT_INFO_MAPPING[contactKey], crmContactInformation.contact[contactKey]);
       }
-      jQuery('#contact-info').append('<div class="fw-divider"></div>');
+      appendToContactInfo('<div class="fw-divider"></div>');
       for (var contactKey in WORK_INFO_MAPPING) {
         displayInfo(WORK_INFO_MAPPING[contactKey], crmContactInformation.contact[contactKey]);
       }

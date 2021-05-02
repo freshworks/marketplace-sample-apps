@@ -1,9 +1,8 @@
 /**
  * To create a ticket with call notes for the call
  **/
-function createTicketWithCallNotes(event) {
-  const callEnded = event.data;
-  const callDescription = callEnded ? $('#callNotesOnSummary').val().toString() : $('#callNotes').val().toString();
+function createTicketWithCallNotes(callEnded) {
+  const callDescription = callEnded ? document.getElementById('callNotesOnSummary').value.toString() : document.getElementById('callNotes').value.toString();
   const ticketDetails = {
     email: 'sample@samplemail.com',
     subject: 'Call with the customer',
@@ -24,11 +23,11 @@ function createTicketWithCallNotes(event) {
           console.info('Successfully created ticket in Freshdesk');
           showNotify('success', 'Successfully created a ticket.');
           if (callEnded) {
-            $('#callSummaryScreen').hide();
-            $('#dialpad').show();
+            document.getElementById('callSummaryScreen').style.display = 'none';
+            document.getElementById('dialpad').style.display = 'block';
           } else {
             callTicket = ticketData.response.id;
-            $('#createTicket').text(`Go to ticket: #${callTicket.toString()}`);
+            document.getElementById('createTicket').innerText = `Go to ticket: #${callTicket.toString()}`;
           }
         }, error => {
           console.error('Error: Failed to create a ticket in Freshdesk');

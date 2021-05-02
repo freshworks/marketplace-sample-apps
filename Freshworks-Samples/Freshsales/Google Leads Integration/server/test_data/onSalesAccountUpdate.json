@@ -1,0 +1,142 @@
+{
+  "data": {
+    "users": [
+      {
+        "id": 3,
+        "display_name": "dong lee",
+        "email": "test@gmail.com",
+        "is_active": true,
+        "work_number": null,
+        "mobile_number": null
+      },
+      {
+        "id": 1,
+        "display_name": "Sales Agent",
+        "email": "someone@somewhere.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null
+      }
+    ],
+    "territories": [
+      {
+        "partial": true,
+        "id": 1,
+        "name": "test",
+        "position": 1
+      }
+    ],
+    "industry_types": [
+      {
+        "partial": true,
+        "id": 2,
+        "name": "Advertising",
+        "position": 2
+      }
+    ],
+    "business_types": [
+      {
+        "partial": true,
+        "id": 4,
+        "name": "Integrator",
+        "position": 4
+      }
+    ],
+    "parent_sales_accounts": [
+      {
+        "partial": true,
+        "id": 1079,
+        "name": "test",
+        "avatar": null,
+        "website": "web"
+      }
+    ],
+    "sales_account": {
+      "id": 1094,
+      "name": "Freshservice",
+      "address": "Hussain Nagar",
+      "city": "Guntur",
+      "state": "Andhra Pradesh",
+      "zipcode": "522003",
+      "country": "India",
+      "number_of_employees": 201,
+      "annual_revenue": 2343,
+      "website": "www.freshservice.com",
+      "owner_id": 3,
+      "phone": "3424232324",
+      "open_deals_amount": "0.0",
+      "won_deals_amount": "0.0",
+      "last_contacted": "2018-01-11T03:45:30+05:30",
+      "last_contacted_mode": 4,
+      "facebook": "https://www.facebook.com/test123",
+      "twitter": "https://twitter.com/test123",
+      "linkedin": "https://www.linkedin.com/in/test123/",
+      "links": {
+        "conversations": "/sales_accounts/1094/conversations/all?include=email_conversation_recipients%2Ctargetable%2Cphone_number%2Cphone_caller%2Cnote%2Cuser\\u0026per_page=3",
+        "document_associations": "/sales_accounts/1094/document_associations",
+        "notes": "/sales_accounts/1094/notes?include=creater",
+        "tasks": "/sales_accounts/1094/tasks?include=creater,owner,updater,targetable,users",
+        "appointments": "/sales_accounts/1094/appointments?include=creater,owner,updater,targetable,appointment_attendees"
+      },
+      "custom_field": {
+        "cf_lead_convert_existing_data_overridden_account_text": null,
+        "cf_number": 456,
+        "cf_text_area": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "cf_drop": "Marbles",
+        "cf_date": "2018-01-23T00:00:00+05:30",
+        "cf_check": true,
+        "cf_text": "Nice customer",
+        "cf_radio": "5star",
+        "cf_multi": "Gems;Snickers"
+      },
+      "created_at": "2018-01-11T03:45:30+05:30",
+      "updated_at": "2018-01-11T03:48:09+05:30",
+      "avatar": null,
+      "parent_sales_account_id": 1079,
+      "recent_note": "A reasonable deal",
+      "last_contacted_via_chat": "2018-01-11T03:46:30+05:30",
+      "last_contacted_via_sales_activity": "2018-01-11T03:46:30+05:30",
+      "last_contacted_sales_activity_mode": 2,
+      "territory_id": 1,
+      "creater_id": 1,
+      "updater_id": 1,
+      "industry_type_id": 2,
+      "business_type_id": 4,
+      "changes": {
+        "owner_id": [
+          1,
+          3
+        ],
+        "number_of_employees": [
+          11,
+          201
+        ],
+        "annual_revenue": [
+          234,
+          2343
+        ],
+        "phone": [
+          "3424232323",
+          "3424232324"
+        ],
+        "updater_id": [
+          null,
+          1
+        ],
+        "updated_at": [
+          "2018-01-11T03:45:30+05:30",
+          "2018-01-11T03:48:09+05:30"
+        ]
+      }
+    }
+  },
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onSalesAccountUpdate",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}

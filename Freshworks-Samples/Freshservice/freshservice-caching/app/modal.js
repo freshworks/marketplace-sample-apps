@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(
       function (_client) {
@@ -24,8 +24,8 @@ function unCachedResponse() {
 }
 
 /**
- * Function to fetch Agent to Display Data 
- * @param {String} agentID 
+ * Function to fetch Agent to Display Data
+ * @param {String} agentID
  */
 function getAgentData(agentID) {
   var options = {
@@ -86,11 +86,11 @@ function renderTable(agent) {
                           </tbody>
                       </table>`
 
-  $('#agentDetails').append(tableContent);
+  document.getElementById('agentDetails').insertAdjacentHTML('beforeend', tableContent);
 }
 
 /**
- * 
+ *
  * @param {String} status Status of the Notififcation
  * @param {String} message Message for the notification
  */

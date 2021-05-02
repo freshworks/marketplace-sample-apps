@@ -4,8 +4,8 @@
     "freshdesk": {
       "location": {
         "full_page_app": {
-          "url": "template.html",
-          "icon": "icon.svg"
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
         }
       }
     }

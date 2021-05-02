@@ -1,7 +1,7 @@
 /**
  * App Initializer
  */
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
 	app.initialized()
 		.then(function (_client) {
 			window.client = _client;
@@ -16,11 +16,11 @@ $(document).ready(function () {
  * Register the click event handlers for `Create Issue` and `View Issue Details` buttons
  */
 function registerClickEventHandlers() {
-	$('#createIssue').click(function () {
+	document.getElementById('createIssue').addEventListener('click', function () {
 		createIssue();
 	});
 
-	$('#viewIssue').click(function () {
+	document.getElementById('viewIssue').addEventListener('click', function () {
 		viewIssue();
 	});
 }
@@ -127,9 +127,9 @@ function setData(data) {
 	Promise.all([client.db.set(dbKey, { issue_data: data }), client.db.set(dbKey2, { issue_data: data })]).then(function () {
 		showNotification('success', 'Yay 🎉', 'A Github issue is successfully created for this ticket')
 	})
-	.catch(function (error) {
-		console.error("Unable to persist data : ", error);
-	});
+		.catch(function (error) {
+			console.error("Unable to persist data : ", error);
+		});
 }
 
 /**

@@ -1,0 +1,13 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_conversation_editor": {
+          "url": "index.html",
+          "icon": "images/helicopter.svg"
+        }
+      }
+    }
+  }
+}

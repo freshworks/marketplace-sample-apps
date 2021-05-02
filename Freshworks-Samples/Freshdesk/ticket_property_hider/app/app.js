@@ -1,4 +1,4 @@
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize channel
   app.initialized().then(function(_client) {
     var client = _client;

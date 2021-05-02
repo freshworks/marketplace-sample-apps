@@ -1,9 +1,9 @@
 /**
  * Freshsales: simple_request_app
- * A sample app that fetches and displays details about the current Lead 
+ * A sample app that fetches and displays details about the current Lead
  * in the Lead Details page using Data and Request API
  */
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function () {
     app.initialized().then(function(_client) {
         window.client = _client;
         client.events.on("app.activated", function() {
@@ -43,7 +43,7 @@ function getLeadDetails(leadId) {
  * @param {String} message - Message to be displayed
  */
 function showNotification(type, message) {
-    client.interface.trigger("showNotify", { 
+    client.interface.trigger("showNotify", {
         type: type,
         message: message
     });
@@ -84,4 +84,3 @@ function addRow(tableID, key, value) {
     var cellTwoText = document.createTextNode(value);
     cellTwo.appendChild(cellTwoText);
 }
-

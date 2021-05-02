@@ -2,23 +2,23 @@
  * ticket detail page. On clicking the app icon, the Start Timer form will be
  * shown.
  */
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
 
- /**
- * Initialize channel
- * @param {string} _client - A string param
- */
+  /**
+  * Initialize channel
+  * @param {string} _client - A string param
+  */
   app.initialized().then(function (_client) {
     var client = _client;
 
     client.events.on('app.activated', function () {
-/**
-* Opens modal to collect params to start timer Interface API
-*/
+      /**
+      * Opens modal to collect params to start timer Interface API
+      */
       client.interface.trigger('showModal', {
         title: 'Start timer',
-        template: 'startTimer.html'
-      }).then(null, function (error) {
+        template: './views/startTimer.html'
+      }).then(null, function () {
         client.interface.trigger('showNotify', {
           type: 'error',
           message: 'Some error has occured in \'Start timer app\'.'
@@ -35,12 +35,13 @@ $(document).ready(function () {
         });
       }
     });
-  }, 
-    /**
-     * This throws an error notification
-     * @param {string} error -The string error message
-     */                     
-    function (error) {
+  },
+
+  /**
+   * This throws an error notification
+   * @param {string} error -The string error message
+  */
+  function () {
     client.interface.trigger('showNotify', {
       type: 'error',
       message: 'Some error has occured in \'Start timer app\'.'

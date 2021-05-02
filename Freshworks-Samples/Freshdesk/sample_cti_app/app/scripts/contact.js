@@ -28,10 +28,13 @@ function fetchContacts() {
  * Event listeners on contacts page
  **/
 function contactsEvents() {
-  $('.contactPhone').off("click")
-  $('.contactPhone').on("click", function () {
-    const contactPhone = $(this).text();
-    callApi(contactPhone);
+  const contacts = document.querySelectorAll('.contactPhone');
+  contacts.forEach(function (contact) {
+    contact.removeEventListener('click', function () { });
+    contact.addEventListener('click', function () {
+      const contactPhone = this.innerText;
+      callApi(contactPhone);
+    });
   });
 }
 
@@ -40,30 +43,24 @@ function contactsEvents() {
  **/
 function renderContactList() {
   fetchContacts().then(function (contacts) {
-    var contactNames = contacts.map(function (contact) {
-      return contact.name;
+    var contactsList = document.getElementById('contactsList');
+    contacts.forEach(function (contact, i) {
+      let li = document.createElement('li');
+      li.classList.add('list-group-item');
+      li.setAttribute('role', 'menuitem');
+
+      let nameDiv = document.createElement('div');
+      nameDiv.innerText = contact.name;
+      li.appendChild(nameDiv);
+
+      let phoneDiv = document.createElement('div');
+      phoneDiv.innerText = contacts[i].phone;
+      phoneDiv.classList.add('contactPhone');
+      li.appendChild(phoneDiv);
+
+      contactsList.appendChild(li);
     });
-    var contactPhones = contacts.map(function (contact) {
-      return contact.phone;
-    });
-    var contactsList = $('#contactsList')
-    $.each(contactNames, function (i) {
-      var li = $('<li/>')
-        .addClass('list-group-item')
-        .attr('role', 'menuitem')
-        .appendTo(contactsList);
-      $('<div/>')
-        .text(contactNames[i])
-        .appendTo(li);
-      $('<div/>')
-        .text(contactPhones[i])
-        .addClass('contactPhone')
-        .appendTo(li);
-    });
+    console.log(contactsList)
     contactsEvents();
-  }, function (error) {
-    console.error('Error: Failed to fetch the contacts list');
-    console.error(error);
-    showNotify('danger', 'Failed to load the contacts. Try again later.');
-  })
+  });
 }

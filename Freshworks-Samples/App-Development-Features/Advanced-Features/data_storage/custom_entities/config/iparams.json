@@ -1,0 +1,21 @@
+{
+  "domain": {
+    "display_name": "domain",
+    "description": "Please enter your account domain name in this format. https://<accname>.freshdesk.com",
+    "type": "text",
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
+    }
+  },
+  "apikey": {
+    "display_name": "api-key",
+    "description": "Please enter your api-key",
+    "type": "text",
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
+    },
+    "secure": true
+  }
+}

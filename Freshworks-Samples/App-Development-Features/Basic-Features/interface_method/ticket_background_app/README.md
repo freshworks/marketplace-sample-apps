@@ -6,3 +6,7 @@ This app demonstrates the following features
 
 1. App location - ticket_background
 2. Using Interface APIs to disable ticket properties.
+
+## Screenshots
+
+<img src="./screenshots/no_installation_page.png">

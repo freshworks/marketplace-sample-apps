@@ -1,4 +1,4 @@
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function(client) {
     client.events.on('app.activated', function() {
          // sample code for DatastoreAPI
@@ -6,7 +6,7 @@ $(document).ready( function() {
         .then(
           function(data) {
             console.log('DatastoreAPI:Set:tutorialDemo', data);
-          }, 
+          },
           function(error) {
             console.log('DatastoreAPI:Set:tutorialDemo', error);
           }
@@ -16,7 +16,7 @@ $(document).ready( function() {
         .then(
           function(data) {
             console.log('DatastoreAPI:Get:tutorialDemo', data);
-          }, 
+          },
           function(error) {
             console.log('DatastoreAPI:Get:tutorialDemo', error);
           }

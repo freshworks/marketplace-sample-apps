@@ -1,8 +1,8 @@
-## [Interface API](https://developers.freshdesk.com/v2/docs/interface-api/)
+# [Interface API](https://developers.freshdesk.com/v2/docs/interface-api/)
 
 Interface APIs can be used to trigger user interface actions in the page.
 
-This app demonstrates the following features
+#### This app demonstrates the following features
 
 1. App locations
     - Ticket details page: ticket_sidebar

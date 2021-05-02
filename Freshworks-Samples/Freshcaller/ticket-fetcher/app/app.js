@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(function (_client) {
       window.client = _client;
@@ -14,23 +14,23 @@ $(document).ready(function () {
    * Collection of click events
    */
   function clickEventHandler() {
-    $('#get-tickets').on('click', function () {
-      let formVal = $('#email-ticket').val();
+    document.getElementById('get-tickets').addEventListener('click', function () {
+      let formVal = document.getElementById('email-ticket').value;
       getTickets(formVal);
     })
   }
 
   /**
-   * Function to set Current User email in the form 
+   * Function to set Current User email in the form
    */
   function setUserEmail() {
     client.data.get('currentCaller')
       .then(function (data) {
         if (!data.email) {
-          $('#email-ticket').val('')
+          document.getElementById('email-ticket').value = '';
         }
         if (data.email) {
-          $('#email-ticket').val(data.email)
+          document.getElementById('email-ticket').value = data.email;
           getTickets(data.email)
         }
       })
@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 
   /**
-   * Function to get list of tickets from Freshdesk for a specified user 
+   * Function to get list of tickets from Freshdesk for a specified user
    * @param {String} email  Email id of the user to fetch list of tickets
    */
   function getTickets(email) {
@@ -64,8 +64,11 @@ $(document).ready(function () {
    * @param {String} data  Ticket details to append in html
    */
   function appendHMTL(data) {
+    var element = document.getElementById("list-issue")
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
 
-    $('#list-issue').empty()
     let html = `<table class="table"> <thead><tr><th scope="col">#</th><th scope="col">Ticket</th></tr></thead><tbody>`
 
     data.forEach(data => {
@@ -74,6 +77,6 @@ $(document).ready(function () {
 
     html = `${html}<table class="table"></tbody></table>`;
 
-    $('#list-issue').append(html);
+    document.getElementById('list-issue').insertAdjacentHTML('beforeend', html);
   }
 });

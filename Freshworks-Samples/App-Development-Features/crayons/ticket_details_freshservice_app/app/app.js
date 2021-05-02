@@ -1,11 +1,10 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized()
     .then(
       function (_client) {
         window.client = _client;
         client.events.on('app.activated', function () {
-
-          document.getElementById("openModal").addEventListener("fwClick", openModal);
+          document.getElementById("openModal").addEventListener('click', openModal);
         }, function () {
           showNotification('danger', 'App cannot be activated, Please try later');
         });
@@ -28,7 +27,7 @@ function openModal() {
 /**
  * Function to show notifications to the user
  * @param {String} status   	Status of the notification
- * @param {String} message  	Custom notification message 
+ * @param {String} message  	Custom notification message
  */
 function showNotification(status, message) {
   client.interface.trigger("showNotify", {

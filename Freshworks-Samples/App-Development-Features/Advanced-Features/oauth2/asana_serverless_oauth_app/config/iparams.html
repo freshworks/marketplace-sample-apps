@@ -11,7 +11,6 @@
 
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
 <link rel='stylesheet' type='text/css' href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
 
@@ -37,10 +36,10 @@
   function postConfigs() {
     return {
       asana_details : {
-        workspace_name: $('#workspace option:selected').val(),
-        workspace_id  : $('#workspace option:selected').attr('id'),
-        project_name  : $('#project option:selected').val(),
-        project_id    : $('#project option:selected').attr('id')
+        workspace_name: document.querySelector('#workspace option:selected').value,
+        workspace_id  : document.querySelector('#workspace option:selected').getAttribute('id'),
+        project_name  : document.querySelector('#project option:selected').value,
+        project_id    : document.querySelector('#project option:selected').getAttribute('id')
       }
     }
   }
@@ -56,10 +55,10 @@
     })
     .then(function(data) {
       JSON.parse(data.response).data.forEach(function(project) {
-        $('#project').append(`<option id=${project.id}>${project.name}</option>`);
+        document.getElementById('project').insertAdjacentHTML('beforeend', `<option id=${project.id}>${project.name}</option>`);
       });
       if (typeof(savedConfigs) != "undefined") {
-        $('#project').val(savedConfigs.asana_details.project_name);
+        document.getElementById('project').value = savedConfigs.asana_details.project_name;
       }
     });
   }
@@ -71,10 +70,15 @@
     })
     .then(function(data) {
       JSON.parse(data.response).data.forEach(function(workspace) {
-        $('#workspace').append(`<option id=${workspace.id}>${workspace.name}</option>`);
+        document.getElementById('workspace').insertAdjacentHTML('beforeend', `<option id=${workspace.id}>${workspace.name}</option>`);
       });
       if (typeof(savedConfigs) != "undefined") {
-         $('#workspace').val(savedConfigs.asana_details.workspace_name).change();
+        document.getElementById('workspace').value = savedConfigs.asana_details.workspace_name;
+
+        // Manually triggering the change event on the element
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, false);
+        document.getElementById('workspace').dispatchEvent(event);
       }
     });
   }
@@ -82,9 +86,8 @@
 
   app.initialized().then(function(client) {
     window.client = client;
-
-    $('#workspace').on('change', function(e) {
-      project_api_call($(e.target.selectedOptions).attr('id'));
+      document.getElementById('workspace').addEventListener('change', function (e) {
+      project_api_call(e.target.selectedOptions.getAttribute('id'));
     });
 
     workspace_api_call();

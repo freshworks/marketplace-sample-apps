@@ -4,3 +4,6 @@
 **/.report.json
 **/.vscode/**
 **/node_modules/**
+**/test_data/**
+.idea
+**/dist/**

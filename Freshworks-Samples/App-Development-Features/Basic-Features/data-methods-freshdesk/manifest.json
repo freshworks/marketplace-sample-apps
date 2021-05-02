@@ -1,0 +1,25 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "full_page_app": {
+          "url": "views/fullpage.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "ticket_sidebar": {
+          "url": "views/sidebar.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "new_email_requester_info": {
+          "url": "views/requesterpage.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "contact_sidebar": {
+          "url": "views/contactpage.html",
+          "icon": "styles/images/icon.svg"
+        }
+      }
+    }
+  }
+}

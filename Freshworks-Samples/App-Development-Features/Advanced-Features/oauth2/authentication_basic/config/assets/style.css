@@ -1,0 +1,15 @@
+.fadeOutShowAction {
+  opacity: 1;
+}
+.fadeOutHideAction {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
+
+.fadeInShowAction {
+  transition: opacity 4500ms;
+}
+.fadeInHideAction {
+  opacity: 0;
+}

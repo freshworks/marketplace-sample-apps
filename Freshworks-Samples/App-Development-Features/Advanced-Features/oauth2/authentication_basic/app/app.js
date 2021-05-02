@@ -1,4 +1,4 @@
-$(document).ready( function() {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function(client) {
     window.client = client;
     client.events.on('app.activated', function() {
@@ -14,7 +14,7 @@ $(document).ready( function() {
           console.log(result);
           html += `<li>${result.subject}</li>`;
         });
-        $('#content').html(`<ul>${html}</ul>`);
+        document.getElementById('content').innerHTML = `<ul>${html}</ul>`;
       });
     });
   });

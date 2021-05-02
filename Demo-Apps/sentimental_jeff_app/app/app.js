@@ -3,7 +3,7 @@
  * tell you if the tone of the message is angry, sad, indifferent or happy.
  */
 
-$(document).ready(() => {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then( (_client) => {
       window.client = _client;
       client.events.on('app.activated',
@@ -103,21 +103,20 @@ $(document).ready(() => {
     let sentiment = 'single';
     let sentimentValue = findSentiment(averageScore);
     if (sentimentValue === 'emoji--blah') {
-      $(`#neutral-emoji`).removeClass('display-none');
+      document.getElementById('neutral-emoji').classList.remove('display-none');
     }
     else {
-      $('#one-sentiment').removeClass('display-none');
-      $(`.emoji[sentiment=${sentiment}]`).addClass(findSentiment(averageScore));
+      document.getElementById('one-sentiment').classList.remove('display-none');
+      document.querySelector('.emoji[sentiment=${sentiment}]').classList.add(findSentiment(averageScore));
     }
-
-    $(`#spinner`).addClass('display-none');
+    document.getElementById('spinner').classList.add('display-none');
   }
 
   /**@fires - A Notification with Danger Label */
   function notifyError() {
-    client.interface.trigger("showNotify", { 
-      type: "Danger", 
-      title: "Sentimental Jeff Error", 
+    client.interface.trigger("showNotify", {
+      type: "Danger",
+      title: "Sentimental Jeff Error",
       message: error.message
     });
   }

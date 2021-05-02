@@ -17,8 +17,8 @@ function showNotify(type, message) {
  * Hides dialer and contact pages
  **/
 function hideMainScreen() {
-    $('#dialpad').hide();
-    $('#contacts').hide();
+    document.getElementById('dialpad').style.display = 'none';
+    document.getElementById('contacts').style.display = 'none';
 }
 
 /**
@@ -26,15 +26,15 @@ function hideMainScreen() {
  **/
 function showOnCallScreen() {
     hideMainScreen();
-    $('#onCallScreen').show();
-    $("#btnEndCall").off('click');
-    $('#btnEndCall').on('click', false, hangupActiveCallApi);
-    $("#createTicket").off('click');
+    document.getElementById('onCallScreen').style.display = 'block';
+    document.getElementById('btnEndCall').removeEventListener('click', function () { });
+    document.getElementById('btnEndCall').addEventListener('click', function () { hangupActiveCallApi(false); });
+    document.getElementById('createTicket').removeEventListener('click', function () { });
     if (callTicket) {
-        $('#createTicket').text(`Go to ticket: #${callTicket.toString()}`);
-        $('#createTicket').on('click', callTicket, navigateToTicket);
+        document.getElementById('createTicket').innerText = `Go to ticket: #${callTicket.toString()}`;
+        document.getElementById('createTicket').addEventListener('click', function () { navigateToTicket(callTicket); });
     } else {
-        $('#createTicket').on('click', false, createTicketWithCallNotes);
+        document.getElementById('createTicket').addEventListener('click', function () { createTicketWithCallNotes(false); });
     }
 }
 
@@ -43,14 +43,14 @@ function showOnCallScreen() {
  **/
 function showCallSummaryScreen() {
     hideMainScreen();
-    $('#onCallScreen').hide();
-    $('#callSummaryScreen').show();
-    $('#callNotesOnSummary').val($('#callNotes').val());
-    $('#callNotes').val("");
-    $("#btnCreateTicketWithNotes").off('click');
-    $('#btnCreateTicketWithNotes').on('click', true, createTicketWithCallNotes);
-    $('#btnCancel').off('click');
-    $('#btnCancel').on('click', endIncompleteCall)
+    document.getElementById('onCallScreen').style.display = 'none';
+    document.getElementById('callSummaryScreen').style.display = 'block';
+    document.getElementById('callNotesOnSummary').value = document.getElementById('callNotes').value;
+    document.getElementById('callNotes').value = '';
+    document.getElementById('btnCreateTicketWithNotes').removeEventListener('click', function () { });
+    document.getElementById('btnCreateTicketWithNotes').addEventListener('click', function () { createTicketWithCallNotes(true); });
+    document.getElementById('btnCancel').removeEventListener('click', endIncompleteCall);
+    document.getElementById('btnCancel').addEventListener('click', endIncompleteCall);
 }
 
 /**
@@ -58,26 +58,23 @@ function showCallSummaryScreen() {
  **/
 function dialpadEvents() {
     var count = 0;
-    $('.digit').off('click');
-    $(".digit").on('click', function () {
-        var num = ($(this).text());
-        if (count < 15) {
-            var prevOutput = $('#output').val();
-            $("#output").val(prevOutput + num);
-            count++
-        }
+    const digits = document.querySelectorAll('.digit');
+    digits.forEach(function (digit) {
+        digit.removeEventListener('click', function () { });
+        digit.addEventListener('click', function () {
+            var num = (this.innerText);
+            if (count < 15) {
+                var prevOutput = document.getElementById('output').value;
+                document.getElementById('output').value = (prevOutput + num);
+                count++
+            }
+        });
     });
 
-    $('.fa-long-arrow-left').off('click')
-    $('.fa-long-arrow-left').on('click', function () {
-        $('#output span:last-child').remove();
-        count--;
-    });
-
-    $('#call').off('click');
-    $('#call').on('click', function () {
-        callApi($('#output').val());
-        $('#output').val('');
+    document.getElementById('call').removeEventListener('click', function () { });
+    document.getElementById('call').addEventListener('click', function () {
+        callApi(document.getElementById('output').value);
+        document.getElementById('output').value = ('');
     });
 }
 
@@ -90,8 +87,8 @@ function addEventListeners() {
     /* Outgoing call functionality */
     dialpadEvents();
     /* Tab click events functionality */
-    $("#tabContacts").off('click');
-    $("#tabContacts").on('click', renderContactList);
+    document.getElementById('tabContacts').removeEventListener('click', renderContactList);
+    document.getElementById('tabContacts').addEventListener('click', renderContactList);
 }
 
 function onAppActivated() {
@@ -102,7 +99,7 @@ function onAppActivated() {
         function (data) {
             const phone = data.loggedInUser.contact.phone ? data.loggedInUser.contact.phone : data.loggedInUser.contact.mobile ? data.loggedInUser.contact.mobile : null;
             window.userPhone = phone;
-            $("#mainContent").show();
+            document.getElementById('mainContent').style.display = 'block';
             addEventListeners();
         },
         function (error) {
@@ -125,4 +122,4 @@ function onDocumentReady() {
         });
 };
 
-$(document).ready(onDocumentReady);
+document.addEventListener("DOMContentLoaded", onDocumentReady);

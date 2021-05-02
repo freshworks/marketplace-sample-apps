@@ -1,6 +1,5 @@
   <html>
   <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
-  <script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>
    <script>
     window.frsh_init().then(function(client){
 
@@ -12,8 +11,8 @@
       client.instance.context().then(function(context){
         console.log('Modal instance API context', context);
         //data passed from App to modal
-        jQuery('#name').val(context.data.defaultName);
-        jQuery('#email').val(context.data.defaultEmail);
+        q('#name').value = context.data.defaultName;
+        q('#email').value = context.data.defaultEmail;
       });
 
       // To retrieve information about all instances.
@@ -21,13 +20,13 @@
         console.log('Modal instance API Get', data);
       });
     });
-    function submitValues() {
+    function submitValues(event) {
       window.frsh_init().then(function(client){
         let result = {
-          name: jQuery('#name').val(),
-          email: jQuery('#email').val(),
-          message: jQuery('#message').val(),
-        }
+          name: q('#name').value,
+          email: q('#email').value,
+          message: q('#message').value,
+        };
 
         // Send message to parent
         client.instance.send({ message: result });
@@ -39,6 +38,10 @@
       // To prevent from reloading after form submit
       event.preventDefault();
     };
+
+    function q(selector) {
+      return document.querySelector(selector);
+    }
   </script>
   <link rel='stylesheet' type='text/css' href='modal1.css' />
   <body>

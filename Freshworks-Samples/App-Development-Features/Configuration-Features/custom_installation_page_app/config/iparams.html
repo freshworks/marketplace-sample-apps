@@ -1,92 +1,52 @@
 <html>
-  <head>
-    <title>BOOKS</title>
-  </head>
 
-    <style>
-      .validation {
-        color: red;
-      }
+<head>
+  <title>BOOKS</title>
+</head>
+<script
+  src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+<link rel="stylesheet" type="text/css"
+  href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css" />
+<link rel="stylesheet" href="./assets/iparams.css" />
 
-      .input-section {
-        margin-top : 10px;
-      }
+<body>
+  <div class="input-section">
+    <label> Select your background colour: </label><br />
+    <input id="bgc" type="color" class="input" />
+    <span id="bgc-validation" class="validation"></span><br />
+  </div>
 
-      .input {
-        margin-top : 5px;
-      }
-    </style>
+  <div class="input-section">
+    <label>Choose a book:</label><br />
+    <select id="book" class="input">
+      <option disabled selected>Choose a book</option>
+    </select>
+  </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-  <link rel='stylesheet' type='text/css' href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
-
-  <body>
-
-    <div class='input-section'>[]
-      <label> Select your background colour: </label></br>
-      <input id='bgc' type='color' class='input'> <span id='bgc-validation' class='validation'></span></br>
-    </div>
-
-    <div class='input-section'>
-      <label>Choose a book:</label></br>
-      <select id='book' class='input'>
-        <option disabled selected>Choose a book</option>
-      </select>
-    </div>
-
-  </body>
-
+  <script src="./assets/iparams.js"></script>
   <script>
-    const API_LINK = "https://anapioficeandfire.com/api/books";
+    function postConfigs() {
+      return {
+        bgColour: document.getElementById("bgc").value,
+        book: document.querySelector("book option:selected").value,
+      };
+    }
 
     function getConfigs(savedConfigs) {
       if (savedConfigs) {
-        $('#bgc').val(savedConfigs.bgColour);
-        $('#book').val(savedConfigs.book);
+        document.getElementById('bgc').value = savedConfigs.bgColour;
+        document.getElementById('book').value = savedConfigs.book;
       }
-    }
-
-    function postConfigs() {
-      return {
-        bgColour : $('#bgc').val(),
-        book: $('#book option:selected').val()
-      }
-    }
-
-    function showValidationMessage(inputClass, message) {
-      var validationSelector = $(`#${inputClass}-validation`);
-      validationSelector.fadeIn();
-      validationSelector.text(message);
-      validationSelector.fadeOut(1500);
     }
 
     function validate() {
-      if ($('#bgc').val() === '#000000') {
-        showValidationMessage('bgc', 'Background colour cannot be black!');
+      if (document.getElementById('bgc').value === "#000000") {
+        showValidationMessage("bgc", "Background colour cannot be black!");
         return false;
       }
       return true;
     }
-
-    function getBookFromAPI(callback) {
-      $.ajax({
-        url: API_LINK,
-        datatype: "jsonp",
-        success: function(books) {
-          books.forEach(function(book) {
-            $('#book').append(`<option>${book.name}</option>`);
-          });
-        }
-      });
-    }
-
-
-    $(document).ready(function() {
-      getBookFromAPI(function() {
-        app.initialized();
-      });
-    });
-
   </script>
+</body>
+
 </html>

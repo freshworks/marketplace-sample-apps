@@ -1,0 +1,9 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshsales": {}
+  },
+  "dependencies": {
+   "moment":"2.27.0"
+}
+}

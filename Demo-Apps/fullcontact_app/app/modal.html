@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <script
+    src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://static.freshdev.io/fdk/2.0/assets/freshchat.css">
+  <script type="module"
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
+  <script nomodule
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
+</head>
+
+<style>
+  label {
+    font-size: 14px;
+    color: rgb(18, 52, 77);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 14px;
+    color: rgb(71, 88, 103);
+    letter-spacing: 0px;
+    line-height: 20px;
+    position: relative;
+    font-weight: 400;
+  }
+
+</style>
+
+<body>
+  <div class="container"></div>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    app.initialized().then(function (_client) {
+      window.client = _client;
+      client.instance.context().then(function (context) {
+        let contactDetails = context.data;
+        let labelObj = { "fullName": "Full Name", "gender": "Gender", "location": "Location", "title": "Title", "organization": "Organization", "bio": "Bio" }
+        Object.keys(labelObj).forEach(element => {
+          console.log(contactDetails)
+          console.log(contactDetails[element]);
+          console.log(element);
+          document.querySelector('.container').insertAdjacentHTML('beforeend',
+            `<div>
+            <label>${labelObj[element]}</label>
+            <p>${contactDetails[element]}</p>
+          </div>`);
+        });
+      }, function (error) {
+        console.error(error);
+      });
+    });
+  });
+</script>
+
+</html>

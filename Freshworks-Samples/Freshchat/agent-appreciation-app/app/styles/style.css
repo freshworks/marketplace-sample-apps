@@ -1,0 +1,27 @@
+.logo {
+  background: url('freshchat_logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  margin-top: 25px;
+}
+body{
+  overflow-x: hidden;
+
+}
+.content
+{
+  display:flex;
+  width:100vw;
+  justify-content: space-around;
+}
+.message
+{
+  width:50%;
+}
+.image,img
+{
+  /* width:50px; */
+  height:100px; 
+  width:100px;
+}

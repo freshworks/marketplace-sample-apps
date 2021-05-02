@@ -1,0 +1,156 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onTaskUpdate",
+  "region": "US",
+  "version": "2.0",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "task": {
+      "id": 117596,
+      "status": "Completed",
+      "due_date": "2019-09-15T14:00:00Z",
+      "title": "sample task check for central",
+      "description": "task on september 15",
+      "is_deleted": false,
+      "completed_date": "2019-09-24T09:42:12Z",
+      "created_at": "2019-09-24T09:29:07Z",
+      "updated_at": "2019-09-24T09:42:12Z",
+      "task_type_id": 2,
+      "owner_id": 37,
+      "creator_id": 1,
+      "updater_id": 1,
+      "outcome_id": 11,
+      "targetable_id": 1012478,
+      "targetable_type": "Lead"
+    },
+    "associations": {
+      "owner": {
+        "id": 37,
+        "name": "sa***** **********",
+        "type": "user",
+        "email": "sample2@gmail.com",
+        "is_active": true,
+        "work_number": "**********",
+        "mobile_number": "**********",
+        "time_zone": "Osaka",
+        "created_at": "2019-08-14T08:27:49Z",
+        "updated_at": "2019-08-14T08:27:49Z",
+        "deal_pipeline_id": 1,
+        "job_title": "**********"
+      },
+      "task_type": {
+        "name": "Call reminder",
+        "position": 2,
+        "sales_activity_type_id": 4
+      },
+      "task_users": [
+        {
+          "_association_id": 169174,
+          "user_id": 37
+        },
+        {
+          "_association_id": 169175,
+          "user_id": 1
+        }
+      ],
+      "outcome": {
+        "id": 11,
+        "name": "Interested",
+        "position": 1
+      },
+      "updater": {
+        "id": 1,
+        "name": "Sales Agent",
+        "type": "user",
+        "email": "prakash.thiyagarajan@freshworks.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null,
+        "time_zone": "Central Time (US & Canada)",
+        "created_at": "2019-07-18T08:16:46Z",
+        "updated_at": "2019-07-31T09:24:53Z",
+        "deal_pipeline_id": 1,
+        "job_title": null
+      },
+      "targetable": {
+        "id": 1012478,
+        "_model": "Lead"
+      },
+      "creator": {
+        "id": 1,
+        "name": "Sales Agent",
+        "type": "user",
+        "email": "prakash.thiyagarajan@freshworks.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": null,
+        "time_zone": "Central Time (US & Canada)",
+        "created_at": "2019-07-18T08:16:46Z",
+        "updated_at": "2019-07-31T09:24:53Z",
+        "deal_pipeline_id": 1,
+        "job_title": null
+      }
+    },
+    "changes": {
+      "model_changes": {
+        "targetable": [
+          {
+            "id": 1012472,
+            "_model": "Lead"
+          },
+          {
+            "id": 1012478,
+            "_model": "Lead"
+          }
+        ],
+        "status": [
+          "Open",
+          "Completed"
+        ],
+        "due_date": [
+          "2019-09-10T11:00:00Z",
+          "2019-09-15T14:00:00Z"
+        ],
+        "title": [
+          "sample task",
+          "sample task check for central"
+        ],
+        "description": [
+          "task on september 10",
+          "task on september 15"
+        ],
+        "completed_date": [
+          null,
+          "2019-09-24T09:42:12+00:00"
+        ],
+        "updated_at": [
+          "2019-09-24T09:29:07Z",
+          "2019-09-24T09:42:12Z"
+        ],
+        "task_type_id": [
+          1,
+          2
+        ],
+        "owner_id": [
+          1,
+          37
+        ],
+        "updater_id": [
+          null,
+          1
+        ],
+        "outcome_id": [
+          12,
+          11
+        ]
+      },
+      "system_changes": {},
+      "misc_changes": {}
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "restaurants": {
+    "fields": [{
+        "name": "name",
+        "label": "Name",
+        "type": "TEXT"
+      },
+      {
+        "name": "short_code",
+        "label": "Short-Code",
+        "type": "TEXT",
+        "filterable": true
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "PARAGRAPH"
+      },
+      {
+        "name": "photo_url",
+        "label": "Photo URL",
+        "type": "PARAGRAPH"
+      },
+      {
+        "name": "location_pin",
+        "label": "Address (Google Maps Link)",
+        "type": "PARAGRAPH"
+      },
+      {
+        "name": "status",
+        "label": "catalog_status",
+        "type": "TEXT",
+        "filterable": true
+      }
+    ]
+  },
+  "appointments": {
+    "fields": [{
+        "name": "restaurant_id",
+        "label": "Restaurant ID",
+        "type": "TEXT",
+        "filterable": true
+      },
+      {
+        "name": "restaurant_info",
+        "label": "Restaurant Info",
+        "type": "PARAGRAPH"
+      },
+      {
+        "name": "ticket_id",
+        "label": "Ticket ID",
+        "type": "TEXT",
+        "filterable": true
+      },
+      {
+        "name": "appointment_date",
+        "label": "Appointment Date",
+        "type": "DATE_TIME"
+      },
+      {
+        "name": "booked_slot",
+        "label": "Booked Slot",
+        "type": "NUMBER",
+        "filterable": true
+      },
+      {
+        "name": "notes",
+        "label": "Notes",
+        "type": "PARAGRAPH"
+      }
+    ]
+  }
+}
