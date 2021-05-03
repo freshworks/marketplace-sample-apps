@@ -17,7 +17,7 @@ exports = {
   events: [{ event: "onScheduledEvent", callback: "onScheduledEventHandler" }],
 
   onScheduledEventHandler: function (args) {
-    console.log("onScheduledEventHandler fired 🎇");
+    console.info("onScheduledEventHandler fired 🎇");
     var userId = args.data.userId;
     var note = args.data.note;
     /**
