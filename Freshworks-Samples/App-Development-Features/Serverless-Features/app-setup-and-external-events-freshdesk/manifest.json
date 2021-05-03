@@ -1,0 +1,12 @@
+{
+  "platform-version": "2.0",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "ticket_background": {
+          "url": "ticket_background.html"
+        }
+      }
+    }
+  }
+}
