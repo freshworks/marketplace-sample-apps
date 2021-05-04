@@ -12,7 +12,7 @@ function getJoke() {
 }
 
 function addListner() {
-  document.getElementById('punchline_btn').addEventListener('click', function() {
+  document.getElementById('punchline-btn').addEventListener('click', function() {
     document.getElementById('punchline').innerHTML = `<fw-label value="${punchline}" color="green"></fw-label>`
   })
 }
