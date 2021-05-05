@@ -25,6 +25,14 @@
         "type": "text",
         "required": true
       },
+      "creatorDomain": {
+        "display_name": "Freshservice Domain name",
+        "type": "domain",
+        "required": true,
+        "type_attributes": {
+          "product": "freshservice"
+        }
+      },
     "transformation": {
       "display_name": "Select a transformation",
       "type": "dropdown",
@@ -41,20 +49,12 @@
         "Diamond Head"
       ],
       "default_value": "Grey Matter",
-      "required": false,
+      "required": true,
       "description": "Omnitrix is fully charged. Select a alien transformation"
     },
     "age": {
       "display_name": "What is Ben's Age?",
       "type": "number"
-    },
-    "creatorDomain": {
-      "display_name": "Who is creator of Ben 10 cartoon series",
-      "type": "domain",
-      "description": "devrel",
-      "type_attributes": {
-        "product": "freshservice"
-      }
     },
     "signature": {
       "display_name": "Who created omnitrix",
