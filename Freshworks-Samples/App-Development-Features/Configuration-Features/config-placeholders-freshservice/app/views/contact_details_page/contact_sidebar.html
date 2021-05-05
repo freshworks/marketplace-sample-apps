@@ -22,7 +22,7 @@
     function getClientAPI(_client) {
       let client = _client;
       client.events.on('app.activated', function log() {
-        return console.log(`contact sidebar location:  app is activated 🥁`);
+        return console.info(`contact sidebar location:  app is activated 🥁`);
       });
     }
   </script>

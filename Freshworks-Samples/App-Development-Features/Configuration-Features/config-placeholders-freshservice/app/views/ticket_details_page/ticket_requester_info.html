@@ -25,7 +25,7 @@
     function getClientAPI(_client) {
       let client = _client;
       client.events.on('app.activated', function log() {
-        return console.log(`ticket requester info location:  app is activated 🥁`);
+        return console.info(`ticket requester info location:  app is activated 🥁`);
       });
     }
   </script>
