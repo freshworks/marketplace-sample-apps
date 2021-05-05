@@ -1,4 +1,5 @@
 document.onreadystatechange = whenInteractive;
+const URL = 'https://<%= iparam.creatorDomain %>.freshservice.com/api/v2/agents/<%= iparam.agent_id %>';
 
 function whenInteractive() {
   if (document.readyState === 'interactive') {
@@ -12,31 +13,23 @@ function getClientAPI(_client) {
   client.events.on('app.activated', makeAPIcall);
 }
 
-function getOmnitrix() {
-   client.iparams.get('omnitrix').then(function(iparams) {
-   omnitrix =  iparams.omnitrix;
-})
-}
-
 function makeAPIcall() {
-  const URL = 'https://<%= iparam.creatorDomain %>.freshservice.com/api/v2/agents/<%= iparam.agent_id %>';
   var options = {
     headers: {
       Authorization: `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform
       'Content-Type': 'application/json'
     }
   };
-  client.iparams.get('omnitrix').then(function(iparams) {
-    omnitrix =  iparams.omnitrix;
- })
+  client.iparams
+    .get('transformation')
+    .then(function(iparams) {
+      transformation =  iparams.transformation;
+    })
   client.request
     .get(URL, options)
     .then(function ({ response }) {
       let agentData = JSON.parse(response);
-      document.getElementById('apptext').innerText = `Hey ${agentData['agent']['first_name']},  ${omnitrix} is my fav transformation too`
-      console.log("Agents: ", agentData['agent']['first_name'])
-      
+      document.getElementById('apptext').innerText = `Hey ${agentData['agent']['first_name']}, ${transformation} is my fav transformation too!, No Pinky Promise 😝`
     })
     .catch(console.error);
-
 }

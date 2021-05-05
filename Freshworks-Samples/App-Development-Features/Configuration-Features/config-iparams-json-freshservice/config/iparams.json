@@ -25,7 +25,7 @@
         "type": "text",
         "required": true
       },
-    "omnitrix": {
+    "transformation": {
       "display_name": "Select a transformation",
       "type": "dropdown",
       "options": [
