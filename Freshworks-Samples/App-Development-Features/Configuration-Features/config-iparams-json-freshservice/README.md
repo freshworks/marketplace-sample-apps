@@ -1,4 +1,4 @@
-# Config app for freshdesk
+# Config app for freshservice
 
 > Using iparams.json
 
@@ -24,9 +24,9 @@ This app also demonstrates making secure API calls without exposing API key from
 
 ### Prerequisites:
 
-1. Make sure you have a trial Freshdesk account created. You can always [sign up](https://freshdesk.com/signup)
+1. Make sure you have a trial Freshservice account created. You can always [sign up](https://freshservice.com/signup)
 2. Ensure that you have the [Freshworks CLI](https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234) installed properly.
-3. Get [Freshdesk API key](https://support.freshdesk.com/support/solutions/articles/215517). After you install the app, you'd notice contacts are being rendered in `ticket_conversation_editor` placeholder.
+3. Get [Freshservice API key](https://api.freshservice.com/v2/#authentication). After you install the app, you'd notice the Agent name with Ben10 Tranformation in `ticket_sidebar` placeholder.
 
 ### Procedure to run the app:
 
