@@ -1,0 +1,23 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+.app-body {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+img {
+  max-width: 50px;
+}

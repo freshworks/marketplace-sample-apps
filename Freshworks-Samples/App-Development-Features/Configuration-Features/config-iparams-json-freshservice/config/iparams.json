@@ -1,0 +1,70 @@
+{
+    "hero": {
+      "display_name": "Guess Ben's Last Name",
+      "description": "You can answer this!",
+      "type": "text",
+      "required": true,
+      "visible": true,
+      "secure": false,
+      "regex": {
+        "alphanumeric": "^[a-zA-Z0-9_]*$",
+        "alphanumeric-error": "Name validation failed"
+      }
+    },
+    "api_key": {
+      "display_name": "Freshservice apikey",
+      "description": "freshservice API requires app calls to include API keys in all of their requests",
+      "secure": true,
+      "type": "text",
+      "required": true
+    },
+    "agent_id": {
+        "display_name": "Agent ID",
+        "description": "find your agent ID in your profile page URL",
+        "secure": true,
+        "type": "text",
+        "required": true
+      },
+      "creatorDomain": {
+        "display_name": "Freshservice Domain name",
+        "type": "domain",
+        "required": true,
+        "type_attributes": {
+          "product": "freshservice"
+        }
+      },
+    "transformation": {
+      "display_name": "Select a transformation",
+      "type": "dropdown",
+      "options": [
+        "Cannonbolt",
+        "Heatblast",
+        "Four Arms",
+        "Grey Matter",
+        "Jetray",
+        "Humungousaur",
+        "Slapback",
+        "Goop",
+        "Way Big",
+        "Diamond Head"
+      ],
+      "default_value": "Grey Matter",
+      "required": true,
+      "description": "Omnitrix is fully charged. Select a alien transformation"
+    },
+    "age": {
+      "display_name": "What is Ben's Age?",
+      "type": "number"
+    },
+    "signature": {
+      "display_name": "Who created omnitrix",
+      "description": "Tip: Google it",
+      "type": "text",
+      "events": [
+        {
+          "change": "checkSignature"
+        }
+      ]
+    }
+  }
+  
