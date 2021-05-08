@@ -8,7 +8,7 @@ The App development for any Freshworks product follows a common pattern. <mark> 
 
 <dl>
 <dt>Introductory Guide to Freshworks App development</dt>
-<dd>An effective guide to help you get up to speed understanding app development on Freshworks Developer Platform</dd>
+<dd>An effective guide to help you get up to speed understanding app development on Freshworks Developer Platform. <a href="https://developers.freshworks.com/assets/onboarding.pdf">Read the guide</a></dd>
   <dt>Prerequisites ℹ️</dt>
   <dd>You need to have Freshworks CLI installed. See <a href="https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234/2"> instructions</a> to install it </dd>
   <dt>References 📒</dt>
