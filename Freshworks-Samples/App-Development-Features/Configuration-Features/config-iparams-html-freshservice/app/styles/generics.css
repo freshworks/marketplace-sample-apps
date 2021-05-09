@@ -1,0 +1,41 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+main {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Grande';
+}
+
+.card {
+  position: relative;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .50rem;
+  padding: 10px; 
+  margin: 100px;
+}
+	
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem
+}
+
+.card-title {
+  margin-bottom: .75rem
+}
+
+.text-center {
+  text-align: center
+}
