@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+.fw-widget-wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  table-layout:fixed;
+  border-spacing: 5px;
+  padding-right: 10px; 
+}
+
+th, td {
+  padding: 7px;
+}
+
+th {
+  white-space:nowrap;
+  padding: 2px;
+}
