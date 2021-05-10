@@ -1,0 +1,183 @@
+<html>
+<head>
+  <script
+    src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script type="module"
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js">
+    </script>
+  <script nomodule
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js">
+    </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
+</head>
+<body>
+    <main>
+        <fw-input
+        id = "mail_id"
+        label="Official Mail ID"
+        placeholder="Enter your official email ID from which mail has to be sent"
+        required
+        clear-input>
+        </fw-input>
+
+        <fw-input
+        id = "sendgrid_key"
+        label= "SendGrid Key"
+        required
+        placeholder="Enter your SendGrid API key"
+        clear-input>
+        </fw-input>
+
+        <fw-input
+        id = "aws_client"
+        label="AWS Access Key ID"
+        required
+        type = "password"
+        clear-input>
+        </fw-input>
+
+        <fw-input
+        id = "aws_secret"
+        label="AWS Secret Access Key"
+        required
+        type = "password"
+        clear-input>
+        </fw-input>
+
+        <fw-input
+        id = "bb_repo"
+        label="BitBucket workspace and repository name"
+        required
+        placeholder="Enter in workspace_name/repository_name format"
+        clear-input>
+        </fw-input>        
+
+        <div id='operations'>
+        </div>
+    </main>
+
+    <script type="text/javascript">
+
+        document.onreadystatechange = function () {
+            if (document.readyState === 'interactive') renderApp();
+            function renderApp() {
+                var onInit = app.initialized();
+                onInit.then(getClient).catch(handleErr);
+                function getClient(_client) {
+                window.client = _client;
+                }
+            }
+        };
+
+        var operationsArray = [];
+
+        function onAppActivate() {
+            var url = "https://hamsinisivalenka.freshteam.com/api/departments";
+            var headers = {
+                "Authorization": "Bearer B4UW3azVMg-ha-CJN0rXjg",
+                "accept": "application/json",
+            };
+
+            var options = {headers: headers}
+
+            return client.request.get(url,options)
+            .then(
+            function(data)
+            {
+                const obj = JSON.parse(data.response);
+                const number = obj.length;
+                let container = document.getElementById("operations");
+
+                for (i=0;i<number;i++){
+
+                    //Create array of options to be added
+                    const array = ["Send Welcome Mail", "Create AWS Account", "Invite to BB Repo"];
+
+                    //Create and append select list
+                    let selectList = document.createElement("fw-select");
+                    selectList.id = obj[i].name.split(' ').join('-');
+                    selectList.multiple = true;
+                    selectList.label = `Operations for ${obj[i].name}`;
+                    operationsArray.push(selectList.id);
+                    container.appendChild(selectList);
+
+                    //Create and append the options
+                    for (let i = 0; i < array.length; i++) {
+                        let option = document.createElement("fw-select-option");
+                        option.value = i+1;
+                        let t = document.createTextNode(array[i]);
+                        option.appendChild(t);
+                        selectList.appendChild(option);
+                    }
+                }
+                return Promise.resolve(true);
+            },
+            function (error){
+                console.log(error);
+                return Promise.reject(error);
+            });
+        }
+
+        function handleErr(err) {
+        console.error(`Error occured. Details:`, err);
+        }
+
+        function getConfigs(configs) {
+            onAppActivate()
+            .then( function() {
+                var x = document.getElementById("operations").children; 
+
+                for(let key in configs)
+                {
+                    if( key!="mail" && key!="aws_acc" && key!="aws_sec")
+                    {
+                        try{
+                            document.querySelector(`#${key}`).setSelectedValues(configs[key] || []);
+                        } catch (error)
+                        {
+                            console.log(error);
+                        }
+                    }
+                }
+
+                document.querySelector('#mail_id').value = configs['mail'];
+                document.querySelector('#aws_client').value = configs['aws_acc'];
+                document.querySelector('#aws_secret').value = configs['aws_sec'];
+                document.querySelector('#sendgrid_key').value = configs['sendgrid_key'];
+                document.querySelector('#bb_repo').value = configs['bb_repo'];
+
+            },
+            function (error)
+            {
+                console.log(error);
+            }) 
+        }
+        
+    
+        function postConfigs() {
+            let configs = {
+                mail: document.querySelector('#mail_id').value,
+                aws_acc: document.querySelector('#aws_client').value,
+                aws_sec: document.querySelector('#aws_secret').value,
+                sendgrid_key: document.querySelector('#sendgrid_key').value,
+                bb_repo: document.querySelector('#bb_repo').value,
+            }
+            for(let i = 0; i<operationsArray.length;i++)
+            {
+                configs[`${operationsArray[i]}`] = [];
+            }
+
+            for(let i=0;i<operationsArray.length;i++)
+            {
+                let x = document.querySelector(`#${operationsArray[i]}`).value;
+                configs[`${operationsArray[i]}`] = x;
+            }
+            return configs;
+        }
+    </script>
+    
+</body>
+
+</html>
