@@ -7,6 +7,8 @@ Sample Apps in this repository demonstrate features of our developer platform. A
 The App development for any Freshworks product follows a common pattern. <mark> Which implies once an app built for one product will be similar to another with very few changes required</mark>.
 
 <dl>
+<dt>Introductory Guide to Freshworks App development</dt>
+<dd>An effective guide to help you get up to speed understanding app development on Freshworks Developer Platform. <a href="https://developers.freshworks.com/assets/onboarding.pdf">Read the guide</a></dd>
   <dt>Prerequisites ℹ️</dt>
   <dd>You need to have Freshworks CLI installed. See <a href="https://community.developers.freshworks.com/t/what-are-the-prerequisites-to-install-the-freshworks-cli/234/2"> instructions</a> to install it </dd>
   <dt>References 📒</dt>
@@ -24,6 +26,5 @@ The App development for any Freshworks product follows a common pattern. <mark> 
 🍟 [CONTRIBUTION GUIDE](./.github/CONTRIBUTING.MD)
 
 🕵️‍♂️ [LICENSE](./.github/LICENSE)
-
 
 <img align="right" vspace=20 width=150 src=".github/assets/freshworks_developers_logo.png">
