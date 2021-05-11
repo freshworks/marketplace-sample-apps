@@ -1,8 +1,40 @@
-{"apiKey": {
-    "display_name": "API Key",
-    "description": "Please enter the API key",
-    "type": "text",
+{
+  "domainName": {
+    "display_name": "Domain Name",
+    "description": "Enter your domain name",
+    "type": "domain",
+    "type_attributes": {
+      "product": "freshdesk"
+    },
     "required": true,
-    "secure":true
+    "events": [
+      {
+        "change": "fillTicketFieldsOptions"
+      }
+    ]
+  },
+  "apiKey": {
+    "display_name": "API Key",
+    "description": "Enter your Freshdesk API key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
+    },
+    "events": [
+      {
+        "change": "fillTicketFieldsOptions"
+      }
+    ]
+  },
+  "sentimentField": {
+    "display_name": "Custom field to update sentiment",
+    "description": "[Optonal] Choose a custom field to update the sentiment result to.",
+    "type": "dropdown",
+    "options": [
+      ""
+    ],
+    "default_value": ""
   }
 }
