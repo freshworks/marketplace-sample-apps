@@ -1,8 +1,2 @@
 {
-    "freshdesk_domain_prefix": {
-        "display_name": "Fresh Desk Domain Prefix",
-        "description": "Enter the fresh desk domain without 'https://' and 'freshdesk.com'",
-        "type": "text",
-        "required": true
-      }
 }
