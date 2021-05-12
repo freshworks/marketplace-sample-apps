@@ -22,7 +22,7 @@ function onAppActivate() {
 function showAgentSavedTickets() {
     client.data.get("domainName").then(
         function(freshdeskDomain) {
-            console.log(freshdeskDomain);
+            console.debug('Freshdesk domain is ' + freshdeskDomain);
             getLoggedInUser().then(
                 function(loggedInUser) {
                     let data = {
@@ -33,8 +33,8 @@ function showAgentSavedTickets() {
                     client.request.invoke('getAgentTickets', data)
                         .then(
                             function(response) {
-                                console.log('Tickets received from the backend are'); 
-                                console.log(response.response.savedTickets); 
+                                console.debug('Tickets received from the backend are'); 
+                                console.debug(response.response.savedTickets); 
 
                                 var agentTicketsTable = document.getElementById('agentTicketsTable');
 
@@ -93,12 +93,12 @@ function saveToAgentsTickets() {
                 'ticketSubject': ticket.subject
             };
             
-            console.log('Saving current ticket with data ' + JSON.stringify(data));
+            console.debug('Saving current ticket with data ' + JSON.stringify(data));
 
             client.request.invoke("saveToAgentsTickets", data).then(
                     function(data) {
-                        console.log("Successfully saved the agent ticket");
-                        console.log(data);
+                        console.info("Successfully saved the agent ticket");
+                        console.debug(data);
 
                         showAgentSavedTickets();
                     },
@@ -119,8 +119,8 @@ function removeTicket(ticket) {
         console.info('Removing the agent ticket with data ' + JSON.stringify(data)); 
         client.request.invoke("removeAgentsTicket", data).then(
             function(data) {
-                console.log("Successfully removed the ticket from agent. Response is :");
-                console.log(data);
+                console.debug("Successfully removed the ticket from agent. Response is :");
+                console.debug(data);
 
                 showAgentSavedTickets();
             },
