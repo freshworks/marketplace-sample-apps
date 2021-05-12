@@ -16,7 +16,7 @@ Features demonstrated | Notes
  _AWS Create Account_ | _App creates AWS account for the new hire using AWS SDK version 2.879.0_
   _BitBucket Invitation_ | _App invites the new hire to a configured Bitbucket repository_
 
-### Prerequisites:
+### Prerequisites :
 1. Make sure you have a trial Freshteam account created
 2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
 3. Ensure that an account in Twilio SendGrid has been created and you have the API key for the same. 
