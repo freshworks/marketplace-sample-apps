@@ -1,7 +1,7 @@
-# Freshdesk Agent's Saved Tickets App
+# Freshdesk Bookmark Tickets App
 
 ## Description 
-This app allows an agent to add tickets to current working list or the tickets he wants to visit later.
+This app allows an agent to bookmark tickets to visit later.
 
 ## App Demo 
 

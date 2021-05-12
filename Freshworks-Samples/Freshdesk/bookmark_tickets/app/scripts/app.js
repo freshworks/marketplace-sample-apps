@@ -16,41 +16,41 @@ document.onreadystatechange = function () {
 };
 
 function onAppActivate() {
-    showAgentSavedTickets(); 
+    showBookmarkedTickets(); 
 }
 
-function showAgentSavedTickets() {
+function showBookmarkedTickets() {
     client.data.get("domainName").then(
         function(freshdeskDomain) {
-            console.debug('Freshdesk domain is ' + freshdeskDomain);
+            console.log('Freshdesk domain is ' + freshdeskDomain);
             getLoggedInUser().then(
                 function(loggedInUser) {
                     let data = {
                         'agentId': loggedInUser.id
                     };
-                    console.debug("Getting the saved tickets for agent id " + loggedInUser.id);
+                    console.log("Getting the bookmarked tickets for agent id " + loggedInUser.id);
         
-                    client.request.invoke('getAgentTickets', data)
+                    client.request.invoke('getBookmarkedTickets', data)
                         .then(
                             function(response) {
-                                console.debug('Tickets received from the backend are'); 
-                                console.debug(response.response.savedTickets); 
+                                console.log('Tickets received from the backend are'); 
+                                console.log(response.response.savedTickets); 
 
-                                var agentTicketsTable = document.getElementById('agentTicketsTable');
+                                var agentBookmarkedTicketsTable = document.getElementById('agentBookmarkedTicketsTable');
 
                                 // Don't show ticket table if there are no tickets to display
                                 if (response.response.savedTickets == null || response.response.savedTickets.length === 0) {
-                                    agentTicketsTable.style.display = "none";
+                                    agentBookmarkedTicketsTable.style.display = "none";
                                     return;
                                 } 
 
                                 // As there are tickets to be displayed, make the table visible
-                                agentTicketsTable.style.display = "table";
+                                agentBookmarkedTicketsTable.style.display = "table";
         
                                 // Clear existing rows except headers
-                                var rowCount = agentTicketsTable.rows.length;
+                                var rowCount = agentBookmarkedTicketsTable.rows.length;
                                 for (var x = rowCount - 1; x > 0; x--) {
-                                    agentTicketsTable.deleteRow(x);
+                                    agentBookmarkedTicketsTable.deleteRow(x);
                                 }
         
                                 response.response.savedTickets.forEach(ticket => {
@@ -71,20 +71,20 @@ function showAgentSavedTickets() {
 }
 
 function insertRow(freshdeskDomainName, ticketId, ticketSubject) {
-    var table = document.getElementById('agentTicketsTable').insertRow(1);
+    var table = document.getElementById('agentBookmarkedTicketsTable').insertRow(1);
 
     var c1 = table.insertCell(0);
     var c2 = table.insertCell(1);
     var c3 = table.insertCell(2);
     
+    // Remove `dev=true` when publishing the app
     c1.innerHTML = '<a target="blank" href="https://' + freshdeskDomainName + '/a/tickets/'
         + ticketId + '?dev=true">' + ticketId + '</a>';
-    // '<a href=' + window.location.hostname + 'a/tickets/' + ticketId + '>' + ticketId + '</a>';
     c2.innerHTML = ticketSubject;
     c3.innerHTML = '<input id="' + ticketId +  '" type="image" src="styles/images/removeRed.svg" style="height:20px; width:20px" onClick="removeTicket(this);"/>';
 }
 
-function saveToAgentsTickets() {
+function bookmarkTicket() {
     getLoggedInUser().then(function(loggedInUser) {
         getCurrentTicket().then(function(ticket) {
             let data = {
@@ -93,14 +93,14 @@ function saveToAgentsTickets() {
                 'ticketSubject': ticket.subject
             };
             
-            console.debug('Saving current ticket with data ' + JSON.stringify(data));
+            console.log('Saving current ticket with data ' + JSON.stringify(data));
 
-            client.request.invoke("saveToAgentsTickets", data).then(
+            client.request.invoke("bookmarkTicket", data).then(
                     function(data) {
                         console.info("Successfully saved the agent ticket");
-                        console.debug(data);
+                        console.log(data);
 
-                        showAgentSavedTickets();
+                        showBookmarkedTickets();
                     },
                     function(err) {
                         console.error('Error while saving ticket');
@@ -119,10 +119,10 @@ function removeTicket(ticket) {
         console.info('Removing the agent ticket with data ' + JSON.stringify(data)); 
         client.request.invoke("removeAgentsTicket", data).then(
             function(data) {
-                console.debug("Successfully removed the ticket from agent. Response is :");
-                console.debug(data);
+                console.log("Successfully removed the ticket from agent. Response is :");
+                console.log(data);
 
-                showAgentSavedTickets();
+                showBookmarkedTickets();
             },
             function(err) {
                 console.error('Error while saving ticket');
