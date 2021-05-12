@@ -14,14 +14,9 @@ This app allows an agent to bookmark tickets to visit later.
 ## How to run the app 
 * Go to parent directory of this app 
 * Run `fdk run` command 
-* Go to http://localhost:10001/custom_configs 
-* Give your FreshWorks domain prefix. 
-  
-  For example, if the complete URL is 
-  https://abcd1234.freshdesk.com, then enter `abcd1234` in `Fresh Desk Domain Prefix` parameter
-* Visit tickets page https://abcd1234.freshdesk.com/a/tickets/7?dev=true.
-  
-  Remember to replace your account number. 
+* Visit tickets page https://<your account name>.freshdesk.com/a/tickets/
+  Remember to replace your account number.
+* Choose any ticket and open it. Append the `?dev=true` in the URL and press enter.
 * You'll see an app as shown in App Demo 
 
 ## Development Platform Features used in this app
