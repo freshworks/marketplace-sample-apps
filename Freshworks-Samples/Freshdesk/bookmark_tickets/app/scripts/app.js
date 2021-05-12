@@ -79,7 +79,7 @@ function insertRow(freshdeskDomainName, ticketId, ticketSubject) {
     
     // Remove `dev=true` when publishing the app
     c1.innerHTML = '<a target="blank" href="https://' + freshdeskDomainName + '/a/tickets/'
-        + ticketId + '?dev=true">' + ticketId + '</a>';
+        + ticketId + '">' + ticketId + '</a>';
     c2.innerHTML = ticketSubject;
     c3.innerHTML = '<input id="' + ticketId +  '" type="image" src="styles/images/removeRed.svg" style="height:20px; width:20px" onClick="removeTicket(this);"/>';
 }
