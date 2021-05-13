@@ -5,28 +5,32 @@ function getJoke() {
     showSpinner(data);
     let setup = JSON.parse(data.response).setup;
     punchline = JSON.parse(data.response).punchline;
-    q(".card").style.display = "block";
-    q(
+    pick(".card").style.display = "block";
+    pick(
       "#setup"
     ).innerHTML = `<fw-label value="Question:" color="red"></fw-label> ${setup}`;
   }),
     function (error) {
-      console.log(error);
+      console.error("Error fetching data from endpoint", error);
     };
 }
 
 function showSpinner(data) {
   if (data) {
-    q(".spinner-div").style.display = "none";
+    pick(".spinner-div").style.display = "none";
   }
 }
 
-function addListner() {
-  q("#punchline-btn").addEventListener("click", function () {
-    q(
+function addListener() {
+  pick("#punchline-btn").addEventListener("click", function () {
+    pick(
       "#punchline"
     ).innerHTML = `<fw-label value="${punchline}" color="green"></fw-label>`;
   });
+}
+
+function pick(selector) {
+  return document.querySelector(selector);
 }
 
 document.onreadystatechange = function () {
@@ -43,22 +47,11 @@ document.onreadystatechange = function () {
   }
 };
 
-function q(selector) {
-  return document.querySelector(selector);
-}
-
 function onAppActivate() {
-  var textElement = q("#apptext");
-  var getContact = client.data.get("contact");
-  getContact.then(showContact).catch(handleErr);
-
-  function showContact(payload) {
-    textElement.innerHTML = `Ticket created by ${payload.contact.name}`;
-  }
   getJoke();
-  addListner();
+  addListener();
 }
 
 function handleErr(err) {
-  console.error(`Error occured. Details:`, err);
+  console.error(`Error occurred. Details:`, err);
 }
