@@ -1,7 +1,10 @@
+/**
+ * Words used for Sentiment analysis result
+ */
 const SENTIMENTS = {
   good: 'good',
   bad: 'bad',
-  nuetral: 'nuetral'
+  neutral: 'neutral'
 }
 
 /**
@@ -19,6 +22,7 @@ function notifyError(error) {
 
 /**
  * It tokenises the given phrase.
+ * The words are split into meaningful word tokens to compare against the words list to find out sentiment of the particular words.
  *
  * @param {string} input - Phrase to tokenize
  * @returns {string[]} words tokens from the given phrase
@@ -32,7 +36,8 @@ function tokenize(input) {
 }
 
 /**
- * It tokenises the given phrase to take out emoticons
+ * It tokenises the given phrase to take out emoticons.
+ * It splits the emoticons out of the given phrase to compare against the list of emoticons to find out the sentiment score for the particular emoticons.
  *
  * @param {string} input - Phrase to tokenize emoticons
  * @returns {string[]} emoticons tokens from the given phrase
@@ -51,33 +56,32 @@ function emoticons(input) {
  * @returns {number} Sentiment score
  */
 function findScore(phrase) {
-  let tokens = tokenize(phrase);
-  let emoticonTokens = emoticons(phrase)
+  const tokens = tokenize(phrase);
+  const emoticonTokens = emoticons(phrase)
   let score = 0;
-  let len = tokens.length;
-  let emoticonsLen = emoticonTokens.length;
 
-  while (len--) {
-    let obj = tokens[len];
-    if (!AFINN.hasOwnProperty(obj)) {
-      continue;
+  /* Find if the word tokens are available in the AFINN words list and add relevant score for the matching word. */
+  let token;
+  for (token of tokens) {
+    if (AFINN.hasOwnProperty(token)) {
+      score += AFINN[token];
     }
-    score += AFINN[obj];
   }
 
-  while (emoticonsLen--) {
-    let emoticon = emoticonTokens[emoticonsLen];
-    if (!AFINN_EMOTICON.hasOwnProperty(emoticon)) {
-      continue;
+  /* Find if the emoticon tokens are available in the AFINN emoticons list and add relevant score for the matching emoticon. */
+  let emoticonToken;
+  for (emoticonToken of emoticonTokens) {
+    if (AFINN_EMOTICON.hasOwnProperty(emoticonToken)) {
+      score += AFINN_EMOTICON[emoticonToken];
     }
-    score += AFINN_EMOTICON[obj];
   }
 
   return score;
 }
 
 /**
- * It returns happy, sad or neutral sentiment based on the given score
+ * It returns happy, sad or neutral sentiment based on the given score.
+ * It returns happy for a positive resulting score and sad for a negative resulting score. Neutral if the resulting score in zero.
  *
  * @param {number} score - Sentiment score
  * @returns {string} Sentiment of the given score
@@ -88,11 +92,12 @@ function sentiment(score) {
   } else if (score < 0) {
     return SENTIMENTS.bad;
   } else {
-    return SENTIMENTS.nuetral;
+    return SENTIMENTS.neutral;
   }
 }
 
 /**
+ * It checks for the configured custom field to update the sentiment result and update the field with the sentiment result string.
  *
  * @param {string} domain - Domain of the Freshdesk instance
  * @param {object} ticket - Current ticket details
@@ -119,7 +124,7 @@ function updateTicketField(domain, ticket, sentiment) {
         }, error => {
           console.error('Error: Unable to update the ticket field with the sentiment analysis result');
           console.error(error);
-          notifyError('Failed to update sentiment result to the configed ticket field.')
+          notifyError('Failed to update sentiment result to the configured ticket field.')
         });
       }
     } else {
@@ -138,20 +143,24 @@ function updateTicketField(domain, ticket, sentiment) {
  * @returns {string} Sentiment of the ticket
  */
 function calculateSentimentFromData(data) {
-  let requesterId = data.requester_id;
+  const requesterId = data.requester_id;
   let scores = [];
   scores.push(findScore(data.subject));
   scores.push(findScore(data.description_text));
+
+  /* Calculates sentiment score only for the conversation from the customer and avoiding the conversation from the agent */
   data.conversations.filter(converstation => converstation.user_id === requesterId).forEach(conversation => {
     scores.push(findScore(conversation.body_text));
   });
 
   let averageScore = 0;
   for (let i = scores.length - 1; i >= 0; i--) {
-    averageScore += scores[i] * (i + 1);
+    averageScore += scores[i];
   }
-  averageScore /= scores.length * (scores.length + 1) / 2;
+  averageScore /= scores.length;
   const sentimentText = sentiment(averageScore);
+
+  /* Displays relevant section for the sentiment */
   if (sentimentText === SENTIMENTS.good) {
     document.getElementById('one-sentiment').classList.remove('display-none');
     document.querySelector(`.emoji[sentiment=single]`).classList.add('emoji--happy');
@@ -172,9 +181,8 @@ function calculateAndUpdateSentiment() {
   client.data.get("ticket").then((ticketDetail) => {
     client.data.get("domainName").then((domainDetail) => {
       client.iparams.get("sentimentField").then(iparams => {
-        let dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
-        let headers = { "Authorization": "Basic <%= encode(iparam.apiKey) %>" };
-        let options = { headers: headers };
+        const dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
+        const options = { headers: { "Authorization": "Basic <%= encode(iparam.apiKey) %>" } };
         client.request.get(dataUrl, options)
           .then(data => {
             const sentimentText = calculateSentimentFromData(JSON.parse(data.response));
@@ -183,8 +191,7 @@ function calculateAndUpdateSentiment() {
             console.error('Error fetching the ticket details');
             console.error(error);
             notifyError('Failed to get ticket details.');
-          }
-          );
+          });
       }, error => {
         console.error('Error: Failed to get the configured ticket field to update sentiment');
         console.error(error);

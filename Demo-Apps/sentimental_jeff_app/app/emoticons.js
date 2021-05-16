@@ -1,4 +1,9 @@
-var AFINN_EMOTICON = {
+/**
+ * EmoticonList from https://github.com/fnielsen/afinn/blob/master/afinn/data/AFINN-emoticon-8.txt
+ * In JavaScript - https://github.com/darenr/afinn
+ */
+
+const AFINN_EMOTICON = {
   ":)": 2,
   ":(": -2,
   ":|": -1,

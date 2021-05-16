@@ -1,4 +1,9 @@
-var AFINN = {
+/**
+ * Wordlist from https://github.com/fnielsen/afinn/blob/master/afinn/data/AFINN-en-165.txt
+ * In JavaScript - https://github.com/darenr/afinn
+ */
+
+const AFINN = {
   "abandon": -2,
   "abandoned": -2,
   "abandons": -2,
