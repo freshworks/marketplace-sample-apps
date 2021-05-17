@@ -16,15 +16,15 @@ function notifyUser(status, message) {
  * Send SMS notification to user with the given message and status
  */
 function notifySMS() {
-  var req_phone = document.getElementById("to-number").value;
+  var reqPhone = document.getElementById("to-number").value;
   var msgContent = document.getElementById("sms-message").value;
 
-  if (!req_phone) {
+  if (!reqPhone) {
     return notifyUser("warning", "Please enter the recipient's mobile number");
   }
   client.request
     .invoke("sendSMS", {
-      phone: req_phone,
+      phone: reqPhone,
       message: msgContent,
     })
     .then(function () {
