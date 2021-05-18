@@ -1,6 +1,5 @@
-const JOKE_ENDPOINT = "https://official-joke-api.appspot.com/random_joke";
-
 function getJoke() {
+  const JOKE_ENDPOINT = "https://official-joke-api.appspot.com/random_joke";
   client.request.get(JOKE_ENDPOINT).then(function (data) {
     showSpinner(data);
     let setup = JSON.parse(data.response).setup;

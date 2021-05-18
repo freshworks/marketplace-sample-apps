@@ -47,3 +47,7 @@ main {
   align-content: center;
   margin-top: 20vh;
 }
+
+.space-below {
+  margin-bottom: 1rem;
+}
