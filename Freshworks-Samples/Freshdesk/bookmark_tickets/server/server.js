@@ -1,4 +1,7 @@
 exports = {
+    // These functions can be declared in the client side as well
+    // Added here for Server Method Invokation (https://developers.freshdesk.com/v2/docs/server-method-invocation/)
+    // demonstration purpose
     bookmarkTicket: async function (request) {
         saveTicketForAgent(request).then(
             function(data) {
