@@ -2,8 +2,9 @@ function getJoke() {
   const JOKE_ENDPOINT = "https://official-joke-api.appspot.com/random_joke";
   client.request.get(JOKE_ENDPOINT).then(function (data) {
     showSpinner(data);
-    let setup = JSON.parse(data.response).setup;
-    punchline = JSON.parse(data.response).punchline;
+    const setup = JSON.parse(data.response).setup;
+    const punchline = JSON.parse(data.response).punchline;
+    displayPunchline(punchline);
     pick(".card").style.display = "block";
     pick(
       "#setup"
@@ -20,7 +21,7 @@ function showSpinner(data) {
   }
 }
 
-function addListener() {
+function displayPunchline(punchline) {
   pick("#punchline-btn").addEventListener("click", function () {
     pick(
       "#punchline"
@@ -48,7 +49,6 @@ document.onreadystatechange = function () {
 
 function onAppActivate() {
   getJoke();
-  addListener();
 }
 
 function handleErr(err) {
