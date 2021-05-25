@@ -4,8 +4,8 @@ This app assumes the host Freshworks product to be Freshteam, an employee engage
 
 The app observes if new hire has been added and does the following operations:
 
-1. Sends a welcome email on new hire's official email address.
-2. Creates an AWS account and adds to Organisation.
+1. Sends a welcome email to the new hire's official email address.
+2. Creates an AWS account and adds new hire to the AWS Organisation.
 3. Sends an invite to a configured BitBucket Repository.
 
 The app can be configured to perform any of the 3 operations for each department. This can be done during the installation of the app, and also can be changed later. 

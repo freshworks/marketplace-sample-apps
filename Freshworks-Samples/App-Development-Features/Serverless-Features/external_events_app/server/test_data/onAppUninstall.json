@@ -2,6 +2,6 @@
   "timestamp": 1496400354326,
   "account_id": 13,
   "domain": "http://sample.freshdesk.com",
-  "event": "onAppUninstall",
+  "event": "onTicketCreate",
   "region": "US"
 }
