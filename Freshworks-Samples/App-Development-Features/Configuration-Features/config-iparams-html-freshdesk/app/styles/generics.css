@@ -14,28 +14,40 @@ main {
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  font-family: 'Lucida Sans', 'Lucida Grande';
+  font-family: "Lucida Sans", "Lucida Grande";
 }
 
 .card {
   position: relative;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, .125);
-  border-radius: .50rem;
-  padding: 10px; 
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.5rem;
+  padding: 10px;
   margin: 100px;
+  display: none;
 }
-	
+
 .card-body {
-    flex: 1 1 auto;
-    padding: 1.25rem
+  flex: 1 1 auto;
+  padding: 1.25rem;
 }
 
 .card-title {
-  margin-bottom: .75rem
+  margin-bottom: 0.75rem;
 }
 
 .text-center {
-  text-align: center
+  text-align: center;
+}
+
+.spinner-div {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  margin-top: 20vh;
+}
+
+.space-below {
+  margin-bottom: 1rem;
 }
