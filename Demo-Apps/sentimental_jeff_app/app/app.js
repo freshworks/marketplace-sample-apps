@@ -2,8 +2,8 @@
  * Words used for Sentiment analysis result
  */
 const SENTIMENTS = {
-  good: 'good',
-  bad: 'bad',
+  positive: 'positive',
+  negative: 'negative',
   neutral: 'neutral'
 }
 
@@ -80,17 +80,17 @@ function findScore(phrase) {
 }
 
 /**
- * It returns happy, sad or neutral sentiment based on the given score.
- * It returns happy for a positive resulting score and sad for a negative resulting score. Neutral if the resulting score in zero.
+ * It returns positive, negartive or neutral sentiment based on the given score.
+ * It returns neutral if the resulting score in zero and positive and negative for respective scores.
  *
  * @param {number} score - Sentiment score
  * @returns {string} Sentiment of the given score
  */
 function sentiment(score) {
   if (score > 0) {
-    return SENTIMENTS.good;
+    return SENTIMENTS.positive;
   } else if (score < 0) {
-    return SENTIMENTS.bad;
+    return SENTIMENTS.negative;
   } else {
     return SENTIMENTS.neutral;
   }
@@ -161,10 +161,10 @@ function calculateSentimentFromData(data) {
   const sentimentText = sentiment(averageScore);
 
   /* Displays relevant section for the sentiment */
-  if (sentimentText === SENTIMENTS.good) {
+  if (sentimentText === SENTIMENTS.positive) {
     document.getElementById('one-sentiment').classList.remove('display-none');
     document.querySelector(`.emoji[sentiment=single]`).classList.add('emoji--happy');
-  } else if (sentimentText === SENTIMENTS.bad) {
+  } else if (sentimentText === SENTIMENTS.negative) {
     document.getElementById('one-sentiment').classList.remove('display-none');
     document.querySelector(`.emoji[sentiment=single]`).classList.add('emoji--sad');
   } else {
@@ -180,22 +180,20 @@ function calculateSentimentFromData(data) {
 function calculateAndUpdateSentiment() {
   client.data.get("ticket").then((ticketDetail) => {
     client.data.get("domainName").then((domainDetail) => {
-      client.iparams.get("sentimentField").then(iparams => {
-        const dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
-        const options = { headers: { "Authorization": "Basic <%= encode(iparam.apiKey) %>" } };
-        client.request.get(dataUrl, options)
-          .then(data => {
-            const sentimentText = calculateSentimentFromData(JSON.parse(data.response));
-            updateTicketField(domainDetail.domainName, ticketDetail.ticket, sentimentText);
-          }, error => {
-            console.error('Error fetching the ticket details');
-            console.error(error);
-            notifyError('Failed to get ticket details.');
-          });
-      }, error => {
-        console.error('Error: Failed to get the configured ticket field to update sentiment');
-        console.error(error);
-      });
+      const dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
+      const options = { headers: { "Authorization": "Basic <%= encode(iparam.apiKey) %>" } };
+      client.request.get(dataUrl, options)
+        .then(data => {
+          const sentimentText = calculateSentimentFromData(JSON.parse(data.response));
+          updateTicketField(domainDetail.domainName, ticketDetail.ticket, sentimentText);
+        }, error => {
+          console.error('Error fetching the ticket details');
+          console.error(error);
+          notifyError('Failed to get ticket details.');
+        });
+    }, error => {
+      console.error('Error: Failed to get the configured ticket field to update sentiment');
+      console.error(error);
     }, error => {
       console.error('Error: Failed to get the domain.');
       console.error(error)

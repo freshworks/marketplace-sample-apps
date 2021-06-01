@@ -1,7 +1,7 @@
 {
   "domainName": {
-    "display_name": "Domain Name",
-    "description": "Enter your domain name",
+    "display_name": "Freshdesk Domain Name",
+    "description": "Enter your Freshdesk domain name",
     "type": "domain",
     "type_attributes": {
       "product": "freshdesk"
