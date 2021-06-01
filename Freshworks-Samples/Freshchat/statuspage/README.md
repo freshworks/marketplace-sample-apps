@@ -10,7 +10,9 @@ Shows the component-level status of the Statuspage that we intend to monitor fro
 
 Features demonstrated | Notes
 -------------------- | ------
- _Feature Name_ | _How the app is using it_
+ Request API | App making calls to statuspage.io
+ Interface API | To show notification within Freshchat
+ 
 
 ### Prerequisites
 
