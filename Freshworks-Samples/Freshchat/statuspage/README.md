@@ -6,7 +6,7 @@ Shows the component-level status of the Statuspage that we intend to monitor fro
 
 ### Screenshots:
 
-_[Screenshots that are not too big/small. Gifs are best. Let's just stick to 3 screenshots at the max]_
+![Screenshot](app/demo.png)
 
 Features demonstrated | Notes
 -------------------- | ------
@@ -23,6 +23,6 @@ Features demonstrated | Notes
 
 2. You'll notice the statuspage app in the sidebar.
 It is refreshed based on the poll frequency to obtain the status
-![Screenshot](app/demo.png)
+
 
 3. You can automate/send [partial-outage/downtime emails](https://help.statuspage.io/help/getting-started-with-email-automation) to the concerned status page and the respective status of the component would reflect in the sidebar
