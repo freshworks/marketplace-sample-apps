@@ -8,9 +8,11 @@ Shows the voucher list from an API which can be directly added to the editor are
 
 ![Screenshot](app/demo.png)
 
-| Features demonstrated | Notes                     |
-| --------------------- | ------------------------- |
-| Request API        | To make an API call to dummy API github gist|
+| Features demonstrated | Notes                                        |
+| --------------------- | -------------------------------------------- |
+| Request API           | To make an API call to dummy API github gist |
+| Instance API          | To pass context to the Modal and resize      |
+| Interface API         | To show notifications                        |
 
 ### Prerequisites:
 
