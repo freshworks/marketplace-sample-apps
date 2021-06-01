@@ -192,9 +192,6 @@ function calculateAndUpdateSentiment() {
           notifyError('Failed to get ticket details.');
         });
     }, error => {
-      console.error('Error: Failed to get the configured ticket field to update sentiment');
-      console.error(error);
-    }, error => {
       console.error('Error: Failed to get the domain.');
       console.error(error)
     });
@@ -216,5 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error(error)
         notifyError('Failed to load the app.');
       });
+  }).catch(function (error) {
+    console.error('Error: Sentimental Jeff app failed to render');
+    console.error(error);
   });
 });
