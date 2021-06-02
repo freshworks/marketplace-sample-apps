@@ -16,5 +16,8 @@
   },
   "dependencies": {
     "superagent": "6.1.0"
-  }
+  },
+  "whitelisted-domains": [
+    "https://api.typingdna.com"
+  ]
 }

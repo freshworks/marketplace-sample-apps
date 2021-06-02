@@ -1,6 +1,5 @@
 var superagent = require('superagent');
 var handleErr = console.error;
-var [apiKey, apiSecret] = [`<API KEY>`,`<SECRET>`]
 
 exports = {
   getQuote,
@@ -16,17 +15,19 @@ function sendtoFrontend(data) {
  * They are accessible inside $request instead of superagent
  */
 
-function getQuote() {
+function getQuote(options) {
+  var creds = options.iparams;
   var quote = superagent
     .get('https://api.typingdna.com/quote')
     .set('Content-Type', 'application/x-www-form-urlencoded')
     .send({ max: '45' })
-    .auth(apiKey, apiSecret);
+    .auth(creds.apiKey, creds.apiSecret);
 
   quote.then(sendtoFrontend, handleErr);
 }
 
-function doesMatch(patterns, apiKey, apiSecret) {
+function doesMatch(patterns) {
+  var creds = patterns.iparams;
   delete patterns.iparams;
   delete patterns.isInstall;
   console.log(patterns);
@@ -34,7 +35,7 @@ function doesMatch(patterns, apiKey, apiSecret) {
     .post('https://api.typingdna.com/match')
     .set('Content-Type', 'application/x-www-form-urlencoded')
     .set('Cache-Control', 'no-cache')
-    .auth(apiKey, apiSecret)
+    .auth(creds.apiKey, creds.apiSecret)
     .send(patterns);
   matchLevel.then(sendtoFrontend, handleErr);
 }
