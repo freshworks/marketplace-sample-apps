@@ -34,7 +34,7 @@ addListener('.interceptCloseTkt', () => {
   handleLocalStorage('interceptCloseTkt');
 });
 
-document.onreadystatechange = function() {
+document.onreadystatechange = function () {
   if (document.readyState == 'complete') startAppRender();
 
   function startAppRender() {
