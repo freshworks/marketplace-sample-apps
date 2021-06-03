@@ -4,11 +4,10 @@
     "freshchat": {
       "location": {
         "conversation_user_info": {
-          "url": "index.html",
+          "url": "template.html",
           "icon": "resources/img/icon.svg"
         }
       }
     }
-  },
-  "whitelisted-domains": ["https://<%= iparam.status_page_host %>"]
+  }
 }

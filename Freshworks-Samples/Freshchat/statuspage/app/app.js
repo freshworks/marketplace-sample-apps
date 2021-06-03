@@ -4,11 +4,11 @@
  *
  * Note: Assigning client object to window.client or to a global variable is only allowed in the front-end. Using the same approach in the serverless apps is discouraged.
  */
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(onAppInitializedCallback, function (error) {
     //Log and notify initialization error
     console.error(error);
-    showNotification('danger', 'Unable to initialize the app');
+    showNotification("danger", "Unable to initialize the app");
   });
 });
 /**
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 function onAppInitializedCallback(_client) {
   window.client = _client;
-  var requestHeaders = { Authorization: 'OAuth <%= iparam.status_page_api_key %>' };
+  var requestHeaders = { 'Authorization': 'OAuth <%= iparam.status_page_api_key %>' };
   var options = { headers: requestHeaders };
   var url = 'https://<%= iparam.status_page_host %>/api/v2/summary.json';
   client.iparams.get().then(
@@ -29,7 +29,7 @@ function onAppInitializedCallback(_client) {
     function (error) {
       //Log and Notify the user if there's an issue while obtaining the poll frequency
       console.error(error);
-      showNotification('danger', 'Unable to obtain the poll frequency');
+      showNotification("danger", "Unable to obtain the poll frequency");
     }
   );
 }
@@ -40,20 +40,20 @@ function onAppInitializedCallback(_client) {
  * @param {Object} options
  */
 function checkStatus(url, options) {
-  client.request
-    .get(url, options)
-    .then(function (data) {
-      if (data.response) {
-        displayStatus(data.response);
-      } else {
-        console.warn('No response.');
-        showNotification('warning', 'No response from Statuspage');
-      }
-    })
+  client.request.get(url, options)
+    .then(
+      function (data) {
+        if (data.response) {
+          displayStatus(data.response);
+        } else {
+          console.warn("No response.");
+          showNotification("warning", "No response from Statuspage");
+        }
+      })
     .catch(function (error) {
       //Log and Notify the user if Request API call fails
       console.error(error);
-      showNotification('danger', 'Request to Statuspage failed. Please check the console for error messages');
+      showNotification("danger", "Request to Statuspage failed. Please check the console for error messages");
     });
 }
 
@@ -72,7 +72,7 @@ function displayStatus(apiResponse) {
   } catch (e) {
     //Log and Notify the user if there's an error
     console.error(e);
-    showNotification('danger', 'Error occured while showing the component status');
+    showNotification("danger", "Error occured while showing the component status");
   }
 }
 
@@ -82,8 +82,8 @@ function displayStatus(apiResponse) {
  * @param {string} message
  */
 function showNotification(type, message) {
-  client.interface.trigger('showNotify', {
-    type: type || 'alert',
-    message: message || 'NA'
+  client.interface.trigger("showNotify", {
+    type: type || "alert",
+    message: message || "NA"
   });
 }
