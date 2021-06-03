@@ -72,7 +72,7 @@ exports = {
             domain: payload.domain,
             apiKey: iparams.apiKey,
             primaryTicket: primaryTicket,
-            windowDuration: parseInt(iparams.window),
+            windowDuration: iparams.window,
             secondaryTicket: secondaryTicket
           });
         })

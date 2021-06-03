@@ -9,6 +9,5 @@
         }
       }
     }
-  },
-  "whitelisted-domains": ["https://<%= iparam.voucher_api %>"]
+  }
 }
