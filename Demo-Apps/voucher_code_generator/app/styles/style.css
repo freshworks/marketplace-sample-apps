@@ -1,0 +1,116 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+.fw-widget-wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.tada-background {
+  background-color: #ebeff3;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.add-tada-content {
+  padding-top: 10px;
+}
+
+.tada-app-label {
+  color: #475867;
+}
+
+.alignment-middle {
+  text-align: center;
+}
+
+.button-middle,
+.align-middle {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.text--xsmall {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.validation-message {
+  font-size: 12px;
+  margin-top: 3px;
+  position: absolute;
+  color: #ff5959;
+}
+
+.mandatory::after {
+  content: "*";
+  color: red;
+  font-size: 14px;
+  vertical-align: bottom;
+  margin-left: 2px;
+}
+
+.what {
+  grid-column: 2/3;
+}
+
+.img-size {
+  height: 50px;
+  width: auto;
+}
+
+.action-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 25px;
+}
+
+.create-vocher-logo {
+  content: url("../styles/images/vocher-icon.png");
+  height: 23%;
+}
+
+.icon-text {
+  margin-left: 10px;
+}
+
+.yellow-light-card {
+  background-color: #fbf7dc;
+  padding: 7px 15px;
+  border-radius: 2px;
+  width: 40%;
+}
+
+.col-xs-2,
+.col-xs-5 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.lookup {
+  margin: 5px 0px 5px 0px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 1px solid #cfd7df;
+  height: 22em;
+}
+
+.lookup-body {
+  margin-left: 10px;
+}
