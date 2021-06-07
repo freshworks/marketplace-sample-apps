@@ -4,16 +4,16 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  app.initialized().then( (_client) => {
-      window.client = _client;
-      client.events.on('app.activated',
-         () => {
-          calculateSentiment();
-        },
-         (error) => {
-          notifyError();
-        });
-    });
+  app.initialized().then((_client) => {
+    window.client = _client;
+    client.events.on('app.activated',
+      () => {
+        calculateSentiment();
+      },
+      (error) => {
+        notifyError();
+      });
+  });
 
 
   function tokenize(input) {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /**Finds the score */
   function findScore(phrase) {
-    let tokens = tokenize(phrase),score = 0;
+    let tokens = tokenize(phrase), score = 0;
     let len = tokens.length;
 
     while (len--) {
@@ -60,26 +60,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function calculateSentiment() {
     client.data.get("ticket").then((ticketDetail) => {
-        client.data.get("domainName").then((domainDetail) => {
-            let dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
-            let headers = { "Authorization": "Basic <%= encode(iparam.apiKey) %>" };
-            let options = { headers: headers };
+      client.data.get("domainName").then((domainDetail) => {
+        let dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
+        let headers = { "Authorization": "Basic <%= encode(iparam.apiKey) %>" };
+        let options = { headers: headers };
 
-            client.request.get(dataUrl, options)
-              .then((data) => {
-                  calculateSentimentFromData(JSON.parse(data.response));
-                },
-                 (error) => {
-                  notifyError();
-                }
-              );
+        client.request.get(dataUrl, options)
+          .then((data) => {
+            calculateSentimentFromData(JSON.parse(data.response));
           },
-          (error) => {
-            notifyError();
-          }
-        );
+            (error) => {
+              notifyError();
+            }
+          );
       },
-       (error) => {
+        (error) => {
+          notifyError();
+        }
+      );
+    },
+      (error) => {
         notifyError();
       }
     );
