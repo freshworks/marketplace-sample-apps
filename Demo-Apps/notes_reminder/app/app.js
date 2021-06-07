@@ -74,7 +74,7 @@ function checkForNotifications() {
       });
       client.db.delete(`${userId}_notifications`);
     },
-    function(err) {
+    function (err) {
       console.error(`some error occurred: ${err}`);
     }
   );
