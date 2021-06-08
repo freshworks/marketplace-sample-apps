@@ -14,7 +14,7 @@ const SENTIMENTS = {
  */
 function notifyError(error) {
   client.interface.trigger("showNotify", {
-    type: "Danger",
+    type: "danger",
     title: "Sentimental Jeff Error",
     message: error
   });
