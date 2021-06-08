@@ -20,32 +20,21 @@
   .input {
     margin-top: 5px;
   }
-
 </style>
 
-<script
-  src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-<link rel='stylesheet' type='text/css'
-  href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
+<script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+<link rel='stylesheet' type='text/css' href='https://static.freshdev.io/fdk/2.0/assets/freshdesk.css'>
 
 <body>
 
   <div class='input-section'>
     <label>Freshdesk Subdomain: </label></br>
-    <input id='subdomain' type='text' class='input'> <span
-      id='subdomain-validation' class='failure'></span></br>
+    <input id='subdomain' type='text' class='input'> <span id='subdomain-validation' class='failure'></span></br>
   </div>
 
   <div class='input-section'>
-    <label>Freshdesk Username: </label></br>
-    <input id='username' type='text' class='input'> <span
-      id='username-validation' class='failure'></span></br>
-  </div>
-
-  <div class='input-section'>
-    <label>Freshdesk Password:</label></br>
-    <input id='password' type='password' class='input'> <span
-      id='password-validation' class='failure'></span></br>
+    <label>Freshdesk APIKey: </label></br>
+    <input id='apikey' type='text' class='input'> <span id='apikey-validation' class='failure'></span></br>
   </div>
 
   <div class='input-section'>
@@ -67,16 +56,14 @@
   function getConfigs(savedConfigs) {
     if (savedConfigs) {
       document.getElementById('subdomain').value = savedConfigs.subdomain;
-      document.getElementById('username').value = savedConfigs.username;
-      document.getElementById('password').value = savedConfigs.password;
+      document.getElementById('apikey').value = savedConfigs.apikey;
     }
   }
 
   function postConfigs() {
     return {
       subdomain: document.getElementById('subdomain').value,
-      username: document.getElementById('username').value,
-      password: document.getElementById('password').value
+      apikey: document.getElementById('apikey').value
     }
   }
 
@@ -96,13 +83,8 @@
       return false;
     }
 
-    if (document.getElementById('username').value === '') {
-      showValidationMessage('username', 'Username cannot be blank');
-      return false;
-    }
-
-    if (document.getElementById('password').value === '') {
-      showValidationMessage('password', 'Password cannot be blank');
+    if (document.getElementById('apikey').value === '') {
+      showValidationMessage('apikey', 'APIKey cannot be blank');
       return false;
     }
 
@@ -115,11 +97,9 @@
   }
 
   function validateCredentials() {
-    client.request.get(`https://${document.getElementById('subdomain').value}.freshpo.com/api/v2/tickets`, {
-      auth: {
-        user: document.getElementById('username').value,
-        pass: document.getElementById('password').value,
-        sendImmediately: true
+    client.request.get(`https://${document.getElementById('subdomain').value}.freshdesk.com/api/v2/tickets`, {
+      headers: {
+        'Authorization': 'Basic ' + btoa(document.getElementById('apikey').value + ':X')
       }
     }).then(function (data) {
       if (data.status === 200) {

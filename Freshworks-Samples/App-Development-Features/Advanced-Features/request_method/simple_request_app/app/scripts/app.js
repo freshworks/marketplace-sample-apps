@@ -11,9 +11,14 @@ function displayStatus(type, message) {
 
 function sendRequest(method, url, options) {
   client.request[method](url, options).then(
-    () =>
-      displayStatus("success", `${method.toUpperCase()} request successful`),
-    () => displayStatus("danger", `${method.toUpperCase()} request failed`)
+    (data) => {
+      displayStatus("success", `${method.toUpperCase()} request successful`)
+      console.info(data.response);
+    },
+    (error) => {
+      displayStatus("danger", `${method.toUpperCase()} request failed`)
+      console.error(error);
+    }
   );
 }
 
