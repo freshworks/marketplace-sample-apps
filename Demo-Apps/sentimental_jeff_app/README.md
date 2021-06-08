@@ -2,7 +2,7 @@
 
 ## Description
 
-This app analyses the ticket sentiment of the requestor and rates it. It can tell you if the tone of the message is angry, sad, indifferent or happy.
+This app analyses the ticket sentiment of the requestor and rates it. It can tell you if the tone of the message is happy, sad, or indifferent.
 
 ***
 
@@ -10,23 +10,24 @@ This app analyses the ticket sentiment of the requestor and rates it. It can tel
 
 ![appView](./screenshots/appView.png)
 
-For other screenshots please refer to [screenshots](./screenshots/) folder
-
 ***
 
 ## Features Demonstrated
 
-App location: ticket_sidebar on ticket details page
+Product: Freshdesk
+App location: ticket_sidebar on Ticket Details Page
 
 | Feature | Notes |
 | :---: | --- |
-| [`Data API`](https://developers.freshdesk.com/v2/docs/data-api/) | Data API is used to retrieve _ticket id_ and _Domain Name_ |
-| [`Request API`](https://developers.freshdesk.com/v2/docs/request-api/) | Request API has been used to get the conversational details |
+| [`Data API`](https://developers.freshdesk.com/v2/docs/data-api) | Data API is used to retrieve _Ticket Details_ and _Domain Name_ |
+| [`Request API`](https://developers.freshdesk.com/v2/docs/request-api) | Request API has been used to get the conversational details |
+| [`Installation Parameters`](https://developer.freshdesk.com/v2/docs/installation-parameters) | Installation parameters used to let admins configure account _domain name_, _api key_, and _custom field_ to optionally update the sentiment result |
+| [`Interface Method`](https://developer.freshdesk.com/v2/docs/interface-methods) | Interface method used to show error notifications to the user |
 
 ## Prerequisites
 
 1. Make sure you have a trial Freshdesk account created
-2. A properly configured [Development environment](https://developers.freshdesk.com/v2/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developers.freshdesk.com/v2/docs/freshworks-cli/).
+2. A properly configured [Development environment](https://developers.freshdesk.com/v2/docs/quick-start) along with the [FDK (Freshworks Development Kit)](https://developers.freshdesk.com/v2/docs/freshworks-cli).
 
 ***
 
@@ -40,7 +41,7 @@ App location: ticket_sidebar on ticket details page
 
 ***
 
-## Additional Notes
+## Notes
 
 - you can get the API key of Freshdesk in following way
   - Log in to your support portal.
