@@ -32,7 +32,8 @@ function getRestaurantDetails() {
  */
 function createTicketForAppointment(restaurant) {
   return new Promise(function (resolve, reject) {
-    client.request.post("<%= iparam.domain %>/api/v2/tickets", {
+    client.iparams.get('domain').then(function (data) {
+      client.request.post(`${data.domain}/api/v2/tickets`, {
         headers: {
           "Authorization": "Basic <%= encode(iparam.apikey) %>",
           "Content-Type": "application/json"
@@ -45,15 +46,21 @@ function createTicketForAppointment(restaurant) {
           email: "example@example.com"
         })
       })
-      .then(function (data) {
-        resolve({
-          restaurant,
-          ticket: data
+        .then(function (data) {
+          resolve({
+            restaurant,
+            ticket: data
+          });
+        })
+        .catch(function (error) {
+          notify(`danger`, `Ticket creation step failed!`);
+          console.error(error);
+          reject(error);
         });
-      })
+    })
       .catch(function (error) {
-        notify(`danger`, `Ticket creation step failed!`);
-        console.error(error);
+        notify(`danger`, `Unable to get Installation parameters.`)
+        console.log(error);
         reject(error);
       })
   });
@@ -96,13 +103,13 @@ function createAppointmentRecord(data) {
 function updateRestaurantRecord(data) {
   return new Promise(function (resolve, reject) {
     restaurant.update(newAppointment.restaurant_id, {
-        name: data.restaurant.name,
-        short_code: data.restaurant.short_code,
-        description: data.restaurant.description,
-        photo_url: data.restaurant.photo_url,
-        location_pin: data.restaurant.location_pin,
-        status: CATALOG_STATUS.in_progress
-      })
+      name: data.restaurant.name,
+      short_code: data.restaurant.short_code,
+      description: data.restaurant.description,
+      photo_url: data.restaurant.photo_url,
+      location_pin: data.restaurant.location_pin,
+      status: CATALOG_STATUS.in_progress
+    })
       .then(function () {
         resolve(data);
       })
