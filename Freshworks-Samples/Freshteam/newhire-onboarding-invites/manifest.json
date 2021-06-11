@@ -6,10 +6,11 @@
 
   "dependencies": {
     "@sendgrid/mail": "7.4.2",
-    "aws-sdk": "2.879.0"
+    "@aws-sdk/client-organizations": "3.17.0"
   },
 
   "whitelisted-domains": [
-    "https://api.bitbucket.org"
+    "https://api.bitbucket.org",
+    "https://<%= iparam.ft_domain %>.freshteam.com"
   ]
 }

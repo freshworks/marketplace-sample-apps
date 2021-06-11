@@ -1,7 +1,10 @@
-const AWS = require("aws-sdk");
+const {
+  OrganizationsClient,
+  CreateAccountCommand,
+} = require("@aws-sdk/client-organizations");
 const sendG = require("@sendgrid/mail");
 
-function performOperations(args, operation) {
+function performOperations(args, operation) { 
   if (operation.includes("1")) sendWelcomeMail(args);
   if (operation.includes("2")) addToAWSOrg(args);
   if (operation.includes("3")) inviteToBitBucket(args);
@@ -9,7 +12,7 @@ function performOperations(args, operation) {
 
 /*Sends email to Newhire using Sendgrid*/
 function sendWelcomeMail(args) {
-  sendG.setApiKey(args.iparams.sendgrid_key);
+  sendG.setApiKey(args["iparams"].sendgrid_key);
   const emailCont =
     `Hello ` +
     args.data.newhire.first_name +
@@ -31,7 +34,7 @@ function sendWelcomeMail(args) {
   sendG
     .send(msg)
     .then(() => {
-      console.log(
+      console.info(
         "\nSuccessfully sent Email to: " +
           args.data.newhire.official_email +
           " using SendGrid"
@@ -44,13 +47,14 @@ function sendWelcomeMail(args) {
 
 /* Adds Newhire to AWS Organisation using AWS-SDK*/
 function addToAWSOrg(args) {
-  const config = new AWS.Config({
-    accessKeyId: args.iparams.aws_acc,
-    secretAccessKey: args.iparams.aws_sec,
+  const organizations = new OrganizationsClient({
+    credentials: {
+      accessKeyId: args["iparams"].aws_acc,
+      secretAccessKey: args["iparams"].aws_sec,
+    },
     region: "us-east-1",
   });
 
-  const organizations = new AWS.Organizations((options = config));
   const params = {
     AccountName: args.data.newhire.first_name,
     Email: args.data.newhire.official_email,
@@ -62,10 +66,15 @@ function addToAWSOrg(args) {
     ],
   };
 
-  organizations.createAccount(params, function (err, data) {
-    if (err) console.log("\nunable to create account\n" + err.stack);
-    else console.log("\nSuccessfully created aws account\n" + data);
-  });
+  const command = new CreateAccountCommand(params);
+  organizations
+    .send(command)
+    .then((data) => {
+      console.info("Successfully created AWS account\n" + data);
+    })
+    .catch((error) => {
+      console.error("Couldn't create AWS account\n" + error.stack);
+    });
 }
 
 /*Sends invite to BitBucket Repository to the newhire*/
@@ -86,13 +95,13 @@ function inviteToBitBucket(args) {
     })
     .then(
       function () {
-        console.log(
+        console.info(
           "\nSuccessfully sent invite to BB repo to the email address " +
             args.data.newhire.official_email
         );
       },
       function (error) {
-        console.log(
+        console.error(
           "\nUnable to send invitation for the following reason:" +
             JSON.stringify(error)
         );
@@ -105,32 +114,31 @@ exports = {
 
   onNewHireCreateCallback: function (args) {
     const dept = args.data.newhire.department_id;
-    let url = `https://${args["iparams"].ft_domain}.freshteam.com/api/departments`;
-    let headers = {
+    const url = `https://${args["iparams"].ft_domain}.freshteam.com/api/departments`;
+    const headers = {
       Authorization: `Bearer ${args["iparams"].ft_api}`,
       accept: "application/json",
     };
 
-    var options = { headers: headers };
-    try {
-      $request.get(url, options).then(
-        function (data) {
-          let obj = JSON.parse(data.response);
-          for (let i = 0; i < obj.length; i++) {
-            if (dept == obj[i].id) {
-              let dept_name = obj[i].name.split(" ").join("-");
-              let operation = args["iparams"][dept_name];
-              performOperations(args, operation);
-              break;
-            }
+    const options = { headers: headers };
+
+    $request.get(url, options).then(
+      function (data) {
+        let obj = JSON.parse(data.response);
+        for (let i = 0; i < obj.length; i++) {
+          if (dept == obj[i].id) {
+            let dept_name = obj[i].name.split(" ").join("-");
+            let operation = args["iparams"][dept_name];
+            performOperations(args, operation); 
+            break;
           }
-        },
-        function (error) {
-          console.log(error);
         }
-      );
-    } catch (error) {
-      console.log(error);
-    }
+      },
+      function (error) {
+        console.error(
+          "Couldn't fetch operations to be performed\n" + JSON.stringify(error)
+        );
+      }
+    );
   },
 };
