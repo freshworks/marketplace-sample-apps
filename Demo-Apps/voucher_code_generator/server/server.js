@@ -1,11 +1,6 @@
-const voucherCodeGenerator = require("voucher-code-generator");
-
 exports = {
   generateVoucher: function () {
-    let voucher = voucherCodeGenerator.generate({
-      length: 8,
-      count: 1,
-    });
+    const voucher = Math.random().toString(36).slice(2);
     renderData(null, voucher);
   },
 };

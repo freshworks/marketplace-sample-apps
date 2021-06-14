@@ -15,17 +15,17 @@ html {
   align-items: center;
 }
 
-.tada-background {
+.app-background {
   background-color: #ebeff3;
   border-radius: 4px;
   padding: 12px;
 }
 
-.add-tada-content {
+.add-app-content {
   padding-top: 10px;
 }
 
-.tada-app-label {
+.app-label {
   color: #475867;
 }
 
@@ -36,8 +36,7 @@ html {
 .button-middle,
 .align-middle {
   width: 40%;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 65px;
 }
 
 .text--xsmall {
@@ -79,9 +78,9 @@ html {
   margin-top: 25px;
 }
 
-.create-vocher-logo {
-  content: url("../styles/images/vocher-icon.png");
-  height: 23%;
+.create-voucher-logo {
+  content: url("../styles/images/voucher-icon.png");
+  height: 50px;
 }
 
 .icon-text {

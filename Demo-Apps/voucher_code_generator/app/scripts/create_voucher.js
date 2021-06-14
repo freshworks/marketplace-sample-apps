@@ -7,12 +7,12 @@ function getFieldValues() {
   return {
     subject: document.getElementById("voucher-subject").value,
     description: document.getElementById("voucher-description").value,
-    discount: Number(document.getElementById("voucher-discount").value),
+    discount: parseInt(document.getElementById("voucher-discount").value),
     validity: document.getElementById("voucher-validity").value,
   };
 }
 
-/* Reset from fields */
+/* Reset form fields */
 function clearFields() {
   document.getElementById("voucher-subject").value = "";
   document.getElementById("voucher-description").value = "";
@@ -30,13 +30,13 @@ function clearFields() {
  * Save generated voucher code in Database
  * @param {string} subject - Voucher code subject
  * @param {string} description - Voucher code description
- * @param {number} discount - Discount value in percentage
+ * @param {integer} discount - Discount value in percentage
  * @param {string} validity - Voucher code time period in data scale
  * @param {string} voucher - generated voucher code
  */
 function saveVoucherToDb(subject, description, discount, validity, voucher) {
-  let createObject = new Object();
-  let id = generateUuid();
+  let createObject = {};
+  let id = generateId();
   createObject[`voucher_${id}`] = {
     subject,
     description,
@@ -46,24 +46,15 @@ function saveVoucherToDb(subject, description, discount, validity, voucher) {
   };
   client.db.update("vouchers", "set", createObject),
     function (error) {
-      console.error(error);
+      console.error("Error updating database with voucher data", error);
     };
 }
 
 /* Element event listeners */
 function addListeners() {
   var voucherCode = [];
-  document
-    .getElementById("voucher-toggle")
-    .addEventListener("fwChange", function () {
-      let displayValue =
-        document.getElementById("custom-voucher").style.display;
-      if (displayValue == "block") {
-        document.getElementById("custom-voucher").style.display = "none";
-      } else {
-        document.getElementById("custom-voucher").style.display = "block";
-      }
-    });
+  // Check custom voucher input field toggle status
+  toggleSwitchStatus();
 
   document
     .getElementById("create-voucher")
@@ -71,7 +62,7 @@ function addListeners() {
       if (validateFields()) {
         let vSubject = document.getElementById("voucher-subject").value;
         let vDescription = document.getElementById("voucher-description").value;
-        let vDiscount = Number(
+        let vDiscount = parseInt(
           document.getElementById("voucher-discount").value
         );
         let vValidity = document.getElementById("voucher-validity").value;
@@ -86,11 +77,13 @@ function addListeners() {
             vValidity,
             voucherCode[0]
           );
+          voucherCode.splice(0, voucherCode.length);
         } else {
           client.request.invoke("generateVoucher", {}).then(
             function (data) {
-              voucherCode.push(data.response[0]);
-              document.getElementById("voucher-label").innerText = voucherCode[0];
+              voucherCode.push(data.response);
+              document.getElementById("voucher-label").innerText =
+                voucherCode[0];
               saveVoucherToDb(
                 vSubject,
                 vDescription,
@@ -98,6 +91,7 @@ function addListeners() {
                 vValidity,
                 voucherCode[0]
               );
+              voucherCode.splice(0, voucherCode.length);
             },
             function (err) {
               console.error("Request ID: " + err.requestID);
@@ -122,6 +116,7 @@ function addListeners() {
     .getElementById("paste-editor")
     .addEventListener("click", function () {
       pasteInEditor(voucherCode[0]);
+
       window.frsh_init().then(function (client) {
         let result = {
           code: voucherCode[0],

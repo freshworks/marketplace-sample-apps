@@ -48,20 +48,15 @@ function dispVouchers() {
     keysArr = keysArr.slice(0, 5);
     let vou = [];
     keysArr.forEach((element) => {
-      vou.push(`<div class="lookup">
-      <label class="tada-app-label text--xsmall lookup-body"><b> Voucher Subject </b></label>
-      <p class="lookup-body">${dbData[element].subject}</p>
-      <label class="tada-app-label text--xsmall lookup-body"><b>Voucher Description </b></label>
-      <p class="lookup-body">${dbData[element].description}</p>
-      <label class="tada-app-label text--xsmall lookup-body"><b> Discount(%) </b></label>
-      <p class="lookup-body">${dbData[element].discount}</p>
-      <label class="tada-app-label text--xsmall lookup-body"><b>Validity</b></label>
-      <p class="lookup-body">${dbData[element].validity}</p>
-      <label class="tada-app-label text--xsmall lookup-body"><b> Voucher Code </b></label>
-      <fw-label class="lookup-body" value="${dbData[element].voucher}" onClick= "pasteInEditor(\'${dbData[element].voucher}'\)" name="pasteInEditor" data-arg1="${dbData[element].voucher}" color="green"></fw-label>
-      <fw-icon name="magic-wand" size="12" color="green" onClick= "pasteInEditor(\'${dbData[element].voucher}'\)">
-      </fw-icon>
-      </div>`);
+      vou.push(
+        voucherDetailsCard(
+          dbData[element].subject,
+          dbData[element].description,
+          dbData[element].discount,
+          dbData[element].validity,
+          dbData[element].voucher
+        )
+      );
     });
     document.querySelector("#values").innerHTML = vou.join(" ");
 
@@ -70,7 +65,7 @@ function dispVouchers() {
     }
   }),
     function (error) {
-      console.error(error);
+      console.error("Error retrieving vouchers data from Database", error);
     };
 }
 
@@ -84,23 +79,23 @@ function deleteVouchers() {
       cancelLabel: "No",
     })
     .then(function (result) {
-      if (result.message == "Yes") {
+      if (result.message === "Yes") {
         client.db.delete("vouchers").then(function () {
           showNotify(
             "success",
             "Success",
-            "Vouchers History removed successfully"
+            "Vouchers history removed successfully"
           );
         }),
           function (error) {
-            console.log(error);
+            console.log("Failed to delete vouchers", error);
           };
         document.getElementById("remove_history").classList.add("hidden");
         document.getElementById("values").innerHTML = "";
       }
     }),
     function (error) {
-      console.log(error);
+      console.log("Failed to get response from Delete voucher alert", error);
     };
 }
 
@@ -137,9 +132,11 @@ window.frsh_init().then(function (client) {
     });
 
     console.log("instance API context", context);
-  }), function(error){
+  }),
+    function (error) {
+      console.error(error);
+    };
+}),
+  function (error) {
     console.error(error);
   };
-}), function(error){
-  console.error(error);
-};

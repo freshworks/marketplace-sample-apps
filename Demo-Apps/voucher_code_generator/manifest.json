@@ -9,8 +9,5 @@
         }
       }
     }
-  },
-  "dependencies": {
-    "voucher-code-generator": "1.1.1"
   }
 }

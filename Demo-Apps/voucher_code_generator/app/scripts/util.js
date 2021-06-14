@@ -9,8 +9,11 @@ function showNotify(type, title, message) {
       console.error("Error from showNotify:", title, error);
     };
 }
-/* Return Unique Identifier */
-function generateUuid() {
+/**
+ * Return Unique Identifier
+ * Replace this function with a proper UUID generator for production apps
+ */
+function generateId() {
   return Math.floor(Math.random() * 1000000000);
 }
 
@@ -19,7 +22,7 @@ function generateUuid() {
  * @param {string} text - data needed to copy.
  */
 function copyToClipboard(text) {
-  var input = document.body.appendChild(document.createElement("input"));
+  const input = document.body.appendChild(document.createElement("input"));
   input.value = text;
   input.focus();
   input.select();
@@ -35,7 +38,7 @@ function copyToClipboard(text) {
 function openCreateVoucherModal(title, modalData) {
   client.interface.trigger("showModal", {
     title: title,
-    template: "create_vocher.html",
+    template: "create_voucher.html",
     data: modalData || {},
   });
 }
@@ -55,8 +58,48 @@ function pasteInEditor(value) {
     };
 }
 /**
- * Perform filed validation on create_vocher.html
- * @returns Boolean: Field validation status 
+ * Save generated voucher code in Database
+ * @param {string} subject - Voucher code subject
+ * @param {string} description - Voucher code description
+ * @param {integer} discount - Discount value in percentage
+ * @param {string} validity - Voucher code time period in data scale
+ * @param {string} voucher - generated voucher code
+ * @returns voucher code details card DOM string
+ */
+function voucherDetailsCard(subject, description, discount, validity, voucher) {
+  return `<div class="lookup">
+  <label class="app-label text--xsmall lookup-body"><b> Voucher Subject </b></label>
+  <p class="lookup-body">${subject}</p>
+  <label class="app-label text--xsmall lookup-body"><b>Voucher Description </b></label>
+  <p class="lookup-body">${description}</p>
+  <label class="app-label text--xsmall lookup-body"><b> Discount(%) </b></label>
+  <p class="lookup-body">${discount}</p>
+  <label class="app-label text--xsmall lookup-body"><b>Validity</b></label>
+  <p class="lookup-body">${validity}</p>
+  <label class="app-label text--xsmall lookup-body"><b> Voucher Code </b></label>
+  <fw-label class="lookup-body" value="${voucher}" onClick= "pasteInEditor(\'${voucher}'\)" name="pasteInEditor" data-arg1="${voucher}" color="green"></fw-label>
+  <fw-icon name="magic-wand" size="12" color="green" onClick= "pasteInEditor(\'${voucher}'\)">
+  </fw-icon>
+  </div>`;
+}
+
+function toggleSwitchStatus() {
+  document
+    .getElementById("voucher-toggle")
+    .addEventListener("fwChange", function () {
+      let displayValue =
+        document.getElementById("custom-voucher").style.display;
+      if (displayValue == "block") {
+        document.getElementById("custom-voucher").style.display = "none";
+      } else {
+        document.getElementById("custom-voucher").style.display = "block";
+      }
+    });
+}
+
+/**
+ * Perform field validation on create_voucher.html
+ * @returns Boolean: Field validation status
  */
 function validateFields() {
   document.querySelectorAll(".validation-message").innerHTML = "";
