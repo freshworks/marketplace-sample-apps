@@ -166,7 +166,7 @@
   color: #8A8A8A;
   position: relative;
   bottom: -129px;
-  font-size: 16px; 
+  font-size: 16px;
   font-family: serif, sans-serif;
 }
 
@@ -322,15 +322,15 @@
     top: 10px;
 }
 
-.emoji--yay:after {
+.emoji--happy:after {
   content: 'Happy Customer';
-  animation: yay-reverse 1s linear infinite;
+  animation: happy-reverse 1s linear infinite;
   padding-left: 5px;
 }
-.emoji--yay .emoji__face {
-  animation: yay 1s linear infinite alternate;
+.emoji--happy .emoji__face {
+  animation: happy 1s linear infinite alternate;
 }
-.emoji--yay .emoji__eyebrows {
+.emoji--happy .emoji__eyebrows {
   left: calc(50% - 3px);
   top: 30px;
   height: 6px;
@@ -339,7 +339,7 @@
   background: transparent;
   box-shadow: -6px 0 0 0 #000000, -36px 0 0 0px #000000, 6px 0 0 0 #000000, 36px 0 0 0px #000000;
 }
-.emoji--yay .emoji__eyebrows:before, .emoji--yay .emoji__eyebrows:after {
+.emoji--happy .emoji__eyebrows:before, .emoji--happy .emoji__eyebrows:after {
   width: 36px;
   height: 18px;
   border-radius: 60px 60px 0 0;
@@ -350,18 +350,18 @@
   bottom: 3px;
   left: calc(50% - 18px);
 }
-.emoji--yay .emoji__eyebrows:before {
+.emoji--happy .emoji__eyebrows:before {
   margin-left: -21px;
 }
-.emoji--yay .emoji__eyebrows:after {
+.emoji--happy .emoji__eyebrows:after {
   margin-left: 21px;
 }
-.emoji--yay .emoji__mouth {
+.emoji--happy .emoji__mouth {
   top: 60px;
   background: transparent;
   left: 50%;
 }
-.emoji--yay .emoji__mouth:after {
+.emoji--happy .emoji__mouth:after {
   width: 80px;
   height: 80px;
   left: calc(50% - 40px);
@@ -375,7 +375,7 @@
   border-right-color: transparent;
   z-index: 1;
 }
-.emoji--yay .emoji__mouth:before {
+.emoji--happy .emoji__mouth:before {
   width: 6px;
   height: 6px;
   background: transparent;
@@ -611,7 +611,7 @@
     top: 50%;
   }
 }
-@keyframes yay {
+@keyframes happy {
   25% {
     transform: rotate(-15deg);
   }
@@ -774,9 +774,9 @@
     height: 83.33333333px;
     position: relative;
   }
-  
-  
-  
+
+
+
   .medium.emoji-neutral.neutral {
     background: #fcd000;
   }
@@ -808,7 +808,7 @@
     top: 58.33333333px;
     position: absolute;
   }
-  
+
   @keyframes neutral-look-medium {
     0% {
       transform: translate(0px, 0px);
@@ -835,7 +835,7 @@
       transform: translate(0px, 0px);
     }
   }
-  
+
   .small.emoji-neutral {
     display: flex;
     justify-content: center;
@@ -856,8 +856,8 @@
     height: 41.66666667px;
     position: relative;
   }
-  
-  
+
+
   .small.emoji-neutral.neutral {
     background: #fcd000;
   }
@@ -889,9 +889,9 @@
     top: 29.16666667px;
     position: absolute;
   }
-  
-  
-  
+
+
+
   @keyframes neutral-look-small {
     0% {
       transform: translate(0px, 0px);
@@ -918,7 +918,3 @@
       transform: translate(0px, 0px);
     }
   }
-  
-  
-  
-  

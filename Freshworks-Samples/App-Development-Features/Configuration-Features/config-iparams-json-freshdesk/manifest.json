@@ -11,6 +11,6 @@
     }
   },
   "whitelisted-domains": [
-    "https://*.freshdesk.com"
+    "https://<%= iparam.creatorDomain %>.freshdesk.com"
   ]
 }
