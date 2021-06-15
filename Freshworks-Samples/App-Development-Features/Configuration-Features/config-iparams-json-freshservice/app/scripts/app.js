@@ -1,5 +1,4 @@
 document.onreadystatechange = whenInteractive;
-const URL = 'https://<%= iparam.creatorDomain %>.freshservice.com/api/v2/agents/<%= iparam.agent_id %>';
 
 function whenInteractive() {
   if (document.readyState === 'interactive') {
@@ -21,15 +20,15 @@ function makeAPIcall() {
     }
   };
   client.iparams
-    .get('transformation')
-    .then(function(iparams) {
-      transformation =  iparams.transformation;
+    .get()
+    .then(function (iparams) {
+      const URL = `https://${iparams.creatorDomain}.freshservice.com/api/v2/agents/${iparams.agent_id}`;
+      client.request
+        .get(URL, options)
+        .then(function ({ response }) {
+          let agentData = JSON.parse(response);
+          document.getElementById('apptext').innerText = `Hey ${agentData['agent']['first_name']}, ${iparams.transformation} is my fav transformation too!, No Pinky Promise 😝`
+        })
+        .catch(console.error);
     })
-  client.request
-    .get(URL, options)
-    .then(function ({ response }) {
-      let agentData = JSON.parse(response);
-      document.getElementById('apptext').innerText = `Hey ${agentData['agent']['first_name']}, ${transformation} is my fav transformation too!, No Pinky Promise 😝`
-    })
-    .catch(console.error);
 }
