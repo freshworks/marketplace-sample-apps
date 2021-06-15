@@ -4,10 +4,13 @@
     "freshdesk": {
       "location": {
         "ticket_sidebar": {
-          "url": "template.html",
-          "icon": "./resources/img/normal-github-64.svg"
+          "url": "index.html",
+          "icon": "./styles/images/normal-github-64.svg"
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://api.github.com"
+  ]
 }

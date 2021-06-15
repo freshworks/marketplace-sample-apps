@@ -2,8 +2,8 @@
 
 <head>
   <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-  <script type="module" src="https://static-dev.freshcloud.io/freshworks-ui-kit/freshworks-ui-kit.esm.js"></script>
-  <script nomodule src="https://static-dev.freshcloud.io/freshworks-ui-kit/freshworks-ui-kit.js"></script>
+  <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
   <script src="../scripts/modal.js"></script>
   <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
   <link rel="stylesheet" type="text/css" href="../styles/modal.css">
@@ -11,7 +11,7 @@
 
 <body>
   <fw-tabs>
-    <fw-tab title="Create Issue">
+    <fw-tab tab-header="Create Issue">
       <br>
       <div>
         <img src="../styles/images/github.svg" width="200px" />
@@ -20,8 +20,8 @@
       <br>
       <fw-button class="alignments" onClick="createIssue()" id="createTicket">Create an Issue</fw-button>
     </fw-tab>
-    <fw-tab title="View Issue">
-      <div id="modal">
+    <fw-tab tab-header="View Issue">
+      <div id="modal_content">
 
       </div>
     </fw-tab>
