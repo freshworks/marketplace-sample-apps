@@ -1,0 +1,8 @@
+{
+  "client_id": "YOUR CLIENT ID HERE",
+  "client_secret": "YOUR SECRET ID HERE",
+  "authorize_url": "https://bitbucket.org/site/oauth2/authorize",
+  "token_url": "https://bitbucket.org/site/oauth2/access_token",
+  "options": {},
+  "token_type": "account"
+}
