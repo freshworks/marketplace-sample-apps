@@ -3,68 +3,54 @@
   "product": {
     "freshservice": {
       "location": {
-
         "full_page_app": {
           "url": "views/global_navigation_pane/full_page_app.html",
           "icon": "styles/images/aeroplane.svg"
         },
-
         "ticket_sidebar": {
           "url": "views/ticket_details_page/ticket_sidebar.html",
           "icon": "styles/images/helicopter.svg"
         },
-
-        "ticket_requester_info": { 
+        "ticket_requester_info": {
           "url": "views/ticket_details_page/ticket_requester_info.html",
           "icon": "styles/images/aeroplane.svg"
         },
-
         "ticket_top_navigation": {
           "url": "views/ticket_details_page/ticket_top_navigation.html",
           "icon": "styles/images/aeroplane.svg"
         },
-        
         "ticket_background": {
           "url": "views/ticket_details_page/ticket_background.html"
         },
-
         "change_sidebar": {
           "url": "views/change_details_page/change_sidebar.html",
           "icon": "styles/images/helicopter.svg"
         },
-
         "change_background": {
           "url": "views/change_details_page/change_background.html"
         },
-
         "contact_sidebar": {
           "url": "views/contact_details_page/contact_sidebar.html",
           "icon": "styles/images/aeroplane.svg"
         },
-
         "new_ticket_sidebar": {
           "url": "views/new_ticket_page/new_ticket_sidebar.html",
           "icon": "styles/images/aeroplane.svg"
         },
-
         "new_ticket_background": {
           "url": "views/new_ticket_page/new_ticket_background.html"
         },
-
         "new_change_sidebar": {
           "url": "views/new_change_page/new_change_sidebar.html",
           "icon": "styles/images/aeroplane.svg"
         },
-
         "new_change_background": {
           "url": "views/new_change_page/new_change_background.html"
         },
-
         "asset_sidebar": {
           "url": "views/asset_details_page/asset_sidebar.html",
           "icon": "styles/images/aeroplane.svg"
         }
-
       }
     }
   }
