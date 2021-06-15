@@ -9,5 +9,8 @@
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://*.freshdesk.com"
+  ]
 }
