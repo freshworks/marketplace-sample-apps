@@ -32,27 +32,34 @@ function getRestaurantDetails() {
  */
 function createTicketForAppointment(restaurant) {
   return new Promise(function (resolve, reject) {
-    client.request.post("<%= iparam.domain %>/api/v2/tickets", {
-        headers: {
-          "Authorization": "Basic <%= encode(iparam.apikey) %>",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          status: TICKET_STATUS.open,
-          priority: TICKET_PRIORITY.low,
-          description: newAppointment.notes,
-          subject: "Appointment for " + restaurant.name,
-          email: "example@example.com"
-        })
-      })
-      .then(function (data) {
-        resolve({
-          restaurant,
-          ticket: data
-        });
+    client.iparams.get('domain').then(function (data) {
+        client.request.post(`${data.domain}/api/v2/tickets`, {
+            headers: {
+              "Authorization": "Basic <%= encode(iparam.apikey) %>",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              status: TICKET_STATUS.open,
+              priority: TICKET_PRIORITY.low,
+              description: newAppointment.notes,
+              subject: "Appointment for " + restaurant.name,
+              email: "example@example.com"
+            })
+          })
+          .then(function (data) {
+            resolve({
+              restaurant,
+              ticket: data
+            });
+          })
+          .catch(function (error) {
+            notify(`danger`, `Ticket creation step failed!`);
+            console.error(error);
+            reject(error);
+          });
       })
       .catch(function (error) {
-        notify(`danger`, `Ticket creation step failed!`);
+        notify(`danger`, `Unable to get Installation parameters.`)
         console.error(error);
         reject(error);
       })

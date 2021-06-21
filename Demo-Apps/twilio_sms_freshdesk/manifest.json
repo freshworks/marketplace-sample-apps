@@ -13,5 +13,7 @@
   "dependencies": {
     "twilio": "2.11.1"
   },
-  "whitelisted-domains": ["https://www.google.com"]
+  "whitelisted-domains": [
+    "https://www.google.com"
+  ]
 }

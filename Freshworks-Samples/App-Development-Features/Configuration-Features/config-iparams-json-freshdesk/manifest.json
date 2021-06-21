@@ -10,5 +10,7 @@
       }
     }
   },
-  "whitelisted-domains": ["https://<%= iparam.creatorDomain %>.freshdesk.com"]
+  "whitelisted-domains": [
+    "https://<%= iparam.creatorDomain %>.freshdesk.com"
+  ]
 }

@@ -10,7 +10,7 @@ var tdna = new TypingDNA();
 var errorHandler = console.error;
 var logger = console.log;
 
-document.onreadystatechange = function() {
+document.onreadystatechange = function () {
   if (document.readyState == 'complete') startAppRender();
 
   function startAppRender() {
@@ -64,7 +64,7 @@ function startApp() {
       var patterns = { tp1: String(typ1), tp2: String(typ2) };
 
       client.request.invoke('doesMatch', patterns).then(
-        function(data) {
+        function (data) {
           var response = JSON.parse(data.response);
           console.log(response);
           if (response.result == 1) {
@@ -75,7 +75,7 @@ function startApp() {
             event.helper.fail('Seems like an imposter');
           }
         },
-        function(err) {
+        function (err) {
           console.log(err);
         }
       );

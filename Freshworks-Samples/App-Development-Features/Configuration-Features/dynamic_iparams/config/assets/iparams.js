@@ -17,7 +17,7 @@ app.initialized().then(
 
 /**
  * Using this iparam callback function, we are validating the details using a third-party API
- *  
+ *
  * @param {string} newValue The new value of the iparam field
  */
 function checkAccountID(newValue) {
@@ -30,20 +30,22 @@ function checkAccountID(newValue) {
   return validateWithAPI(newValue);
 }
 /**
- * In this case,for example, we are making use of `httpbin.org` to return 200 OK status. 
+ * In this case,for example, we are making use of `httpbin.org` to return 200 OK status.
  * In real-world, this could be a valid third-party API that can return an appropriate status code indicating the status of validation
  * Payload and other options can be specified using `options`
  * Notice the presence of the debounce logic to avoid rate-limiting issues
- * 
- * @param {string} value 
+ *
+ * @param {string} value
  */
 function validateWithAPI(value) {
+  // Disclaimer: The use of mock servers in production environment is disallowed. HttpBin.org can be used to debug or test your app's behavior locally.
+  // However, this will not work when the app is deployed in a live account. We recommend switching to a middleware controlled by you in such scenarios.
   //Assume it is the validation/resource endpoint
   var url = "https://httpbin.org/status/200";
   var options = {
     body: JSON.stringify({
-      param: value
-    })
+      param: value,
+    }),
   };
   var p = new Promise(function (resolve, reject) {
     // Do not hit the validation API immediately upon change

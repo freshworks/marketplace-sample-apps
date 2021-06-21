@@ -1,7 +1,7 @@
 {
   "domain": {
-    "display_name": "domain",
-    "description": "Please enter your account domain name in this format. https://<accname>.freshdesk.com",
+    "display_name": "Account URL",
+    "description": "Please enter your account URL in this format. https://example.freshdesk.com",
     "type": "text",
     "required": true,
     "type_attributes": {
@@ -9,7 +9,7 @@
     }
   },
   "apikey": {
-    "display_name": "api-key",
+    "display_name": "API key",
     "description": "Please enter your api-key",
     "type": "text",
     "required": true,

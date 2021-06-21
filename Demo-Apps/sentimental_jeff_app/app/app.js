@@ -116,7 +116,9 @@ function updateTicketField(domain, ticket, sentiment) {
           body: JSON.stringify({
             priority: ticket.priority,
             status: ticket.status,
-            custom_fields: { [iparams.sentimentField]: sentiment }
+            custom_fields: {
+              [iparams.sentimentField]: sentiment
+            }
           })
         };
         client.request.put(url, options).then(() => {
@@ -181,7 +183,11 @@ function calculateAndUpdateSentiment() {
   client.data.get("ticket").then((ticketDetail) => {
     client.data.get("domainName").then((domainDetail) => {
       const dataUrl = `https://${domainDetail.domainName}/api/v2/tickets/${ticketDetail.ticket.id}?include=conversations`;
-      const options = { headers: { "Authorization": "Basic <%= encode(iparam.apiKey) %>" } };
+      const options = {
+        headers: {
+          "Authorization": "Basic <%= encode(iparam.apiKey) %>"
+        }
+      };
       client.request.get(dataUrl, options)
         .then(data => {
           const sentimentText = calculateSentimentFromData(JSON.parse(data.response));

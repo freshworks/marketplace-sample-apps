@@ -73,5 +73,8 @@
       }
     }
   },
-  "whitelisted-domains": ["https://official-joke-api.appspot.com"]
+  "whitelisted-domains": [
+    "https://*.freshdesk.com",
+    "https://official-joke-api.appspot.com"
+  ]
 }

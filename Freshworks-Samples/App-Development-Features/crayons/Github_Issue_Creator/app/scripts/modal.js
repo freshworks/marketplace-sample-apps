@@ -44,7 +44,7 @@ function getIssue(ticketID, callback) {
 			//404 - Indicates that the record is not found in the data storage
 			if (error.status === 404) {
 				console.error("No issue found for ticket", error);
-				document.getElementById('modal').insertAdjacentHTML('beforeend',
+				document.getElementById('modal_content').insertAdjacentHTML('beforeend',
 					`<div class="alert alert-warning" role="alert">
 						<img src="https://media.tenor.com/images/a48310348e788561dc238b6db1451264/tenor.gif" width="120px"/>
 						<hr>
@@ -66,19 +66,21 @@ function fetchIssue(issueID) {
 		},
 		isOAuth: true
 	};
-	client.request.get(`https://api.github.com/repos/<%= iparam.github_repo %>/issues/${issueID}`, options)
-		.then(function (data) {
-			try {
-				data = JSON.parse(data.response);
-				document.getElementById('modal').insertAdjacentHTML('beforeend',
-					`<h3> Issue title : ${data.title} </h3><p>Description : ${data.body}</p> <p> Issue Number : ${data.number}</p> <p>Issue ID ; ${data.id}</p><p> Issue Status : ${data.state}</p>`);
-			} catch (error) {
-				console.error("Error while attempting to show issue", error);
-			}
-		})
-		.catch(function (error) {
-			console.error("error", error);
-		});
+	client.iparams.get('github_repo').then(function (iparam) {
+		client.request.get(`https://api.github.com/repos/${iparam.github_repo}/issues/${issueID}`, options)
+			.then(function (res) {
+				try {
+					data = JSON.parse(res.response);
+					document.getElementById('modal_content').insertAdjacentHTML('beforeend',
+						`<h3> Issue title : ${data.title} </h3><p>Description : ${data.body}</p> <p> Issue Number : ${data.number}</p> <p>Issue ID ; ${data.id}</p><p> Issue Status : ${data.state}</p>`);
+				} catch (error) {
+					console.error("Error while attempting to show issue", error);
+				}
+			})
+			.catch(function (error) {
+				console.error("error", error);
+			});
+	});
 }
 
 /**
@@ -93,7 +95,7 @@ function createIssue() {
 			ticketData.ticket.id,
 			function () {
 				// The record already exists - indicates it is already associated with Github issue
-				showNotification('warning', 'Hold on 🙅🏻‍♂️', 'A Github issue has been already created for this ticket. Click on \'View Issue Details\' button');
+				console.warn('warning', 'Hold on 🙅🏻‍♂️', 'A Github issue has been already created for this ticket. Click on \'View Issue Details\' button');
 			},
 			function (error) {
 				//404 - Indicates that the record is not found in the data storage
@@ -122,19 +124,21 @@ function createIssueHelper(ticketData) {
 		}),
 		isOAuth: true
 	};
-	client.request.post(`https://api.github.com/repos/<%= iparam.github_repo %>/issues`, options)
-		.then(function (data) {
-			// TODO : Add try catch block
-			console.log('ticketData', ticketData);
-			response = JSON.parse(data.response);
-			var ticketObj = { ticketID: ticketData.ticket.id, issueID: response.id, issueNumber: response.number };
-			console.log('ticket obj', ticketObj);
+	client.iparams.get('github_repo').then(function (iparam) {
+		client.request.post(`https://api.github.com/repos/${iparam.github_repo}/issues`, options)
+			.then(function (data) {
+				// TODO : Add try catch block
+				console.log('ticketData', ticketData);
+				response = JSON.parse(data.response);
+				var ticketObj = { ticketID: ticketData.ticket.id, issueID: response.id, issueNumber: response.number };
+				console.log('ticket obj', ticketObj);
 
-			setData(ticketObj);
-		})
-		.catch(function (error) {
-			console.error("error", error);
-		})
+				setData(ticketObj);
+			})
+			.catch(function (error) {
+				console.error("error", error);
+			})
+	})
 }
 
 /**
@@ -171,7 +175,7 @@ function setData(data) {
 	var dbKey = String(`fdTicket:${data.ticketID}`).substr(0, 30);
 	var dbKey2 = String(`gitIssue:${data.issueNumber}`).substr(0, 30);
 	Promise.all([client.db.set(dbKey, { issue_data: data }), client.db.set(dbKey2, { issue_data: data })]).then(function () {
-		showNotification('success', 'Yay 🎉', 'A Github issue is successfully created for this ticket')
+		console.info('success', 'Yay 🎉', 'A Github issue is successfully created for this ticket');
 	}).catch(function (error) {
 		console.error("Unable to persist data : ", error);
 	});
@@ -184,7 +188,6 @@ function setData(data) {
  * @param {string} message Content of the notification message
  */
 function showNotification(type, title, message) {
-
 	client.interface.trigger("showNotify", {
 		type: `${type}`,
 		title: `${title}`,

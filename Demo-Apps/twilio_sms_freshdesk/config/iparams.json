@@ -8,13 +8,13 @@
     "display_name": "Account SID",
     "description": "Please enter your twilio Account SID",
     "type": "text",
-    "secure":true
+    "secure": true
   },
   "auth_token": {
     "display_name": "Auth Token",
     "description": "Please enter your twilio Auth Token",
     "type": "text",
     "required": true,
-    "secure":true
+    "secure": true
   }
 }
