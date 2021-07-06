@@ -8,24 +8,24 @@
 
 
 function openModal() {
-    client.interface.trigger('showModal', {
-        title: "Related Tickets",
-        template: "relatedtickets.html",
-        data: loggedInUser
-    })
+  client.interface.trigger('showModal', {
+    title: "Related Tickets",
+    template: "relatedtickets.html",
+    data: loggedInUser
+  })
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    app.initialized()
-        .then(function(_client) {
-          var client = _client;
-          window.client = client;
-          client.events.on('app.activated',
-            function() {
-                client.data.get('loggedInUser')
-                    .then(function(response) {
-                       window.loggedInUser = response.loggedInUser;
-                    });
+  app.initialized()
+    .then(function (_client) {
+      var client = _client;
+      window.client = client;
+      client.events.on('app.activated',
+        function () {
+          client.data.get('loggedInUser')
+            .then(function (response) {
+              window.loggedInUser = response.loggedInUser;
+            });
         });
     });
 });
