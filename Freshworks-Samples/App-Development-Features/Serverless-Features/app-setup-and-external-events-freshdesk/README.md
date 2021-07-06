@@ -33,3 +33,5 @@ Observing External Events happening outside of your app will enable your app to 
 > fdk run
 # app runs on localhost:10001 and simulation page is on http://localhost:10001/web/test
 ```
+### Notes
+> Disclaimer: The use of mock servers in production environment is disallowed. pipedream.net can be used to debug or test your app's behavior locally. However, this will not work when the app is deployed in a live account. We recommend switching to a custom mock server controlled by you in such scenarios. 
