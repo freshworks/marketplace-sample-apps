@@ -1,8 +1,11 @@
 {
   "platform-version": "2.0",
-  "dependencies": {
-  },
+  "dependencies": {},
   "product": {
     "freshdesk": {}
-  }
+  },
+  "whitelisted-domains": [
+    "https://api.github.com",
+    "https://*.freshdesk.com"
+  ]
 }
