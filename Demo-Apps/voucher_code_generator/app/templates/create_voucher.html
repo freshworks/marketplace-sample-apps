@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+    <script
+    type="module"
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js">
+  </script>
+  <script
+    nomodule
+    src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js">
+  </script>
+    <script src="../scripts/create_voucher.js"></script>
+    <script src="../scripts/util.js"></script>
+  </head>
+  <body>
+    <div class="what">
+      <img class="img-size" style="margin-left: 0%;" src="../styles/images/voucher-icon.png" />
+      <h4>Configure</h4>
+      <i>Set your Voucher properties</i>
+    </div>
+    <div>
+        <div class="form-group">
+          <label class="mandatory">Voucher Subject:</label>
+          <input type="email" placeholder="--" id="voucher-subject" class="form-control">
+          <span id="subject-error" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+          <label class="mandatory">Voucher Description:</label>
+          <textarea id="voucher-description" placeholder="--" class="form-control"></textarea>
+          <span id="description-error" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+          <label class="mandatory">Discount value(%):</label>
+          <input type="number" placeholder="--" id="voucher-discount" class="form-control">
+          <span id="discount-error" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+          <label class="mandatory">Validity:</label>
+          <fw-datepicker mode="range" id="voucher-validity"></fw-datepicker>
+          <span id="validity-error" class="validation-message"></span>
+        </div>
+        <div class="form-group">
+          <label>Customize voucher manually:</label>
+          <fw-toggle id="voucher-toggle" size="small">Small not selected</fw-toggle><br><br>
+          <input type="email" placeholder="--" id="custom-voucher" style = "display: none;"class="form-control">
+        </div>
+        <button class="btn btn-primary " id="create-voucher">Create</button>
+        <br></br>
+    </div>
+    <div id="voucher-component" class="hidden">
+      <label>Use voucher code:</label>
+      <div class="yellow-light-card col-xs-5">
+        <span id="voucher-label" class="align-middle" style="font-weight: bold"><p>  </p></span>
+      </div>
+      
+      <div class="col-xs-2" style="margin-right: 2%;">
+        <fw-button id="copy-button" color="primary"> Copy <fw-icon name="code" color="white"></fw-icon></fw-button>
+      </div>
+      <div class="col-xs-4">
+        <fw-button id="paste-editor" color="secondary">Paste in Editor</fw-button>
+      </div>
+    </div>
+  </body>
+</html>
