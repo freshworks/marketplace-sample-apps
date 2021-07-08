@@ -1,34 +1,33 @@
 {
-    "apiKey": {
-             "display_name": "Api Key",
-             "description": "Please enter your Api Key",
-             "type": "text",
-              "required": true,
-              "secure": true
-   },
+  "apiKey": {
+    "display_name": "Api Key",
+    "description": "Please enter your Api Key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
   "Email": {
     "display_name": "Official Email",
     "description": "Please enter your email address",
     "type": "email",
     "required": true
   },
-    "Subject": {
-      "display_name": "subject",
-      "description": "Please enter subject here",
-      "type": "text",
-      "required": true
-    },
-    "Text": {
-      "display_name": "Text",
-      "description": "Please enter Text here",
-      "type": "text",
-      "required": true
-    },
-    "Domain": {
-      "display_name": "Domain",
-      "description": "Please enter your url",
-      "type": "url",
-      "required": true
-    }
+  "Subject": {
+    "display_name": "subject",
+    "description": "Please enter subject here",
+    "type": "text",
+    "required": true
+  },
+  "Text": {
+    "display_name": "Text",
+    "description": "Please enter Text here",
+    "type": "text",
+    "required": true
+  },
+  "Domain": {
+    "display_name": "Domain",
+    "description": "Please enter your url",
+    "type": "url",
+    "required": true
   }
-
+}

@@ -4,17 +4,17 @@ exports = {
     { event: 'onEmployeeCreate', callback: 'onEmployeeCreateHandler' }
   ],
 
-/**
- * 
- * @param {object} args  Payload from the event 
- */
+  /**
+   * 
+   * @param {object} args  Payload from the event 
+   */
   onEmployeeCreateHandler: function (args) {
 
     var employeeName = `${args.data.employee.first_name} ${args.data.employee.last_name}`;
     var employeeEmail = args.data.employee.user_emails[0];
     var description = ` Please initiate issuance of laptop and other devices to the ${employeeName}`
-    
-    CreateFreshserviceTicket(employeeName, description, employeeEmail)
+    var subdomain = args.iparams.freshservice_subdomain;
+    CreateFreshserviceTicket(employeeName, description, employeeEmail, subdomain)
   }
 
 };
@@ -25,9 +25,9 @@ exports = {
  * @param {String} description 		Ticket description
  * @param {String} email 					email of the newly created employee 
  */
-function CreateFreshserviceTicket(title, description, email) {
+function CreateFreshserviceTicket(title, description, email, subdomain) {
 
-  $request.post("https://<%=iparam.freshservice_subdomain%>.freshservice.com/api/v2/tickets", {
+  $request.post(`https://${subdomain}.freshservice.com/api/v2/tickets`, {
     headers: {
       Authorization: "Basic <%= encode(iparam.freshservice_api_key)%>",
       "Content-Type": "application/json;charset=utf-8"
@@ -43,10 +43,10 @@ function CreateFreshserviceTicket(title, description, email) {
   }).then(function () {
     console.info('Successfully created ticket');
   }).catch(
-     function (error) {
-    console.error('Unable to create ticket');
-    console.error(error);
-    
-  });
+    function (error) {
+      console.error('Unable to create ticket');
+      console.error(error);
+
+    });
 
 }
