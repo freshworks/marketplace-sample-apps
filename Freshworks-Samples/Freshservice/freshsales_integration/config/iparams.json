@@ -5,16 +5,11 @@
     "type": "text",
     "required": true
   },
-  "username": {
-    "display_name": "Username",
-    "description": "Please enter your freshsales username (email)",
+  "apikey": {
+    "display_name": "API key",
+    "description": "Please enter your freshsales apikey",
     "type": "text",
-    "required": true
-  },
-  "password": {
-    "display_name": "Password",
-    "description": "Please enter your freshsales password",
-    "type": "text",
-    "required": true
+    "required": true,
+    "secure": true
   }
 }
