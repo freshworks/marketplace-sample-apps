@@ -59,17 +59,22 @@ function fetchIssue(issueID) {
     },
     isOAuth: true
   };
-  client.request.get(`https://api.github.com/repos/<%= iparam.github_repo %>/issues/${issueID}`, options)
-    .then(function (data) {
-      try {
-        data = JSON.parse(data.response);
-        document.getElementById('modal').insertAdjacentHTML('beforeend',
-          `<h3> Issue title: ${data.title} </h3><p>Description: ${data.body}</p> <p> Issue Number: ${data.number}</p> <p>Issue ID: ${data.id}</p><p> Issue Status: ${data.state}</p>`);
-      } catch (error) {
-        console.error("Error while attempting to show issue", error);
-      }
-    })
+  client.iparams.get("github_repo").then(iparams => {
+    client.request.get(`https://api.github.com/repos/${iparams.github_repo}/issues/${issueID}`, options)
+      .then(function (data) {
+        try {
+          data = JSON.parse(data.response);
+          document.getElementById('modal').insertAdjacentHTML('beforeend',
+            `<h3> Issue title: ${data.title} </h3><p>Description: ${data.body}</p> <p> Issue Number: ${data.number}</p> <p>Issue ID: ${data.id}</p><p> Issue Status: ${data.state}</p>`);
+        } catch (error) {
+          console.error("Error while attempting to show issue", error);
+        }
+      })
+      .catch(function (error) {
+        console.error("error", error);
+      });
+  })
     .catch(function (error) {
       console.error("error", error);
-    });
+    })
 }
