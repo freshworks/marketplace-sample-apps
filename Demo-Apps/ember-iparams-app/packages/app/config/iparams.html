@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="./assets/vendor.css">
+      <link rel="stylesheet" href="./assets/jaya.css">
+      <link rel="stylesheet" href="./assets/iparams.css">
+      <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+      <script type="module" src="./assets/iparams.js"></script>
+      <script type="text/javascript">
+        app.initialized().then(function (client) {
+          window.client = client;
+        });
+
+        function getConfigs(configs) {
+          window.fnGetConfigs(configs);
+        }
+        function postConfigs() {
+          return window.fnPostConfigs();
+        }
+        function validate() {
+          return window.fnValidate();
+        }
+      </script>
+    </head>
+    <body>
+      <div id="jaya-app-loader" class="init-center">
+        <div class="preloader">
+          <span class="gravity-loader">
+            <svg class="circular" viewBox="25 25 50 50">
+              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+      <script src="./assets/vendor.js"></script>
+      <script src="./assets/jaya.js"></script>
+    </body>
+  </html>

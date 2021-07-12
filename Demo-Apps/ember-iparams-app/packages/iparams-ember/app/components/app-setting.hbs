@@ -1,0 +1,78 @@
+<div class="app-settings">
+  <div class="header">
+    <h5 class="header-content">{{t "title.settings"}}</h5>
+  </div>
+  <div class="content">
+
+    <div class="section">
+      <label class="section-label">{{t "fields.labels.freshchat_domain"}}<span class="required-star">{{t "fields.labels.required"}}</span></label>
+
+      {{#if this.isIntegrationVerifyClicked}}
+        <div class="section-input-status-icon">
+          {{#if this.isIntegrationVerified}}
+            <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+          {{else}}
+            <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+          {{/if}}
+        </div>
+      {{/if}}
+
+      <Input
+        aria-label={{t "fields.placeholders.freshchat_domain"}}
+        @input={{this.onInputChange}}
+        @value={{this.integrationDomain}}
+        class="section-input form-control {{if this.isIntegrationVerifyClicked (if this.isIntegrationVerified "section-input-success" "section-input-error") ""}}" 
+        autocomplete="off" 
+        placeholder={{t "fields.placeholders.freshchat_domain"}} />
+    </div>
+
+    <div class="section">
+      <label class="section-label">{{t "fields.labels.freshchat_token"}}<span class="required-star">{{t "fields.labels.required"}}</span></label>
+
+      {{#if this.isIntegrationVerifyClicked}}
+        <div class="section-input-status-icon">
+          {{#if this.isIntegrationVerified}}
+            <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i>
+          {{else}}
+            <i class="fa fa-times-circle fa-lg" aria-hidden="true"></i>
+          {{/if}}
+        </div>
+      {{/if}}
+
+      <Input
+        aria-label={{t "fields.placeholders.freshchat_token"}}
+        @input={{this.onInputChange}}
+        @value={{this.integrationToken}}
+        class="section-input form-control {{if this.isIntegrationVerifyClicked (if this.isIntegrationVerified "section-input-success" "section-input-error") ""}}" 
+        autocomplete="off" 
+        placeholder={{t "fields.placeholders.freshchat_token"}} />
+    </div>
+
+    <div class="section">
+      <div class="section-description">
+        {{t "fields.labels.api_token_note"}}
+      </div>
+    </div>
+
+    {{#if (and this.isIntegrationVerifyClicked (not this.isIntegrationVerified))}}
+      {{#if (and (not this.integrationToken) (not this.integrationDomain))}}
+        <div class="section">
+          <label class="section-label section-label-error">{{t "messages.empty_freshchat_credentails"}}</label>
+        </div>
+      {{else}}
+        <div class="section">
+          <label class="section-label section-label-error">{{t "messages.invalid_freshchat_credentials"}}</label>
+        </div>
+      {{/if}}
+    {{/if}}
+
+    <NucleusButton
+      @onClick={{this.verifyIntegration}}
+      @class="verify"
+      @disabled={{this.isIntegrationVerified}}
+      @pendingLabel={{t "buttons.verify.pending_label"}}
+      @fulfilledLabel={{t "buttons.verify.fulfilled_label"}}
+      @label={{if this.isIntegrationVerified (t "buttons.verify.verified_label") (t "buttons.verify.label")}}>
+    </NucleusButton>
+  </div>
+</div>

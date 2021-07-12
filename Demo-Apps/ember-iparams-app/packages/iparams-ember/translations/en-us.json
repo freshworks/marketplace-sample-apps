@@ -1,0 +1,40 @@
+{
+  "alt_text": {
+    "default": "No alt text"
+  },
+  "tooltips": {
+    "settings": "Settings"
+  },
+  "fields": {
+    "labels": {
+      "required": "*",
+      "freshchat_domain": "Freshchat Domain",
+      "freshchat_token": "Freshchat API Token (Settings -> API Tokens -> API Key)",
+      "api_token_note": "Note: API Token is available only on Freshchat's Estate and Forest plans."
+    },
+    "placeholders": {
+      "freshchat_domain": "Eg. https://jaya.freshchat.com",
+      "freshchat_token": "Enter Freshchat API Token here"
+    }
+  },
+  "title": {
+    "settings": "Settings"
+  },
+  "buttons": {
+    "verify": {
+      "label": "Verify",
+      "pending_label": "Verifying...",
+      "fulfilled_label": "Done",
+      "verified_label": "Verified"
+    }
+  },
+  "messages": {
+    "unsaved_api_key": "Verify API Token before you proceed",
+    "app_save_error": "Finish your current action before saving",
+    "empty_freshchat_credentails": "Please enter Freshchat domain and API token",
+    "invalid_freshchat_credentials": "Please enter a valid Freshchat domain and API token",
+    "api_key_expired": "Your Freshchat API Token is invalid. Update the latest API Token in Settings and try again.",
+    "general_error": "Something went wrong. Try again later.",
+    "request_timeout": "Request timed out. Try again."
+  }
+}
