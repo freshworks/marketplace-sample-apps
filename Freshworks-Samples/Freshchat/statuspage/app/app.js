@@ -20,9 +20,10 @@ function onAppInitializedCallback(_client) {
   window.client = _client;
   var requestHeaders = { Authorization: 'OAuth <%= iparam.status_page_api_key %>' };
   var options = { headers: requestHeaders };
-  var url = 'https://<%= iparam.status_page_host %>/api/v2/summary.json';
+  var url = '';
   client.iparams.get().then(
     function (data) {
+      url = `https://${data.status_page_host}/api/v2/summary.json`
       checkStatus(url, options);
       setInterval(checkStatus, parseInt(data.status_page_poll_frequency) * 1000, url, options);
     },

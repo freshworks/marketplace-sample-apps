@@ -9,5 +9,9 @@
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://api.twilio.com",
+    "https://*.freshdesk.com"
+  ]
 }

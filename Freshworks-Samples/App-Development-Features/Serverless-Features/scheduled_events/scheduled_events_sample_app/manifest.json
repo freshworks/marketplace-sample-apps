@@ -13,5 +13,8 @@
   "dependencies": {
     "request": "2.87.0",
     "base-64": "0.1.0"
-  }
+  },
+  "whitelisted-domains": [
+    "https://*.freshdesk.com"
+  ]
 }

@@ -4,6 +4,10 @@
     "freshsales": {}
   },
   "dependencies": {
-   "moment":"2.27.0"
-}
+    "moment": "2.27.0"
+  },
+  "whitelisted-domains": [
+    "https://*.freshsales.io",
+    "https://api.airtable.com"
+  ]
 }

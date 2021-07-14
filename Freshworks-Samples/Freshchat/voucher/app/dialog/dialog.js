@@ -19,23 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
 function onAppInitializedCallback(_client) {
   window.client = _client;
   client.instance.resize({ height: '500px' });
-  client.request
-    .get(
-      'https://<%= iparam.voucher_api %>/hemchander23/d762eaa5beab373218bb61ae6294afda/raw/dummyVoucherData.json',
-      {}
-    )
-    .then(function (data) {
-      // If we successfully get the voucher data, we can proceed to showing that in the UI
-      renderVoucherView(data.response);
-    })
-    .catch(function (error) {
-      //Log and notify the agent/user
-      console.error(error);
-      showNotification('danger', 'Unable to get voucher data');
-      client.instance.close();
-    });
-  //Register the click handler for a voucher item
-  document.querySelector('fc_voucher').addEventListener('click', voucherClickHandler);
+  client.iparams.get('voucher_api').then(function (iparam) {
+    client.request
+      .get(
+        `https://${iparam.voucher_api}/hemchander23/d762eaa5beab373218bb61ae6294afda/raw/dummyVoucherData.json`,
+        {}
+      )
+      .then(function (data) {
+        // If we successfully get the voucher data, we can proceed to showing that in the UI
+        renderVoucherView(data.response);
+      })
+      .catch(function (error) {
+        //Log and notify the agent/user
+        console.error(error);
+        showNotification('danger', 'Unable to get voucher data');
+        client.instance.close();
+      });
+    //Register the click handler for a voucher item
+    document.querySelector('fc_voucher').addEventListener('click', voucherClickHandler);
+  })
 }
 
 /**

@@ -1,35 +1,37 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   q('#startTimer').disabled = false;
   hide(q('.alert'));
   show(q('.spinner'));
   hide(q('#fields'));
 
-  app.initialized().then(function(_client) {
+  app.initialized().then(function (_client) {
     window._client = _client;
-    var baseUrl = `https://<%= iparam.freshdesk_domain %>.freshdesk.com`;
-    var url = `${baseUrl}/api/v2/agents`;
     var options = {
-      "headers" : {
+      "headers": {
         "Content-Type": "application/json",
         "Authorization": "Basic <%= encode(iparam.freshdesk_key + ':x') %>"
       }
     };
-
-    _client.request.get(url, options)
-    .then(function(data) {
-      if (data.status === 200) {
-        var agentList = JSON.parse(data.response);
-        const agent = q('#agent');
-        const options = agentList
-          .map(agent => `<option value="${agent.id}">${agent.contact.name}</option>`)
-          .join('');
-        agent.innerHTML += options;
-        hide(q('.spinner'));
-        show(q('#fields'));
-      }
-    }, function() {
-      hide(q('.spinner'));
-      show(q('.alert-danger'));
+    _client.iparams.get("freshdesk_domain").then(function (iparam) {
+      var baseUrl = `https://${iparam.freshdesk_domain}.freshdesk.com`;
+      var url = `${baseUrl}/api/v2/agents`;
+      _client.request.get(url, options)
+        .then(function (data) {
+          if (data.status === 200) {
+            var agentList = JSON.parse(data.response);
+            const agent = q('#agent');
+            const options = agentList
+              .map(agent => `<option value="${agent.id}">${agent.contact.name}</option>`)
+              .join('');
+            agent.innerHTML += options;
+            hide(q('.spinner'));
+            show(q('#fields'));
+          }
+        }, function (error) {
+          console.error(error);
+          hide(q('.spinner'));
+          show(q('.alert-danger'));
+        });
     });
   });
 });

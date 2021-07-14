@@ -4,6 +4,10 @@
     "freshdesk": {}
   },
   "dependencies": {
-    "base-64" : "0.1.0"
-  }
+    "base-64": "0.1.0"
+  },
+  "whitelisted-domains": [
+    "https://api.hubapi.com",
+    "https://*.freshdesk.com"
+  ]
 }

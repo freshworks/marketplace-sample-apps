@@ -9,5 +9,9 @@
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://api.freshchat.com",
+    "https://*.api.mailchimp.com"
+  ]
 }

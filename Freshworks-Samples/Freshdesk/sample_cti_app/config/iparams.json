@@ -10,8 +10,7 @@
     "display_name": "Twilio account SID",
     "description": "Please enter your Twilio account SID",
     "type": "text",
-    "required": true,
-    "secure": true
+    "required": true
   },
   "twilio_auth_token": {
     "display_name": "Twilio auth token",

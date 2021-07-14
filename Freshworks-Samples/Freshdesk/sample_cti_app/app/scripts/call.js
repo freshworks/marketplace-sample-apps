@@ -27,19 +27,21 @@ function callApi(phoneNumber) {
       "statusCallbackEvent": ["initiated", "ringing", "answered", "completed"]
     }
   };
-  var url = "https://api.twilio.com/2010-04-01/Accounts/<%= iparam.twilio_sid %>/Calls.json";
-  client.request.post(url, options)
-    .then(
-      function (data) {
-        activeCallSid = JSON.parse(data.response).sid;
-        callTicket = null;
-        showOnCallScreen();
-      },
-      function (error) {
-        console.error('failed to make a call API')
-        console.error(error);
-        showNotify('danger', 'failed to make a call. Try again later.');
-      });
+  client.iparams.get('twilio_sid').then(function (iparam) {
+    var url = `https://api.twilio.com/2010-04-01/Accounts/${iparam.twilio_sid}/Calls.json`;
+    client.request.post(url, options)
+      .then(
+        function (data) {
+          activeCallSid = JSON.parse(data.response).sid;
+          callTicket = null;
+          showOnCallScreen();
+        },
+        function (error) {
+          console.error('failed to make a call API')
+          console.error(error);
+          showNotify('danger', 'failed to make a call. Try again later.');
+        });
+  });
 }
 
 /**
@@ -115,18 +117,20 @@ function hangupActiveCallApi(isCallIncomplete) {
         Status: "completed"
       }
     };
-    var url = `https://api.twilio.com/2010-04-01/Accounts/<%= iparam.twilio_sid %>/Calls/${activeCallSid}.json`;
-    client.request.post(url, options).then(
-      function () {
-        activeCallSid = null;
-        callTicket = null;
-        showCallSummaryScreen();
-      },
-      function (error) {
-        console.error('failed to make call hangup API');
-        console.error(error);
-        activeCallSid = null;
-        showCallSummaryScreen();
-      });
+    client.iparams.get('twilio_sid').then(function (iparam) {
+      var url = `https://api.twilio.com/2010-04-01/Accounts/${iparam.twilio_sid}/Calls/${activeCallSid}.json`;
+      client.request.post(url, options).then(
+        function () {
+          activeCallSid = null;
+          callTicket = null;
+          showCallSummaryScreen();
+        },
+        function (error) {
+          console.error('failed to make call hangup API');
+          console.error(error);
+          activeCallSid = null;
+          showCallSummaryScreen();
+        });
+    });
   }
 }

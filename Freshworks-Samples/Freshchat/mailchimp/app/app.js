@@ -90,15 +90,17 @@ function prepareMailchimpCall(email, data) {
 function callMailchimpAPI(requestHeaders, requestBody) {
   //Options paramter for mailchimp API call
   var options = { headers: requestHeaders, body: JSON.stringify(requestBody) };
-  var url = "https://<%= iparam.mailchimp_host %>/3.0/lists/<%= iparam.mailchimp_audience_id %>/members/";
-  // Make the API call to mailchimp
-  client.request.post(url, options)
-    .then(handleSubscriberCreation)
-    .catch(function (error) {
-      //Adding subscriber failed - Log and Notify
-      console.error(error);
-      showNotification("danger", "Failed to create subscriber.Check console for detailed error");
-    });
+  client.iparams.get().then(function (iparam) {
+    var url = `https://${iparam.mailchimp_host}/3.0/lists/${iparam.mailchimp_audience_id}/members/`;
+    // Make the API call to mailchimp
+    client.request.post(url, options)
+      .then(handleSubscriberCreation)
+      .catch(function (error) {
+        //Adding subscriber failed - Log and Notify
+        console.error(error);
+        showNotification("danger", "Failed to create subscriber.Check console for detailed error");
+      });
+  })
 }
 
 /**

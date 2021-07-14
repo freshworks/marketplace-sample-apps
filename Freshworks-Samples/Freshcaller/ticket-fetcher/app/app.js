@@ -45,17 +45,19 @@ document.addEventListener("DOMContentLoaded", function () {
    * @param {String} email  Email id of the user to fetch list of tickets
    */
   function getTickets(email) {
-    client.request.get(`https://<%=iparam.freshdesk_subdomain%>.freshdesk.com/api/v2/tickets?email=${email}`, {
-      headers: {
-        Authorization: "Basic <%= encode(iparam.freshdesk_api_key)%>",
-        "Content-Type": "application/json;charset=utf-8"
-      }
-    }).then(function (data) {
-      appendHMTL(JSON.parse(data.response));
+    client.iparams.get('freshdesk_subdomain').then(function (iparam) {
+      client.request.get(`https://${iparam.freshdesk_subdomain}.freshdesk.com/api/v2/tickets?email=${email}`, {
+        headers: {
+          Authorization: "Basic <%= encode(iparam.freshdesk_api_key)%>",
+          "Content-Type": "application/json;charset=utf-8"
+        }
+      }).then(function (data) {
+        appendHMTL(JSON.parse(data.response));
+      })
+        .catch(function (error) {
+          console.error('Unable to fetch Tickets from freshdesk', error);
+        });
     })
-      .catch(function (error) {
-        console.error('Unable to fetch Tickets from freshdesk', error);
-      });
   }
 
 
