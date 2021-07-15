@@ -10,6 +10,6 @@
     }
   },
   "whitelisted-domains": [
-    "https://*.pipedream.net"
+    "https://*.m.pipedream.net"
   ]
 }
