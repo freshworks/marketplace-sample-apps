@@ -80,16 +80,21 @@ function createIssueHelper(ticketData) {
 		}),
 		isOAuth: true
 	};
-	client.request.post(`https://api.github.com/repos/<%= iparam.github_repo %>/issues`, options)
-		.then(function (data) {
-			// TODO : Add try catch block
-			response = JSON.parse(data.response);
-			var ticketObj = { ticketID: ticketData.ticket.id, issueID: response.id, issueNumber: response.number };
-			setData(ticketObj);
-		})
-		.catch(function (error) {
-			console.error("error", error);
-		})
+	client.iparams.get("github_repo").then(iparam => {
+		client.request.post(`https://api.github.com/repos/${iparams.github_repo}/issues`, options)
+			.then(function (data) {
+				// TODO : Add try catch block
+				response = JSON.parse(data.response);
+				var ticketObj = { ticketID: ticketData.ticket.id, issueID: response.id, issueNumber: response.number };
+				setData(ticketObj);
+			})
+			.catch(function (error) {
+				console.error("error", error);
+			})
+	})
+	.then(function(error){
+		console.error("error", error);
+	})
 }
 
 /**
