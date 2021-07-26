@@ -44,15 +44,21 @@ function timerValidation(event) {
 };
 
 function ticketDataRequest(ticketData, event) {
-    const {url, options} = requestSettings(ticketData)
-    client.request.get(url, options).then(
-        data => timerDataRequestHandler(data, event),
-        e => handleErrors(e, event)
-    )
+    client.iparams.get("freshdesk_domain").then(function (iparam) {
+        const { url, options } = requestSettings(ticketData, iparam)
+        console.log(url, options)
+        client.request.get(url, options).then(
+            data => timerDataRequestHandler(data, event),
+            e => handleErrors(e, event)
+        )
+    }, function (error) {
+        console.error("Something went wrong!");
+        console.error(error);
+    })
 }
 
-function requestSettings(ticketData) {
-    const baseUrl = "https://<%= iparam.freshdesk_domain %>.freshdesk.com/";
+function requestSettings(ticketData, iparam) {
+    const baseUrl = `https://${iparam.freshdesk_domain}.freshdesk.com/api/v2/tickets/`;
     return {
         url: `${baseUrl}${ticketData.ticket.id}/time_entries`,
         options: {

@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "request": "2.87.0"
-  }
+  },
+  "whitelisted-domains": [
+    "https://httpbin.org"
+  ]
 }

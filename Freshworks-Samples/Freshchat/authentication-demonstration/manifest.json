@@ -9,5 +9,8 @@
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://api.freshchat.com"
+  ]
 }

@@ -1,6 +1,9 @@
 'use strict';
+/* Disclaimer: The use of mock servers in production environment is disallowed. pipedream.net can be used to debug or test your app's behavior locally.
+    However, this will not work when the app is deployed in a live account. 
+    We recommend switching to a custom mock server controlled by you in such scenarios. */
 
-const thirdPartyEndpoint = 'https://fcc15baf9a2e24ef7421ffe101394ca7.m.pipedream.net';
+const thirdPartyEndpoint = 'https://<CHANGE_THIS>.m.pipedream.net';
 
 exports = {
   events: [

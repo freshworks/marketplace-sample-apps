@@ -3,8 +3,7 @@
     "display_name": "baseId",
     "description": "Please enter your baseId",
     "type": "text",
-    "required": true,
-    "secure": true
+    "required": true
   },
   "apiKey": {
     "display_name": "apiKey",
@@ -26,5 +25,4 @@
     "type": "text",
     "required": true
   }
-
 }

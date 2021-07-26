@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         unCachedResponse();
       },
       function (error) {
-        console.log("error",error);
+        console.log("error", error);
         notify('info', 'Unable to Display Ticket Details, kindly refresh the page ');
       });
 });
@@ -34,19 +34,21 @@ function getAgentData(agentID) {
       "Content-Type": "application/json;charset=utf-8"
     }
   };
-  client.request.get(`https://<%=iparam.freshservice_subdomain%>.freshservice.com/api/v2/agents/${agentID}`, options)
-    .then(function (data) {
-      try {
-        renderTable(JSON.parse(data.response).agent);
-      } catch (error) {
-        console.error("Error while attempting to show issue", error);
+  client.iparams.get('freshservice_subdomain').then(function (iparam) {
+    client.request.get(`https://${iparam.freshservice_subdomain}.freshservice.com/api/v2/agents/${agentID}`, options)
+      .then(function (data) {
+        try {
+          renderTable(JSON.parse(data.response).agent);
+        } catch (error) {
+          console.error("Error while attempting to show issue", error);
+          notify('error', 'Unable to Display Data, kindly refresh the page ');
+        }
+      })
+      .catch(function (error) {
+        console.error("error", error);
         notify('error', 'Unable to Display Data, kindly refresh the page ');
-      }
-    })
-    .catch(function (error) {
-      console.error("error", error);
-      notify('error', 'Unable to Display Data, kindly refresh the page ');
-    });
+      });
+  });
 }
 
 /**

@@ -26,22 +26,24 @@ function cachedResponse() {
     cache: true,
     ttl: 1000
   };
-  client.request.get(`https://<%=iparam.freshservice_subdomain%>.freshservice.com/api/v2/agents`, options)
-    .then(function (data) {
-      try {
-        data = JSON.parse(data.response);
-        data = data.agents;
-        renderTable(data);
+  client.iparams.get('freshservice_subdomain').then(function (iparam) {
+    client.request.get(`https://${iparam.freshservice_subdomain}.freshservice.com/api/v2/agents`, options)
+      .then(function (data) {
+        try {
+          data = JSON.parse(data.response);
+          data = data.agents;
+          renderTable(data);
 
-      } catch (error) {
-        console.error("Error while attempting to show issue", error);
+        } catch (error) {
+          console.error("Error while attempting to show issue", error);
+          notify('error', 'Error while attempting to show issue, kindly refresh the page ');
+        }
+      })
+      .catch(function (error) {
+        console.error("error", error);
         notify('error', 'Error while attempting to show issue, kindly refresh the page ');
-      }
-    })
-    .catch(function (error) {
-      console.error("error", error);
-      notify('error', 'Error while attempting to show issue, kindly refresh the page ');
-    });
+      });
+  })
 }
 
 

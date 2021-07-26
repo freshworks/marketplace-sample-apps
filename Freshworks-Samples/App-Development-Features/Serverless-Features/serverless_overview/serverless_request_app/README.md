@@ -37,3 +37,5 @@ Every time a new ticket is created, this app makes an API request to HTTPbin.org
 ## Additional notes
 
 This app also shows how to handle the response of an API request using a internal library
+
+> Disclaimer: The use of mock servers in production environment is disallowed. HttpBin.org can be used to debug or test your app's behavior locally. However, this will not work when the app is deployed in a live account. We recommend switching to a custom mock server controlled by you in such scenarios. 

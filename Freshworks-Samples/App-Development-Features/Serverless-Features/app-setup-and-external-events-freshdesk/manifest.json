@@ -8,5 +8,8 @@
         }
       }
     }
-  }
+  },
+  "whitelisted-domains": [
+    "https://*.m.pipedream.net"
+  ]
 }
