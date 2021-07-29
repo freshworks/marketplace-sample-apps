@@ -120,6 +120,6 @@ function onDocumentReady() {
             console.error('The app failed to get initialized');
             console.error(error);
         });
-};
+}
 
 document.addEventListener("DOMContentLoaded", onDocumentReady);
