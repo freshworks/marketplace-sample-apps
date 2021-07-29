@@ -67,7 +67,7 @@
                         $li.appendChild($label);
                         $li.appendChild($value);
                         $targetContainer.appendChild($li);
-                    };
+                    }
                 }
 
             })

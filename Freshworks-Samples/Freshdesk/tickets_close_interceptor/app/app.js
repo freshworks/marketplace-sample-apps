@@ -41,7 +41,7 @@ function timerValidation(event) {
     client.data.get("ticket").then(ticketData => ticketDataRequest(ticketData, event),
         e => handleErrors(e, event)
     );
-};
+}
 
 function ticketDataRequest(ticketData, event) {
     client.iparams.get("freshdesk_domain").then(function (iparam) {

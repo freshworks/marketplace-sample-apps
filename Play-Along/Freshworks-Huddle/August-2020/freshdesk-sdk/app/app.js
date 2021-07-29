@@ -6,7 +6,7 @@ function showNotification(type, message) {
         console.error('failed to show notification');
         console.error(error);
     });
-};
+}
 
 function createTicket() {
     const properties = {
@@ -25,7 +25,7 @@ function createTicket() {
         console.error(JSON.stringify(error));
         showNotification('danger', 'Failed to create ticket.');
     });
-};
+}
 
 function updateTicket() {
     const properties = {
@@ -41,7 +41,7 @@ function updateTicket() {
         console.error(JSON.stringify(error));
         showNotification('danger', 'Failed to update ticket.');
     });
-};
+}
 
 function getTicket() {
     const ticketId = 12;
@@ -54,7 +54,7 @@ function getTicket() {
         console.error(JSON.stringify(error));
         showNotification('danger', 'Failed to get ticket.');
     });
-};
+}
 
 function deleteTicket() {
     const ticketId = 12;
@@ -67,7 +67,7 @@ function deleteTicket() {
         console.error(JSON.stringify(error));
         showNotification('danger', 'Failed to delete ticket.');
     });
-};
+}
 
 function searchContact() {
     client.request.invoke('searchContact', { query: document.getElementById('contactEmail').value }).then(function (data) {
@@ -79,7 +79,7 @@ function searchContact() {
         console.error(JSON.stringify(error));
         showNotification('danger', 'Failed to search contact.');
     });
-};
+}
 
 function onDocumentReady() {
     app.initialized()
@@ -90,6 +90,6 @@ function onDocumentReady() {
 
                 });
         });
-};
+}
 
 document.addEventListener("DOMContentLoaded", onDocumentReady);

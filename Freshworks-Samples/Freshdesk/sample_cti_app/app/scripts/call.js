@@ -52,7 +52,7 @@ function callApi(phoneNumber) {
 function callNumber(phoneNumber) {
   document.getElementById('output').value = phoneNumber;
   callApi(phoneNumber);
-};
+}
 
 /**
  * Open up the CTI placeholder in Freshdesk
@@ -68,7 +68,7 @@ function showCTIApp(event) {
       console.error('failed to open CTI placeholder');
       console.error(error);
     });
-};
+}
 
 /**
  * Method to execute click to call event
@@ -77,7 +77,7 @@ function showCTIApp(event) {
  **/
 function clickToCallEvent(event) {
   showCTIApp(event);
-};
+}
 
 /**
  * Clears the call state and redirect to dialpad page

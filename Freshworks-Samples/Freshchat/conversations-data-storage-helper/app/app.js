@@ -40,7 +40,7 @@ function saveNote() {
                     console.error('Failed to store the key-value pair');
                     console.error(error);
                     showNotification('danger', "Unable to store the note. Retry again.");
-                });;
+                });
         },
         function (error) {
             console.error('Failed to get conversation details');

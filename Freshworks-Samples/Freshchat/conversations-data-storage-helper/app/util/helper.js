@@ -9,7 +9,7 @@ window.base85 = new ascii85.Ascii85;
 function encode(str) {
   const hex = Buffer.from(str.replace(/\-/g, ''), 'hex');
   return base85.encode(hex).toString();
-};
+}
 
 /**
  * To decode the encoded string in base85 algorithm

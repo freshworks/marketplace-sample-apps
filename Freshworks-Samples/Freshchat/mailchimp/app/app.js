@@ -41,7 +41,7 @@ function onSaveEmailClickHandler(event) {
     console.error(error);
     showNotification("warning", "Confirmation not done within the timeout period. Skip and retry");
   });
-};
+}
 
 /**
  * Creates a mailchimp subscriber with the given email and the current user details
