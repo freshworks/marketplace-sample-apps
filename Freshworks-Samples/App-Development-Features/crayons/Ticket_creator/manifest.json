@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://*.freshdesk.com"
-  ]
+  "whitelisted-domains": ["https://*.freshdesk.com"]
 }

@@ -2,33 +2,31 @@
  * Enum for Catalog Status
  */
 const CATALOG_STATUS = {
-  "1": {
+  1: {
     status: "Open",
-    color: "blue"
+    color: "blue",
   },
-  "2": {
+  2: {
     status: "In Progress",
-    color: "yellow"
+    color: "yellow",
   },
-  "3": {
+  3: {
     status: "Cataloged",
-    color: "green"
-  }
-}
+    color: "green",
+  },
+};
 
 /**
- * The modal or dialog can communicate with the parent to send out notifications or perform other tasks 
+ * The modal or dialog can communicate with the parent to send out notifications or perform other tasks
  */
 function handleInstanceInteractions() {
-  client.instance.receive(
-    function (event) {
-      var data = event.helper.getData();
-      if (data.message.action == "notification") {
-        notify(data.message.type, data.message.message);
-        updateView();
-      }
+  client.instance.receive(function (event) {
+    var data = event.helper.getData();
+    if (data.message.action == "notification") {
+      notify(data.message.type, data.message.message);
+      updateView();
     }
-  );
+  });
 }
 
 /**
@@ -40,10 +38,10 @@ function hashCode(str) {
   for (var i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
-  var colour = '#';
+  var colour = "#";
   for (var i = 0; i < 3; i++) {
-    var value = (hash >> (i * 8)) & 0xFF;
-    colour += ('00' + value.toString(16)).substr(-2);
+    var value = (hash >> (i * 8)) & 0xff;
+    colour += ("00" + value.toString(16)).substr(-2);
   }
   return colour;
 }
@@ -64,6 +62,6 @@ function updateView() {
 function notify(type, message) {
   client.interface.trigger("showNotify", {
     type: type,
-    message: message
+    message: message,
   });
 }

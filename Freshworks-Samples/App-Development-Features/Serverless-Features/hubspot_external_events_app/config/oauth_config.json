@@ -1,11 +1,10 @@
-
 {
-    "client_id": "Enter your app's client id here",
-    "client_secret": "Enter your app's client secret here",
-    "authorize_url": "https://app.hubspot.com/oauth/authorize",
-    "token_url": "https://api.hubapi.com/oauth/v1/token",
-    "options": {
-        "scope": "contacts"
-    },
-    "token_type": "account"
+  "client_id": "Enter your app's client id here",
+  "client_secret": "Enter your app's client secret here",
+  "authorize_url": "https://app.hubspot.com/oauth/authorize",
+  "token_url": "https://api.hubapi.com/oauth/v1/token",
+  "options": {
+    "scope": "contacts"
+  },
+  "token_type": "account"
 }

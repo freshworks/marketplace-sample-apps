@@ -8,7 +8,6 @@ On API Success:
 On API request Fail:
 ![](screenshots/demo.gif)
 
-
 This app demonstrates the following features
 
 1. App location - ticket_background.

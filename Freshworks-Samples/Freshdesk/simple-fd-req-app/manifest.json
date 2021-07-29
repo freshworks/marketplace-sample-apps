@@ -13,7 +13,5 @@
   "dependencies": {
     "base-64": "0.1.0"
   },
-  "whitelisted-domains": [
-    "https://*.freshdesk.com"
-  ]
+  "whitelisted-domains": ["https://*.freshdesk.com"]
 }

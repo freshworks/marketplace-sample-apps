@@ -1,4 +1,4 @@
-## Freshdesk app to request Freshdesk API 
+## Freshdesk app to request Freshdesk API
 
 Congratulations on creating your first app! Feel free to replace this text with your app's actual description.
 

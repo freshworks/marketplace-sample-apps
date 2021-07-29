@@ -24,6 +24,7 @@ _[Screenshots that are not too big/small. Gifs are best. Let's just stick to 3 s
 3. Visit **_https://domain.freshdesk.com/a/tickets/123?dev=true_** in the browser to see the app loading in the ticket details page sidebar. In the specified URL, the **_domain_** should be replaced by your domain and **_123_** should be replaced by the ticket ID of available ticket in your Freshdesk instance
 
 ### Prerequisites:
+
 1. Make sure you have a trial [FreshworksProduct] account created
 2. Ensure that you have the Freshworks Developer Kit (FDK) installed properly.
 

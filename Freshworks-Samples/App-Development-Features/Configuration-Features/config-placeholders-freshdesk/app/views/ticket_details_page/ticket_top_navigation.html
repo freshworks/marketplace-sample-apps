@@ -19,7 +19,7 @@
     document.onreadystatechange = whenInteractive;
 
     function whenInteractive() {
-      if (document.readyState === 'interactive') {
+      if (document.readyState === "interactive") {
         return app.initialized().then(getClientAPI).catch(console.error);
       }
     }
@@ -27,7 +27,7 @@
     function getClientAPI(_client) {
       let client = _client;
       // JS thread of exection invokes callback passed to on. 'app.activated' everytime freshdesk user clicks on the icon
-      client.events.on('app.activated', function log() {
+      client.events.on("app.activated", function log() {
         return console.log(`ticket_top_navigation: app is activated 🥁`);
       });
     }

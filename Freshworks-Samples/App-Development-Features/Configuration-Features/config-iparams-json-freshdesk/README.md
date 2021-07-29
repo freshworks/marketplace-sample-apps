@@ -11,18 +11,21 @@ This app also demonstrates making secure API calls without exposing API key from
 ### Screenshots:
 
 ### In Local Development
+
 ![config page in local development](./screenshots/1.png)
 
 #### Secure iparams.json getting contacts data
+
 ![make secure api calls and get api data](./screenshots/v3.png)
 
 ### In Production
+
 ![config page in production](./screenshots/2.png)
-| Features demonstrated | Notes                                                                                |
+| Features demonstrated | Notes |
 | --------------------- | ------------------------------------------------------------------------------------ |
-| _`iparams.json`_      | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context               |
-| App manifest          | `manifest.json` tells the platform to create necessary tech infra for you app to run |
-| App locations         | there are about 10+ placeholders where app can run. all of them are demonstrated     |
+| _`iparams.json`_ | app uses [Ben 10](https://en.wikipedia.org/wiki/Ben_10) as fun context |
+| App manifest | `manifest.json` tells the platform to create necessary tech infra for you app to run |
+| App locations | there are about 10+ placeholders where app can run. all of them are demonstrated |
 
 ### Prerequisites:
 
@@ -60,7 +63,7 @@ Validation failed due to the following issue(s):
 ```js
 // iparams.js
 function checkSignature(sign) {
-  return sign.toLowerCase() == 'azmuth' ? '' : 'Wrong Signature';
+  return sign.toLowerCase() == "azmuth" ? "" : "Wrong Signature";
 }
 ```
 

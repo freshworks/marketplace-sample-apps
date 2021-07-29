@@ -6,8 +6,5 @@
   "product": {
     "freshdesk": {}
   },
-  "whitelisted-domains": [
-    "https://*.atlassian.net",
-    "https://*.freshdesk.com"
-  ]
+  "whitelisted-domains": ["https://*.atlassian.net", "https://*.freshdesk.com"]
 }

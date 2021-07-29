@@ -8,6 +8,6 @@
     "type_attributes": {
       "product": "current"
     },
-    "events": [{"change": "APIKeyChange"}]
+    "events": [{ "change": "APIKeyChange" }]
   }
 }

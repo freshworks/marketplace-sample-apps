@@ -3,5 +3,5 @@ function printRequesterName(args) {
 }
 
 exports = {
-  printRequesterName: printRequesterName
+  printRequesterName: printRequesterName,
 };

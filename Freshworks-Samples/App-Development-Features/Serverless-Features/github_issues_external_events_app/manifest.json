@@ -4,8 +4,5 @@
   "product": {
     "freshdesk": {}
   },
-  "whitelisted-domains": [
-    "https://api.github.com",
-    "https://*.freshdesk.com"
-  ]
+  "whitelisted-domains": ["https://api.github.com", "https://*.freshdesk.com"]
 }

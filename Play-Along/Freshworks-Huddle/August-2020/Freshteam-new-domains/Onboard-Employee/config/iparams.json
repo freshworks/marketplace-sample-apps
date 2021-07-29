@@ -1,59 +1,59 @@
 {
-    "freshdeskDomain": {
-      "display_name": "Domain Name",
-      "description": "Please enter your Desk domain name",
-      "type": "domain",
-      "type_attributes": {
-        "product": "freshdesk"
-      },
-      "required": true
+  "freshdeskDomain": {
+    "display_name": "Domain Name",
+    "description": "Please enter your Desk domain name",
+    "type": "domain",
+    "type_attributes": {
+      "product": "freshdesk"
     },
-    "freshdeskApiKey": {
-        "display_name": "API Key",
-        "description": "Please enter your Sales api key",
-        "type": "api_key",
-        "secure": true,
-        "required": true,
-        "type_attributes": {
-          "product": "freshdesk"
-        }
-    },
-    "freshserviceDomain": {
-        "display_name": "Domain Name",
-        "description": "Please enter your Freshservice domain name",
-        "type": "domain",
-        "type_attributes": {
-          "product": "freshservice"
-        },
-        "required": true
-    },
-    "freshserviceApiKey": {
-        "display_name": "API Key",
-        "description": "Please enter your Freshservice api key",
-        "type": "api_key",
-        "secure": true,
-        "required": true,
-        "type_attributes": {
-          "product": "freshservice"
-        }
-    },
-    "freshteamDomain": {
-      "display_name": "Domain Name",
-      "description": "Please enter your Freshteam domain name",
-      "type": "domain",
-      "type_attributes": {
-        "product": "freshteam"
-      },
-      "required": true
-    },
-    "freshteamApiKey": {
-        "display_name": "API Key",
-        "description": "Please enter your Freshteam api key",
-        "type": "api_key",
-        "secure": true,
-        "required": true,
-        "type_attributes": {
-          "product": "freshteam"
-        }
+    "required": true
+  },
+  "freshdeskApiKey": {
+    "display_name": "API Key",
+    "description": "Please enter your Sales api key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
     }
+  },
+  "freshserviceDomain": {
+    "display_name": "Domain Name",
+    "description": "Please enter your Freshservice domain name",
+    "type": "domain",
+    "type_attributes": {
+      "product": "freshservice"
+    },
+    "required": true
+  },
+  "freshserviceApiKey": {
+    "display_name": "API Key",
+    "description": "Please enter your Freshservice api key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "freshservice"
+    }
+  },
+  "freshteamDomain": {
+    "display_name": "Domain Name",
+    "description": "Please enter your Freshteam domain name",
+    "type": "domain",
+    "type_attributes": {
+      "product": "freshteam"
+    },
+    "required": true
+  },
+  "freshteamApiKey": {
+    "display_name": "API Key",
+    "description": "Please enter your Freshteam api key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "freshteam"
+    }
+  }
 }

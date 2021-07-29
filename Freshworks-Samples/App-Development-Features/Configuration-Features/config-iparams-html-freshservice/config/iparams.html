@@ -49,7 +49,11 @@
 
       <section class="date-domain">
         <fw-label value="Date picker demo" color="grey"></fw-label>
-        <fw-datepicker placeholder="range" mode="single date" class="datepicker"></fw-datepicker>
+        <fw-datepicker
+          placeholder="range"
+          mode="single date"
+          class="datepicker"
+        ></fw-datepicker>
         <fw-input
           required="true"
           type="text"
@@ -64,21 +68,21 @@
 
     <script src="./assets/iparams.js"></script>
     <script>
-      let selectedVal = document.querySelector('.select-alien');
-      let apiKey = document.querySelector('.secure-field');
-      let selectedDate = document.querySelector('.datepicker');
-      let domain = document.querySelector('.domain');
-      let nameField = document.querySelector('.text-field');
+      let selectedVal = document.querySelector(".select-alien");
+      let apiKey = document.querySelector(".secure-field");
+      let selectedDate = document.querySelector(".datepicker");
+      let domain = document.querySelector(".domain");
+      let nameField = document.querySelector(".text-field");
       function postConfigs() {
         return {
           __meta: {
-            secure: ['apiKey']
+            secure: ["apiKey"],
           },
           api_key: apiKey.value,
           transformation: selectedVal.value,
           domain_url: domain.value,
           name: nameField.value,
-          date: selectedDate.value
+          date: selectedDate.value,
         };
       }
 
@@ -98,8 +102,8 @@
         var options = {
           headers: {
             Authorization: `Basic ${base64Encoded}`,
-            'Content-Type': 'application/json'
-          }
+            "Content-Type": "application/json",
+          },
         };
         try {
           let { status } = await client.request.get(URL, options);
@@ -110,7 +114,13 @@
         }
       }
     </script>
-    <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"
+    ></script>
   </body>
 </html>

@@ -3,10 +3,10 @@
  *
  */
 function showScheduleNoteModal() {
-  client.interface.trigger('showModal', {
-    title: 'Schedule a Note',
-    template: 'modal.html',
-    data: {}
+  client.interface.trigger("showModal", {
+    title: "Schedule a Note",
+    template: "modal.html",
+    data: {},
   });
 }
 
@@ -16,14 +16,14 @@ function showScheduleNoteModal() {
  * @param {object} payload - contains type & message
  */
 function notify(payload) {
-  client.interface.trigger('showNotify', payload);
+  client.interface.trigger("showNotify", payload);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  app.initialized().then(function(client) {
+  app.initialized().then(function (client) {
     window.client = client;
 
-    client.events.on('app.activated', function() {
+    client.events.on("app.activated", function () {
       showScheduleNoteModal();
     });
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
      *
      * @param {object} event - Instance Event
      */
-    client.instance.receive(function(event) {
+    client.instance.receive(function (event) {
       const data = event.helper.getData().message;
 
       client[data.api][data.action](data.method, data.payload);

@@ -4,7 +4,7 @@
   "domain": "http://sample.freshdesk.com",
   "event": "onAppUninstall",
   "region": "US",
-  "iparams":{
+  "iparams": {
     "github_repo": "sample"
   }
 }

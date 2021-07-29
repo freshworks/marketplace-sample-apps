@@ -4,22 +4,22 @@
 
 Serverless app to demonstrate usage of multiple types of events (product event, app setup event and external event).
 
-***
+---
 
 ## Features Demonstrated
 
-| Feature | Notes |
-| :---: | --- |
+|                                   Feature                                   | Notes                                                                                                                                                 |
+| :-------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`Product Events`](https://developers.freshdesk.com/v2/docs/product-events) | Various product events such as _onTicketCreate_, _onAppInstall_, _onExternalEvent_ and _onAppUninstall_ registration at the same time is demonstrated |
 
-***
+---
 
 ## Prerequisites
 
 1. Make sure you have a trial Freshdesk account created.
 2. A properly configured [Development environment](https://developers.freshdesk.com/v2/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developers.freshdesk.com/v2/docs/freshworks-cli/).
 
-***
+---
 
 ## Procedure to run the app
 

@@ -1,18 +1,17 @@
-'use strict';
+"use strict";
 
-const helper = require('./lib/helper');
+const helper = require("./lib/helper");
 
 exports = {
-
   events: [
-    { event: 'onAppInstall', callback: 'onAppInstallHandler' },
-    { event: 'onTicketCreate', callback: 'onTicketCreateHandler' }
+    { event: "onAppInstall", callback: "onAppInstallHandler" },
+    { event: "onTicketCreate", callback: "onTicketCreateHandler" },
   ],
 
   /**
    * Runs as part of app install to setup pre-requisite
    */
-  onAppInstallHandler: function() {
+  onAppInstallHandler: function () {
     // Add your code here
   },
 
@@ -21,23 +20,28 @@ exports = {
    * of the request in DB
    * @param  {object} args - onTicketCreate Payload
    */
-  onTicketCreateHandler: function(args) {
+  onTicketCreateHandler: function (args) {
     const ticketId = args.data.ticket.id;
     const subject = args.data.ticket.subject;
 
-    return $request.post({
-      url: 'https://httpbin.org/post',
-      json: {
-        ticketId,
-        subject
-      }
-    }).then(function() {
-      console.info('Request successful');
-      helper.setStatus(ticketId, true);
-    }, function() {
-      console.error('Request failed');
-      helper.setStatus(ticketId, false);
-    });
+    return $request
+      .post({
+        url: "https://httpbin.org/post",
+        json: {
+          ticketId,
+          subject,
+        },
+      })
+      .then(
+        function () {
+          console.info("Request successful");
+          helper.setStatus(ticketId, true);
+        },
+        function () {
+          console.error("Request failed");
+          helper.setStatus(ticketId, false);
+        }
+      );
   },
 
   /**
@@ -45,14 +49,14 @@ exports = {
    * property in the payload
    * @param  {object} args - SMI Payload
    */
-  createUser: function(args) {
+  createUser: function (args) {
     if (!args.name) {
       return renderData({
-        message: 'name is missing'
+        message: "name is missing",
       });
     }
     return renderData(null, {
-      id: 123
+      id: 123,
     });
-  }
+  },
 };

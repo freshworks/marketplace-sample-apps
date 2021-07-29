@@ -1,15 +1,15 @@
 {
-    "freshsales_api_key": {
-        "display_name": "Freshsales API Key",
-        "description": "Please enter your Freshsales API key. You can find it in the profile -> settings -> api settings page.",
-        "type": "text",
-        "required": true,
-        "secure": true
-      },
-    "freshsales_subdomain": {
-      "display_name": "Freshsales sub-domain",
-      "description": "Please enter your Freshsales sub-domain. It's in the URL, the name which appears before (.freshsales.io) in the URL.",
-      "type": "text",
-      "required": true
-    }
+  "freshsales_api_key": {
+    "display_name": "Freshsales API Key",
+    "description": "Please enter your Freshsales API key. You can find it in the profile -> settings -> api settings page.",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "freshsales_subdomain": {
+    "display_name": "Freshsales sub-domain",
+    "description": "Please enter your Freshsales sub-domain. It's in the URL, the name which appears before (.freshsales.io) in the URL.",
+    "type": "text",
+    "required": true
+  }
 }

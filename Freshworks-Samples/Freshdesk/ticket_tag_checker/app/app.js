@@ -12,7 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.ticket.tags.length > 0) {
             event.helper.done();
           } else {
-            event.helper.fail("Please make sure that at least one tag is attached to this ticket");
+            event.helper.fail(
+              "Please make sure that at least one tag is attached to this ticket"
+            );
           }
         },
         function (error) {
@@ -20,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
             type: "error",
             message: {
               title: "Error",
-              description: "Error while trying to fetch data"
-            }
+              description: "Error while trying to fetch data",
+            },
           });
           console.error(error);
         }
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     client.events.on("ticket.closeTicketClick", eventCallback, {
-      intercept: true
+      intercept: true,
     });
   });
 });

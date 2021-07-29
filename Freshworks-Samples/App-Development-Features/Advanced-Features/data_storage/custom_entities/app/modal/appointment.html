@@ -1,43 +1,66 @@
 <html>
+  <head>
+    <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      .label {
+        font-size: 12px;
+        color: rgb(71, 88, 103);
+        font-weight: 500;
+        margin-bottom: 0px;
+        padding-bottom: 4px;
+        padding-left: 2px;
+        display: block;
+      }
+    </style>
+  </head>
 
-<head>
-  <!-- Stylesheets -->
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-  <style>
-    .label {
-      font-size: 12px;
-      color: rgb(71, 88, 103);
-      font-weight: 500;
-      margin-bottom: 0px;
-      padding-bottom: 4px;
-      padding-left: 2px;
-      display: block;
-    }
-  </style>
-</head>
+  <body>
+    <div class="container">
+      <fw-input
+        label="Restaurant ID"
+        id="id"
+        placeholder="Enter the ID of the restaurant. Ex: resta-2"
+        maxlength="64"
+        required
+        state="normal"
+        clear-input
+      >
+      </fw-input>
 
-<body>
+      <span>
+        <span class="label">at</span>
+        <fw-datepicker
+          id="date"
+          value="2020-11-23"
+          date-format="YYYY-MM-DD"
+        ></fw-datepicker>
+        <fw-timepicker
+          id="time"
+          value="09:00"
+          interval="60"
+          hour-format="hh:mm"
+        ></fw-timepicker>
+      </span>
 
-  <div class="container">
-    <fw-input label="Restaurant ID" id="id" placeholder="Enter the ID of the restaurant. Ex: resta-2" maxlength="64"
-      required state="normal" clear-input>
-    </fw-input>
+      <fw-textarea cols="64" rows="10" label="Notes" id="notes" required>
+      </fw-textarea>
 
-    <span>
-      <span class="label">at</span>
-      <fw-datepicker id="date" value="2020-11-23" date-format="YYYY-MM-DD"></fw-datepicker>
-      <fw-timepicker id="time" value="09:00" interval=60 hour-format="hh:mm"></fw-timepicker>
-    </span>
+      <fw-button onclick="createAppointment()"> Create </fw-button>
+    </div>
 
-    <fw-textarea cols=64 rows=10 label="Notes" id="notes" required> </fw-textarea>
-
-    <fw-button onclick="createAppointment()"> Create </fw-button>
-  </div>
-
-  <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
-  <script type="module" src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.js"></script>
-  <script src="../js/appointment.js"></script>
-</body>
-
+    <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.js"
+    ></script>
+    <script src="../js/appointment.js"></script>
+  </body>
 </html>

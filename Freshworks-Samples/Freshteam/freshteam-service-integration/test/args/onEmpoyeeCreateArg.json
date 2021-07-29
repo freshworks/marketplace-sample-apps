@@ -11,9 +11,7 @@
       "first_name": "Alayna",
       "last_name": "Marvin",
       "middle_name": null,
-      "user_emails": [
-        "alayna@freshteam.com"
-      ],
+      "user_emails": ["alayna@freshteam.com"],
       "employee_id": null,
       "status": {
         "id": 1,

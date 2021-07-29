@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://xkcd.com"
-  ]
+  "whitelisted-domains": ["https://xkcd.com"]
 }

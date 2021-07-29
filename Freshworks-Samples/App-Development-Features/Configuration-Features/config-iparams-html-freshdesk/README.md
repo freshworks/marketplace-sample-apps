@@ -5,7 +5,9 @@
 `iparams.html` allows you to write html, css and js code to build configuration page as per your needs of the app. See `config/` and get started using it in your apps!
 
 ### Screenshots:
+
 #### In Local Development
+
 ![config page in local development](./screenshots/custom_config.png)
 The sample app displaying the question with a witty answer.
 ![config page in local development](./screenshots/app_face.png)
@@ -37,6 +39,7 @@ The sample app displaying the question with a witty answer.
 ```
 
 ### Additional Comments (if any)
+
 Freshworks CLI currently doesn't support ES6 javascript considering lots of businesses not using latest browser versions. This app uses ES6 so following lint error is seen.
 
 ```sh

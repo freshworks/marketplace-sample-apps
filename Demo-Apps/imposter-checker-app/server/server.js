@@ -1,9 +1,9 @@
-var superagent = require('superagent');
+var superagent = require("superagent");
 var handleErr = console.error;
 
 exports = {
   getQuote,
-  doesMatch
+  doesMatch,
 };
 
 function sendtoFrontend(data) {
@@ -18,9 +18,9 @@ function sendtoFrontend(data) {
 function getQuote(options) {
   var creds = options.iparams;
   var quote = superagent
-    .get('https://api.typingdna.com/quote')
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send({ max: '45' })
+    .get("https://api.typingdna.com/quote")
+    .set("Content-Type", "application/x-www-form-urlencoded")
+    .send({ max: "45" })
     .auth(creds.apiKey, creds.apiSecret);
 
   quote.then(sendtoFrontend, handleErr);
@@ -32,9 +32,9 @@ function doesMatch(patterns) {
   delete patterns.isInstall;
   console.log(patterns);
   var matchLevel = superagent
-    .post('https://api.typingdna.com/match')
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    .set('Cache-Control', 'no-cache')
+    .post("https://api.typingdna.com/match")
+    .set("Content-Type", "application/x-www-form-urlencoded")
+    .set("Cache-Control", "no-cache")
     .auth(creds.apiKey, creds.apiSecret)
     .send(patterns);
   matchLevel.then(sendtoFrontend, handleErr);

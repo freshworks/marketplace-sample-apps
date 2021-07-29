@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
     <script src="./scripts/app.js"></script>
     <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <div class="content">
-        <div class="message">
-            Hey ! You did a great job <span id="agent-name"></span> !
-            our customer <span id="customer-name"></span> is happy now!
-            You guys have exchanged <span id="message-count"></span>
-            messages with each other
-            <br>
-            <br>
-            Here is your award
-        </div>
-        <div class="image">
-            <img src="./styles/images/award.gif">
-
-        </div>
-
+      <div class="message">
+        Hey ! You did a great job <span id="agent-name"></span> ! our customer
+        <span id="customer-name"></span> is happy now! You guys have exchanged
+        <span id="message-count"></span>
+        messages with each other
+        <br />
+        <br />
+        Here is your award
+      </div>
+      <div class="image">
+        <img src="./styles/images/award.gif" />
+      </div>
     </div>
     <script>
-        app.initialized()
-            .then( (_client) => {
-                window.client = _client;
-                client.instance.context().then( (context) => {
-                    const { customername, agentname, messagecount } = context.data
-                    document.getElementById("customer-name").innerHTML = customername;
-                    document.getElementById("agent-name").innerHTML = agentname;
-                    document.getElementById("message-count").innerHTML = messagecount;
-                }).catch( (error) => {
-                    console.log("error while recieving data in modal")
-                });
-            });
+      app.initialized().then((_client) => {
+        window.client = _client;
+        client.instance
+          .context()
+          .then((context) => {
+            const { customername, agentname, messagecount } = context.data;
+            document.getElementById("customer-name").innerHTML = customername;
+            document.getElementById("agent-name").innerHTML = agentname;
+            document.getElementById("message-count").innerHTML = messagecount;
+          })
+          .catch((error) => {
+            console.log("error while recieving data in modal");
+          });
+      });
     </script>
-</body>
-
+  </body>
 </html>

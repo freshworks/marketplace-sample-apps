@@ -6,30 +6,30 @@ The Onclick alerts app displays notification on updating ticket properties and c
 
 ## Screenshots
 
-<img src="./screenshots/AppFace.png" width="250">  
+<img src="./screenshots/AppFace.png" width="250">
 
 For other screenshots please refer to [screenshots](./screenshots/) folder
 
-***
+---
 
 ## Features demonstrated
 
 App location: ticket_sidebar on ticket details page
 
-| Feature | Notes |
-|:---: |---|
-| [`Events API`](https://developer.freshservice.com/docs/events/#ticket_page_events) | Events API specifically _ticket details page events_  has been used to trigger notifications on updating ticket properties. |
-|[`Interface API`](https://developer.freshservice.com/docs/interface/)| Interface API specifically _show notifications_ and _show modal_ has been used to notify users on updating ticket properties and displaying child ticket properties respectively|
-| [`Data API`](https://developer.freshservice.com/docs/data-api/#ticket_details_page) | Data API has along with _recentChildTickets_ been used to retrieve child ticket properties.|
+|                                       Feature                                       | Notes                                                                                                                                                                            |
+| :---------------------------------------------------------------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`Events API`](https://developer.freshservice.com/docs/events/#ticket_page_events)  | Events API specifically _ticket details page events_ has been used to trigger notifications on updating ticket properties.                                                       |
+|        [`Interface API`](https://developer.freshservice.com/docs/interface/)        | Interface API specifically _show notifications_ and _show modal_ has been used to notify users on updating ticket properties and displaying child ticket properties respectively |
+| [`Data API`](https://developer.freshservice.com/docs/data-api/#ticket_details_page) | Data API has along with _recentChildTickets_ been used to retrieve child ticket properties.                                                                                      |
 
-***
+---
 
 ## Prerequisites
 
 1. Make sure you have a trial Freshservice account created
 2. Ensure that your [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/freshworks-cli/) is set up and configured properly.
 
-***
+---
 
 ## Procedure to run the app
 

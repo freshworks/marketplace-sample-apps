@@ -4,14 +4,14 @@ This app showcases a use-case of setting up a call center solution with the use 
 
 ## Functionality
 
-* The app is integrated with Twilio platform to make phone calls to provide call center solution for Freshdesk.
-* When the call is made from the app by a support agent, a call will be made to the configured Twilio phone number and then to the actual customer phone number and finally both the parties will be connected.
-* Call events are listened by a custom middleware server and update the call status in the app frontend through web socket (socket.io) connection.
+- The app is integrated with Twilio platform to make phone calls to provide call center solution for Freshdesk.
+- When the call is made from the app by a support agent, a call will be made to the configured Twilio phone number and then to the actual customer phone number and finally both the parties will be connected.
+- Call events are listened by a custom middleware server and update the call status in the app frontend through web socket (socket.io) connection.
 
 ![Outgoing call flow diagram](app/assets/cti_outgoing_call_flow.png)
 
-* Incoming calls are received by the Twilio number and a webhook from the middleware is triggered by Twilio to notify the incoming call. Meanwhile the call will be received by the support agent.
-* The incoming call will be connected with both the parties when the call is connected similar to the outgoing call.
+- Incoming calls are received by the Twilio number and a webhook from the middleware is triggered by Twilio to notify the incoming call. Meanwhile the call will be received by the support agent.
+- The incoming call will be connected with both the parties when the call is connected similar to the outgoing call.
 
 ![Incoming call flow diagram](app/assets/cti_incoming_call_flow.png)
 

@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://<%= iparam.subdomain %>.freshsales.io"
-  ]
+  "whitelisted-domains": ["https://<%= iparam.subdomain %>.freshsales.io"]
 }

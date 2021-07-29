@@ -1,5 +1,5 @@
 .logo {
-  background: url('../img/freshdesk_logo.png');
+  background: url("../img/freshdesk_logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 25px;

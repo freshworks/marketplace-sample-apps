@@ -4,13 +4,13 @@
 
 This app showcases the Freshdesk SDK to make CRUD operation with Tickets module and Search Contact on Freshdesk.
 
-Features demonstrated | Notes
--------------------- | ------
-[Freshdesk SDK - Create Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#createticket) | To create a ticket using Freshdesk SDK
-[Freshdesk SDK - Get Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#getticket) | To get a ticket details using Freshdesk SDK
-[Freshdesk SDK - Update Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#updateticket) | To update a ticket properties using Freshdesk SDK
-[Freshdesk SDK - Delete Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#deleteticket) | To delete a ticket using Freshdesk SDK
-[Freshdesk SDK - Search Contact](https://developer.freshworks.com/freshdesk-sdk/docs/ContactsApi.html#searchcontacts) | To search contacts using Freshdesk SDK
+| Features demonstrated                                                                                                 | Notes                                             |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| [Freshdesk SDK - Create Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#createticket)     | To create a ticket using Freshdesk SDK            |
+| [Freshdesk SDK - Get Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#getticket)           | To get a ticket details using Freshdesk SDK       |
+| [Freshdesk SDK - Update Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#updateticket)     | To update a ticket properties using Freshdesk SDK |
+| [Freshdesk SDK - Delete Ticket](https://developer.freshworks.com/freshdesk-sdk/docs/TicketsApi.html#deleteticket)     | To delete a ticket using Freshdesk SDK            |
+| [Freshdesk SDK - Search Contact](https://developer.freshworks.com/freshdesk-sdk/docs/ContactsApi.html#searchcontacts) | To search contacts using Freshdesk SDK            |
 
 ## Prerequisites
 

@@ -16,8 +16,7 @@ function makeAPIcall() {
   client.iparams
     .get("creatorDomain")
     .then(function (data) {
-      const URL =
-        `https://${data.creatorDomain}.freshdesk.com/api/v2/contacts`;
+      const URL = `https://${data.creatorDomain}.freshdesk.com/api/v2/contacts`;
       var options = {
         headers: {
           Authorization: `Basic <%= encode(iparam.api_key) %>`, // substitution happens by platform

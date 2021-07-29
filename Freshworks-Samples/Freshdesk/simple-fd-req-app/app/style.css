@@ -5,24 +5,24 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .fw-button {
   outline: none;
-  border:none;
+  border: none;
   box-sizing: border-box;
-  box-shadow: 0 1px 0 0 rgba(24, 50,       71, 0.12);
+  box-shadow: 0 1px 0 0 rgba(24, 50, 71, 0.12);
   background-image: linear-gradient(to bottom, #12344d, #001f36);
   font-family: SFProText;
   font-size: 14px;
@@ -32,8 +32,8 @@
   border-radius: 5px;
 }
 .open-modal {
-  text-align : center;
-  padding : 10px;
+  text-align: center;
+  padding: 10px;
 }
 body {
   font-family: "Open Sans", sans-serif;
@@ -46,14 +46,14 @@ body {
   padding: 10px;
   margin-top: 2%;
   text-align: center;
-  box-shadow: 4px 7px 16px -4px rgba(0,0,0,0.75);
+  box-shadow: 4px 7px 16px -4px rgba(0, 0, 0, 0.75);
   font-weight: 800;
   color: #fff;
   border-radius: 10px;
 }
 .link {
-  color: #d72d30
+  color: #d72d30;
 }
 .link:hover {
-  color: #d72d30
+  color: #d72d30;
 }

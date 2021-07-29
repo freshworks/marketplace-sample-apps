@@ -4,6 +4,6 @@
     "description": "Please enter your freshdesk api key",
     "type": "text",
     "required": true,
-    "secure":true
+    "secure": true
   }
 }

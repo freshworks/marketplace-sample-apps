@@ -1,6 +1,7 @@
 {
   "restaurants": {
-    "fields": [{
+    "fields": [
+      {
         "name": "name",
         "label": "Name",
         "type": "TEXT"
@@ -35,7 +36,8 @@
     ]
   },
   "appointments": {
-    "fields": [{
+    "fields": [
+      {
         "name": "restaurant_id",
         "label": "Restaurant ID",
         "type": "TEXT",

@@ -9,10 +9,10 @@
   "token_type": "account",
   "oauth_iparams": {
     "subdomain": {
-       "display_name": "Shopify domain",
-       "description": "Please enter your Shopify domain",
-       "type": "text",
-       "required": true
-     }
+      "display_name": "Shopify domain",
+      "description": "Please enter your Shopify domain",
+      "type": "text",
+      "required": true
+    }
   }
 }

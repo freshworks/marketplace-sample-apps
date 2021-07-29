@@ -1,27 +1,31 @@
 var clientAPP = null;
-let initAPP = function(_client) {
-    clientAPP = _client;
-    clientAPP.events.on('app.activated', initHandlers);
+let initAPP = function (_client) {
+  clientAPP = _client;
+  clientAPP.events.on("app.activated", initHandlers);
 };
 
 /**
  * A function to open the modal to display ticket and it's associated data.
  */
-let initDemoApp = function() {
-    clientAPP.interface.trigger('showModal', { title: 'Ticket and Associated Details', template: 'content.html' })
-        .then(
-            function() {
-                console.log("App Loaded");
-            },
-            function(error) {
-                console.error(error,'Error while loading modal');
-            }
-        );
+let initDemoApp = function () {
+  clientAPP.interface
+    .trigger("showModal", {
+      title: "Ticket and Associated Details",
+      template: "content.html",
+    })
+    .then(
+      function () {
+        console.log("App Loaded");
+      },
+      function (error) {
+        console.error(error, "Error while loading modal");
+      }
+    );
 };
-let initHandlers = function() {
-    document.getElementById("startDemo").addEventListener("click", initDemoApp);
+let initHandlers = function () {
+  document.getElementById("startDemo").addEventListener("click", initDemoApp);
 };
 
-(function() {
-    app.initialized().then(initAPP);
+(function () {
+  app.initialized().then(initAPP);
 })();

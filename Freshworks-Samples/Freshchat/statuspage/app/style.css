@@ -1,12 +1,12 @@
 .logo {
-  background: url('resources/img/icon.svg');
+  background: url("resources/img/icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   height: 25px;
   margin-top: 25px;
 }
 
-.sp_loader{
+.sp_loader {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -14,9 +14,9 @@
   width: 15%;
 }
 
-.sp_component{
+.sp_component {
   width: 90%;
-  border: 1px solid rgba(9,30,66,.12);
+  border: 1px solid rgba(9, 30, 66, 0.12);
   padding: 5px 5px 6px;
   border-radius: 4px;
   background: #fff;
@@ -24,7 +24,7 @@
   font-size: 12px;
 }
 
-.status{
+.status {
   width: 10px;
   height: 10px;
   float: left;
@@ -32,7 +32,7 @@
   margin-top: 4px;
 }
 
-.status_info{
+.status_info {
   margin-left: 15px;
 }
 
@@ -40,14 +40,14 @@
   background: orange;
 }
 
-.fw_operational{
+.fw_operational {
   background: green;
 }
 
-.fw_degraded_performance{
+.fw_degraded_performance {
   background: yellow;
 }
 
-.fw_major_outage{
+.fw_major_outage {
   background: red;
 }

@@ -1,17 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-  app.initialized()
-    .then(
-      function (_client) {
-        window.client = _client;
-        client.events.on('app.activated', function () {
-          document.getElementById("openModal").addEventListener('click', openModal);
-        }, function () {
-          showNotification('danger', 'App cannot be activated, Please try later');
-        });
-      },
-      function () {
-        showNotification('danger', 'Sorry! Unable to load app');
-      })
+  app.initialized().then(
+    function (_client) {
+      window.client = _client;
+      client.events.on(
+        "app.activated",
+        function () {
+          document
+            .getElementById("openModal")
+            .addEventListener("click", openModal);
+        },
+        function () {
+          showNotification(
+            "danger",
+            "App cannot be activated, Please try later"
+          );
+        }
+      );
+    },
+    function () {
+      showNotification("danger", "Sorry! Unable to load app");
+    }
+  );
 });
 
 /**
@@ -20,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function openModal() {
   client.interface.trigger("showModal", {
     title: "Ticket Details",
-    template: "content.html"
+    template: "content.html",
   });
 }
 
@@ -32,6 +41,6 @@ function openModal() {
 function showNotification(status, message) {
   client.interface.trigger("showNotify", {
     type: `${status}`,
-    message: `${message}`
+    message: `${message}`,
   });
 }

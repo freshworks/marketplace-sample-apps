@@ -1,31 +1,29 @@
-  <html>
+<html>
   <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
-   <script>
-    window.frsh_init().then(function(client){
-
+  <script>
+    window.frsh_init().then(function (client) {
       // resize the instance
       client.instance.resize({ height: "500px" });
 
-
       // To retrieve information about the current context.
-      client.instance.context().then(function(context){
-        console.log('Modal instance API context', context);
+      client.instance.context().then(function (context) {
+        console.log("Modal instance API context", context);
         //data passed from App to modal
-        q('#name').value = context.data.defaultName;
-        q('#email').value = context.data.defaultEmail;
+        q("#name").value = context.data.defaultName;
+        q("#email").value = context.data.defaultEmail;
       });
 
       // To retrieve information about all instances.
-      client.instance.get().then(function(data) {
-        console.log('Modal instance API Get', data);
+      client.instance.get().then(function (data) {
+        console.log("Modal instance API Get", data);
       });
     });
     function submitValues(event) {
-      window.frsh_init().then(function(client){
+      window.frsh_init().then(function (client) {
         let result = {
-          name: q('#name').value,
-          email: q('#email').value,
-          message: q('#message').value,
+          name: q("#name").value,
+          email: q("#email").value,
+          message: q("#message").value,
         };
 
         // Send message to parent
@@ -37,20 +35,29 @@
 
       // To prevent from reloading after form submit
       event.preventDefault();
-    };
+    }
 
     function q(selector) {
       return document.querySelector(selector);
     }
   </script>
-  <link rel='stylesheet' type='text/css' href='modal1.css' />
+  <link rel="stylesheet" type="text/css" href="modal1.css" />
   <body>
-    <div class='form'>
+    <div class="form">
       <form onsubmit="submitValues()">
-        <input type='text' name='field1' id='name' placeholder='Your Name' />
-        <input type='email' name='field2' id='email' placeholder='Email Address' />
-        <textarea name='field3' id='message' placeholder='Type your Message'></textarea>
-        <input type='submit' value='Send' />
+        <input type="text" name="field1" id="name" placeholder="Your Name" />
+        <input
+          type="email"
+          name="field2"
+          id="email"
+          placeholder="Email Address"
+        />
+        <textarea
+          name="field3"
+          id="message"
+          placeholder="Type your Message"
+        ></textarea>
+        <input type="submit" value="Send" />
       </form>
     </div>
   </body>

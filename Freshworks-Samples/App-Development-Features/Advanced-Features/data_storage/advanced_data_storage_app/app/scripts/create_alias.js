@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Request parent instance to display a confirmation alert with the given payload
@@ -11,12 +11,12 @@ function alertParent(payload, args) {
 
   client.instance.send({
     message: {
-      api: 'interface',
-      action: 'trigger',
-      method: 'showConfirm',
+      api: "interface",
+      action: "trigger",
+      method: "showConfirm",
       payload: payload,
-      args: args
-    }
+      args: args,
+    },
   });
 }
 
@@ -32,11 +32,11 @@ function showNotify(type, message) {
 
   client.instance.send({
     message: {
-      api: 'interface',
-      action: 'trigger',
-      method: 'showNotify',
-      payload: { type: type, message: message }
-    }
+      api: "interface",
+      action: "trigger",
+      method: "showNotify",
+      payload: { type: type, message: message },
+    },
   });
 }
 
@@ -48,7 +48,7 @@ function showNotify(type, message) {
  */
 function constructOptions(ttl, override) {
   /** The ttl is added as an attribute by default to the returning Object. The setIf attribute is added only if the override is true. */
-  return Object.assign({ ttl: ttl }, override ? {} : { setIf: 'not_exist' });
+  return Object.assign({ ttl: ttl }, override ? {} : { setIf: "not_exist" });
 }
 
 /**
@@ -59,48 +59,62 @@ function constructOptions(ttl, override) {
  * @param {Number} ttl - time to expiry for the key-value pair
  */
 function createAlias(key, value, ttl) {
-  client.db.set(key, { url: value, updates: 0 }, constructOptions(ttl, false))
-    .then(function () {
-      showNotify('success', 'Successfully created the alias');
-    }, function (error) {
-      var httpStatusCodeForError = 400;
+  client.db
+    .set(key, { url: value, updates: 0 }, constructOptions(ttl, false))
+    .then(
+      function () {
+        showNotify("success", "Successfully created the alias");
+      },
+      function (error) {
+        var httpStatusCodeForError = 400;
 
-      if (error.status === httpStatusCodeForError && error.message === 'The setIf conditional request failed') {
-        alertParent({
-          title: 'Confirmation',
-          message: 'The key already exists. Do you want to override?',
-          saveLabel: 'Override',
-          cancelLabel: 'No'
-        }, {
-            key: key,
-            value: value
-          });
-
-      } else {
-        console.error('Error: failed to create alias');
-        console.error(error);
-        showNotify('danger', 'Failed to create the alias');
+        if (
+          error.status === httpStatusCodeForError &&
+          error.message === "The setIf conditional request failed"
+        ) {
+          alertParent(
+            {
+              title: "Confirmation",
+              message: "The key already exists. Do you want to override?",
+              saveLabel: "Override",
+              cancelLabel: "No",
+            },
+            {
+              key: key,
+              value: value,
+            }
+          );
+        } else {
+          console.error("Error: failed to create alias");
+          console.error(error);
+          showNotify("danger", "Failed to create the alias");
+        }
       }
-    });
+    );
 }
 
 /**
  * adds new alias based on the alias and link from the input fields
  */
 function addNewAlias() {
-  var key = document.getElementById('inputAlias').value;
-  var value = document.getElementById('inputLink').value;
+  var key = document.getElementById("inputAlias").value;
+  var value = document.getElementById("inputLink").value;
   var ttl = 86400;
 
   createAlias(key, value, ttl);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  app.initialized().then(function (_client) {
-    window.client = _client;
-  }).catch(function (error) {
-    console.error('Failed to initialize the create_alias modal with error');
-    console.error(error);
-  });
-  document.getElementById('btnCreateAlias').addEventListener('click', addNewAlias);
+  app
+    .initialized()
+    .then(function (_client) {
+      window.client = _client;
+    })
+    .catch(function (error) {
+      console.error("Failed to initialize the create_alias modal with error");
+      console.error(error);
+    });
+  document
+    .getElementById("btnCreateAlias")
+    .addEventListener("click", addNewAlias);
 });

@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://anapioficeandfire.com"
-  ]
+  "whitelisted-domains": ["https://anapioficeandfire.com"]
 }

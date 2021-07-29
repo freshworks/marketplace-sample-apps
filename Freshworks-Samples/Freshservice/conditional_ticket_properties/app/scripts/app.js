@@ -43,7 +43,11 @@
     clientAPP.interface.trigger("hideElement", { id: "type" });
     clientAPP.data.get("loggedInUser").then(
       function (data) {
-        if (data.loggedInUser.group_ids.findIndex(groupId => groupId === requiredGroupId) > -1) {
+        if (
+          data.loggedInUser.group_ids.findIndex(
+            (groupId) => groupId === requiredGroupId
+          ) > -1
+        ) {
           clientAPP.interface.trigger("hideElement", { id: "urgency" }); //hides the urgency field of ticket properties
           clientAPP.interface.trigger("hideElement", { id: "impact" }); //hides the impact field of ticket properties
         }
@@ -69,7 +73,7 @@
     });
   };
 
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener("DOMContentLoaded", function () {
     app.initialized().then(initAPP);
   });
 })();

@@ -4,7 +4,7 @@ const {
 } = require("@aws-sdk/client-organizations");
 const sendG = require("@sendgrid/mail");
 
-function performOperations(args, operation) { 
+function performOperations(args, operation) {
   if (operation.includes("1")) sendWelcomeMail(args);
   if (operation.includes("2")) addToAWSOrg(args);
   if (operation.includes("3")) inviteToBitBucket(args);
@@ -129,7 +129,7 @@ exports = {
           if (dept == obj[i].id) {
             let dept_name = obj[i].name.split(" ").join("-");
             let operation = args["iparams"][dept_name];
-            performOperations(args, operation); 
+            performOperations(args, operation);
             break;
           }
         }

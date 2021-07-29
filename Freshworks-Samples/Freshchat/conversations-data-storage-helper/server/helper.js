@@ -1,5 +1,5 @@
-const base85 = require('ascii85');
-const buffer = require('buffer').Buffer;
+const base85 = require("ascii85");
+const buffer = require("buffer").Buffer;
 
 exports = {
   /**
@@ -8,7 +8,7 @@ exports = {
    * @param {String} str - String to encode.
    **/
   encode: function (str) {
-    const hex = buffer.from(str.replace(/\-/g, ''), 'hex');
+    const hex = buffer.from(str.replace(/\-/g, ""), "hex");
     return base85.encode(hex).toString();
   },
 
@@ -20,7 +20,10 @@ exports = {
    * @param {String} str - encoded string.
    **/
   decode: function (str) {
-    const uuid = buffer.from(base85.decode(str)).toString('hex');
-    return `${uuid.substring(0, 8)}-${uuid.substring(8, 12)}-${uuid.substring(12, 16)}-${uuid.substring(16, 20)}-${uuid.substring(20)}`;
-  }
-}
+    const uuid = buffer.from(base85.decode(str)).toString("hex");
+    return `${uuid.substring(0, 8)}-${uuid.substring(8, 12)}-${uuid.substring(
+      12,
+      16
+    )}-${uuid.substring(16, 20)}-${uuid.substring(20)}`;
+  },
+};

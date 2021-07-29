@@ -12,18 +12,18 @@ isDocumentReady();
 
 function startAppRender() {
   checkTimer();
-  app.initialized().then(function(_client) {
+  app.initialized().then(function (_client) {
     client = _client;
-    client.events.on("app.activated", function() {
+    client.events.on("app.activated", function () {
       /**
        * get the id of the user logged in using the data API
        */
       client.data.get("loggedInUser").then(
-        function(data) {
+        function (data) {
           user_id = data.loggedInUser.user.id.toString();
         },
 
-        function(err) {
+        function (err) {
           notifyUser("error", "couldn't get loggedInUser");
           console.error("couldn't get loggedInUser, %o", err);
         }
@@ -34,24 +34,26 @@ function startAppRender() {
   /**
    * a click event handler to start and stop pomodoro sessions
    */
-  document.querySelector("#startStopButton").addEventListener("click", (event) => {
-    if (!sessionState) {
-      makeSMICall("startPomodoro").then(
-        () => {
-          startSession();
-          sessionState = true;
-        },
+  document
+    .querySelector("#startStopButton")
+    .addEventListener("click", (event) => {
+      if (!sessionState) {
+        makeSMICall("startPomodoro").then(
+          () => {
+            startSession();
+            sessionState = true;
+          },
 
-        err => {
-          console.error("Couldn't start sessions\n%o", err);
-          notifyUser("error", "Couldn't start session");
-        }
-      );
-    } else {
-      stopPomodoro(0);
-      sessionState = false;
-    }
-  });
+          (err) => {
+            console.error("Couldn't start sessions\n%o", err);
+            notifyUser("error", "Couldn't start session");
+          }
+        );
+      } else {
+        stopPomodoro(0);
+        sessionState = false;
+      }
+    });
 
   /**
    * a click event handler to get user's past sessions data, process it and pass it to a modal to show output in chart form
@@ -61,7 +63,7 @@ function startAppRender() {
     let hs = [];
     let td = null;
     client.db.get(user_id).then(
-      function(data) {
+      function (data) {
         td = data.totalDays;
         data.history.forEach((element, index) => {
           hs.push([index + 1, element.noOfSessions, element.noOfInterruptions]);
@@ -70,11 +72,11 @@ function startAppRender() {
         client.interface.trigger("showModal", {
           title: "Pomodoro Activity",
           template: "./views/mod.html",
-          data: { totalDays: td, history: hs }
+          data: { totalDays: td, history: hs },
         });
       },
 
-      function(err) {
+      function (err) {
         console.error("couldn't get data for showActivity, %o", err);
       }
     );
@@ -114,18 +116,20 @@ function startAppRender() {
 function notifyUser(notificationType, notificationMessage) {
   client.interface.trigger("showNotify", {
     type: notificationType,
-    message: notificationMessage
+    message: notificationMessage,
   });
 }
 
 function startText() {
-    document.getElementById("sessionText").innerText = "Click me to start focus mode!!!";
-    document.getElementById("startStopButton").innerText = "Start";
+  document.getElementById("sessionText").innerText =
+    "Click me to start focus mode!!!";
+  document.getElementById("startStopButton").innerText = "Start";
 }
 
 function stopText() {
-    document.getElementById("sessionText").innerText = "Click me to stop focus mode!!!";
-    document.getElementById("startStopButton").innerText = "Stop";
+  document.getElementById("sessionText").innerText =
+    "Click me to stop focus mode!!!";
+  document.getElementById("startStopButton").innerText = "Stop";
 }
 
 /**
@@ -158,16 +162,16 @@ function nextSessionCheck() {
     .trigger("showConfirm", {
       title: "Do you want to continue ?",
       message:
-        "your break's about to be over, do you want to start a new pomodoro session ? "
+        "your break's about to be over, do you want to start a new pomodoro session ? ",
     })
-    .then(function(result) {
+    .then(function (result) {
       if (result.message === "OK") {
         t1 = setTimeout(session, 10000);
       } else {
         stopPomodoro(1);
       }
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.error("Error with showConfirm: %o", err);
     });
 }
@@ -177,7 +181,10 @@ function nextSessionCheck() {
  * It also clears the setTimeout and setInterval events put forth by takeBreak and takebreak itself
  */
 function stopPomodoro(flag) {
-  flag === 1 ? makeSMICall("stopSchedule") : makeSMICall("interruptSchedule").then(() => {
+  flag === 1
+    ? makeSMICall("stopSchedule")
+    : makeSMICall("interruptSchedule").then(
+        () => {
           stopTimer();
           clearTimeout(t1);
           clearTimeout(t3);
@@ -229,7 +236,9 @@ function countdown() {
   let current = endTime - new Date();
   let minutes = Math.floor((current % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((current % (1000 * 60)) / 1000);
-  document.getElementById("timer").innerText = `${minutes} min  :  ${seconds} sec`;
+  document.getElementById(
+    "timer"
+  ).innerText = `${minutes} min  :  ${seconds} sec`;
 }
 
 /**
@@ -280,10 +289,10 @@ function stopTimer() {
  * A function used to check if the document has been loaded
  */
 function isDocumentReady() {
-    if (document.readyState != 'loading') {
-        console.info('Scripts are deferred or loading async');
-        startAppRender();
-    } else {
-        document.addEventListener('DOMContentLoaded', startAppRender);
-    }
+  if (document.readyState != "loading") {
+    console.info("Scripts are deferred or loading async");
+    startAppRender();
+  } else {
+    document.addEventListener("DOMContentLoaded", startAppRender);
+  }
 }

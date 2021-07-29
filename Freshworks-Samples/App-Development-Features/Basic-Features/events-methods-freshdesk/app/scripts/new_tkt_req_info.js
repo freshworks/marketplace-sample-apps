@@ -1,26 +1,26 @@
 document.onreadystatechange = function () {
-  if (document.readyState === 'interactive') renderApp();
+  if (document.readyState === "interactive") renderApp();
 };
 
 function renderApp() {
   app
     .initialized()
     .then((_client) => {
-      window['client'] = _client;
-      client.events.on('app.activated', registerChangeEvents);
+      window["client"] = _client;
+      client.events.on("app.activated", registerChangeEvents);
     })
     .catch(console.error);
 }
 
 function registerChangeEvents() {
-  const spotlight = document.querySelector('.spotlight');
+  const spotlight = document.querySelector(".spotlight");
 
   let changeEvents = [
-    'ticket.priorityChanged',
-    'ticket.statusChanged',
-    'ticket.groupChanged',
-    'ticket.agentChanged',
-    'ticket.typeChagned'
+    "ticket.priorityChanged",
+    "ticket.statusChanged",
+    "ticket.groupChanged",
+    "ticket.agentChanged",
+    "ticket.typeChagned",
   ];
 
   changeEvents.forEach(function register(click) {
@@ -34,7 +34,7 @@ function registerChangeEvents() {
             <td>${eventName.slice(7)}</td>
           </tr>
       `;
-      spotlight.insertAdjacentHTML('beforeend', row);
+      spotlight.insertAdjacentHTML("beforeend", row);
     });
   });
 }

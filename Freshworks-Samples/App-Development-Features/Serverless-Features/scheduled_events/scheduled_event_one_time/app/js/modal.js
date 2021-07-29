@@ -10,12 +10,14 @@ function getScheduleData() {
    * Add hour (delay) based on the dropdown select to current time to construct
    * time at which the event has to be triggered.
    */
-  date.setHours(date.getHours() + Number(document.getElementById('schedule-hours').value));
+  date.setHours(
+    date.getHours() + Number(document.getElementById("schedule-hours").value)
+  );
 
   const scheduleData = {
     ticket_id: ticket.id,
-    note: document.getElementById('note').value,
-    schedule_at: date.toISOString()
+    note: document.getElementById("note").value,
+    schedule_at: date.toISOString(),
   };
 
   return scheduleData;
@@ -25,13 +27,18 @@ function getScheduleData() {
  * Set of event listeners on DOM
  */
 function addListeners() {
-  document.getElementById('create-schedule').addEventListener('click', function () {
-    client.request.invoke('createSchedule', getScheduleData()).then(function () {
-      notifyParent('success', 'Note has been scheduled');
-    }, function () {
-      notifyParent('danger', 'Unable to schedule note');
+  document
+    .getElementById("create-schedule")
+    .addEventListener("click", function () {
+      client.request.invoke("createSchedule", getScheduleData()).then(
+        function () {
+          notifyParent("success", "Note has been scheduled");
+        },
+        function () {
+          notifyParent("danger", "Unable to schedule note");
+        }
+      );
     });
-  });
 }
 
 /**
@@ -43,14 +50,14 @@ function addListeners() {
 function notifyParent(type, message) {
   client.instance.send({
     message: {
-      api: 'interface',
-      action: 'trigger',
-      method: 'showNotify',
+      api: "interface",
+      action: "trigger",
+      method: "showNotify",
       payload: {
         type: type,
-        message: message
-      }
-    }
+        message: message,
+      },
+    },
   });
 
   tearDownModal();
@@ -67,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
   app.initialized().then(function (_client) {
     window.client = _client;
 
-    client.data.get('ticket').then(function (data) {
+    client.data.get("ticket").then(function (data) {
       window.ticket = data.ticket;
     });
   });

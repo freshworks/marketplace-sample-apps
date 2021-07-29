@@ -1,32 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
-	app.initialized()
-		.then(function (_client) {
-			window.client = _client;
-			client.data.get('ticket')
-				.then(
-					function (data) {
-						onModalLoad(data.ticket);
-					},
-					function () {
-						showNotification(`error`, `Sorry 🎉`)
-					})
-		});
+  app.initialized().then(function (_client) {
+    window.client = _client;
+    client.data.get("ticket").then(
+      function (data) {
+        onModalLoad(data.ticket);
+      },
+      function () {
+        showNotification(`error`, `Sorry 🎉`);
+      }
+    );
+  });
 });
-
-
 
 /**
  * Function that is triggered on Modal load.
  * @param {object} ticket  ticket that is fetched from parent
  */
 function onModalLoad(ticket) {
-
-	var ticketID = ticket.id;
-	getIssue(ticketID, function (data) {
-		console.log('data', data);
-		issueNumber = data.issue_data.issueNumber;
-		fetchIssue(issueNumber);
-	});
+  var ticketID = ticket.id;
+  getIssue(ticketID, function (data) {
+    console.log("data", data);
+    issueNumber = data.issue_data.issueNumber;
+    fetchIssue(issueNumber);
+  });
 }
 
 /**
@@ -35,23 +31,24 @@ function onModalLoad(ticket) {
  * @param {function} callback Callback function
  */
 function getIssue(ticketID, callback) {
-	var dbKey = String(`fdTicket:${ticketID}`).substr(0, 30);
-	client.db.get(dbKey)
-		.then(
-			callback)
-		.catch(function (error) {
-
-			//404 - Indicates that the record is not found in the data storage
-			if (error.status === 404) {
-				console.error("No issue found for ticket", error);
-				document.getElementById('modal_content').insertAdjacentHTML('beforeend',
-					`<div class="alert alert-warning" role="alert">
+  var dbKey = String(`fdTicket:${ticketID}`).substr(0, 30);
+  client.db
+    .get(dbKey)
+    .then(callback)
+    .catch(function (error) {
+      //404 - Indicates that the record is not found in the data storage
+      if (error.status === 404) {
+        console.error("No issue found for ticket", error);
+        document.getElementById("modal_content").insertAdjacentHTML(
+          "beforeend",
+          `<div class="alert alert-warning" role="alert">
 						<img src="https://media.tenor.com/images/a48310348e788561dc238b6db1451264/tenor.gif" width="120px"/>
 						<hr>
 						Seems like there's no issue associated with this ticket. Please created one using 'Create Issue' button
-					</div>`);
-			}
-		})
+					</div>`
+        );
+      }
+    });
 }
 
 /**
@@ -59,53 +56,69 @@ function getIssue(ticketID, callback) {
  * @param {string} issueID  Issue number to query specific  ticket from github
  */
 function fetchIssue(issueID) {
-	var options = {
-		headers: {
-			Authorization: 'token <%= access_token %>',
-			'User-Agent': 'FreshHuddle Sample User Agent'
-		},
-		isOAuth: true
-	};
-	client.iparams.get('github_repo').then(function (iparam) {
-		client.request.get(`https://api.github.com/repos/${iparam.github_repo}/issues/${issueID}`, options)
-			.then(function (res) {
-				try {
-					data = JSON.parse(res.response);
-					document.getElementById('modal_content').insertAdjacentHTML('beforeend',
-						`<h3> Issue title : ${data.title} </h3><p>Description : ${data.body}</p> <p> Issue Number : ${data.number}</p> <p>Issue ID ; ${data.id}</p><p> Issue Status : ${data.state}</p>`);
-				} catch (error) {
-					console.error("Error while attempting to show issue", error);
-				}
-			})
-			.catch(function (error) {
-				console.error("error", error);
-			});
-	});
+  var options = {
+    headers: {
+      Authorization: "token <%= access_token %>",
+      "User-Agent": "FreshHuddle Sample User Agent",
+    },
+    isOAuth: true,
+  };
+  client.iparams.get("github_repo").then(function (iparam) {
+    client.request
+      .get(
+        `https://api.github.com/repos/${iparam.github_repo}/issues/${issueID}`,
+        options
+      )
+      .then(function (res) {
+        try {
+          data = JSON.parse(res.response);
+          document
+            .getElementById("modal_content")
+            .insertAdjacentHTML(
+              "beforeend",
+              `<h3> Issue title : ${data.title} </h3><p>Description : ${data.body}</p> <p> Issue Number : ${data.number}</p> <p>Issue ID ; ${data.id}</p><p> Issue Status : ${data.state}</p>`
+            );
+        } catch (error) {
+          console.error("Error while attempting to show issue", error);
+        }
+      })
+      .catch(function (error) {
+        console.error("error", error);
+      });
+  });
 }
 
 /**
  * Function to create Issue in Github
  */
 function createIssue() {
-	console.log("Proceeding to create issue from the ticket");
-	getTicketDetails(function (ticketData) {
-		console.log('ticketData', ticketData);
+  console.log("Proceeding to create issue from the ticket");
+  getTicketDetails(
+    function (ticketData) {
+      console.log("ticketData", ticketData);
 
-		checkAndCreateIssue(
-			ticketData.ticket.id,
-			function () {
-				// The record already exists - indicates it is already associated with Github issue
-				console.warn('warning', 'Hold on 🙅🏻‍♂️', 'A Github issue has been already created for this ticket. Click on \'View Issue Details\' button');
-			},
-			function (error) {
-				//404 - Indicates that the record is not found in the data storage
-				if (error.status === 404) {
-					createIssueHelper(ticketData);
-				}
-			})
-	}, function (error) {
-		console.error("Error occurred while fetching ticket details", error);
-	});
+      checkAndCreateIssue(
+        ticketData.ticket.id,
+        function () {
+          // The record already exists - indicates it is already associated with Github issue
+          console.warn(
+            "warning",
+            "Hold on 🙅🏻‍♂️",
+            "A Github issue has been already created for this ticket. Click on 'View Issue Details' button"
+          );
+        },
+        function (error) {
+          //404 - Indicates that the record is not found in the data storage
+          if (error.status === 404) {
+            createIssueHelper(ticketData);
+          }
+        }
+      );
+    },
+    function (error) {
+      console.error("Error occurred while fetching ticket details", error);
+    }
+  );
 }
 
 /**
@@ -113,32 +126,40 @@ function createIssue() {
  * @param {object} ticketData Ticket data
  */
 function createIssueHelper(ticketData) {
-	var options = {
-		headers: {
-			"Authorization": 'token <%= access_token %>',
-			"User-Agent": 'FreshHuddle Sample User Agent'
-		},
-		body: JSON.stringify({
-			"title": ticketData.ticket.subject,
-			"body": ticketData.ticket.description_text
-		}),
-		isOAuth: true
-	};
-	client.iparams.get('github_repo').then(function (iparam) {
-		client.request.post(`https://api.github.com/repos/${iparam.github_repo}/issues`, options)
-			.then(function (data) {
-				// TODO : Add try catch block
-				console.log('ticketData', ticketData);
-				response = JSON.parse(data.response);
-				var ticketObj = { ticketID: ticketData.ticket.id, issueID: response.id, issueNumber: response.number };
-				console.log('ticket obj', ticketObj);
+  var options = {
+    headers: {
+      Authorization: "token <%= access_token %>",
+      "User-Agent": "FreshHuddle Sample User Agent",
+    },
+    body: JSON.stringify({
+      title: ticketData.ticket.subject,
+      body: ticketData.ticket.description_text,
+    }),
+    isOAuth: true,
+  };
+  client.iparams.get("github_repo").then(function (iparam) {
+    client.request
+      .post(
+        `https://api.github.com/repos/${iparam.github_repo}/issues`,
+        options
+      )
+      .then(function (data) {
+        // TODO : Add try catch block
+        console.log("ticketData", ticketData);
+        response = JSON.parse(data.response);
+        var ticketObj = {
+          ticketID: ticketData.ticket.id,
+          issueID: response.id,
+          issueNumber: response.number,
+        };
+        console.log("ticket obj", ticketObj);
 
-				setData(ticketObj);
-			})
-			.catch(function (error) {
-				console.error("error", error);
-			})
-	})
+        setData(ticketObj);
+      })
+      .catch(function (error) {
+        console.error("error", error);
+      });
+  });
 }
 
 /**
@@ -147,9 +168,7 @@ function createIssueHelper(ticketData) {
  * @param {function} error Callback if there's an error
  */
 function getTicketDetails(success, error) {
-	client.data.get('ticket')
-		.then(success)
-		.catch(error);
+  client.data.get("ticket").then(success).catch(error);
 }
 
 /**
@@ -158,12 +177,13 @@ function getTicketDetails(success, error) {
  * @param {function} issueExistCallback Callback if the issue exists
  * @param {function} issueDoesntExistCallback Callback if the issue doesnt exist
  */
-function checkAndCreateIssue(ticketID, issueExistCallback, issueDoesntExistCallback) {
-
-	var dbKey = String(`fdTicket:${ticketID}`).substr(0, 30);
-	client.db.get(dbKey)
-		.then(issueExistCallback)
-		.catch(issueDoesntExistCallback);
+function checkAndCreateIssue(
+  ticketID,
+  issueExistCallback,
+  issueDoesntExistCallback
+) {
+  var dbKey = String(`fdTicket:${ticketID}`).substr(0, 30);
+  client.db.get(dbKey).then(issueExistCallback).catch(issueDoesntExistCallback);
 }
 
 /**
@@ -171,14 +191,22 @@ function checkAndCreateIssue(ticketID, issueExistCallback, issueDoesntExistCallb
  * @param {array} data Issue array to be set in data storage
  */
 function setData(data) {
-
-	var dbKey = String(`fdTicket:${data.ticketID}`).substr(0, 30);
-	var dbKey2 = String(`gitIssue:${data.issueNumber}`).substr(0, 30);
-	Promise.all([client.db.set(dbKey, { issue_data: data }), client.db.set(dbKey2, { issue_data: data })]).then(function () {
-		console.info('success', 'Yay 🎉', 'A Github issue is successfully created for this ticket');
-	}).catch(function (error) {
-		console.error("Unable to persist data : ", error);
-	});
+  var dbKey = String(`fdTicket:${data.ticketID}`).substr(0, 30);
+  var dbKey2 = String(`gitIssue:${data.issueNumber}`).substr(0, 30);
+  Promise.all([
+    client.db.set(dbKey, { issue_data: data }),
+    client.db.set(dbKey2, { issue_data: data }),
+  ])
+    .then(function () {
+      console.info(
+        "success",
+        "Yay 🎉",
+        "A Github issue is successfully created for this ticket"
+      );
+    })
+    .catch(function (error) {
+      console.error("Unable to persist data : ", error);
+    });
 }
 
 /**
@@ -188,11 +216,13 @@ function setData(data) {
  * @param {string} message Content of the notification message
  */
 function showNotification(type, title, message) {
-	client.interface.trigger("showNotify", {
-		type: `${type}`,
-		title: `${title}`,
-		message: `${message}`
-	}).catch(function (error) {
-		console.error('Notification Error : ', error);
-	});
+  client.interface
+    .trigger("showNotify", {
+      type: `${type}`,
+      title: `${title}`,
+      message: `${message}`,
+    })
+    .catch(function (error) {
+      console.error("Notification Error : ", error);
+    });
 }

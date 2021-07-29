@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  app.initialized()
-      .then(function(_client) {
-        var client = _client;
-        client.events.on("app.activated",
-          function() {
-              //Your code here
-      });
+  app.initialized().then(function (_client) {
+    var client = _client;
+    client.events.on("app.activated", function () {
+      //Your code here
+    });
   });
 });

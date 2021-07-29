@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 /**
  * In the following updateData method, the given attributes are updated with given action
  * as an object with a key in the format of "contact:1" where 1 is the given contact ID.
  **/
 async function updateData(contactId, attributes, action) {
-  return $db.update('contact:' + contactId, action, attributes);
+  return $db.update("contact:" + contactId, action, attributes);
 }
 
 /**
@@ -18,7 +18,7 @@ async function setData(contactId, key, value) {
   const attributes = {};
 
   attributes[key] = value;
-  return updateData(contactId, attributes, 'set');
+  return updateData(contactId, attributes, "set");
 }
 
 /**
@@ -27,22 +27,22 @@ async function setData(contactId, key, value) {
  **/
 async function getData(contactId, key) {
   try {
-    const data = await $db.get('contact:' + contactId);
+    const data = await $db.get("contact:" + contactId);
     return data[key];
   } catch (error) {
-    console.log('failed to get stored contact information');
+    console.log("failed to get stored contact information");
     console.log(error);
     throw error;
   }
 }
 
 async function removeData(contactId) {
-  return $db.delete('contact:' + contactId);
+  return $db.delete("contact:" + contactId);
 }
 
 exports = {
   setData,
   updateData,
   getData,
-  removeData
+  removeData,
 };

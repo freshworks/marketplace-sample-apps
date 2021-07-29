@@ -3,7 +3,6 @@
   "client_secret": "your_asana_client_secret",
   "authorize_url": "https://app.asana.com/-/oauth_authorize",
   "token_url": "https://app.asana.com/-/oauth_token",
-  "options": {
-  },
+  "options": {},
   "token_type": "account"
 }

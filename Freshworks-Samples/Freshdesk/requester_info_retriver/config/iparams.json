@@ -10,6 +10,6 @@
     "description": "Please enter your Freshsales API Key",
     "type": "text",
     "required": true,
-    "secure":true
+    "secure": true
   }
 }

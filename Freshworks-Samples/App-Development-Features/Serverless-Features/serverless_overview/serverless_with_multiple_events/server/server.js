@@ -1,27 +1,26 @@
 exports = {
-
   events: [
-    { event: 'onTicketCreate', callback: 'onTicketCreateHandler' },
-    { event: 'onAppInstall', callback: 'onAppInstallHandler' },
-    { event: 'onExternalEvent', callback: 'onExternalEventHandler' },
-    { event: 'onAppUninstall', callback: 'onAppUninstallHandler' }
+    { event: "onTicketCreate", callback: "onTicketCreateHandler" },
+    { event: "onAppInstall", callback: "onAppInstallHandler" },
+    { event: "onExternalEvent", callback: "onExternalEventHandler" },
+    { event: "onAppUninstall", callback: "onAppUninstallHandler" },
   ],
 
   onAppInstallHandler: function (args) {
-
-    generateTargetUrl()
-      .then(function (url) {
+    generateTargetUrl().then(
+      function (url) {
         console.log(url);
 
         // Make request to third party products (ex. JIRA) to register the webhook for this Url
         renderData();
-      }, function (err) {
-
+      },
+      function (err) {
         console.log(err);
         renderData({
-          message: 'Error generating target Url'
+          message: "Error generating target Url",
         });
-      });
+      }
+    );
   },
 
   onTicketCreateHandler: function (args) {
@@ -35,5 +34,5 @@ exports = {
   onAppUninstallHandler: function (args) {
     // De-Register webhook from third party
     renderData();
-  }
+  },
 };

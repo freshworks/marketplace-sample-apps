@@ -1,48 +1,74 @@
 <html>
+  <head>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
 
-<head>
-  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js"
+    ></script>
+  </head>
 
-  <link rel="stylesheet" type="text/css" href="./styles/style.css">
-  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
-  <script type="module" src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.esm.js">
-  </script>
-  <script nomodule src="https://unpkg.com/@freshworks/crayons/dist/crayons/crayons.js">
-  </script>
-</head>
-
-<body>
-  <div class="fw-widget-wrapper">
-    <section>
-      <p>Click the buttons to make API calls</p>
-      <div class="request">
-
-        <fw-button color="secondary" class="request-btn" id="request-get" method="get" title="click to send request">GET
-        </fw-button>
-        <span class="request-status"> </span>
-      </div>
-      <div class="request">
-
-        <fw-button color="secondary" class="request-btn" id="request-post" method="post" title="click to send request">
-          POST</fw-button>
-        <span class="request-status"> </span>
-      </div>
-      <div class="request">
-
-        <fw-button color="secondary" class="request-btn" id="request-put" method="put" title="click to send request">PUT
-        </fw-button>
-        <span class="request-status"> </span>
-      </div>
-      <div class="request">
-
-        <fw-button color="secondary" class="request-btn" id="request-delete" method="delete"
-          title="click to send request">DELETE</fw-button>
-        <span class="request-status"> </span>
-      </div>
-    </section>
-
-  </div>
-</body>
-<script src="./scripts/app.js" async></script>
-
+  <body>
+    <div class="fw-widget-wrapper">
+      <section>
+        <p>Click the buttons to make API calls</p>
+        <div class="request">
+          <fw-button
+            color="secondary"
+            class="request-btn"
+            id="request-get"
+            method="get"
+            title="click to send request"
+            >GET
+          </fw-button>
+          <span class="request-status"> </span>
+        </div>
+        <div class="request">
+          <fw-button
+            color="secondary"
+            class="request-btn"
+            id="request-post"
+            method="post"
+            title="click to send request"
+          >
+            POST</fw-button
+          >
+          <span class="request-status"> </span>
+        </div>
+        <div class="request">
+          <fw-button
+            color="secondary"
+            class="request-btn"
+            id="request-put"
+            method="put"
+            title="click to send request"
+            >PUT
+          </fw-button>
+          <span class="request-status"> </span>
+        </div>
+        <div class="request">
+          <fw-button
+            color="secondary"
+            class="request-btn"
+            id="request-delete"
+            method="delete"
+            title="click to send request"
+            >DELETE</fw-button
+          >
+          <span class="request-status"> </span>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script src="./scripts/app.js" async></script>
 </html>

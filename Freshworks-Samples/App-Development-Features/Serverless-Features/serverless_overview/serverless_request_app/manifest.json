@@ -6,7 +6,5 @@
   "product": {
     "freshdesk": {}
   },
-  "whitelisted-domains": [
-    "https://httpbin.org"
-  ]
+  "whitelisted-domains": ["https://httpbin.org"]
 }

@@ -11,9 +11,11 @@ This app also demonstrates making secure API calls without exposing API key from
 ### Screenshots:
 
 ### In Local Development
+
 ![config page in local development](./screenshots/custom_config.png)
 
 #### Secure iparams.json getting Agent name and Iparams value
+
 ![make secure api calls and get api data](./screenshots/app_face.png)
 
 | Features demonstrated | Notes                                                                                |
@@ -58,7 +60,7 @@ Validation failed due to the following issue(s):
 ```js
 // iparams.js
 function checkSignature(sign) {
-  return sign.toLowerCase() == 'azmuth' ? '' : 'Wrong Signature';
+  return sign.toLowerCase() == "azmuth" ? "" : "Wrong Signature";
 }
 ```
 

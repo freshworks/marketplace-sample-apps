@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://*.freshsales.io"
-  ]
+  "whitelisted-domains": ["https://*.freshsales.io"]
 }

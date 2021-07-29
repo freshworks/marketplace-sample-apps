@@ -3,7 +3,5 @@
   "product": {
     "freshdesk": {}
   },
-  "whitelisted-domains": [
-    "https://app.asana.com"
-  ]
+  "whitelisted-domains": ["https://app.asana.com"]
 }

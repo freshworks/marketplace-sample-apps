@@ -4,33 +4,31 @@
 
 This app enables agents to schedule a note to be added later to a ticket.
 
-***
+---
 
 ## Screenshots
 
-
 <img src="./Screenshots/App face.png" height="300" width="300">
 
-***
+---
 
 ## Features Demonstrated
 
 App location: ticket_top_navigation on ticket details page
 
-| Feature | Notes |
-| :---: | --- |
-| [`Instance API`](https://developers.freshdesk.com/v2/docs/instance-api/) | Instance API is used to send data to and from modal |
-| [`Interface API`](https://developers.freshdesk.com/v2/docs/interface-api/) | Interface API is used to show modal and notifications. |
-| [`SMI`](https://developers.freshdesk.com/v2/docs/server-method-invocation/) | SMI (Server Method Invocation) is used to _createSchedule_ method which creates a scheduled event|
-| [`Scheduled Events`](https://developers.freshdesk.com/v2/docs/scheduled-events/) | _onScheduledEvent_ is used to add note to the particular ticket|
-
+|                                     Feature                                      | Notes                                                                                             |
+| :------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------- |
+|     [`Instance API`](https://developers.freshdesk.com/v2/docs/instance-api/)     | Instance API is used to send data to and from modal                                               |
+|    [`Interface API`](https://developers.freshdesk.com/v2/docs/interface-api/)    | Interface API is used to show modal and notifications.                                            |
+|   [`SMI`](https://developers.freshdesk.com/v2/docs/server-method-invocation/)    | SMI (Server Method Invocation) is used to _createSchedule_ method which creates a scheduled event |
+| [`Scheduled Events`](https://developers.freshdesk.com/v2/docs/scheduled-events/) | _onScheduledEvent_ is used to add note to the particular ticket                                   |
 
 ## Prerequisites
 
 1. Make sure you have a trial Freshdesk account created
 2. A properly configured [Development environment](https://developers.freshdesk.com/v2/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developers.freshdesk.com/v2/docs/freshworks-cli/).
 
-***
+---
 
 ## Procedure to run the app
 

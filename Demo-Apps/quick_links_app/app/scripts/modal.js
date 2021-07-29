@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-function setTemplate({id, subject}) {
+function setTemplate({ id, subject }) {
   return `
     <li data-ticket-id="${id}" class="row manage-bm-li">\
       <div class="ticket-title">${subject}</div>\
@@ -17,29 +17,30 @@ function getParent(elem, parentSelector) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  app.initialized()
-    .then(function (_client) {
-      let client = _client;
-      client.instance.context()
-        .then(function (context) {
-          context.data.tickets.forEach(function (ticket) {
-            document.getElementsByClassName('manage-bm-ul')[0].innerHTML += setTemplate(ticket);
-          })
+  app.initialized().then(function (_client) {
+    let client = _client;
+    client.instance.context().then(function (context) {
+      context.data.tickets.forEach(function (ticket) {
+        document.getElementsByClassName("manage-bm-ul")[0].innerHTML +=
+          setTemplate(ticket);
+      });
 
-          document.getElementsByClassName('remove-bookmark').forEach(function (el) {
-            el.addEventListener('click', function () {
-              let parent = getParent(this, 'manage-bm-li');
-              let ticketId = parseInt(parent.dataset.ticketId);
-              parent.remove();
-              client.instance.send({
-                message: {type: 'removeTicket', ticketId: ticketId}
-              });
-            })
-          });
-
-          document.getElementsByClassName('manage-bm-ul, ticket-title').forEach(function (index, el) {
-            $clamp(el, {clamp: 2});
+      document.getElementsByClassName("remove-bookmark").forEach(function (el) {
+        el.addEventListener("click", function () {
+          let parent = getParent(this, "manage-bm-li");
+          let ticketId = parseInt(parent.dataset.ticketId);
+          parent.remove();
+          client.instance.send({
+            message: { type: "removeTicket", ticketId: ticketId },
           });
         });
+      });
+
+      document
+        .getElementsByClassName("manage-bm-ul, ticket-title")
+        .forEach(function (index, el) {
+          $clamp(el, { clamp: 2 });
+        });
     });
+  });
 });

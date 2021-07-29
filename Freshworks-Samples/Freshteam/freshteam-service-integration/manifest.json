@@ -3,7 +3,5 @@
   "product": {
     "freshteam": {}
   },
-  "whitelisted-domains": [
-    "https://*.freshservice.com"
-  ]
+  "whitelisted-domains": ["https://*.freshservice.com"]
 }

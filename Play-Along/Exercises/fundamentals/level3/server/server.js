@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Store Github issue data in the data storage
@@ -14,16 +14,15 @@
  */
 function lookupTicketId(issueNumber) {
   var dbKey = String(`gitIssue:${issueNumber}`).substr(0, 30);
-  return $db.get(dbKey)
+  return $db.get(dbKey);
 }
 
 exports = {
-
   events: [
-    { event: 'onAppInstall', callback: 'onInstallHandler' },
-    { event: 'onAppUninstall', callback: 'onUnInstallHandler' },
-    { event: 'onExternalEvent', callback: 'onExternalEventHandler' },
-    { event: "onTicketCreate", callback: "onTicketCreateHandler" }
+    { event: "onAppInstall", callback: "onInstallHandler" },
+    { event: "onAppUninstall", callback: "onUnInstallHandler" },
+    { event: "onExternalEvent", callback: "onExternalEventHandler" },
+    { event: "onTicketCreate", callback: "onTicketCreateHandler" },
   ],
 
   /**
@@ -33,7 +32,7 @@ exports = {
    *
    * @param {object} args - payload
    */
-   //👇 Paste code for onTicketCreateHandler() here 👇- 🚩
+  //👇 Paste code for onTicketCreateHandler() here 👇- 🚩
 
   /**
    * Handler for onAppInstall event
@@ -45,43 +44,56 @@ exports = {
    * @param {object} args - payload
    */
   onInstallHandler: function (args) {
-    
-    generateTargetUrl().then(function (targetUrl) {
-      $request.post(`https://api.github.com/repos/${args.iparams.github_repo}/hooks`, {
-        headers: {
-          Authorization: 'token <%= access_token %>',
-          'User-Agent': 'FreshHuddle Sample User Agent'
-        },
-        isOAuth: true,
-        json: {
-          name: 'web',
-          active: true,
-          events: [
-            'issues'
-          ],
-          config: {
-            url: targetUrl,
-            content_type: 'json'
-          }
-        }
-      }).then(data => {
-        $db.set('githubWebhookId', { url: data.response.url }).then(function () {
-          console.info('Successfully stored the webhook in the db');
-          renderData();
-        }, error => {
-          console.error('Error: Failed to store the webhook URL in the db');
-          console.error(error);
-          renderData({ message: 'The webhook registration failed' });
-        });
-      }, error => {
-        console.error('Error: Failed to register the webhook for GitHub repo');
-        console.error(error);
-        renderData({ message: 'The webhook registration failed' });
+    generateTargetUrl()
+      .then(function (targetUrl) {
+        $request
+          .post(
+            `https://api.github.com/repos/${args.iparams.github_repo}/hooks`,
+            {
+              headers: {
+                Authorization: "token <%= access_token %>",
+                "User-Agent": "FreshHuddle Sample User Agent",
+              },
+              isOAuth: true,
+              json: {
+                name: "web",
+                active: true,
+                events: ["issues"],
+                config: {
+                  url: targetUrl,
+                  content_type: "json",
+                },
+              },
+            }
+          )
+          .then(
+            (data) => {
+              $db.set("githubWebhookId", { url: data.response.url }).then(
+                function () {
+                  console.info("Successfully stored the webhook in the db");
+                  renderData();
+                },
+                (error) => {
+                  console.error(
+                    "Error: Failed to store the webhook URL in the db"
+                  );
+                  console.error(error);
+                  renderData({ message: "The webhook registration failed" });
+                }
+              );
+            },
+            (error) => {
+              console.error(
+                "Error: Failed to register the webhook for GitHub repo"
+              );
+              console.error(error);
+              renderData({ message: "The webhook registration failed" });
+            }
+          );
       })
-    })
       .fail(function () {
-        console.error('Error: Failed to generate the webhook');
-        renderData({ message: 'The webhook registration failed' });
+        console.error("Error: Failed to generate the webhook");
+        renderData({ message: "The webhook registration failed" });
       });
   },
 
@@ -94,23 +106,35 @@ exports = {
    * @param {object} args - payload
    */
   onUnInstallHandler: function () {
-    $db.get('githubWebhookId').then(function (data) {
-      $request.delete(data.url, {
-        headers: {
-          Authorization: 'token <%= access_token %>',
-          'User-Agent': 'freshdesk',
-          Accept: 'application/json'
-        },
-        isOAuth: true
-      }).then(() => {
-        console.info('Successfully deregistered the webhook for GitHub repo');
-        renderData();
-      }, error => renderData({error: error}));
-    }, error => {
-      console.error('Error: Failed to get the stored webhook URL from the db');
-      console.error(error)
-      renderData({ message: 'The webhook deregistration failed' });
-    });
+    $db.get("githubWebhookId").then(
+      function (data) {
+        $request
+          .delete(data.url, {
+            headers: {
+              Authorization: "token <%= access_token %>",
+              "User-Agent": "freshdesk",
+              Accept: "application/json",
+            },
+            isOAuth: true,
+          })
+          .then(
+            () => {
+              console.info(
+                "Successfully deregistered the webhook for GitHub repo"
+              );
+              renderData();
+            },
+            (error) => renderData({ error: error })
+          );
+      },
+      (error) => {
+        console.error(
+          "Error: Failed to get the stored webhook URL from the db"
+        );
+        console.error(error);
+        renderData({ message: "The webhook deregistration failed" });
+      }
+    );
   },
 
   /**
@@ -122,30 +146,45 @@ exports = {
    * @param {object} payload - payload with the data from the third-party applications along with iparams and other metadata
    */
   onExternalEventHandler: function (payload) {
-    const payloadData = typeof payload.data === 'string' ? JSON.parse(payload.data) : payload.data;
-    if (payloadData.action === 'closed') {
-      lookupTicketId(payloadData.issue.number).then(data => {
-        $request.post(payload.domain + "/api/v2/tickets/" + data.issue_data.ticketID,
-          {
-            headers: {
-              Authorization: '<%= encode(iparam.freshdesk_api_key) %>'
-            },
-            json: {
-              status: 5
-            },
-            method: "PUT"
-          }).then(() => {
-            console.info('Successfully closed the ticket in Freshdesk');
-          }, error => {
-            console.error('Error: Failed to close the ticket in Freshdesk');
-            console.error(error)
-          })
-      }, error => {
-        console.error('Error: Failed to get issue data. Unable to create ticket');
-        console.error(error);
-      });
+    const payloadData =
+      typeof payload.data === "string"
+        ? JSON.parse(payload.data)
+        : payload.data;
+    if (payloadData.action === "closed") {
+      lookupTicketId(payloadData.issue.number).then(
+        (data) => {
+          $request
+            .post(
+              payload.domain + "/api/v2/tickets/" + data.issue_data.ticketID,
+              {
+                headers: {
+                  Authorization: "<%= encode(iparam.freshdesk_api_key) %>",
+                },
+                json: {
+                  status: 5,
+                },
+                method: "PUT",
+              }
+            )
+            .then(
+              () => {
+                console.info("Successfully closed the ticket in Freshdesk");
+              },
+              (error) => {
+                console.error("Error: Failed to close the ticket in Freshdesk");
+                console.error(error);
+              }
+            );
+        },
+        (error) => {
+          console.error(
+            "Error: Failed to get issue data. Unable to create ticket"
+          );
+          console.error(error);
+        }
+      );
     } else {
-      console.error('The action of the GitHub issue is not defined');
+      console.error("The action of the GitHub issue is not defined");
     }
-  }
+  },
 };

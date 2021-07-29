@@ -1,15 +1,15 @@
 var client;
 
 function errorLogger(error) {
-  console.error('The following Error occured');
+  console.error("The following Error occured");
   console.error(error);
 }
 
 function init() {
   app.initialized().then(function getClient(_client) {
     client = _client;
-    client.events.on('app.activated', function onActivate() {
-      console.info('App is Activated');
+    client.events.on("app.activated", function onActivate() {
+      console.info("App is Activated");
     });
   }, errorLogger);
 }

@@ -13,7 +13,9 @@ function getBookFromAPI(callback) {
     datatype: "jsonp",
     success: function (books) {
       books.forEach(function (book) {
-        document.getElementById('book').insertAdjacentHTML('beforeend', `<option>${book.name}</option>`);
+        document
+          .getElementById("book")
+          .insertAdjacentHTML("beforeend", `<option>${book.name}</option>`);
       });
     },
   });

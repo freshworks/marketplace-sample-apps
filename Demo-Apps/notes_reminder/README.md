@@ -4,30 +4,30 @@
 
 You can add a note and set a reminder so that app will remind your note after a set period of time as scheduled.
 
-***
+---
 
 ## Screenshots
 
 <img src="./Screenshots/App Face.png" height="300" width="300">
 
-***
+---
 
 ## Features Demonstrated
 
 App location: ticket_sidebar on ticket details page
 
-| Feature | Notes |
-| :---: | --- |
-| [`Data Storage API`](https://developer.freshservice.com/docs/data-storage/) | Data storage API is used to store and queue notes |
-| [`Interface API`](https://developer.freshservice.com/docs/interface/) | Interface API is used to power the notifications |
-| [`SMI`](https://developer.freshservice.com/docs/server-method-invocation/) | Server Method invocation (SMI) is used to invoke _createSchedule_ serverless component when _Remind me_ button is clicked |
+|                                   Feature                                   | Notes                                                                                                                     |
+| :-------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------- |
+| [`Data Storage API`](https://developer.freshservice.com/docs/data-storage/) | Data storage API is used to store and queue notes                                                                         |
+|    [`Interface API`](https://developer.freshservice.com/docs/interface/)    | Interface API is used to power the notifications                                                                          |
+| [`SMI`](https://developer.freshservice.com/docs/server-method-invocation/)  | Server Method invocation (SMI) is used to invoke _createSchedule_ serverless component when _Remind me_ button is clicked |
 
 ## Prerequisites
 
 1. A trial Freshservice account
 2. A properly configured [Development environment](https://developer.freshservice.com/docs/quick-start/) along with the [FDK (Freshworks Development Kit)](https://developer.freshservice.com/docs/freshworks-cli/)
 
-***
+---
 
 ## Procedure to run the app
 
@@ -36,7 +36,7 @@ App location: ticket_sidebar on ticket details page
 3. Refer to the [Test your app](hhttps://developer.freshservice.com/docs/quick-start/#test_your_app) section of the quickstart guide to allow insecure content.
 4. Append `?dev=true` to the URL to see the changes
 
-***
+---
 
 ## Additional Notes
 

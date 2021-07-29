@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Sets the status of the ticket in Data Storage
@@ -7,10 +7,10 @@
  */
 function setStatus(ticketId, status) {
   $db.set(`${ticketId}_status`, {
-    status
+    status,
   });
 }
 
 exports = {
-  setStatus
+  setStatus,
 };

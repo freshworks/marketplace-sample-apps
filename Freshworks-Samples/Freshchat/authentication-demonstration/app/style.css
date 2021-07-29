@@ -1,23 +1,23 @@
 .logo {
-  background: url('freshchat_logo.png');
+  background: url("freshchat_logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 25px;
   margin-top: 25px;
 }
-#listagents-btn{
+#listagents-btn {
   width: 120px;
-  display:block;
+  display: block;
   border-radius: 4px;
   background-color: #002d85 !important;
   color: #ffffff !important;
-  border:none;
-  margin:5px auto;
-  padding:6px 0px;
+  border: none;
+  margin: 5px auto;
+  padding: 6px 0px;
   border-color: transparent #002d85 transparent transparent;
 }
-#error{
-  display:block;
+#error {
+  display: block;
   margin: 5px auto;
   text-align: center;
   padding: 8px 0px;
@@ -27,20 +27,20 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-tbody{
+tbody {
   display: flex;
   flex-direction: column;
 }
 td {
   text-align: left;
   padding: 8px;
-  width:125px;
+  width: 125px;
 }
-th{
-  width:125px;
+th {
+  width: 125px;
 }
 tr th {
-  background-color:#002d85 !important;
+  background-color: #002d85 !important;
   color: #ffffff !important;
   padding: 8px;
   border-top-left-radius: 4px;
@@ -50,7 +50,7 @@ tr:nth-child(even) {
   background-color: #e9e7fb;
 }
 tr:nth-child(1) {
-  background-color:#002d85 !important;
+  background-color: #002d85 !important;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   position: sticky;

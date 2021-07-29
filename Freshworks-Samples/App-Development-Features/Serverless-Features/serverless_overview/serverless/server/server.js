@@ -1,13 +1,9 @@
-var utility = require('./lib/utility');
+var utility = require("./lib/utility");
 
 exports = {
+  events: [{ event: "onTicketCreate", callback: "onTicketCreateHandler" }],
 
-  events: [
-    { event: 'onTicketCreate', callback: 'onTicketCreateHandler' }
-  ],
-
-  onTicketCreateHandler: function(args) {
+  onTicketCreateHandler: function (args) {
     utility.printRequesterName(args);
-  }
-
+  },
 };

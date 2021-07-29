@@ -4,9 +4,9 @@
     "freshdesk": {
       "location": {
         "ticket_sidebar": {
-            "url": "index.html",
-            "icon": "styles/images/icon.svg"
-          }
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
       }
     }
   }

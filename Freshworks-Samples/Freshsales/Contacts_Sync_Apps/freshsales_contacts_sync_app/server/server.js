@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const utils = require('./lib/utils');
-const contacts = require('./lib/contacts');
+const utils = require("./lib/utils");
+const contacts = require("./lib/contacts");
 
 /**
  * @desc -
@@ -14,34 +14,46 @@ const contacts = require('./lib/contacts');
  * Product events with corresponding callback functions to perform an action is registered as follows.
  */
 
-const baseUrl = 'https://<%= iparam.freshsales_subdomain %>.freshsales.io';
-const searchContactUrl = baseUrl + '/api/search?include=contact&per_page=2&q=';
-const contactUrl = baseUrl + '/api/contacts';
+const baseUrl = "https://<%= iparam.freshsales_subdomain %>.freshsales.io";
+const searchContactUrl = baseUrl + "/api/search?include=contact&per_page=2&q=";
+const contactUrl = baseUrl + "/api/contacts";
 
 const headers = {
-  'Authorization': 'Token token=<%= iparam.freshsales_api_key %>',
-  'Content-Type': 'application/json'
+  Authorization: "Token token=<%= iparam.freshsales_api_key %>",
+  "Content-Type": "application/json",
 };
 
 function buildOptions(url, method, headers, body) {
-  return Object.assign({
-    url: url,
-    method: method,
-    headers: headers
-  }, body ? { body } : null);
+  return Object.assign(
+    {
+      url: url,
+      method: method,
+      headers: headers,
+    },
+    body ? { body } : null
+  );
 }
 
 function getRequestOptions(email) {
-  return buildOptions(searchContactUrl + email, 'GET', headers, null);
+  return buildOptions(searchContactUrl + email, "GET", headers, null);
 }
 function putRequestOptions(freshsalesContactId, changes) {
-  return buildOptions(contactUrl + '/' + freshsalesContactId, 'PUT', headers, changes);
+  return buildOptions(
+    contactUrl + "/" + freshsalesContactId,
+    "PUT",
+    headers,
+    changes
+  );
 }
 function deleteRequestOptions(freshsalesContactId) {
-  return buildOptions(contactUrl + '/' + freshsalesContactId, 'DELETE', headers);
+  return buildOptions(
+    contactUrl + "/" + freshsalesContactId,
+    "DELETE",
+    headers
+  );
 }
 function postRequestOptions(body) {
-  return buildOptions(contactUrl, 'POST', headers, body);
+  return buildOptions(contactUrl, "POST", headers, body);
 }
 
 /**
@@ -49,18 +61,20 @@ function postRequestOptions(body) {
  */
 async function fetchContactIdFromFreshsales(freshdeskContact) {
   try {
-    const data = await utils.makeGetRequest(getRequestOptions(freshdeskContact.email));
+    const data = await utils.makeGetRequest(
+      getRequestOptions(freshdeskContact.email)
+    );
 
-    if (typeof data.response === 'string') {
+    if (typeof data.response === "string") {
       data.response = JSON.parse(data.response);
     }
     if (!data.response.length) {
-      throw new Error('contact not found');
+      throw new Error("contact not found");
     }
     await contacts.setContactMapping(freshdeskContact.id, data.response[0].id);
     return data.response[0].id;
   } catch (error) {
-    console.log('failed to fetch contact id from freshsales');
+    console.log("failed to fetch contact id from freshsales");
     throw error;
   }
 }
@@ -76,23 +90,25 @@ async function getFreshsalesContactId(payload) {
   try {
     const data = await contacts.getContactMapping(payload.data.contact.id);
 
-    return data ? data : await fetchContactIdFromFreshsales(payload.data.contact);
+    return data
+      ? data
+      : await fetchContactIdFromFreshsales(payload.data.contact);
   } catch (error) {
-    console.log('unable to get existing contact');
+    console.log("unable to get existing contact");
     console.log(error);
     return fetchContactIdFromFreshsales(payload.data.contact);
   }
 }
 
 const contactAttributes = {
-  email: 'email',
-  address: 'address',
-  avatar: 'avatar',
-  job_title: 'job_title',
-  time_zone: 'time_zone',
-  mobile: 'mobile_number',
-  phone: 'work_number',
-  deleted: 'deleted'
+  email: "email",
+  address: "address",
+  avatar: "avatar",
+  job_title: "job_title",
+  time_zone: "time_zone",
+  mobile: "mobile_number",
+  phone: "work_number",
+  deleted: "deleted",
 };
 
 /**
@@ -102,11 +118,11 @@ function splitName(fullname) {
   if (!fullname) {
     return {};
   }
-  const names = fullname.split(' ');
+  const names = fullname.split(" ");
 
   return {
     first_name: names.shift(),
-    last_name: names.join(' ')
+    last_name: names.join(" "),
   };
 }
 
@@ -116,14 +132,17 @@ function splitName(fullname) {
 function fetchUpdates(contact) {
   const newContact = {};
 
-  Object.keys(contact).forEach(attribute => {
+  Object.keys(contact).forEach((attribute) => {
     if (contactAttributes[attribute]) {
       newContact[contactAttributes[attribute]] = contact[attribute][1];
     }
   });
-  return Object.assign({}, newContact,
-    { twitter: 'https://twitter.com/' + contact.twitter_id[1] },
-    splitName(contact.name[1]));
+  return Object.assign(
+    {},
+    newContact,
+    { twitter: "https://twitter.com/" + contact.twitter_id[1] },
+    splitName(contact.name[1])
+  );
 }
 
 /**
@@ -142,7 +161,7 @@ function fetchContactAttributes(contact) {
     work_number: contact.phone,
     first_name: name.first_name,
     last_name: name.last_name,
-    twitter: 'https://twitter.com/' + contact.twitter_id
+    twitter: "https://twitter.com/" + contact.twitter_id,
   };
 }
 
@@ -150,28 +169,35 @@ async function deleteContact(freshsalesContactId, contactId) {
   try {
     await utils.makeDeleteRequest(deleteRequestOptions(freshsalesContactId));
     await contacts.deleteContact(contactId);
-    console.log('successfully deleted the contact');
+    console.log("successfully deleted the contact");
   } catch (error) {
-    console.log('failed to delete freshsales contact with error');
+    console.log("failed to delete freshsales contact with error");
     console.log(error);
   }
 }
 
 async function updateContact(freshsalesContactId, contactChanges) {
   try {
-    console.log('updating contact details with id:', freshsalesContactId, ' with changes:', contactChanges);
-    await utils.makePutRequest(putRequestOptions(freshsalesContactId, contactChanges));
-    console.log('successfully updated freshsales contact details');
+    console.log(
+      "updating contact details with id:",
+      freshsalesContactId,
+      " with changes:",
+      contactChanges
+    );
+    await utils.makePutRequest(
+      putRequestOptions(freshsalesContactId, contactChanges)
+    );
+    console.log("successfully updated freshsales contact details");
   } catch (error) {
-    console.log('failed to update freshsales contact details');
+    console.log("failed to update freshsales contact details");
     console.log(error);
   }
 }
 
 exports = {
   events: [
-    { event: 'onContactCreate', callback: 'onContactCreateHandler' },
-    { event: 'onContactUpdate', callback: 'onContactUpdateHandler' }
+    { event: "onContactCreate", callback: "onContactCreateHandler" },
+    { event: "onContactUpdate", callback: "onContactUpdateHandler" },
   ],
 
   /**
@@ -192,10 +218,10 @@ exports = {
           await updateContact(freshsalesContactId, changes);
         }
       } else {
-        console.log('no changes in sync attributes');
+        console.log("no changes in sync attributes");
       }
     } catch (error) {
-      console.log('failed to fetch freshsales contact id');
+      console.log("failed to fetch freshsales contact id");
       console.log(error);
     }
   },
@@ -210,18 +236,25 @@ exports = {
     try {
       const freshsalesContactId = await getFreshsalesContactId(payload);
 
-      console.log('Contact already exists with email:', payload.data.contact.email, ' with id:', freshsalesContactId);
+      console.log(
+        "Contact already exists with email:",
+        payload.data.contact.email,
+        " with id:",
+        freshsalesContactId
+      );
     } catch (error) {
-      console.log('Contact does not exist already. Creating a new contact.');
+      console.log("Contact does not exist already. Creating a new contact.");
       const contactAttributes = fetchContactAttributes(payload.data.contact);
 
       try {
-        await utils.makePostRequest(postRequestOptions({ contact: contactAttributes }));
-        console.log('successfully created freshsales contact');
+        await utils.makePostRequest(
+          postRequestOptions({ contact: contactAttributes })
+        );
+        console.log("successfully created freshsales contact");
       } catch (error) {
-        console.log('failed to create freshsales contact with error');
+        console.log("failed to create freshsales contact with error");
         console.log(error);
       }
     }
-  }
+  },
 };

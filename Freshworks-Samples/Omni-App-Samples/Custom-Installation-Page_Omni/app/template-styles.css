@@ -4,15 +4,15 @@ body {
   margin: 0 auto;
 }
 
-p{
- display: block;
- padding: 10rem;
+p {
+  display: block;
+  padding: 10rem;
 }
 
 span {
-  background-color:yellow;
+  background-color: yellow;
 }
 
-span:hover{
+span:hover {
   text-decoration: underline;
 }

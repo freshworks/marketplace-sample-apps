@@ -10,27 +10,27 @@
  *
  *  */
 
-var client = null
-const bodyElement = document.querySelector('body')
-const bookCoverElmnt = document.querySelector('#appCaption')
+var client = null;
+const bodyElement = document.querySelector("body");
+const bookCoverElmnt = document.querySelector("#appCaption");
 
 var getIparams = () => {
   function setBgColour(payload) {
-    bodyElement.style.backgroundColor = payload.bgColour
+    bodyElement.style.backgroundColor = payload.bgColour;
   }
   function setBook(payload) {
     // TO D0: Need to append div element. Currently it replaces bg with txt.
-    bookCoverElmnt.textContent = `Your book is ${payload.book}`
+    bookCoverElmnt.textContent = `Your book is ${payload.book}`;
   }
-  client.iparams.get('bgColour').then(setBgColour)
-  client.iparams.get('book').then(setBook)
-}
+  client.iparams.get("bgColour").then(setBgColour);
+  client.iparams.get("book").then(setBook);
+};
 
 var start = (app) => {
   app.initialized().then(function (_client) {
-    client = _client
-    client.events.on('app.activated', getIparams())
-  })
-}
+    client = _client;
+    client.events.on("app.activated", getIparams());
+  });
+};
 
-document.addEventListener('DOMContentLoaded', start(app))
+document.addEventListener("DOMContentLoaded", start(app));

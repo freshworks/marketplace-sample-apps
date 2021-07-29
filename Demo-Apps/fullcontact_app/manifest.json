@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://api.fullcontact.com"
-  ]
+  "whitelisted-domains": ["https://api.fullcontact.com"]
 }

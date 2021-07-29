@@ -17,9 +17,7 @@ function data_method() {
   client.data.get("domainName").then(
     (data) => {
       console.log(data, result);
-      result.append(
-          `${JSON.stringify(data)}`
-      );
+      result.append(`${JSON.stringify(data)}`);
     },
     (error) => {
       errorHandler(err);

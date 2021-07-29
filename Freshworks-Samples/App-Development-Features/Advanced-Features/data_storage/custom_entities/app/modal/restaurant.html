@@ -1,39 +1,76 @@
 <html>
+  <head>
+    <!-- Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
 
-<head>
-  <!-- Stylesheets -->
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
-</head>
+  <body>
+    <div class="container">
+      <fw-input
+        label="Name"
+        id="name"
+        placeholder="Enter the name of the restaurant"
+        maxlength="64"
+        required
+        state="normal"
+        clear-input
+      ></fw-input>
 
-<body>
+      <fw-input
+        label="Short code"
+        id="short_code"
+        placeholder="Enter the restaurant short code (Ex. BELG for Belgian Waffle Cafe)"
+        maxlength="4"
+        required
+        state="normal"
+        clear-input
+      ></fw-input>
 
-  <div class="container">
-    <fw-input label="Name" id="name" placeholder="Enter the name of the restaurant" maxlength="64" required
-      state="normal" clear-input></fw-input>
+      <fw-input
+        label="Description"
+        id="description"
+        placeholder="Enter a description that tells more about what they serve"
+        maxlength="80"
+        required
+        state="normal"
+        clear-input
+      ></fw-input>
 
-    <fw-input label="Short code" id="short_code"
-      placeholder="Enter the restaurant short code (Ex. BELG for Belgian Waffle Cafe)" maxlength="4" required
-      state="normal" clear-input></fw-input>
+      <fw-input
+        label="Image URL"
+        value="https://i.imgur.com/ZyONF7N.png"
+        id="photo_url"
+        placeholder="Enter an image link. The image should be of 1:1 ratio"
+        required
+        state="normal"
+        clear-input
+      >
+      </fw-input>
 
-    <fw-input label="Description" id="description"
-      placeholder="Enter a description that tells more about what they serve" maxlength="80" required state="normal"
-      clear-input></fw-input>
+      <fw-input
+        label="Location"
+        id="location_pin"
+        placeholder="Enter a Google Maps link for the restaurant location"
+        required
+        state="normal"
+        clear-input
+      ></fw-input>
 
-    <fw-input label="Image URL" value="https://i.imgur.com/ZyONF7N.png" id="photo_url"
-      placeholder="Enter an image link. The image should be of 1:1 ratio" required state="normal" clear-input>
-    </fw-input>
+      <fw-button onclick="createRestaurant()"> Create </fw-button>
+    </div>
 
-    <fw-input label="Location" id="location_pin" placeholder="Enter a Google Maps link for the restaurant location"
-      required state="normal" clear-input></fw-input>
-
-    <fw-button onclick="createRestaurant()"> Create </fw-button>
-  </div>
-
-  <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
-  <script type="module" src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.js"></script>
-  <script src="../js/restaurant.js"></script>
-
-</body>
-
+    <script src="https://static.freshcloud.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@freshworks/crayons@2.8.0/dist/crayons/crayons.js"
+    ></script>
+    <script src="../js/restaurant.js"></script>
+  </body>
 </html>

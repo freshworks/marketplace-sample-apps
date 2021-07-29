@@ -51,10 +51,12 @@ App on Freshworks developer platform can be located in different placeholders. S
 ### Additional Comments (if any)
 
 **Apps render without UI**
+
 1. There are couple of app placeholders where app run in background and not backend.
-2. These placeholders generally have *background* in their name. For example, `company_background`,`company_list_background`, `time_entry_background`,`new_email_background`.
-3. Apps those render without UI will load *scripts* as soon as user navigates to relavant page in Freshdesk. For example, the browser's js thread of execution will enter `.js` files in `company_background` when user navigates to *Company details page on Freshdesk*
+2. These placeholders generally have _background_ in their name. For example, `company_background`,`company_list_background`, `time_entry_background`,`new_email_background`.
+3. Apps those render without UI will load _scripts_ as soon as user navigates to relavant page in Freshdesk. For example, the browser's js thread of execution will enter `.js` files in `company_background` when user navigates to _Company details page on Freshdesk_
 
 **Caveats**
+
 1. `ticket_top_navigation` is the placeholder which has a app icon but no UI to be rendered. Only when user clicks on app icon, JS thread of execution would execute `.js` scripts contained in the app.
 2. `ticket_attachement` and `ticket_conversation_editor` are two placeholders where an modal is opened. See screenshots. But only limited viewport available. Please [raise a request](https://community.developers.freshworks.com/c/ideas/15).

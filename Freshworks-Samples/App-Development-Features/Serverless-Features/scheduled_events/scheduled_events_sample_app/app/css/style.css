@@ -6,20 +6,20 @@
   margin-bottom: 30px;
 }
 .edit-logo {
-  content: url('../images/edit.svg');
+  content: url("../images/edit.svg");
 }
 
 .delete-logo {
-  content: url('../images/delete.svg');
+  content: url("../images/delete.svg");
 }
 
 .create-schedule-logo {
-  content: url('../images/schedule.svg');
+  content: url("../images/schedule.svg");
   height: 22%;
 }
 
 .schedule-list-logo {
-  content: url('../images/list.svg');
+  content: url("../images/list.svg");
   height: 22%;
 }
 
@@ -43,7 +43,7 @@
   margin-top: 25px;
 }
 
-.schedule-li .schedule-title{
+.schedule-li .schedule-title {
   width: 80%;
   padding-right: 1rem;
   float: left;

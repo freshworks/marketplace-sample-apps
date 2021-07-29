@@ -1,61 +1,69 @@
-window.frsh_init().then(function(client) {
+window.frsh_init().then(function (client) {
   window.client = client;
 });
 
 function showModal() {
-  client.interface.trigger('showModal', {
-    title: 'Sample App Form',
-    template: 'modal.html' })
-  .then( 
-    function(data) {
-      console.log('Parent:InterfaceAPI:showModal', data);
-    },
-    function(error) {
-      console.log('Parent:InterfaceAPI:showModal', error);
-    }
-  );
+  client.interface
+    .trigger("showModal", {
+      title: "Sample App Form",
+      template: "modal.html",
+    })
+    .then(
+      function (data) {
+        console.log("Parent:InterfaceAPI:showModal", data);
+      },
+      function (error) {
+        console.log("Parent:InterfaceAPI:showModal", error);
+      }
+    );
 }
 
 function showDialog() {
-  client.interface.trigger('showDialog', {
-    title: 'Sample Dialog',
-    template: 'modal.html' })
-  .then(
-    function(data) {
-      console.log('Parent:InterfaceAPI:showDialog', data);
-    },
-    function(error) {
-      console.log('Parent:InterfaceAPI:showDialog', error);
-    }
-  );
+  client.interface
+    .trigger("showDialog", {
+      title: "Sample Dialog",
+      template: "modal.html",
+    })
+    .then(
+      function (data) {
+        console.log("Parent:InterfaceAPI:showDialog", data);
+      },
+      function (error) {
+        console.log("Parent:InterfaceAPI:showDialog", error);
+      }
+    );
 }
 
 function showConfirm() {
-  client.interface.trigger('showConfirm', {
-    title: 'Sample Confirm',
-    message: 'Select OK or Cancel'
-  })
-  .then( 
-    function(data) {
-      console.log('Parent:InterfaceAPI:showConfirm', data);
-    },
-    function(error) {
-      console.log('Parent:InterfaceAPI:showConfirm', error);
-    }
-  );
+  client.interface
+    .trigger("showConfirm", {
+      title: "Sample Confirm",
+      message: "Select OK or Cancel",
+    })
+    .then(
+      function (data) {
+        console.log("Parent:InterfaceAPI:showConfirm", data);
+      },
+      function (error) {
+        console.log("Parent:InterfaceAPI:showConfirm", error);
+      }
+    );
 }
 
 function notify() {
-  client.interface.trigger('showNotify', {
-    type: 'success', message: 'success message'})
-  .then( 
-    function(data) {
-      console.log('Parent:InterfaceAPI:showNotify', data);
-    },
-    function(error) {
-      console.log('Parent:InterfaceAPI:showNotify', error);
-    }
-  );
+  client.interface
+    .trigger("showNotify", {
+      type: "success",
+      message: "success message",
+    })
+    .then(
+      function (data) {
+        console.log("Parent:InterfaceAPI:showNotify", data);
+      },
+      function (error) {
+        console.log("Parent:InterfaceAPI:showNotify", error);
+      }
+    );
 }
 
 function hide(element) {
@@ -79,11 +87,18 @@ function setValue(element, value) {
 }
 
 function openNote(element) {
-  client.interface.trigger("click", {id: "note", text: "Text to be inserted", isPublic: true});
+  client.interface.trigger("click", {
+    id: "note",
+    text: "Text to be inserted",
+    isPublic: true,
+  });
 }
 
 function insertContent(element) {
-  client.interface.trigger("setValue", {id: "editor", text: "insert content"} );
+  client.interface.trigger("setValue", {
+    id: "editor",
+    text: "insert content",
+  });
   // Replace content
   // client.interface.trigger("setValue", {id: "editor", text: "replace content", replace: true} );
 

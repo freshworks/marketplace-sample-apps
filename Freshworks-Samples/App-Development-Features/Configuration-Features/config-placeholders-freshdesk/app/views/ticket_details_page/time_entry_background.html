@@ -12,15 +12,17 @@
     document.onreadystatechange = whenInteractive;
 
     function whenInteractive() {
-      if (document.readyState === 'interactive') {
+      if (document.readyState === "interactive") {
         return app.initialized().then(getClientAPI).catch(console.error);
       }
     }
 
     function getClientAPI(_client) {
       let client = _client;
-      client.events.on('app.activated', function log() {
-        return console.log(`time_entry_background placeholder: app is activated 🥁`);
+      client.events.on("app.activated", function log() {
+        return console.log(
+          `time_entry_background placeholder: app is activated 🥁`
+        );
       });
     }
   </script>

@@ -1,31 +1,31 @@
 document.onreadystatechange = function () {
-  if (document.readyState === 'interactive') renderApp();
+  if (document.readyState === "interactive") renderApp();
 };
 
 async function renderApp() {
   let _client = await app.initialized();
-  window['client'] = _client;
-  client.events.on('app.activated', renderSidebar);
+  window["client"] = _client;
+  client.events.on("app.activated", renderSidebar);
   return;
 }
 
 function renderSidebar() {
-  const dataMethBtn = document.querySelector('.btn-global-sidebar');
-  const displayArea = document.querySelector('.display-area');
-  dataMethBtn.addEventListener('fwClick', function getTktDetails() {
+  const dataMethBtn = document.querySelector(".btn-global-sidebar");
+  const displayArea = document.querySelector(".display-area");
+  dataMethBtn.addEventListener("fwClick", function getTktDetails() {
     /** ~ playground start of ticket details page ~ */
-    
+
     // loggedInUser
     client.data
-      .get('loggedInUser')
+      .get("loggedInUser")
       .then(function renderUserBioData(payload) {
         var {
           loggedInUser: {
-            contact: { name: name, job_title: job, email: email }
-          }
+            contact: { name: name, job_title: job, email: email },
+          },
         } = payload;
         displayArea.insertAdjacentHTML(
-          'afterbegin',
+          "afterbegin",
           `<p>This is information received from data method:</p>
           <ul>
           <li>Name: <mark>${name}</mark></li>
@@ -39,9 +39,12 @@ function renderSidebar() {
 
     //domainName
     client.data
-      .get('domainName')
+      .get("domainName")
       .then(function whatsDomain({ domainName }) {
-        displayArea.insertAdjacentHTML('afterend', `<br> The domain name is <mark>${domainName}</mark>`);
+        displayArea.insertAdjacentHTML(
+          "afterend",
+          `<br> The domain name is <mark>${domainName}</mark>`
+        );
       })
       .catch(console.error);
 

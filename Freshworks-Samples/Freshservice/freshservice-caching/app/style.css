@@ -1,15 +1,15 @@
 .logo {
-  background: url('freshservice_logo.png');
+  background: url("freshservice_logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   height: 25px;
   margin-top: 25px;
 }
-p{
-	text-align: center;
+p {
+  text-align: center;
 }
 
-.table{
+.table {
   font-size: 12px;
 }

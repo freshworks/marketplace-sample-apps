@@ -9,7 +9,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://*.m.pipedream.net"
-  ]
+  "whitelisted-domains": ["https://*.m.pipedream.net"]
 }

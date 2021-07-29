@@ -1,5 +1,6 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -41,12 +42,10 @@ a:focus {
   margin: 40px 0;
 }
 
-
 a[aria-expanded="true"] {
   color: #fff;
   background: #4d4d4d;
 }
-
 
 a[data-toggle="collapse"] {
   position: relative;
@@ -60,7 +59,7 @@ ul ul a {
 
 a.download {
   background: #fff;
-  color: #7386D5;
+  color: #7386d5;
 }
 
 a.article,
@@ -76,7 +75,6 @@ a.article:hover {
   transition: all 0.3s;
   border: solid 1px #dadfe3;
 }
-
 
 #renderOutput ul {
   list-style: none;
@@ -107,7 +105,7 @@ a.article:hover {
 
 #renderOutput ul li label.value {
   background: #fff;
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
   overflow-x: scroll;
 }
 
@@ -138,7 +136,9 @@ span.select2-selection {
   font-weight: 600;
 }
 
-.select2-container--default .select2-selection--single #select2-codeDemo-container {
+.select2-container--default
+  .select2-selection--single
+  #select2-codeDemo-container {
   padding-left: 0 !important;
 }
 
@@ -180,10 +180,10 @@ span.select2-selection {
 }
 
 .navigation-menu li a.disabled {
-  color: #CCC;
-  background: #FAFAFA;
+  color: #ccc;
+  background: #fafafa;
   border-color: #dadfe3;
-  opacity: .3;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -205,9 +205,8 @@ span.select2-selection {
   border-radius: 0 2px 2px 0;
 }
 
-.error{
+.error {
   font-size: 350%;
   padding-top: 40vh;
   text-align: center;
-
 }

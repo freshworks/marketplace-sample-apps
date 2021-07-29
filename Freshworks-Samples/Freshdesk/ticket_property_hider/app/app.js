@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize channel
-  app.initialized().then(function(_client) {
+  app.initialized().then(function (_client) {
     var client = _client;
     // App activate callback
-    client.events.on('app.activated', function() {
+    client.events.on("app.activated", function () {
       // Disable Ticket Priority
-      client.interface.trigger('disable', { id: 'priority'} );
+      client.interface.trigger("disable", { id: "priority" });
     });
   });
 });

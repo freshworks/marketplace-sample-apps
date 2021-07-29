@@ -1,11 +1,11 @@
 .logo {
-  background: url('./images/freshservice_logo.png');
+  background: url("./images/freshservice_logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   height: 25px;
   margin-top: 25px;
 }
-p{
-	text-align: center;
+p {
+  text-align: center;
 }

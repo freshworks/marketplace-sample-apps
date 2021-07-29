@@ -1,52 +1,50 @@
 {
-    "twitter_id": {
-        "display_name": "Twitter ID",
-        "description": "Please enter your Acc. ID",
-        "type": "text",
-        "required": true,
-        "events": [{
-            "change": "checkAccountID"
-        }]
+  "twitter_id": {
+    "display_name": "Twitter ID",
+    "description": "Please enter your Acc. ID",
+    "type": "text",
+    "required": true,
+    "events": [
+      {
+        "change": "checkAccountID"
+      }
+    ]
+  },
+  "mobile": {
+    "display_name": "Phone Number",
+    "description": "Please enter your phone number with the country code",
+    "type": "phone_number",
+    "required": true
+  },
+  "domain_name": {
+    "display_name": "Domain Name",
+    "description": "Please enter your domain name",
+    "type": "domain",
+    "type_attributes": {
+      "product": "freshdesk"
     },
-    "mobile": {
-        "display_name": "Phone Number",
-        "description": "Please enter your phone number with the country code",
-        "type": "phone_number",
-        "required": true
-    },
-    "domain_name": {
-        "display_name": "Domain Name",
-        "description": "Please enter your domain name",
-        "type": "domain",
-        "type_attributes": {
-            "product": "freshdesk"
-        },
-        "required": true
-    },
-    "api_key": {
-        "display_name": "API Key",
-        "description": "Please enter your api_key",
-        "type": "api_key",
-        "secure": true,
-        "required": true,
-        "type_attributes": {
-            "product": "freshdesk"
-        }
-    },
-    "contact_methods": {
-        "display_name": "Preferred Contact Method",
-        "description": "Please select the preferred contact methods",
-        "type": "multiselect",
-        "options": [
-            "Mobile",
-            "Twitter ID"
-        ],
-        "events": [{
-            "change": "contactMethodChanged"
-        }],
-        "default_value": [
-            "Mobile",
-            "Twitter ID"
-        ]
+    "required": true
+  },
+  "api_key": {
+    "display_name": "API Key",
+    "description": "Please enter your api_key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
     }
+  },
+  "contact_methods": {
+    "display_name": "Preferred Contact Method",
+    "description": "Please select the preferred contact methods",
+    "type": "multiselect",
+    "options": ["Mobile", "Twitter ID"],
+    "events": [
+      {
+        "change": "contactMethodChanged"
+      }
+    ],
+    "default_value": ["Mobile", "Twitter ID"]
+  }
 }

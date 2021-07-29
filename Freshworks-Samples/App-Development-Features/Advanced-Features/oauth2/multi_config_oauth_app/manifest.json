@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://api.onedrive.com"
-  ]
+  "whitelisted-domains": ["https://api.onedrive.com"]
 }

@@ -1,28 +1,36 @@
 <html>
+  <head>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script src="../scripts/find_alias.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css"
+    />
+  </head>
 
-<head>
-  <script
-    src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
-  <script src="../scripts/find_alias.js"></script>
-  <link rel="stylesheet" type="text/css"
-    href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
-</head>
-
-<body>
-  <div>
-    <input type="text" id="inputAlias" placeholder="Alias" />
-    <br><br>
-    <button class="btn btn-primary" type="button" id="btnResolveAlias"
-      aria-label="Find link of alias">Find link of alias</button>
-    <br><br>
-    <p id="linkContainer" style='display:none;'>
-      Link:
-      <br>
-      <span id='link'></span>
-      <br><br>
-      Number of times updated:
-      <br>
-      <span id='updates'></span>
-    </p>
-  </div>
-</body>
+  <body>
+    <div>
+      <input type="text" id="inputAlias" placeholder="Alias" />
+      <br /><br />
+      <button
+        class="btn btn-primary"
+        type="button"
+        id="btnResolveAlias"
+        aria-label="Find link of alias"
+      >
+        Find link of alias
+      </button>
+      <br /><br />
+      <p id="linkContainer" style="display: none">
+        Link:
+        <br />
+        <span id="link"></span>
+        <br /><br />
+        Number of times updated:
+        <br />
+        <span id="updates"></span>
+      </p>
+    </div>
+  </body>
+</html>

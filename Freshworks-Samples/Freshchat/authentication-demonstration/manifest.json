@@ -10,7 +10,5 @@
       }
     }
   },
-  "whitelisted-domains": [
-    "https://api.freshchat.com"
-  ]
+  "whitelisted-domains": ["https://api.freshchat.com"]
 }

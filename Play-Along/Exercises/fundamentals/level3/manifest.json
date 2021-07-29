@@ -9,7 +9,6 @@
         }
       }
     }
-  }, "whitelisted-domains": [
-    "https://api.github.com"
-  ]
+  },
+  "whitelisted-domains": ["https://api.github.com"]
 }

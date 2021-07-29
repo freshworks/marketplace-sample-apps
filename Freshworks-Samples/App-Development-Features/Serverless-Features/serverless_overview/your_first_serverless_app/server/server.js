@@ -10,8 +10,8 @@ exports = {
   events: [
     {
       event: "onTicketCreate",
-      callback: "onTicketCreateHandler"
-    }
+      callback: "onTicketCreateHandler",
+    },
   ],
 
   /**
@@ -26,8 +26,8 @@ exports = {
       JSON.stringify({
         Details: details,
         email: email,
-        mobile: mobile
+        mobile: mobile,
       })
     );
-  }
+  },
 };

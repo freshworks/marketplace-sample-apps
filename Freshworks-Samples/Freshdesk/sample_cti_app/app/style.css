@@ -18,7 +18,7 @@
   width: 100%;
   clear: both;
   text-align: center;
-  font-family: 'Exo';
+  font-family: "Exo";
 }
 .digits {
   display: grid;
@@ -31,7 +31,8 @@
   font-size: 3rem;
   cursor: pointer;
 }
-#call, .button {
+#call,
+.button {
   display: inline-block;
   background-color: #66bb6a;
   padding: 4px 30px;
@@ -46,7 +47,7 @@
   width: 280px;
   clear: both;
   text-align: center;
-  font-family: 'Exo';
+  font-family: "Exo";
 }
 
 .digit:active,
@@ -78,7 +79,7 @@ ul.nav-tabs.nav-justified {
   width: 90%;
 }
 nav-tabs.nav-item.nav-link.active {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 /* Nav Tabs - End */

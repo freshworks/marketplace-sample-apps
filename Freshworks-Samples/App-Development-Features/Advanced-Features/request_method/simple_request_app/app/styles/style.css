@@ -7,20 +7,19 @@ html {
   box-sizing: inherit;
 }
 
-section{
+section {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.request{
+.request {
   flex: 0 0 25%;
-  margin: .5rem .5rem;
+  margin: 0.5rem 0.5rem;
 }
-
 
 .request-status {
   color: grey;
   margin-left: 15px;
-} 
+}

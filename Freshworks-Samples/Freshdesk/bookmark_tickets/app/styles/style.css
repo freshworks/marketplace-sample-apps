@@ -15,22 +15,25 @@ html {
   align-items: center;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
 table {
-  table-layout:fixed;
+  table-layout: fixed;
   border-spacing: 5px;
-  padding-right: 10px; 
+  padding-right: 10px;
 }
 
-th, td {
+th,
+td {
   padding: 7px;
 }
 
 th {
-  white-space:nowrap;
+  white-space: nowrap;
   padding: 2px;
 }
