@@ -7,6 +7,16 @@
           "url": "templates/index.html",
           "icon": "images/schedule.svg"
         }
+      },
+      "events": {
+        "onScheduledEvent": {
+          "handler": "onScheduledEventHandler"
+        }
+      },
+      "functions": {
+        "createSchedule": {
+          "timeout": 5
+        }
       }
     }
   },

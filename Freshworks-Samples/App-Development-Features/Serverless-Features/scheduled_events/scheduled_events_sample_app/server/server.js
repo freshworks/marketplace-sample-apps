@@ -1,10 +1,10 @@
 /**@desc - This app enables agents to schedule the creation of tickets.
- * 
+ *
  * @features -
  * 1. Scheduled Event - onScheduledEvent
  * 2. Using server method invocation(SMI) to schedule the creation of tickets
  * 3. Using a modal to display a ticket create form
- * 
+ *
  */
 var request = require('request');
 var base64 = require('base-64');
@@ -55,11 +55,6 @@ function removeScheduleFromList(loggedInUserId, scheduleName, callback) {
 }
 
 exports = {
-
-  events: [
-    { event: 'onScheduledEvent', callback: 'onScheduledEventHandler' }
-  ],
-
   createSchedule: function(args) {
     $schedule.create({
       name: args.scheduleName,
