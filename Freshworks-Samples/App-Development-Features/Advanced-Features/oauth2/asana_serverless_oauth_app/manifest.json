@@ -1,7 +1,11 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
-    "freshdesk": {}
+    "freshdesk": {"events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        }
+      }}
   },
   "whitelisted-domains": [
     "https://app.asana.com"

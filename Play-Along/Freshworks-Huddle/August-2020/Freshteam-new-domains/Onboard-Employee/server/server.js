@@ -17,39 +17,39 @@
  const base64 = require('base-64');
  const { request } = require('./lib/index');
  const ERROR_MSG = 'Seems like either the employee is already an agent or a there has been a DISASTER :(';
- 
+
  const empFullName = (employee) => `${employee.first_name} ${employee.last_name}`;
- 
+
  /**
   * Freshteam api to return department details
   */
  const getDepartmentDetails = async (params, departmentId) => {
    const url = `${params.freshteam.base}/departments/${departmentId}`;
- 
+
    const options = {
      method: 'get',
      headers: {
        Authorization: `Bearer ${params.freshteam.encodedApiKey}`
      },
    };
- 
+
    const response = await request(url, options);
    const departmentDetails = JSON.parse(response.body);
- 
+
    return departmentDetails;
  };
- 
+
  const getEmployeeDepartment = async (params, employee, cb) => {
    const { department_id } = employee;
- 
+
    const departmentDetails = await getDepartmentDetails(params, department_id);
-   
+
    cb(departmentDetails);
  };
- 
+
  const onboardInFreshdesk = async (params, employee) => {
    const url = `${params.freshdesk.base}/agents`;
- 
+
    const body = {
      ticket_scope: 1,
      name: empFullName(employee),
@@ -57,7 +57,7 @@
      phone: employee.phone_numbers[0] || null,
      job_title: 'Customer Support Agent'
    };
- 
+
    const options = {
      method: 'post',
      headers: {
@@ -66,7 +66,7 @@
      },
      body: JSON.stringify(body)
    };
- 
+
    try {
      const response = await request(url, options);
      if (response) {
@@ -77,7 +77,7 @@
      return ERROR_MSG;
    }
  };
- 
+
  /**
   * Task 4 - Onboard the employee in Freshsales account
   * Unfortunately there is no api to create user in Freshsales account today
@@ -86,17 +86,17 @@
   * https://api.freshservice.com/v2/#service_request
   */
  const onboardInFreshsales = (params, employee) => {
- 
+
  };
- 
+
  /**
   * Task 5 - Onboard the employee in Freshservice account as IT Admin
   * https://api.freshservice.com/v2/#create_an_agent
   */
  const onboardInFreshservice = (params, employee) => {
- 
+
  };
- 
+
  const onboardEmployee = async (params, employeeDepartment, employee, cb) => {
    let response;
    switch(employeeDepartment.name) {
@@ -112,25 +112,22 @@
      default:
        response = 'Employee belongs to an unrecognized department'
    }
- 
+
    cb(response);
  };
- 
+
  exports = {
-   events: [
-     { event: 'onEmployeeCreate', callback: 'onEmployeeCreateHandler' }
-   ],
    onEmployeeCreateHandler: async function(args) {
      // Logging the entire payload
      console.log(JSON.stringify(args));
      const { employee } = args.data;
      const { iparams } = args;
- 
+
      // Logging iparams
      console.log('iparams with some secured information are ', JSON.stringify(iparams));
- 
+
      const encode = (str) => base64.encode(str);
- 
+
      const params = {
        freshdesk: {
          base: `https://${iparams.freshdeskDomain}.freshdesk.com/api/v2`,
@@ -145,12 +142,12 @@
          encodedApiKey: iparams.freshteamApiKey
        }
      }
- 
+
      getEmployeeDepartment(params, employee, function(employeeDepartment) {
        onboardEmployee(params, employeeDepartment, employee, function(response) {
          console.log(response);
        });
      });
-     
+
    }
  };

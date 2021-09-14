@@ -7,13 +7,6 @@
  * @info - https://developers.freshdesk.com/v2/docs/your-first-serverless-app/
  */
 exports = {
-  events: [
-    {
-      event: "onTicketCreate",
-      callback: "onTicketCreateHandler"
-    }
-  ],
-
   /**
    * When ticket is created, some details from the payload sent is logged.
    * @param {string} - A JSON string

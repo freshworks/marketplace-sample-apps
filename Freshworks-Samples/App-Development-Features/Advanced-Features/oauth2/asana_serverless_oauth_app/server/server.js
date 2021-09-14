@@ -1,18 +1,12 @@
 exports = {
 
 /**
- * @desc - 
- * 
+ * @desc -
+ *
  * This app makes a API request to create a new task in the selected workspace (project) during installation.
  * This app does not have any page to show up in the support portal, it works as a backround service which will
  * do the task creating action in the background whenever a ticket is created in Freshdesk.
- * 
- * Product events with corresponding callback functions to perform an action is registered as follows.
  */
-
-  events: [
-    { event : 'onTicketCreate', callback : 'onTicketCreateHandler'}
-  ],
 
 /**
  * In the following event listerner method, workspace_id and project_id have been taken from installation parameters.

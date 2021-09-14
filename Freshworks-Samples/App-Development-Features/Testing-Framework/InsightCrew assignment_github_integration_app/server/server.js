@@ -1,40 +1,11 @@
 'use strict';
 
 exports = {
-
-    events: [
-        {
-            event: 'onAppInstall',
-            callback: 'onInstallHandler'
-        },
-        {
-            event: 'onAppUninstall',
-            callback: 'onUnInstallHandler'
-        },
-        {
-            event: 'onExternalEvent',
-            callback: 'onWebhookCallbackHandler'
-        },
-        {
-            event: 'onTicketCreate',
-            callback: 'onTicketCreateHandler'
-        },
-        {
-            event: 'onTicketUpdate',
-            callback: 'onTicketUpdateHandler'
-        },
-        {
-            event: "onConversationCreate",
-            callback: "onConversationCreateHandler"
-        }
-
-    ],
-
     /**
      * Handler for onAppInstall event
      *
      * A webhook url is created through generateTargetUrl function
-     * The generated url is registered with GitHub for "issues" related events 
+     * The generated url is registered with GitHub for "issues" related events
      * On successful registration, the webhook URL is stored using $db
      *
      * @param {object} args - payload

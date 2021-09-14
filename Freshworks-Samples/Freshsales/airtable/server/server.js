@@ -3,12 +3,6 @@ let leadmapping = { "Name": "last_name", "Email": "email", "Phone": "mobile_numb
 let maxTime = ''
 let moment = require("moment")
 exports = {
-
-  events: [
-    { event: 'onAppInstall', callback: 'onAppInstallHandler' },
-    { event: 'onScheduledEvent', callback: 'onScheduledEventHandler' }
-  ],
-
   // args is a JSON block containing the payload information.
   // args['iparam'] will contain the installation parameter values.
   onAppInstallHandler: function (args) {

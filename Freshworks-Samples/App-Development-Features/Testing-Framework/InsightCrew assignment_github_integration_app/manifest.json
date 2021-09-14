@@ -1,8 +1,29 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "dependencies": {},
   "product": {
-    "freshdesk": {}
+    "freshdesk": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onInstallHandler"
+        },
+        "onAppUninstall": {
+          "handler": "onUnInstallHandler"
+        },
+        "onTicketCreate": {
+          "handler": "onTicketCreateHandler"
+        },
+        "onTicketUpdate": {
+          "handler": "onTicketUpdateHandler"
+        },
+        "onConversationCreate": {
+          "handler": "onConversationCreateHandler"
+        },
+        "onExternalEvent": {
+          "handler": "onWebhookCallbackHandler"
+        }
+      }
+    }
   },
   "whitelisted-domains": [
     "https://api.github.com",
