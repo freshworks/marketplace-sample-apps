@@ -6,7 +6,7 @@
         "onAppInstall": {
           "handler": "onAppInstallHandler"
         },
-        "onScheduledEvent" {
+        "onScheduledEvent": {
           "handler": "onScheduledEventHandler"
         }
       }
