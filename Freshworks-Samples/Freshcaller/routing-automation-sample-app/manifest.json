@@ -1,6 +1,24 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
-    "freshcaller": {}
+    "freshcaller": {
+      "functions": {
+        "validateVIPPhoneNumber": {
+          "timeout": 5
+        },
+        "validateUserSingleDigit": {
+          "timeout": 5
+        },
+        "validateUserMultipleDigits": {
+          "timeout": 5
+        },
+        "validateUserSpeech": {
+          "timeout": 5
+        },
+        "respondOrderStatus": {
+          "timeout": 5
+        }
+      }
+    }
   }
 }

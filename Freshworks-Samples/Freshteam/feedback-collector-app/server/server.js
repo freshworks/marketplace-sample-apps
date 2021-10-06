@@ -1,5 +1,5 @@
 /**
- * Sendgrid API is used to Send mails 
+ * Sendgrid API is used to Send mails
  */
 const sgMail = require('@sendgrid/mail');
 
@@ -7,16 +7,6 @@ const sgMail = require('@sendgrid/mail');
  * Assigning onNewHireCreateCallback to onNewHireCreate event
  */
 exports = {
-  events: [
-    {
-      event: "onNewHireCreate",
-      callback: "onNewHireCreateCallback"
-    },
-    {
-      event: "onScheduledEvent",
-      callback: "onScheduledEventHandler"
-    }],
-
   onNewHireCreateCallback: function (payload) {
     sgMail.setApiKey(payload.iparams.apiKey);
     const msg = {

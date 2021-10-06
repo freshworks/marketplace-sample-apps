@@ -6,12 +6,8 @@ const TICKET_STATUS = {
   closed: "5"
 };
 
-// Listen to `onTicketUpdate` event. 
+// Listen to `onTicketUpdate` event.
 exports = {
-  events: [{
-    event: 'onTicketUpdate',
-    callback: 'onTicketUpdateHandler'
-  }],
   onTicketUpdateHandler: function (args) {
     console.log("OnTicketUpdate handler fired.");
     let ticket = args.data.ticket;

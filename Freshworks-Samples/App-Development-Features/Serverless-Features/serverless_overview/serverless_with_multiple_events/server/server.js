@@ -1,12 +1,4 @@
 exports = {
-
-  events: [
-    { event: 'onTicketCreate', callback: 'onTicketCreateHandler' },
-    { event: 'onAppInstall', callback: 'onAppInstallHandler' },
-    { event: 'onExternalEvent', callback: 'onExternalEventHandler' },
-    { event: 'onAppUninstall', callback: 'onAppUninstallHandler' }
-  ],
-
   onAppInstallHandler: function (args) {
 
     generateTargetUrl()

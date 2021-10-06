@@ -1,7 +1,13 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
-    "freshsales": {}
+    "freshsales": {
+      "events": {
+        "onExternalEvent": {
+          "handler": "onExternalEventHandler"
+        }
+      }
+    }
   },
   "whitelisted-domains": [
     "https://*.freshsales.io"

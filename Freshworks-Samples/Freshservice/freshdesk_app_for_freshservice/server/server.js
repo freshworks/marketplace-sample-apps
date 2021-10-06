@@ -1,18 +1,18 @@
 var util = require('./lib/util');
 
 var urlConstants = {
-    protocol : "https://",
-    fs_domain_suffix : ".freshservice.com",
-    fd_domain_suffix : ".freshdesk.com",
-    ticket_url : "/api/v2/tickets/",
-    ticket_status_url : "/api/v2/ticket_fields?type=default_status",
-    notes : "/notes"
+    protocol: "https://",
+    fs_domain_suffix: ".freshservice.com",
+    fd_domain_suffix: ".freshdesk.com",
+    ticket_url: "/api/v2/tickets/",
+    ticket_status_url: "/api/v2/ticket_fields?type=default_status",
+    notes: "/notes"
 };
 var dataConstants = {
-    info : "info",
-    error : "error",
-    add_private_note_in_fd : "add_private_note_in_fd",
-    note_prefix : "<div>Note Content: "
+    info: "info",
+    error: "error",
+    add_private_note_in_fd: "add_private_note_in_fd",
+    note_prefix: "<div>Note Content: "
 };
 
 function printLog(type, msg, data) {
@@ -32,10 +32,10 @@ function postRequestAPI(url, options, operation) {
     return new Promise((resolve, reject) => {
         $request.post(url, options)
             .then(
-                function(data) {
+                function (data) {
                     resolve(data);
                 },
-                function(e) {
+                function (e) {
                     printLog(dataConstants.error, operation, JSON.stringify(e));
                     reject(e);
                 }
@@ -47,13 +47,13 @@ function getRequestApi(url, args, operation) {
     printLog(dataConstants.info, "Get url", url);
     return new Promise((resolve, reject) => {
         $request.get(url, {
-                headers: { 'Authorization': util.getFsAPIKey(args) }
-            })
+            headers: { 'Authorization': util.getFsAPIKey(args) }
+        })
             .then(
-                function(data) {
+                function (data) {
                     resolve(data);
                 },
-                function(e) {
+                function (e) {
                     printLog(dataConstants.error, operation, JSON.stringify(e));
                     reject(e);
                 }
@@ -62,12 +62,7 @@ function getRequestApi(url, args, operation) {
 }
 
 exports = {
-    events: [
-        { event: 'onTicketUpdate', callback: 'onTicketUpdateCallback' },
-        { event: "onConversationCreate", callback: "onConversationCreateCallback" }
-    ],
-
-    onTicketUpdateCallback: function(args) {
+    onTicketUpdateCallback: function (args) {
         printLog(dataConstants.info, "onTicketUpdateCallback");
         var tktSubject = args.data.ticket.subject;
         var regexStr = /^([[]{1}[#]{1}[F]{1}[D]{1}[-]{1}[0-9]+[\]]{1})/;
@@ -107,8 +102,8 @@ exports = {
                                 }
                             };
                             postRequestAPI(fdTktAddPvtNoteURL, fdAddNoteOptions, "Note Creation").then(noteData => {
-                                    printLog(dataConstants.info, 'Private Note created successfully', noteData);
-                                })
+                                printLog(dataConstants.info, 'Private Note created successfully', noteData);
+                            })
                                 .catch(e => {
                                     printLog(dataConstants.error, 'Error in conversation create', e);
                                 });
@@ -123,7 +118,7 @@ exports = {
         }
     },
 
-    onConversationCreateCallback: function(args) {
+    onConversationCreateCallback: function (args) {
         printLog(dataConstants.info, "onConversationCreateCallback", args.iparams.fs_note_added);
         if (args.iparams.fs_note_added == dataConstants.add_private_note_in_fd &&
             !args.data.conversation.body.startsWith(dataConstants.note_prefix)) {

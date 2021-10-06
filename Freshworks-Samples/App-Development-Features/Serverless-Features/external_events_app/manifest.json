@@ -1,5 +1,5 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "dependencies": {
     "base-64": "0.1.0"
   },

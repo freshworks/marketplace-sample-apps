@@ -38,7 +38,7 @@ function mergeWithPrimary(args) {
       }
     }];
 
-    return helpers.async.forEachSeries(requests, helpers.callAPI, function(error) {
+    return helpers.async.forEachSeries(requests, helpers.callAPI, function (error) {
       if (error) {
         console.log(`Merge failed with error ${error}`);
         console.log(`Args: ${helpers.inspect(args)}`);
@@ -51,18 +51,11 @@ function mergeWithPrimary(args) {
 }
 
 exports = {
-  events: [
-    {
-      event: 'onTicketCreate',
-      callback: 'onTicketCreateHandler'
-    }
-  ],
-
-  onTicketCreateHandler: function(payload) {
+  onTicketCreateHandler: function (payload) {
     const data = payload.data,
-          iparams = payload.iparams,
-          requester = data.requester,
-          secondaryTicket = data.ticket;
+      iparams = payload.iparams,
+      requester = data.requester,
+      secondaryTicket = data.ticket;
 
     if (requester.id) {
       $db.get(requester.id.toString())

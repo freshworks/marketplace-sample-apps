@@ -1,5 +1,5 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
     "freshchat": {
       "location": {
@@ -10,5 +10,7 @@
       }
     }
   },
-  "whitelisted-domains": ["https://<%= iparam.status_page_host %>"]
+  "whitelisted-domains": [
+    "https://<%= iparam.status_page_host %>"
+  ]
 }

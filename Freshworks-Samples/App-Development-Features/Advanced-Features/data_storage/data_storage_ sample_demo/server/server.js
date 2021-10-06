@@ -1,27 +1,19 @@
 exports = {
-
-  events: [
-    { event: 'onTicketCreate', callback: 'onTicketCreateHandler' },
-    { event: 'onTicketUpdate', callback: 'onTicketUpdateHandler' }
-  ],
-
-  onTicketCreateHandler: function(args) {
+  onTicketCreateHandler: function (args) {
     $db.set('user_info', {
       name: 'Rachel',
       email: 'rachel@freshdesk.com'
-    })
-    .then(function(data) {
+    }).then(function (data) {
       console.log(data);
-    }, function(err) {
+    }, function (err) {
       console.log(err);
     });
   },
 
-  onTicketUpdateHandler: function(args) {
-    $db.get('user_info')
-    .then(function(data) {
+  onTicketUpdateHandler: function (args) {
+    $db.get('user_info').then(function (data) {
       console.log(data);
-    }, function(err) {
+    }, function (err) {
       console.log(err);
     });
   }

@@ -3,24 +3,24 @@ var util = require('./lib/util');
 var moment = require('moment');
 
 var urlConstants = {
-    protocol : "https://",
-    fs_domain_suffix : ".freshservice.com",
-    fd_domain_suffix : ".freshdesk.com",
-    ticket_url : "/api/v2/tickets/",
-    fetch_agents : "/api/v2/agents/",
-    conversations : "/conversations",
-    notes : "/notes",
-    ticket_status_url : "/api/v2/ticket_fields?type=default_status",
-    fs_requester_url : "/api/v2/requesters?email="
+    protocol: "https://",
+    fs_domain_suffix: ".freshservice.com",
+    fd_domain_suffix: ".freshdesk.com",
+    ticket_url: "/api/v2/tickets/",
+    fetch_agents: "/api/v2/agents/",
+    conversations: "/conversations",
+    notes: "/notes",
+    ticket_status_url: "/api/v2/ticket_fields?type=default_status",
+    fs_requester_url: "/api/v2/requesters?email="
 };
 var dataConstants = {
-    event_ticket_create : "onTicketCreate",
-    event_ticket_update : "onTicketUpdate",
-    add_private_note_in_fs : "add_private_note_in_fs",
-    info : "info",
-    error : "error",
-    freshdesk : "Freshdesk",
-    freshservice : "Freshservice"
+    event_ticket_create: "onTicketCreate",
+    event_ticket_update: "onTicketUpdate",
+    add_private_note_in_fs: "add_private_note_in_fs",
+    info: "info",
+    error: "error",
+    freshdesk: "Freshdesk",
+    freshservice: "Freshservice"
 };
 var returnData = {};
 
@@ -41,10 +41,10 @@ function postRequestAPI(url, options, operation) {
     return new Promise((resolve, reject) => {
         $request.post(url, options)
             .then(
-                function(data) {
+                function (data) {
                     resolve(data);
                 },
-                function(e) {
+                function (e) {
                     printLog(dataConstants.error, operation, JSON.stringify(e));
                     reject(e);
                 }
@@ -56,13 +56,13 @@ function getRequestApi(url, args, operation, product) {
     printLog(dataConstants.info, "Get url", url);
     return new Promise((resolve, reject) => {
         $request.get(url, {
-                headers: { 'Authorization': product == dataConstants.freshdesk ? util.getFdAPIKey(args) : util.getFsAPIKey(args) }
-            })
+            headers: { 'Authorization': product == dataConstants.freshdesk ? util.getFdAPIKey(args) : util.getFsAPIKey(args) }
+        })
             .then(
-                function(data) {
+                function (data) {
                     resolve(data);
                 },
-                function(e) {
+                function (e) {
                     printLog(dataConstants.error, operation, JSON.stringify(e));
                     reject(e);
                 }
@@ -106,32 +106,32 @@ function createTicket(args, eventType) {
                             printLog(dataConstants.info, 'Agent Data Fetched successfully', JSON.parse(agentData.response));
 
                             printLog(dataConstants.info, 'is_department_manadatory', args.iparams.fsMandatoryFields["is_department_manadatory"]);
-                            if(args.iparams.fsMandatoryFields["is_department_manadatory"].value == true) {
+                            if (args.iparams.fsMandatoryFields["is_department_manadatory"].value == true) {
                                 var fsGetRequesterURL = fsBaseURL + urlConstants.fs_requester_url + agentDetails.contact.email;
 
-                                 getRequestApi(fsGetRequesterURL, args, "Requester Data Fetch", dataConstants.freshservice)
-                                 .then(requesterData => {
-                                    printLog(dataConstants.info, 'Requester Data fetched successfully', requesterData.response);
-                                    var requesters = JSON.parse(requesterData.response).requesters;
-                                    if(requesters.length > 0) {
-                                        var requesterDepartments = requesters[0].department_ids;
-                                        printLog(dataConstants.info, "Requester Departments", requesterDepartments);
-                                        if(requesterDepartments.length > 0) {
-                                            requestersDeptId = requesterDepartments[0];
-                                        }  
-                                    } 
-                                    printLog(dataConstants.info, 'Requester Dept Id', requestersDeptId);
-                                    createTicketInFS(args, eventType, fsBaseURL, agentDetails, requestersDeptId);
-                                 })
-                                 .catch(function(e) {
-                                    printLog(dataConstants.error, 'Error in fetching Freshservice requester', e);
-                                 });
+                                getRequestApi(fsGetRequesterURL, args, "Requester Data Fetch", dataConstants.freshservice)
+                                    .then(requesterData => {
+                                        printLog(dataConstants.info, 'Requester Data fetched successfully', requesterData.response);
+                                        var requesters = JSON.parse(requesterData.response).requesters;
+                                        if (requesters.length > 0) {
+                                            var requesterDepartments = requesters[0].department_ids;
+                                            printLog(dataConstants.info, "Requester Departments", requesterDepartments);
+                                            if (requesterDepartments.length > 0) {
+                                                requestersDeptId = requesterDepartments[0];
+                                            }
+                                        }
+                                        printLog(dataConstants.info, 'Requester Dept Id', requestersDeptId);
+                                        createTicketInFS(args, eventType, fsBaseURL, agentDetails, requestersDeptId);
+                                    })
+                                    .catch(function (e) {
+                                        printLog(dataConstants.error, 'Error in fetching Freshservice requester', e);
+                                    });
                             }
                             else {
                                 createTicketInFS(args, eventType, fsBaseURL, agentDetails, requestersDeptId);
                             }
                         })
-                        .catch(function(e) {
+                        .catch(function (e) {
                             printLog(dataConstants.error, 'Error in fetching agent data', e);
                         });
                 }
@@ -181,18 +181,18 @@ function createTicketInFS(args, eventType, fsBaseURL, agentDetails, requestersDe
                                     .then(fsConvoData => {
                                         printLog(dataConstants.info, 'Conversation created successfully', fsConvoData);
                                     })
-                                    .catch(function(e) {
+                                    .catch(function (e) {
                                         printLog(dataConstants.error, 'Error in conversation create', e);
                                     });
                             }
                         })
-                        .catch(function(e) {
+                        .catch(function (e) {
                             printLog(dataConstants.error, 'Error in conversation fetch', e);
                         });
                 }
             }
         })
-        .catch(function(e) {
+        .catch(function (e) {
             printLog(dataConstants.error, 'Error in create ticket', e);
         });
 }
@@ -217,13 +217,13 @@ function getTicketPropertiesJson(args, requester_email, fsBaseURL, requestersDep
 
     printLog(dataConstants.info, "Freshservice Mandatory Tkt Fields" + JSON.stringify(fsMandatoryTktFlds));
     for (var key in fsMandatoryTktFlds) {
-        if(key != "is_department_manadatory") {
+        if (key != "is_department_manadatory") {
             currentKey = fsMandatoryTktFlds[key];
-            if(customFldTypesList.includes(currentKey.type)) {
-                if(currentKey.type == "custom_number") {
+            if (customFldTypesList.includes(currentKey.type)) {
+                if (currentKey.type == "custom_number") {
                     customFieldMap[currentKey.name] = parseInt(currentKey.value);
                 }
-                else if(currentKey.type == "custom_date") {
+                else if (currentKey.type == "custom_date") {
                     var formattedDate = moment(currentKey.value, ["YYYY-MM-DD"]).format("YYYY-MM-DD");
                     customFieldMap[currentKey.name] = formattedDate;
                 }
@@ -231,10 +231,10 @@ function getTicketPropertiesJson(args, requester_email, fsBaseURL, requestersDep
                     customFieldMap[currentKey.name] = currentKey.value;
                 }
             }
-            else if(currentKey.type == "default_group") {
+            else if (currentKey.type == "default_group") {
                 tktFieldJson["group_id"] = parseInt(currentKey.value);
             }
-            else if(currentKey.type == "default_agent") {
+            else if (currentKey.type == "default_agent") {
                 tktFieldJson["responder_id"] = parseInt(currentKey.value);
             }
             else {
@@ -243,7 +243,7 @@ function getTicketPropertiesJson(args, requester_email, fsBaseURL, requestersDep
         }
     }
 
-    if(requestersDeptId) {
+    if (requestersDeptId) {
         tktFieldJson["department_id"] = requestersDeptId;
     }
 
@@ -255,10 +255,10 @@ function getTicketPropertiesJson(args, requester_email, fsBaseURL, requestersDep
 function setDataInDataStore(key, value) {
     $db.set(key, value)
         .then(
-            function(dbSuccessData) {
+            function (dbSuccessData) {
                 printLog(dataConstants.info, "Data saved successfully in data store", JSON.stringify(dbSuccessData));
             },
-            function(dbError) {
+            function (dbError) {
                 printLog(dataConstants.error, "Error in saving data in data store", JSON.stringify(dbError));
             }
         );
@@ -267,28 +267,23 @@ function setDataInDataStore(key, value) {
 function getDataFromDataStore(key) {
     return new Promise((resolve) => {
         $db.get(key)
-        .then(
-            function(dbSuccessData) {
-                returnData['status'] = 'success';
-                returnData['data'] = dbSuccessData;
-                resolve(returnData);
-            },
-            function(dbError) {
-                returnData['status'] = 'failure';
-                returnData['data'] = dbError;
-                resolve(returnData);
-            }
-        );
+            .then(
+                function (dbSuccessData) {
+                    returnData['status'] = 'success';
+                    returnData['data'] = dbSuccessData;
+                    resolve(returnData);
+                },
+                function (dbError) {
+                    returnData['status'] = 'failure';
+                    returnData['data'] = dbError;
+                    resolve(returnData);
+                }
+            );
     });
 }
 
 exports = {
-    events: [
-        { event: 'onTicketUpdate', callback: 'onTicketUpdateCallback' },
-        { event: 'onTicketCreate', callback: 'onTicketCreateCallback' },
-        { event: "onConversationCreate", callback: "onConversationCreateCallback" }
-    ],
-    onTicketUpdateCallback: function(args) {
+    onTicketUpdateCallback: function (args) {
         printLog(dataConstants.info, "FD - onTicketUpdateCallback");
         var fdBaseURL = urlConstants.protocol + args.iparams.fd_subdomain + urlConstants.fd_domain_suffix;
         var fsBaseURL = urlConstants.protocol + args.iparams.fs_subdomain + urlConstants.fs_domain_suffix;
@@ -322,11 +317,11 @@ exports = {
                                         .then(noteData => {
                                             printLog(dataConstants.info, 'Private Note created successfully', noteData);
                                         })
-                                        .catch(function(e) {
+                                        .catch(function (e) {
                                             printLog(dataConstants.error, 'Error in conversation create', e);
                                         });
                                 })
-                                .catch(function(e) {
+                                .catch(function (e) {
                                     printLog(dataConstants.error, 'Error in FD status details fetch', JSON.stringify(e));
                                 });
                         } else {
@@ -342,7 +337,7 @@ exports = {
             });
     },
 
-    onTicketCreateCallback: function(args) {
+    onTicketCreateCallback: function (args) {
         printLog(dataConstants.info, "FD - onTicketCreateCallback");
         getDataFromDataStore(args.data.ticket.id)
             .then(dbResponse => {
@@ -357,7 +352,7 @@ exports = {
             });
     },
 
-    onConversationCreateCallback: function(args) {
+    onConversationCreateCallback: function (args) {
         printLog(dataConstants.info, "On FD Note Create", args.iparams.fd_note_added);
         if (args.iparams.fd_note_added == dataConstants.add_private_note_in_fs &&
             !args.data.conversation.body.startsWith("<div>Note Content: ")) {
@@ -384,7 +379,7 @@ exports = {
                             .then(noteData => {
                                 printLog(dataConstants.info, 'Private Note created successfully', noteData);
                             })
-                            .catch(function(e) {
+                            .catch(function (e) {
                                 printLog(dataConstants.error, 'Error in conversation Creation', JSON.stringify(e));
                             });
                     } else {
