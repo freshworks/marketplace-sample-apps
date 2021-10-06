@@ -1,7 +1,4 @@
 exports = {
-  /** registering the event along with its callback function */
-  events: [{ event: "onScheduledEvent", callback: "scheduledEventHandler" }],
-
   /**
    * This is the initial method called by the pomodoro app
    * This method is responsible for setting up data skeleton and schedules

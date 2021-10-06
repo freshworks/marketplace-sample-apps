@@ -1,11 +1,30 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
     "freshdesk": {
       "location": {
         "ticket_sidebar": {
           "url": "templates/index.html",
           "icon": "images/icon.svg"
+        }
+      },
+      "events": {
+        "onScheduledEvent": {
+          "handler": "onScheduledEventHandler"
+        }
+      },
+      "functions": {
+        "fetchSchedule": {
+          "timeout": 5
+        },
+        "createSchedule": {
+          "timeout": 5
+        },
+        "updateSchedule": {
+          "timeout": 5
+        },
+        "deleteSchedule": {
+          "timeout": 5
         }
       }
     }

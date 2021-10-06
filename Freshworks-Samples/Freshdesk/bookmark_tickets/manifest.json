@@ -1,5 +1,5 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
     "freshdesk": {
       "location": {
@@ -7,6 +7,17 @@
             "url": "index.html",
             "icon": "styles/images/icon.svg"
           }
+      },
+      "functions": {
+        "getBookmarkedTickets": {
+          "timeout": 5
+        },
+        "bookmarkTicket": {
+          "timeout": 5
+        },
+        "removeAgentsTicket": {
+          "timeout": 5
+        }
       }
     }
   }

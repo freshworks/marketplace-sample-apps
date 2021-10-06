@@ -1,6 +1,6 @@
 /**
  * Add a note to a freshdesk ticket.
- * 
+ *
  * @param {string} domain - Freshdesk domain
  * @param {number} ticketId - Ticket Id to which note has to be added
  * @param {string} note - Note to be added
@@ -27,14 +27,9 @@ function addNote(domain, ticketId, note) {
 }
 
 exports = {
-
-  events: [
-    { event: 'onScheduledEvent', callback: 'onScheduledEventHandler' }
-  ],
-
   /**
    * Create a schedule (through SMI)
-   * 
+   *
    * @param {object} args - SMI args
    */
   createSchedule: function(args) {
@@ -55,10 +50,10 @@ exports = {
 
   /**
    * Handle scheduled event.
-   * 
+   *
    * Add a note to the freshdesk ticket based on the data stored as part of
    * the event.
-   * 
+   *
    * @param {object} args - Scheduled event args
    */
   onScheduledEventHandler: function(args) {

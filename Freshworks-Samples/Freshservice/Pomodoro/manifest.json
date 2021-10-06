@@ -1,11 +1,33 @@
 {
-  "platform-version": "2.0",
+  "platform-version": "2.2",
   "product": {
     "freshservice": {
       "location": {
         "ticket_sidebar": {
           "url": "index.html",
           "icon": "/styles/images/icon.svg"
+        }
+      },
+      "events": {
+        "onScheduledEvent": {
+          "handler": "onScheduledEventHandler"
+        }
+      },
+      "functions": {
+        "startPomodoro": {
+          "timeout": 5
+        },
+        "clearActivity": {
+          "timeout": 5
+        },
+        "generateTestData": {
+          "timeout": 5
+        },
+        "stopSchedule": {
+          "timeout": 5
+        },
+        "interruptSchedule": {
+          "timeout": 5
         }
       }
     }
