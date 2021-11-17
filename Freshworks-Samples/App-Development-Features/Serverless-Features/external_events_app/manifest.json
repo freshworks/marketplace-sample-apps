@@ -4,10 +4,19 @@
     "base-64": "0.1.0"
   },
   "product": {
-    "freshdesk": {}
+    "freshdesk": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onInstallHandler"
+        },
+        "onAppUninstall": {
+          "handler": "onUnInstallHandler"
+        },
+        "onExternalEvent": {
+          "handler": "onWebhookCallbackHandler"
+        }
+      }
+    }
   },
-  "whitelisted-domains": [
-    "https://*.atlassian.net",
-    "https://*.freshdesk.com"
-  ]
+  "whitelisted-domains": ["https://*.atlassian.net", "https://*.freshdesk.com"]
 }

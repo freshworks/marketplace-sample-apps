@@ -1,13 +1,6 @@
 const util = require('./lib/util');
 
 exports = {
-
-  events: [
-    { event: 'onAppInstall', callback: 'onInstallHandler' },
-    { event: 'onAppUninstall', callback: 'onUnInstallHandler' },
-    { event: 'onExternalEvent', callback: 'onWebhookCallbackHandler' }
-  ],
-
   /**
    * Handler for onAppInstall event
    *
