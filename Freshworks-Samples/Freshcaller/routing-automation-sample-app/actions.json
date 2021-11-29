@@ -2,7 +2,7 @@
   "validateVIPPhoneNumber" : {
    "display_name" : "validate VIP users based on phone numbers",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
       "input": {
@@ -26,7 +26,7 @@
   "validateUserSingleDigit" : {
    "display_name" : "validate when a single digit input is given",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
       "input": {
@@ -50,7 +50,7 @@
   "validateUserMultipleDigits" : {
    "display_name" : "validate when a multiple digit input is given",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
       "input": {
@@ -74,7 +74,7 @@
   "validateUserSpeech" : {
    "display_name" : "validate when a users speech is transcripted and given as input",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
       "input": {
@@ -98,7 +98,7 @@
   "respondOrderStatus" : {
    "display_name" : "to send the message to be played as a dynmaic message in Freshcaller",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
       "input": {

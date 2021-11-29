@@ -2,7 +2,7 @@
   "inviteUser" : {
    "display_name" : "Invite user to the GitHub organization",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
         "user_github_handle": {
@@ -22,7 +22,7 @@
  "deleteUser" : {
    "display_name" : "Delete user from the GitHub organization",
    "parameters" : {
-     "$schema": "http://json-schema.org/draft-04/schema#",
+     "$schema": "http://json-schema.org/draft-07/schema#",
      "type": "object",
      "properties": {
        "user_github_handle": {
