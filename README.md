@@ -28,3 +28,6 @@ The App development for any Freshworks product follows a common pattern. <mark> 
 🕵️‍♂️ [LICENSE](./.github/LICENSE)
 
 <img align="right" vspace=20 width=150 src=".github/assets/freshworks_developers_logo.png">
+
+
+
