@@ -1,0 +1,35 @@
+{
+  "trelloBoardId": {
+    "display_name": "Trello Board Id",
+    "description": "Please enter your Trello Board Id ",
+    "type": "text",
+    "required": true
+  },
+  "trelloApiKey": {
+    "display_name": "Trello API Key",
+    "description": "Please enter your Trello API Key, you can find that here - https://trello.com/app-key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "trelloToken": {
+    "display_name": "Trello Token",
+    "description": "Please enter your Trello Token ,you can find that here - https://trello.com/app-key",
+    "type": "text",
+    "required": true,
+    "secure": true
+  },
+  "freshdeskDomain": {
+    "display_name": "Freshdesk domain",
+    "description": "Please enter freshdesk subdomain - Example: https://yourdomain.freshdesk.com",
+    "type": "text",
+    "required": true
+  },
+  "freshdeskApiKey": {
+    "display_name": "Freshdesk API Key",
+    "description": "Please enter freshdesk api key - You can find that in your profile settings",
+    "type": "text",
+    "required": true,
+    "secure": true
+  }
+}

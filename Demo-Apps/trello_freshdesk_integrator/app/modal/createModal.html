@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="createModal.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+</head>
+
+<body>
+  <div id="createModal" class="fw-widget-wrapper padding">
+
+    <form role="form" id='ticketForm'>
+
+      <div class="form-group">
+        <label for="title">Ticket Title</label>
+        <input type="title" readonly class="form-control" required id="title">
+      </div>
+      
+      <div class="form-group">
+        <label for="title">Ticket ID</label>
+        <input type="title" readonly class="form-control" required id="ticketId">
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Lists</label>
+        <select id="idList" onclick="addList() ; this.onclick=null;">
+          <option value="" disabled selected >Choose a List</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Assign Members</label>
+        <select id="members" onclick="addMembers() ; this.onclick=null;">
+          <option value="" disabled selected>Choose a member</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="desc">Due Date</label>
+        <input type="datetime-local" class="form-control" required id="due" >
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Priority</label>
+        <input type="desc" class="form-control" required id="priority">
+      </div>
+
+      <div class="form-group">
+        <label for="desc">Ticket Description</label>
+        <textarea name='field2' rows="8" cols="10" type="desc" class="form-control" required id="desc"></textarea>
+      </div>
+
+    </form>
+
+    <div class="col-md-4 text-center">
+      <button id="createlink" class="btn btn-primary" onclick="createLink()">Create Card</button>
+    </div>
+
+  </div>
+</body>
+
+</html>

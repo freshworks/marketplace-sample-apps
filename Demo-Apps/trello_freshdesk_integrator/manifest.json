@@ -1,0 +1,52 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshdesk": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onInstallHandler"
+        },
+        "onAppUninstall": {
+          "handler": "onUnInstallHandler"
+        },
+        "onExternalEvent": {
+          "handler": "onExternalEventHandler"
+        }
+      },
+      "functions": {
+        "getListSMI": {
+          "timeout": 10
+        },
+        "getMemberSMI": {
+          "timeout": 10
+        },
+        "fetchCardSMI": {
+          "timeout": 10
+        },
+        "postCardSMI": {
+          "timeout": 10
+        },
+        "postLabelSMI": {
+          "timeout": 10
+        },
+        "deleteCardSMI": {
+          "timeout": 10
+        }
+      },
+      "location": {
+        "ticket_sidebar": {
+          "url": "template.html",
+          "icon": "trello.svg"
+        }
+      }
+    }
+  },
+  "whitelisted-domains": [
+    "https://api.trello.com",
+    "https://*.freshdesk.com"
+  ],
+  "engines": {
+    "node": "12.22.7",
+    "fdk": "7.2.0"
+  }
+}
