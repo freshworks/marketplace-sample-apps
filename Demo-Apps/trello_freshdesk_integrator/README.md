@@ -1,4 +1,4 @@
-# freshdesk_sampleApp
+# trello_freshdesk_integrator
 Freshdesk - Trello Integration App
 
 ## Description

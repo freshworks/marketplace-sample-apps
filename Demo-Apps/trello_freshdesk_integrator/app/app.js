@@ -1,27 +1,28 @@
 'use strict';
+
 /**
  * App Initializer
  */
-var listData;
-var memberData;
+
+let listData;
+let memberData;
 
 document.addEventListener("DOMContentLoaded", function () {
 	app.initialized()
 		.then(function (_client) {
 			window.client = _client;
 			checkStatus();
-			getList();
-			getMembers();
-			registerClickEventHandlers();
+			client.events.on('app.activated', getList);
 			client.instance.receive(
 				function (event) {
-					var data = event.helper.getData();
+					let data = event.helper.getData();
 					showNotification("success", data.message);
 				}
 			);
 		})
 		.catch(function (error) {
-			console.error('Error during initialization', error);
+			console.error('Error during initialization');
+			console.error(error);
 		});
 
 });
@@ -35,62 +36,67 @@ function checkStatus() {
 			function (data) {
 				// The record already exists - indicates it is already associated with trello card
 				let value1 = "Ticket - " + data.card_data.ticketID + " is linked to a Card! Due by : " + due;
-				$("#status").append('<label>' + value1 + '</label>');
+				document.getElementById('status').insertAdjacentHTML('beforeend', `<label> ${value1} </label>`);
+
 			},
 			function () {
 				//404 - Indicates that the record is not found in the data storage
 				let value2 = "No Card Linked Yet!"
-				$("#status").append('<label>' + value2 + '</label>');
+				document.getElementById('status').insertAdjacentHTML('beforeend', `<label> ${value2} </label>`);
+
 			})
 	}, function (error) {
-		console.error("Error occurred while fetching ticket details", error);
+		console.error("Error occurred while fetching ticket details");
+		console.error(error);
 	});
 }
 
-function getList() {
-	client.request.invoke("getListSMI", {}).then(
-		function (data) {
-			// data is a json object with requestID and response.
-			// The serverless environment generates the request ID.
-			// The serverless method in server.js returns two objects (error,response).
-			// data.response is the response object from the serverless method.
-			console.log("Server method Request ID is: " + data.requestID);
-			listData = data.response;
-		},
-		function (err) {
-			// err is a json object with requestID, status, and message.
-			// The serverless environment generates the request ID.
-			// The serverless method in server.js returns two objects (error,response).
-			// The error object contains the status and message attributes.
-			// err.status is the error.status attribute.
-			// err.message is the error.message attribute.
-			console.log("Request ID: " + err.requestID);
-			console.log("error status: " + err.status);
-			console.log("error message: " + err.message);
-		});
+async function getList() {
+	getMembers();
+	registerClickEventHandlers();
+	try {
+		// data is a json object with requestID and response.
+		// The serverless environment generates the request ID.
+		// The serverless method in server.js returns two objects (error,response).
+		// data.response is the response object from the serverless method.
+		let data = await client.request.invoke("getListSMI", {});
+		listData = data.response;
+		console.info("Server method Request ID is: " + data.requestID);
+
+	} catch (err) {
+		// err is a json object with requestID, status, and message.
+		// The serverless environment generates the request ID.
+		// The serverless method in server.js returns two objects (error,response).
+		// The error object contains the status and message attributes.
+		// err.status is the error.status attribute.
+		// err.message is the error.message attribute.
+		console.info("Request ID: " + err.requestID);
+		console.error("error status: " + err.status);
+		console.error("error message: " + err.message);
+	}
 }
 
-function getMembers() {
-	client.request.invoke("getMemberSMI", {}).then(
-		function (data) {
-			// data is a json object with requestID and response.
-			// The serverless environment generates the request ID.
-			// The serverless method in server.js returns two objects (error,response).
-			// data.response is the response object from the serverless method.
-			console.log("Server method Request ID is: " + data.requestID);
-			memberData = data.response;
-		},
-		function (err) {
-			// err is a json object with requestID, status, and message.
-			// The serverless environment generates the request ID.
-			// The serverless method in server.js returns two objects (error,response).
-			// The error object contains the status and message attributes.
-			// err.status is the error.status attribute.
-			// err.message is the error.message attribute.
-			console.log("Request ID: " + err.requestID);
-			console.log("error status: " + err.status);
-			console.log("error message: " + err.message);
-		});
+async function getMembers() {
+	try {
+		// data is a json object with requestID and response.
+		// The serverless environment generates the request ID.
+		// The serverless method in server.js returns two objects (error,response).
+		// data.response is the response object from the serverless method.
+		let data = await client.request.invoke("getMemberSMI", {});
+		memberData = data.response;
+		console.info("Server method Request ID is: " + data.requestID);
+
+	} catch (err) {
+		// err is a json object with requestID, status, and message.
+		// The serverless environment generates the request ID.
+		// The serverless method in server.js returns two objects (error,response).
+		// The error object contains the status and message attributes.
+		// err.status is the error.status attribute.
+		// err.message is the error.message attribute.
+		console.info("Request ID: " + err.requestID);
+		console.error("error status: " + err.status);
+		console.error("error message: " + err.message);
+	}
 }
 
 /**
@@ -126,9 +132,8 @@ function getTicketDetails(success, error) {
  *  Create a Trello Card
  */
 function createCard() {
-	console.log("Proceeding to create card from the ticket");
+	console.info("Proceeding to create card from the ticket");
 	getTicketDetails(function (ticketData) {
-		//console.log(ticketData);
 		checkAndCreateCard(
 			ticketData.ticket.id,
 			function () {
@@ -142,7 +147,8 @@ function createCard() {
 				}
 			})
 	}, function (error) {
-		console.error("Error occurred while fetching ticket details", error);
+		console.error("Error occurred while fetching ticket details");
+		console.error(error);
 	});
 }
 
@@ -155,8 +161,8 @@ function createCard() {
  * @param {function} cardDoesntExistCallback Callback if the card doesnt exist
  */
 function checkAndCreateCard(ticketID, cardExistCallback, cardDoesntExistCallback) {
-	var dbKey = String(`fdTicket:${ticketID}`).substring(0, 30);
-	console.log(dbKey);
+	let dbKey = String(`fdTicket:${ticketID}`).substring(0, 30);
+	console.info(dbKey);
 	client.db.get(dbKey)
 		.then(cardExistCallback)
 		.catch(cardDoesntExistCallback);
@@ -167,7 +173,7 @@ function checkAndCreateCard(ticketID, cardExistCallback, cardDoesntExistCallback
  * Function to Create card in the modal, Passes ticket data as an object to the modal, can be fetched in the modal using Instance API
  * @param {object} ticketData Ticket data
  */
-function createCardHelper(ticketData) {
+async function createCardHelper(ticketData) {
 	let tData = {
 		ticketId: ticketData.ticket.id,
 		desc: ticketData.ticket.description_text,
@@ -177,18 +183,12 @@ function createCardHelper(ticketData) {
 		list: listData,
 		member: memberData
 	}
-	client.interface.trigger("showModal", {
+	await client.interface.trigger("showModal", {
 		title: "Create a Card",
 		template: "modal/createModal.html",
 		data: tData
-	}).then(function (data) {
-		// data - success message
-		console.log("in Create model");
-		console.info(data);
-	}).catch(function (error) {
-		// error - error object
-		console.error(error);
 	});
+	console.info("In Create Modal");
 
 }
 
@@ -196,29 +196,22 @@ function createCardHelper(ticketData) {
  *  Function to View card in the modal, Passes ticket id as an object to the modal, can be fetched in the modal using Instance API
  */
 function viewCard() {
-	console.log("Proceeding to view card from the ticket");
-	getTicketDetails(function (data) {
-		client.interface.trigger("showModal", {
+	console.info("Proceeding to view card from the ticket");
+	getTicketDetails(async function (data) {
+		await client.interface.trigger("showModal", {
 			title: "Linked Card",
 			template: "modal/viewModal.html",
 			data: data.ticket.id
-		}).then(function (data) {
-			// data - success message
-			console.log("in View model");
-			console.info(data);
-		}).catch(function (error) {
-			// error - error object
-			console.error(error);
-
 		});
 	})
+	console.info("in View model");
 }
 
 /**
  *  Delete the trello card
  */
 function deleteCard() {
-	console.log("Proceeding to delete card from the ticket");
+	console.info("Proceeding to delete card from the ticket");
 	getTicketDetails(function (ticketData) {
 		checkAndCreateCard(
 			ticketData.ticket.id,
@@ -233,73 +226,65 @@ function deleteCard() {
 				}
 			})
 	}, function (error) {
-		console.error("Error occurred while fetching ticket details", error);
+		console.error("Error occurred while fetching ticket details");
+		console.error(error);
 	});
 
 }
 
 function getCard(ticketID, callback) {
-	var dbKey = String(`fdTicket:${ticketID}`).substring(0, 30);
+	let dbKey = String(`fdTicket:${ticketID}`).substring(0, 30);
 	client.db.get(dbKey)
 		.then(callback)
 		.catch(function (error) {
 			//404 - Indicates that the record is not found in the data storage
 			if (error.status === 404) {
-				console.error("No Card found for the ticket", error);
+				console.error("No Card found for the ticket");
+				console.error(error);
 			}
 		})
 }
 
 function deleteCardHelper(ticketInfo) {
-	var Data = ticketInfo.ticket.id;
-	getCard(Data, function (data) {
+	let tId = ticketInfo.ticket.id;
+	getCard(tId, function (data) {
 		let cardData = data.card_data.cardID;
 		let ticketData = data.card_data.ticketID;
 		removeCard(cardData, ticketData);
 	});
 }
 
-function removeCard(cardID, ticketId) {
-	let options = {
-		"cardID": cardID,
+async function removeCard(cardID, ticketId) {
+	try {
+		// data is a json object with requestID and response.
+		// The serverless environment generates the request ID.
+		// The serverless method in server.js returns two objects (error,response).
+		// data.response is the response object from the serverless method.
+		let options = {
+			"cardID": cardID,
+		}
+		await client.request.invoke("deleteCardSMI", options);
+		console.info("card deleted")
+		removeData(cardID, ticketId);
+	} catch (err) {
+		// err is a json object with requestID, status, and message.
+		// The serverless environment generates the request ID.
+		// The serverless method in server.js returns two objects (error,response).
+		// The error object contains the status and message attributes.
+		// err.status is the error.status attribute.
+		// err.message is the error.message attribute.
+		console.info("Request ID: " + err.requestID);
+		console.error("error status: " + err.status);
+		console.error("error message: " + err.message);
 	}
-	client.request.invoke("deleteCardSMI", options).then(
-		function (data) {
-			// data is a json object with requestID and response.
-			// The serverless environment generates the request ID.
-			// The serverless method in server.js returns two objects (error,response).
-			// data.response is the response object from the serverless method.
-			console.log("Server method Request ID is: " + data.requestID);
-			console.info("card deleted")
-			removeData(cardID, ticketId);
-		},
-		function (err) {
-			// err is a json object with requestID, status, and message.
-			// The serverless environment generates the request ID.
-			// The serverless method in server.js returns two objects (error,response).
-			// The error object contains the status and message attributes.
-			// err.status is the error.status attribute.
-			// err.message is the error.message attribute.
-			console.log("Request ID: " + err.requestID);
-			console.log("error status: " + err.status);
-			console.log("error message: " + err.message);
-		});
 }
 
-function removeData(cardID, ticketID) {
-	var dbKey1 = String(`fdTicket:${ticketID}`).substring(0, 30);
-	var dbKey2 = String(`trelloCard:${cardID}`).substring(0, 30);
-	Promise.all([client.db.delete(dbKey1), client.db.delete(dbKey2)]).then(
-		function (data) {
-			// success operation
-			// "data" value is { "Deleted" : true }
-			showNotification('success', 'Trello card for this ticket is deleted successfully');
-			console.log(data);
-		},
-		function (error) {
-			console.log(error);
-			// failure operation
-		});
+async function removeData(cardID, ticketID) {
+	let dbKey1 = String(`fdTicket:${ticketID}`).substring(0, 30);
+	let dbKey2 = String(`trelloCard:${cardID}`).substring(0, 30);
+	await Promise.all([client.db.delete(dbKey1), client.db.delete(dbKey2)]);
+	showNotification('success', 'Trello card for this ticket is deleted successfully');
+
 }
 
 
@@ -308,11 +293,9 @@ function removeData(cardID, ticketID) {
  * @param {String} type  	Status of the notification
  * @param {String} message  	Custom notification message
  * */
-function showNotification(type, message) {
-	client.interface.trigger("showNotify", {
+async function showNotification(type, message) {
+	await client.interface.trigger("showNotify", {
 		type: `${type}`,
 		message: `${message}`
-	}).catch(function (error) {
-		console.error('Notification Error : ', error);
 	});
 }

@@ -9,10 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
           onModalLoad(context.data);
         })
         .catch(function (error) {
-          console.error('error in instance context :', error);
+          console.error('error in instance context ');
+          console.error(error);
         });
     }).catch(function (error) {
-      console.error('Error during initialization', error);
+      console.error('Error during initialization');
+      console.error(error);
     });
 });
 
@@ -21,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param {object} ticket  ticket that is fetched from parent
  */
 
-function onModalLoad(ticket) {
-  var ticketID = ticket;
+ function onModalLoad(ticket) {
+  let ticketID = ticket;
   getCard(ticketID, function (data) {
     let cardId = data.card_data.cardID;
     fetchCard(cardId);
@@ -35,13 +37,14 @@ function onModalLoad(ticket) {
  * @param {function} callback Callback function
  */
 function getCard(ticketID, callback) {
-  var dbKey = String(`fdTicket:${ticketID}`).substring(0, 30);
+  let dbKey = String(`fdTicket:${ticketID}`).substring(0, 30);
   client.db.get(dbKey)
     .then(callback)
     .catch(function (error) {
       //404 - Indicates that the record is not found in the data storage
       if (error.status === 404) {
-        console.error("No Card found for the ticket", error);
+        console.error("No Card found for the ticket");
+        console.error(error);
         document.getElementById('viewModal').insertAdjacentHTML('beforeend',
           `<div class="alert alert-warning" role="alert">
             <hr>
@@ -55,17 +58,17 @@ function getCard(ticketID, callback) {
  * Function to fetch and display card from trello
  * @param {string} cardID  card Id to query specific card from trello
  */
-function fetchCard(cardID) {
-  let options = {
-    "cardID": cardID,
-  }
-  client.request.invoke("fetchCardSMI", options).then(
-    function (data) {
+async function fetchCard(cardID) {
+    try {
       // data is a json object with requestID and response.
       // The serverless environment generates the request ID.
       // The serverless method in server.js returns two objects (error,response).
       // data.response is the response object from the serverless method.
-      console.log("Server method Request ID is: " + data.requestID);
+      let options = {
+        "cardID": cardID,
+      }
+      let data = await client.request.invoke("fetchCardSMI", options);
+      console.info("Server method Request ID is: " + data.requestID);
       data = (data.response);
 
       let date;
@@ -168,22 +171,21 @@ function fetchCard(cardID) {
       <button class="btn btn-primary" onclick="back()">Back</button>
        </div>
         `)
-
-    },
-    function (err) {
+    }
+    catch (err) {
       // err is a json object with requestID, status, and message.
       // The serverless environment generates the request ID.
       // The serverless method in server.js returns two objects (error,response).
       // The error object contains the status and message attributes.
       // err.status is the error.status attribute.
       // err.message is the error.message attribute.
-      console.log("Request ID: " + err.requestID);
-      console.log("error status: " + err.status);
-      console.log("error message: " + err.message);
-    });
+      console.info("Request ID: " + err.requestID);
+      console.error("error status: " + err.status);
+      console.error("error message: " + err.message);
+    };
 }
 
-function back() {
-  client.instance.close();
+async function back() {
+  await client.instance.close();
 }
 
