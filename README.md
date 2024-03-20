@@ -1,4 +1,6 @@
-## Samples Apps now have a new Home: [Explore new Samples](https://community.developers.freshworks.com/t/freshworks-sample-apps/3604)
+## Samples Apps now have a new Home: [Explore new Samples](https://developers.freshworks.com/docs/sample-apps/)
+
+🚨 This sample apps repository is no longer maintained. 
 
 <img align="right" height=100 vspace=20 src='.github/assets/laptop.svg'>
 
